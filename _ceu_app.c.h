@@ -67,17 +67,17 @@ typedef double   r64;
 
 /* CEU_C */
 
+#undef CEU_FEATURES_LUA
 #define CEU_FEATURES_ISR static
 #define CEU_FEATURES_ISR_STATIC
 #undef CEU_FEATURES_POOL
+#undef CEU_FEATURES_THREAD
 #undef CEU_FEATURES_ASYNC
-#undef CEU_FEATURES_DYNAMIC
+#undef CEU_FEATURES_OS
+#undef CEU_FEATURES_PAUSE
 #undef CEU_FEATURES_TRACE
 #undef CEU_FEATURES_EXCEPTION
-#undef CEU_FEATURES_LUA
-#undef CEU_FEATURES_PAUSE
-#undef CEU_FEATURES_THREAD
-#undef CEU_FEATURES_OS
+#undef CEU_FEATURES_DYNAMIC
         /* CEU_FEATURES */
 
 #include <stddef.h>     /* offsetof */
@@ -393,42 +393,28 @@ void ceu_pm_set (u8 dev, bool v) {
 
     void ceu_pm_sleep (void)
     {
-# 45 "./libraries/driver-pm/avr/pm.ceu"
-        if (ceu_pm_get(CEU_PM_TIMER0) || ceu_pm_get(CEU_PM_TIMER1) ||
-            ceu_pm_get(CEU_PM_TIMER2) || ceu_pm_get(CEU_PM_USART) ||
-            ceu_pm_get(CEU_PM_TWI) || ceu_pm_get(CEU_PM_SPI))
-        {
 
-            LowPower.idle(SLEEP_FOREVER,
-                          (adc_t) ceu_pm_get(CEU_PM_ADC),
+
+            LowPower.idle(SLEEP_FOREVER, ADC_ON,
 
 
 
-
-
-                          (timer2_t) ceu_pm_get(CEU_PM_TIMER2),
-                          (timer1_t) ceu_pm_get(CEU_PM_TIMER1),
-                          (timer0_t) ceu_pm_get(CEU_PM_TIMER0),
-                          (spi_t) ceu_pm_get(CEU_PM_SPI),
+                          TIMER2_ON, TIMER1_ON,
+                          TIMER0_ON, SPI_ON,
 
 
 
-                          (usart0_t) ceu_pm_get(CEU_PM_USART),
-                          (twi_t) ceu_pm_get(CEU_PM_TWI));
-        }
-        else if (ceu_pm_get(CEU_PM_ADC))
-        {
-            LowPower.adcNoiseReduction(SLEEP_FOREVER,
-                                       (adc_t) ceu_pm_get(CEU_PM_ADC),
-                                       TIMER2_OFF);
-        }
-        else
-        {
-            LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
-        }
-
-
+                          USART0_ON, TWI_ON);
+# 79 "./libraries/driver-pm/avr/pm.ceu"
     }
+
+#define __WCLOCK_CEU__
+    void ceu_wclock_init (void);
+    //void ceu_wclock         (bool v);      // TODO: ???
+    void ceu_wclock_request (s32 us, bool was_active);
+    void ceu_wclock_done (void);
+    s32 ceu_wclock_dt (void);
+    u32 ceu_wclock_now (void);
 
 
 /* EVENTS_ENUM */
@@ -454,7 +440,8 @@ CEU_INPUT__PRIM,
     CEU_INPUT__WCLOCK,
 
 //CEU_INPUT__MIN,
-    
+    CEU_INPUT_CEU_WCLOCK,
+
 //CEU_INPUT__MAX,
 
 CEU_EVENT__MIN,
@@ -464,7 +451,9 @@ CEU_EVENT__MIN,
 
 enum {
     CEU_OUTPUT__NONE = 0,
-    
+    CEU_OUTPUT_OUT,
+CEU_OUTPUT_OUT_13,
+
 };
 
 /* CEU_MAIN */
@@ -548,12 +537,16 @@ static void ceu_trace (tceu_trace trace, const char* msg) {
 #define ceu_trace(a,b)
 #endif
 
-#define CEU_ISRS_N 0
+#define CEU_ISRS_N 2
 
 /* CEU_ISRS_DEFINES */
+#define CEU_ISR__TIMER1_COMPA_vect
 
 
 /* EVENTS_DEFINES */
+#define _CEU_OUTPUT_OUT_
+#define _CEU_INPUT_CEU_WCLOCK_
+#define _CEU_OUTPUT_OUT_13_
 
 
 /* CEU_DATAS_HIERS */
@@ -964,10 +957,87 @@ static tceu_opt_Exception* CEU_OPTION_tceu_opt_Exception_ (tceu_opt_Exception* o
 
 /*****************************************************************************/
 
+typedef struct tceu_output_OUT {
+    int _1;
+    bool _2;
+} tceu_output_OUT;
+typedef struct tceu_output_mem_OUT {
+    struct {
+#line 8 "./libraries/driver-gpio/out.ceu"
+int  pin;
+#line 8 "./libraries/driver-gpio/out.ceu"
+bool  v;
+union {
+struct {
+union {
+};
+};
+};
+};
+} tceu_output_mem_OUT;
+typedef struct tceu_input_CEU_WCLOCK {
+} tceu_input_CEU_WCLOCK;
+typedef struct tceu_output_OUT_13 {
+    bool _1;
+} tceu_output_OUT_13;
 
 typedef struct tceu_event___lpar____rpar__ {
 } tceu_event___lpar____rpar__;
 
+typedef struct tceu_code_mem_WCLOCK_Now {
+    tceu_code_mem _mem;
+    tceu_trl      _trails[1];
+    byte          _params[0];
+    union {
+        /* MULTIS */
+        struct {
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+u32  _ret;
+union {
+struct {
+union {
+struct {
+union {
+struct {
+union {
+};
+};
+};
+};
+};
+};
+};
+};
+    };
+} tceu_code_mem_WCLOCK_Now;
+typedef struct tceu_code_mem_WCLOCK_Freeze {
+    tceu_code_mem _mem;
+    tceu_trl      _trails[1];
+    byte          _params[0];
+    union {
+        /* MULTIS */
+        struct {
+union {
+struct {
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+u32  us;
+union {
+union {
+};
+struct {
+union {
+struct {
+union {
+};
+};
+};
+};
+};
+};
+};
+};
+    };
+} tceu_code_mem_WCLOCK_Freeze;
 typedef struct tceu_code_mem_ROOT {
     tceu_code_mem _mem;
     tceu_trl      _trails[1];
@@ -1050,9 +1120,24 @@ int  _RET;
 #line 25 "././include/arduino/arduino.ceu"
 #line 25 "././include/arduino/arduino.ceu"
 #line 25 "././include/arduino/arduino.ceu"
+#line 5 "./libraries/driver-gpio/out.ceu"
+#line 8 "./libraries/driver-gpio/out.ceu"
+#line 14 "./libraries/driver-wclock/avr/timer1-compa.ceu"
+#line 67 "./libraries/driver-wclock/avr/../wclock.ceu"
+#line 4 "libraries/driver-gpio/examples/out-01.ceu"
 union {
 struct {
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
 union {
+struct {
+struct {
+union {
+s32 __wclk_83;
+s32 __wclk_91;
+};
+};
+};
 };
 };
 };
@@ -1070,6 +1155,37 @@ CEU_LABEL_Block__CLR_4,
 CEU_LABEL_Do__OUT_5,
 CEU_LABEL_Do__CLR_6,
 CEU_LABEL_Block__CLR_7,
+CEU_LABEL_WCLOCK_Now_Block__CLR_8,
+CEU_LABEL_WCLOCK_Now_Block__CLR_9,
+CEU_LABEL_WCLOCK_Now_Block__CLR_10,
+CEU_LABEL_WCLOCK_Now_Do__OUT_11,
+CEU_LABEL_WCLOCK_Now_Do__CLR_12,
+CEU_LABEL_WCLOCK_Now_Block__CLR_13,
+CEU_LABEL_Code_WCLOCK_Now,
+CEU_LABEL_WCLOCK_Now_Code_WCLOCK_Now__TERM_15,
+CEU_LABEL_WCLOCK_Freeze_Block__CLR_16,
+CEU_LABEL_WCLOCK_Freeze_Block__CLR_17,
+CEU_LABEL_WCLOCK_Freeze_Block__CLR_18,
+CEU_LABEL_WCLOCK_Freeze_Do__OUT_19,
+CEU_LABEL_WCLOCK_Freeze_Do__CLR_20,
+CEU_LABEL_WCLOCK_Freeze_Block__CLR_21,
+CEU_LABEL_Code_WCLOCK_Freeze,
+CEU_LABEL_WCLOCK_Freeze_Code_WCLOCK_Freeze__TERM_23,
+CEU_LABEL_Block__CLR_24,
+CEU_LABEL_Async_Isr__FIN_25,
+CEU_LABEL_Emit_Ext_emit__OUT_13__OUT_26,
+CEU_LABEL_Await_Wclock__OUT_27,
+CEU_LABEL_Emit_Ext_emit__OUT_13__OUT_28,
+CEU_LABEL_Await_Wclock__OUT_29,
+CEU_LABEL_Block__CLR_30,
+CEU_LABEL_Loop__CLR_31,
+CEU_LABEL_Loop_Continue__CNT_32,
+CEU_LABEL_Loop_Continue__CLR_33,
+CEU_LABEL_Loop_Break__OUT_34,
+CEU_LABEL_Block__CLR_35,
+CEU_LABEL_Do__OUT_36,
+CEU_LABEL_Do__CLR_37,
+CEU_LABEL_Block__CLR_38,
 
 };
 
@@ -1238,11 +1354,219 @@ static void ceu_lua_createargtable (lua_State* lua, char** argv, int argc, int s
 static int ceu_lbl (tceu_nstk _ceu_level, tceu_stk* _ceu_cur, tceu_stk* _ceu_nxt, tceu_code_mem* _ceu_mem, tceu_nlbl _ceu_lbl, tceu_ntrl* _ceu_trlK);
 
 
+#define ceu_callback_output_OUT_00(ps,trace) digitalWrite( 0, *((bool*)ps))
+#define ceu_callback_output_OUT_01(ps,trace) digitalWrite( 1, *((bool*)ps))
+#define ceu_callback_output_OUT_02(ps,trace) digitalWrite( 2, *((bool*)ps))
+#define ceu_callback_output_OUT_03(ps,trace) digitalWrite( 3, *((bool*)ps))
+#define ceu_callback_output_OUT_04(ps,trace) digitalWrite( 4, *((bool*)ps))
+#define ceu_callback_output_OUT_05(ps,trace) digitalWrite( 5, *((bool*)ps))
+#define ceu_callback_output_OUT_06(ps,trace) digitalWrite( 6, *((bool*)ps))
+#define ceu_callback_output_OUT_07(ps,trace) digitalWrite( 7, *((bool*)ps))
+#define ceu_callback_output_OUT_08(ps,trace) digitalWrite( 8, *((bool*)ps))
+#define ceu_callback_output_OUT_09(ps,trace) digitalWrite( 9, *((bool*)ps))
+#define ceu_callback_output_OUT_10(ps,trace) digitalWrite(10, *((bool*)ps))
+#define ceu_callback_output_OUT_11(ps,trace) digitalWrite(11, *((bool*)ps))
+#define ceu_callback_output_OUT_12(ps,trace) digitalWrite(12, *((bool*)ps))
+#define ceu_callback_output_OUT_13(ps,trace) digitalWrite(13, *((bool*)ps))
+
+    static bool ceu_wclock_is_active = 0;
+
+    void ceu_arduino_callback_wclock_min (s32 dt) {
+        ceu_wclock_request(dt, ceu_wclock_is_active);
+        ceu_wclock_is_active = (dt != CEU_WCLOCK_INACTIVE);
+        ceu_pm_set(CEU_PM_TIMER1, ceu_wclock_is_active);
+    }
+
+    s32 ceu_arduino_callback_wclock_dt (void) {
+        return (ceu_wclock_is_active) ? ceu_wclock_dt() : CEU_WCLOCK_INACTIVE;
+    }
+
+    static u16 ceu_timer1_old;
+
+    void ceu_wclock_init (void) {
+        ceu_timer1_old = TCNT1;
+        TCCR1A = 0;
 
 
 
 
 
+
+
+        TCCR1B = 0b101;
+
+
+
+    }
+
+    void ceu_wclock_request (s32 us, bool was_active) {
+        if (us == CEU_WCLOCK_INACTIVE) {
+            bitClear(TIMSK1, OCIE1A);
+        } else {
+            s32 v = ((s32)(((double)(us))*F_CPU/1024/1000000L));
+            ceu_assert(v < U16_MAX, "bug found");
+            OCR1A = (ceu_timer1_old + v);
+            bitSet(TIMSK1, OCIE1A);
+        }
+    }
+
+    void ceu_wclock_done (void) {
+        // ok
+    }
+
+    s32 ceu_wclock_dt (void) {
+        u16 now = TCNT1;
+        //ceu_assert(now<128, "bug found");     (not really, only if called due to CEU_WCLOCK)
+        s32 dt = (u16)(now - ceu_timer1_old);
+        ceu_timer1_old = now;
+        return ((s32)(((double)(dt))*1000000L*1024/F_CPU)+1);
+    }
+
+    u32 ceu_wclock_now (void) {
+        return ((s32)(((double)(TCNT1))*1000000L*1024/F_CPU)+1);
+    }
+
+
+static u32 /* space */
+CEU_CODE_WCLOCK_Now (tceu_code_mem_WCLOCK_Now mem_,
+                         tceu_code_mem* up_mem
+#ifdef CEU_FEATURES_TRACE
+                      , tceu_trace trace
+#endif
+#ifdef CEU_FEATURES_LUA
+                      , lua_State* lua
+#endif
+                        )
+{
+    tceu_code_mem_WCLOCK_Now* mem = &mem_;
+    mem_._mem.up_mem = up_mem;
+    mem_._mem.depth  = 0;
+#ifdef CEU_FEATURES_TRACE
+    mem_._mem.trace = trace;
+#endif
+#ifdef CEU_FEATURES_LUA
+    mem_._mem.lua = lua;
+#endif
+    tceu_nlbl lbl = CEU_LABEL_Code_WCLOCK_Now;
+    ceu_lbl(0, NULL, NULL, (tceu_code_mem*)mem, lbl, 0);
+    return mem_._ret;
+}
+static none /* space */
+CEU_CODE_WCLOCK_Freeze (tceu_code_mem_WCLOCK_Freeze mem_,
+                         tceu_code_mem* up_mem
+#ifdef CEU_FEATURES_TRACE
+                      , tceu_trace trace
+#endif
+#ifdef CEU_FEATURES_LUA
+                      , lua_State* lua
+#endif
+                        )
+{
+    tceu_code_mem_WCLOCK_Freeze* mem = &mem_;
+    mem_._mem.up_mem = up_mem;
+    mem_._mem.depth  = 0;
+#ifdef CEU_FEATURES_TRACE
+    mem_._mem.trace = trace;
+#endif
+#ifdef CEU_FEATURES_LUA
+    mem_._mem.lua = lua;
+#endif
+    tceu_nlbl lbl = CEU_LABEL_Code_WCLOCK_Freeze;
+    ceu_lbl(0, NULL, NULL, (tceu_code_mem*)mem, lbl, 0);
+}
+
+
+#ifdef CEU_FEATURES_TRACE
+#define ceu_callback_output_OUT(a,b) ceu_callback_output_OUT_(a,b)
+#else
+#define ceu_callback_output_OUT(a,b) ceu_callback_output_OUT_(a)
+#endif
+int ceu_callback_output_OUT_ (tceu_output_OUT* ps
+#ifdef CEU_FEATURES_TRACE
+                                                                  , tceu_trace trace
+#endif
+                                                                  )
+{
+#define CEU_TRACE(n) trace
+    tceu_output_mem_OUT _ceu_loc;
+
+/* Block (n=23, ln=9) */
+
+#line 9 "./libraries/driver-gpio/out.ceu"
+{
+
+/* Stmt_Call (n=21, ln=9) */
+
+#line 9 "./libraries/driver-gpio/out.ceu"
+digitalWrite((((*ps)._1)),(((*ps)._2)));
+
+/* Block (n=23, ln=9) */
+
+#line 9 "./libraries/driver-gpio/out.ceu"
+}
+
+/* Do (n=369, ln=8) */
+
+#line 8 "./libraries/driver-gpio/out.ceu"
+CEU_LABEL_Do__OUT_5:;
+#undef CEU_TRACE
+return 0;
+}
+
+
+typedef struct tceu_isr_mem_71 {
+    struct {
+union {
+};
+};
+} tceu_isr_mem_71;
+
+#ifndef CEU_ISR
+#error Missing architecture definition for `CEU_ISR`.
+#endif
+
+CEU_ISR(TIMER1_COMPA_vect)
+{
+    tceu_code_mem* _ceu_mem = &CEU_APP.root._mem;
+    tceu_isr_mem_71 _ceu_loc;
+    
+/* Block (n=70, ln=69) */
+
+#line 69 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Nat_Stmt (n=65, ln=69) */
+
+#line 69 "./libraries/driver-wclock/avr/../wclock.ceu"
+ceu_wclock_done();
+/* Emit_Ext_emit (n=68, ln=70) */
+
+#line 70 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Emit_Ext_emit (n=68, ln=70) */
+
+#line 70 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+#ifdef CEU_FEATURES_ISR_STATIC
+    tceu_isr_evt __ceu_evt = { ((tceu_evt){CEU_INPUT_CEU_WCLOCK,{NULL}}).id, 0, NULL };
+    ceu_callback_isr_emit(1, (void*)&__ceu_evt, CEU_TRACE(0));
+#else
+    tceu_evt_id_params __ceu_evt = { ((tceu_evt){CEU_INPUT_CEU_WCLOCK,{NULL}}).id, NULL };
+    ceu_callback_isr_emit(TIMER1_COMPA_vect, (void*)&__ceu_evt, CEU_TRACE(0));
+#endif
+}
+
+/* Emit_Ext_emit (n=68, ln=70) */
+
+#line 70 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Block (n=70, ln=69) */
+
+#line 69 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+}
 
 
 
@@ -1382,42 +1706,411 @@ _CEU_LBL_:
         case CEU_LABEL_NONE:
             break;
         
-/* ROOT (n=50, ln=1) */
+/* ROOT (n=139, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_ROOT:;
 
-/* Block (n=49, ln=1) */
+/* Block (n=138, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Block (n=44, ln=1) */
+/* Block (n=133, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Await_Forever (n=5, ln=1) */
+/* Nat_Stmt (n=27, ln=50) */
 
-#line 1 "libraries/driver-gpio/examples/out-01.ceu"
+#line 50 "./libraries/driver-gpio/out.ceu"
+
+#ifdef _CEU_OUTPUT_OUT_00_
+    pinMode( 0, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_01_
+    pinMode( 1, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_02_
+    pinMode( 2, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_03_
+    pinMode( 3, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_04_
+    pinMode( 4, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_05_
+    pinMode( 5, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_06_
+    pinMode( 6, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_07_
+    pinMode( 7, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_08_
+    pinMode( 8, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_09_
+    pinMode( 9, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_10_
+    pinMode(10, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_11_
+    pinMode(11, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_12_
+    pinMode(12, OUTPUT);
+#endif
+#ifdef _CEU_OUTPUT_OUT_13_
+    pinMode(13, OUTPUT);
+#endif
+
+/* Code (n=391, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+/* do not enter from outside */
+if (0)
+{
+
+/* Code (n=391, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+case CEU_LABEL_Code_WCLOCK_Now:;
+
+/* Block (n=390, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Block (n=382, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Block (n=380, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Block (n=36, ln=8) */
+
+#line 8 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Set_Exp (n=392, ln=8) */
+
+#line 8 "./libraries/driver-wclock/avr/../wclock.ceu"
+(((*((tceu_code_mem_WCLOCK_Now*)_ceu_mem))._ret)) = ( ceu_wclock_now() );
+
+/* Escape (n=34, ln=8) */
+
+#line 8 "./libraries/driver-wclock/avr/../wclock.ceu"
+CEU_GOTO(CEU_LABEL_WCLOCK_Now_Do__OUT_11);
+
+/* Block (n=36, ln=8) */
+
+#line 8 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Block (n=380, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Block (n=382, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Do (n=383, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+ceu_assert(0, "reached end of `do`");
+
+/* Do (n=383, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+case CEU_LABEL_WCLOCK_Now_Do__OUT_11:;
+
+/* Block (n=390, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Code (n=391, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
 return 0;
 
-/* Block (n=44, ln=1) */
+/* Code (n=391, ln=7) */
+
+#line 7 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Code (n=405, ln=11) */
+
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+/* do not enter from outside */
+if (0)
+{
+
+/* Code (n=405, ln=11) */
+
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+case CEU_LABEL_Code_WCLOCK_Freeze:;
+
+/* Block (n=404, ln=11) */
+
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Block (n=400, ln=11) */
+
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Block (n=398, ln=11) */
+
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Block (n=52, ln=12) */
+
+#line 12 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Stmt_Call (n=50, ln=12) */
+
+#line 12 "./libraries/driver-wclock/avr/../wclock.ceu"
+delayMicroseconds((((*((tceu_code_mem_WCLOCK_Freeze*)_ceu_mem)).us)));
+
+/* Block (n=52, ln=12) */
+
+#line 12 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Block (n=398, ln=11) */
+
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Block (n=400, ln=11) */
+
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Do (n=401, ln=11) */
+
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+case CEU_LABEL_WCLOCK_Freeze_Do__OUT_19:;
+
+/* Block (n=404, ln=11) */
+
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Code (n=405, ln=11) */
+
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+return 0;
+
+/* Code (n=405, ln=11) */
+
+#line 11 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Nat_Stmt (n=57, ln=59) */
+
+#line 59 "./libraries/driver-wclock/avr/../wclock.ceu"
+
+    ceu_wclock_init();
+
+/* Loop (n=94, ln=6) */
+
+#line 6 "libraries/driver-gpio/examples/out-01.ceu"
+while (1) {
+        
+/* Block (n=93, ln=7) */
+
+#line 7 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Emit_Ext_emit (n=80, ln=7) */
+
+#line 7 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Emit_Ext_emit (n=80, ln=7) */
+
+#line 7 "libraries/driver-gpio/examples/out-01.ceu"
+tceu_output_OUT_13 __ceu_ps;
+
+/* Emit_Ext_emit (n=80, ln=7) */
+
+#line 7 "libraries/driver-gpio/examples/out-01.ceu"
+__ceu_ps._1 = 1;
+
+/* Emit_Ext_emit (n=80, ln=7) */
+
+#line 7 "libraries/driver-gpio/examples/out-01.ceu"
+
+#ifdef ceu_callback_output_OUT_13
+ceu_callback_output_OUT_13(&__ceu_ps, CEU_TRACE(-2));
+#else
+1;
+#endif
+
+/* Emit_Ext_emit (n=80, ln=7) */
+
+#line 7 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Await_Wclock (n=83, ln=8) */
+
+#line 8 "libraries/driver-gpio/examples/out-01.ceu"
+ceu_wclock(1000000.0, &(CEU_APP.root.__wclk_83), NULL, CEU_TRACE(0));
+
+_CEU_HALT_83_:
+
+/* Await_Wclock (n=83, ln=8) */
+
+#line 8 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[0].evt.id = CEU_INPUT__WCLOCK;
+
+/* Await_Wclock (n=83, ln=8) */
+
+#line 8 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[0].lbl = CEU_LABEL_Await_Wclock__OUT_27;
+
+/* Await_Wclock (n=83, ln=8) */
+
+#line 8 "libraries/driver-gpio/examples/out-01.ceu"
+return 0;
+
+/* Await_Wclock (n=83, ln=8) */
+
+#line 8 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Await_Wclock__OUT_27:;
+
+/* Await_Wclock (n=83, ln=8) */
+
+#line 8 "libraries/driver-gpio/examples/out-01.ceu"
+/* subtract time and check if I have to awake */
+{
+    s32* dt = (s32*)_ceu_cur->params;
+    if (!ceu_wclock(*dt, NULL, &(CEU_APP.root.__wclk_83), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_83_;
+    }
+}
+
+/* Emit_Ext_emit (n=88, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Emit_Ext_emit (n=88, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+tceu_output_OUT_13 __ceu_ps;
+
+/* Emit_Ext_emit (n=88, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+__ceu_ps._1 = 0;
+
+/* Emit_Ext_emit (n=88, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+
+#ifdef ceu_callback_output_OUT_13
+ceu_callback_output_OUT_13(&__ceu_ps, CEU_TRACE(-2));
+#else
+1;
+#endif
+
+/* Emit_Ext_emit (n=88, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Await_Wclock (n=91, ln=10) */
+
+#line 10 "libraries/driver-gpio/examples/out-01.ceu"
+ceu_wclock(1000000.0, &(CEU_APP.root.__wclk_91), NULL, CEU_TRACE(0));
+
+_CEU_HALT_91_:
+
+/* Await_Wclock (n=91, ln=10) */
+
+#line 10 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[0].evt.id = CEU_INPUT__WCLOCK;
+
+/* Await_Wclock (n=91, ln=10) */
+
+#line 10 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[0].lbl = CEU_LABEL_Await_Wclock__OUT_29;
+
+/* Await_Wclock (n=91, ln=10) */
+
+#line 10 "libraries/driver-gpio/examples/out-01.ceu"
+return 0;
+
+/* Await_Wclock (n=91, ln=10) */
+
+#line 10 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Await_Wclock__OUT_29:;
+
+/* Await_Wclock (n=91, ln=10) */
+
+#line 10 "libraries/driver-gpio/examples/out-01.ceu"
+/* subtract time and check if I have to awake */
+{
+    s32* dt = (s32*)_ceu_cur->params;
+    if (!ceu_wclock(*dt, NULL, &(CEU_APP.root.__wclk_91), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_91_;
+    }
+}
+
+/* Block (n=93, ln=7) */
+
+#line 7 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Loop (n=94, ln=6) */
+
+#line 6 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Loop_Continue__CNT_32:;
+
+/* Loop (n=94, ln=6) */
+
+#line 6 "libraries/driver-gpio/examples/out-01.ceu"
+        *_ceu_trlK = -1;
+}
+
+/* Loop (n=94, ln=6) */
+
+#line 6 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Loop_Break__OUT_34:;
+
+/* Block (n=133, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 }
 
-/* Do (n=45, ln=1) */
+/* Do (n=134, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=45, ln=1) */
+/* Do (n=134, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
-case CEU_LABEL_Do__OUT_5:;
+case CEU_LABEL_Do__OUT_36:;
 
-/* Block (n=49, ln=1) */
+/* Block (n=138, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 }
