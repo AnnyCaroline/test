@@ -67,17 +67,17 @@ typedef double   r64;
 
 /* CEU_C */
 
+#undef CEU_FEATURES_DYNAMIC
+#undef CEU_FEATURES_PAUSE
 #undef CEU_FEATURES_LUA
+#undef CEU_FEATURES_THREAD
 #define CEU_FEATURES_ISR static
 #define CEU_FEATURES_ISR_STATIC
-#undef CEU_FEATURES_POOL
-#undef CEU_FEATURES_THREAD
-#undef CEU_FEATURES_ASYNC
-#undef CEU_FEATURES_OS
-#undef CEU_FEATURES_PAUSE
 #undef CEU_FEATURES_TRACE
 #undef CEU_FEATURES_EXCEPTION
-#undef CEU_FEATURES_DYNAMIC
+#undef CEU_FEATURES_OS
+#undef CEU_FEATURES_POOL
+#undef CEU_FEATURES_ASYNC
         /* CEU_FEATURES */
 
 #include <stddef.h>     /* offsetof */
@@ -1354,19 +1354,6 @@ static void ceu_lua_createargtable (lua_State* lua, char** argv, int argc, int s
 static int ceu_lbl (tceu_nstk _ceu_level, tceu_stk* _ceu_cur, tceu_stk* _ceu_nxt, tceu_code_mem* _ceu_mem, tceu_nlbl _ceu_lbl, tceu_ntrl* _ceu_trlK);
 
 
-#define ceu_callback_output_OUT_00(ps,trace) digitalWrite( 0, *((bool*)ps))
-#define ceu_callback_output_OUT_01(ps,trace) digitalWrite( 1, *((bool*)ps))
-#define ceu_callback_output_OUT_02(ps,trace) digitalWrite( 2, *((bool*)ps))
-#define ceu_callback_output_OUT_03(ps,trace) digitalWrite( 3, *((bool*)ps))
-#define ceu_callback_output_OUT_04(ps,trace) digitalWrite( 4, *((bool*)ps))
-#define ceu_callback_output_OUT_05(ps,trace) digitalWrite( 5, *((bool*)ps))
-#define ceu_callback_output_OUT_06(ps,trace) digitalWrite( 6, *((bool*)ps))
-#define ceu_callback_output_OUT_07(ps,trace) digitalWrite( 7, *((bool*)ps))
-#define ceu_callback_output_OUT_08(ps,trace) digitalWrite( 8, *((bool*)ps))
-#define ceu_callback_output_OUT_09(ps,trace) digitalWrite( 9, *((bool*)ps))
-#define ceu_callback_output_OUT_10(ps,trace) digitalWrite(10, *((bool*)ps))
-#define ceu_callback_output_OUT_11(ps,trace) digitalWrite(11, *((bool*)ps))
-#define ceu_callback_output_OUT_12(ps,trace) digitalWrite(12, *((bool*)ps))
 #define ceu_callback_output_OUT_13(ps,trace) digitalWrite(13, *((bool*)ps))
 
     static bool ceu_wclock_is_active = 0;
@@ -1721,49 +1708,10 @@ case CEU_LABEL_ROOT:;
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Nat_Stmt (n=27, ln=50) */
+/* Nat_Stmt (n=27, ln=24) */
 
-#line 50 "./libraries/driver-gpio/out.ceu"
+#line 24 "./libraries/driver-gpio/out.ceu"
 
-#ifdef _CEU_OUTPUT_OUT_00_
-    pinMode( 0, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_01_
-    pinMode( 1, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_02_
-    pinMode( 2, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_03_
-    pinMode( 3, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_04_
-    pinMode( 4, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_05_
-    pinMode( 5, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_06_
-    pinMode( 6, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_07_
-    pinMode( 7, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_08_
-    pinMode( 8, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_09_
-    pinMode( 9, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_10_
-    pinMode(10, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_11_
-    pinMode(11, OUTPUT);
-#endif
-#ifdef _CEU_OUTPUT_OUT_12_
-    pinMode(12, OUTPUT);
-#endif
 #ifdef _CEU_OUTPUT_OUT_13_
     pinMode(13, OUTPUT);
 #endif
