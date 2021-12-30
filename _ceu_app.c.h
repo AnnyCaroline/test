@@ -67,17 +67,17 @@ typedef double   r64;
 
 /* CEU_C */
 
+#undef CEU_FEATURES_POOL
+#undef CEU_FEATURES_ASYNC
+#undef CEU_FEATURES_EXCEPTION
 #define CEU_FEATURES_ISR static
 #define CEU_FEATURES_ISR_STATIC
-#undef CEU_FEATURES_LUA
-#undef CEU_FEATURES_POOL
-#undef CEU_FEATURES_TRACE
+#undef CEU_FEATURES_THREAD
 #undef CEU_FEATURES_OS
-#undef CEU_FEATURES_EXCEPTION
-#undef CEU_FEATURES_ASYNC
+#undef CEU_FEATURES_TRACE
+#undef CEU_FEATURES_LUA
 #undef CEU_FEATURES_PAUSE
 #undef CEU_FEATURES_DYNAMIC
-#undef CEU_FEATURES_THREAD
         /* CEU_FEATURES */
 
 #include <stddef.h>     /* offsetof */
@@ -393,19 +393,41 @@ void ceu_pm_set (u8 dev, bool v) {
 
     void ceu_pm_sleep (void)
     {
+# 45 "./libraries/driver-pm/avr/pm.ceu"
+        if (ceu_pm_get(CEU_PM_TIMER0) || ceu_pm_get(CEU_PM_TIMER1) ||
+            ceu_pm_get(CEU_PM_TIMER2) || ceu_pm_get(CEU_PM_USART) ||
+            ceu_pm_get(CEU_PM_TWI) || ceu_pm_get(CEU_PM_SPI))
+        {
+
+            LowPower.idle(SLEEP_FOREVER,
+                          (adc_t) ceu_pm_get(CEU_PM_ADC),
 
 
-            LowPower.idle(SLEEP_FOREVER, ADC_ON,
 
 
 
-                          TIMER2_ON, TIMER1_ON,
-                          TIMER0_ON, SPI_ON,
+                          (timer2_t) ceu_pm_get(CEU_PM_TIMER2),
+                          (timer1_t) ceu_pm_get(CEU_PM_TIMER1),
+                          (timer0_t) ceu_pm_get(CEU_PM_TIMER0),
+                          (spi_t) ceu_pm_get(CEU_PM_SPI),
 
 
 
-                          USART0_ON, TWI_ON);
-# 79 "./libraries/driver-pm/avr/pm.ceu"
+                          (usart0_t) ceu_pm_get(CEU_PM_USART),
+                          (twi_t) ceu_pm_get(CEU_PM_TWI));
+        }
+        else if (ceu_pm_get(CEU_PM_ADC))
+        {
+            LowPower.adcNoiseReduction(SLEEP_FOREVER,
+                                       (adc_t) ceu_pm_get(CEU_PM_ADC),
+                                       TIMER2_OFF);
+        }
+        else
+        {
+            LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
+        }
+
+
     }
 
 
