@@ -1,0 +1,2 @@
+code/await USART_Init (var int bps)                   -> NEVER;
+code/await USART_Tx   (var&[] byte buf)               -> none;
