@@ -17,7 +17,6 @@ end
 var Lock usart_lock;
 var u8   usart_pm_refs = 0;
 
-var[USART_RX_BUF_N*] byte usart_rx_buf;
 native/pos do
     tceu_vector* usart_tx_buf;
     usize        usart_tx_buf_i;
@@ -29,21 +28,9 @@ end
 
 native _UDR0;
 
-input none USART_RX;
 input none USART_TX_DONE;
 
-native/const _USART0_RX_vect, _USART_RX_vect;
 native/const _USART0_TX_vect, _USART_TX_vect;
-
-#ifdef ARDUINO_BOARD_MEGA
-spawn async/isr [_USART0_RX_vect]
-#else
-spawn async/isr [_USART_RX_vect]
-#endif
-do
-    outer.usart_rx_buf = outer.usart_rx_buf .. [_UDR0];
-    emit USART_RX;
-end
 
 #ifdef ARDUINO_BOARD_MEGA
 spawn async/isr [_USART0_TX_vect]
@@ -103,29 +90,5 @@ do
 
         _UDR0 = buf[0];
         await USART_TX_DONE;
-    end
-end
-
-code/await USART_Rx (var&[] byte buf, var usize? n) -> none
-do
-    outer.usart_pm_refs = outer.usart_pm_refs + 1;
-    {ceu_pm_set(CEU_PM_USART, 1);}
-    do finalize with
-        outer.usart_pm_refs = outer.usart_pm_refs - 1;
-        if outer.usart_pm_refs == 0 then
-            {ceu_pm_set(CEU_PM_USART, 0);}
-        end
-    end
-
-    loop do
-        atomic do
-            buf = buf..outer.usart_rx_buf;
-            outer.usart_rx_buf = [];
-        end
-        if (n? and $buf>=n!) or ((not n?) and $buf>0) then
-            break;
-        end
-
-        await USART_RX;
     end
 end
