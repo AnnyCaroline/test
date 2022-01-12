@@ -1,0 +1,30 @@
+#ifndef OUT_CEU
+#define OUT_CEU
+
+//output high/low PIN_13;   // each output pin must be declared in the program
+output (int,high/low) OUT;
+
+
+output (int pin, high/low v) OUT do
+    _digitalWrite(pin, v);
+end
+
+#if 1
+native/pos do
+    ##define ceu_callback_output_OUT_13(ps,trace) digitalWrite(13, *((bool*)ps))
+end
+#else   // cannot use the code below (it forces the existence of all outputs)
+#define __OUT__(id,pin)             \
+    output (high/low v) OUT_##id do \
+        _digitalWrite(pin, v);      \
+    end
+__OUT__(13,13)
+#endif
+
+{
+##ifdef _CEU_OUTPUT_OUT_13_
+    pinMode(13, OUTPUT);
+##endif
+}
+
+#endif
