@@ -1,0 +1,35 @@
+#include "wclock.ceu"
+#include "adc.ceu"
+
+#define A_SENSOR_DEFAULT_TIME 1
+
+code/await ASensor_Get(var int dataPort, var int? energyPort, var int? time) -> int do
+    do finalize with
+        if (energyPort?) then
+            _digitalWrite(energyPort!, low);
+        end
+        {
+            Serial.println("finalize");
+        }
+    end
+
+    if (energyPort?) then
+        //turn on
+        {
+            pinMode(@energyPort!, OUTPUT);
+            digitalWrite(@energyPort!, HIGH);
+        }
+
+        // waits for the circuit to stabilize
+        if (time?) then
+            await (time!)ms;
+        else
+            await (A_SENSOR_DEFAULT_TIME)ms;
+        end
+    end
+
+    spawn Adc();
+    var int value = await Adc_Conversion(dataPort);
+    
+    escape value;
+end
