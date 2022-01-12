@@ -67,17 +67,17 @@ typedef double   r64;
 
 /* CEU_C */
 
-#undef CEU_FEATURES_DYNAMIC
+#undef CEU_FEATURES_THREAD
+#undef CEU_FEATURES_LUA
 #undef CEU_FEATURES_OS
+#define CEU_FEATURES_ISR static
+#define CEU_FEATURES_ISR_STATIC
+#undef CEU_FEATURES_POOL
+#undef CEU_FEATURES_DYNAMIC
 #undef CEU_FEATURES_PAUSE
 #undef CEU_FEATURES_TRACE
 #undef CEU_FEATURES_ASYNC
 #undef CEU_FEATURES_EXCEPTION
-#undef CEU_FEATURES_POOL
-#define CEU_FEATURES_ISR static
-#define CEU_FEATURES_ISR_STATIC
-#undef CEU_FEATURES_THREAD
-#undef CEU_FEATURES_LUA
         /* CEU_FEATURES */
 
 #include <stddef.h>     /* offsetof */
@@ -1308,7 +1308,7 @@ typedef struct tceu_code_mem_ASensor_Get {
     union {
         /* MULTIS */
         struct {
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 int  _ret;
 union {
 struct {
@@ -1320,11 +1320,11 @@ union {
 };
 union {
 struct {
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 int  dataPort;
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 tceu_opt_int  energyPort;
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 tceu_opt_int  time;
 union {
 union {
@@ -1336,7 +1336,7 @@ union {
 struct {
 union {
 struct {
-#line 73 "./libraries/driver-asensor/asensor.ceu"
+#line 37 "./libraries/driver-asensor/asensor.ceu"
 int  value;
 union {
 struct {
@@ -1359,12 +1359,12 @@ struct {
 union {
 struct {
 union {
-s32 __wclk_569;
+s32 __wclk_472;
 };
 };
 struct {
 union {
-s32 __wclk_575;
+s32 __wclk_478;
 };
 };
 };
@@ -1375,10 +1375,10 @@ union {
 };
 struct {
 union {
-tceu_code_mem_Adc __mem_585;
+tceu_code_mem_Adc __mem_488;
 };
 union {
-tceu_code_mem_Adc_Conversion __mem_593;
+tceu_code_mem_Adc_Conversion __mem_496;
 };
 };
 };
@@ -1594,7 +1594,7 @@ struct {
 union {
 };
 };
-tceu_code_mem_SPI_Transfer __mem_837;
+tceu_code_mem_SPI_Transfer __mem_740;
 };
 };
 };
@@ -1672,15 +1672,15 @@ union {
 struct {
 struct {
 union {
-tceu_code_mem_SPI_Transaction __mem_931;
+tceu_code_mem_SPI_Transaction __mem_834;
 };
 };
 struct {
 #line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-byte vs_945_buf[2];
-tceu_vector vs_945;
+byte vs_848_buf[2];
+tceu_vector vs_848;
 union {
-tceu_code_mem_SPI_Transfer __mem_952;
+tceu_code_mem_SPI_Transfer __mem_855;
 };
 };
 };
@@ -1767,15 +1767,15 @@ union {
 struct {
 struct {
 union {
-tceu_code_mem_SPI_Transaction __mem_993;
+tceu_code_mem_SPI_Transaction __mem_896;
 };
 };
 struct {
 #line 260 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-byte  status_1007;
+byte  status_910;
 union {
-tceu_code_mem_SPI_Transfer_8 __mem_1005;
-tceu_code_mem_SPI_Transfer __mem_1014;
+tceu_code_mem_SPI_Transfer_8 __mem_908;
+tceu_code_mem_SPI_Transfer __mem_917;
 };
 };
 };
@@ -1858,15 +1858,15 @@ union {
 struct {
 struct {
 union {
-tceu_code_mem_SPI_Transaction __mem_1050;
+tceu_code_mem_SPI_Transaction __mem_953;
 };
 };
 struct {
 #line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-byte vs_1064_buf[2];
-tceu_vector vs_1064;
+byte vs_967_buf[2];
+tceu_vector vs_967;
 union {
-tceu_code_mem_SPI_Transfer __mem_1071;
+tceu_code_mem_SPI_Transfer __mem_974;
 };
 };
 };
@@ -1914,91 +1914,91 @@ struct {
 union {
 struct {
 union {
-s32 __wclk_1121;
-tceu_code_mem_NRF24L01_Write __mem_1130;
-tceu_code_mem_NRF24L01_Write __mem_1157;
-tceu_code_mem_NRF24L01_Write __mem_1169;
+s32 __wclk_1024;
+tceu_code_mem_NRF24L01_Write __mem_1033;
+tceu_code_mem_NRF24L01_Write __mem_1060;
+tceu_code_mem_NRF24L01_Write __mem_1072;
 struct {
 #line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-byte addr_1182_buf[5];
-tceu_vector addr_1182;
+byte addr_1085_buf[5];
+tceu_vector addr_1085;
 union {
-tceu_code_mem_NRF24L01_Writes __mem_1192;
+tceu_code_mem_NRF24L01_Writes __mem_1095;
 };
 };
-tceu_code_mem_NRF24L01_Write __mem_1204;
+tceu_code_mem_NRF24L01_Write __mem_1107;
 struct {
 #line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-byte addr_1217_buf[5];
-tceu_vector addr_1217;
+byte addr_1120_buf[5];
+tceu_vector addr_1120;
 union {
-tceu_code_mem_NRF24L01_Writes __mem_1227;
+tceu_code_mem_NRF24L01_Writes __mem_1130;
+};
+};
+tceu_code_mem_NRF24L01_Write __mem_1142;
+tceu_code_mem_NRF24L01_Write __mem_1164;
+struct {
+union {
+struct {
+struct {
+union {
+struct {
+union {
+};
+};
+struct {
+union {
+};
+};
+};
+};
+};
+struct {
+union {
+struct {
+union {
+};
+};
+};
+union {
+struct {
+union {
+struct {
+struct {
+union {
+tceu_code_mem_SPI_Transaction __mem_1178;
+};
+};
+struct {
+union {
+tceu_code_mem_SPI_Transfer_8 __mem_1184;
+};
+};
+};
+struct {
+struct {
+union {
+tceu_code_mem_SPI_Transaction __mem_1198;
+};
+};
+struct {
+union {
+tceu_code_mem_SPI_Transfer_8 __mem_1204;
+};
+};
+};
+};
+};
+};
+};
 };
 };
 tceu_code_mem_NRF24L01_Write __mem_1239;
-tceu_code_mem_NRF24L01_Write __mem_1261;
-struct {
-union {
-struct {
 struct {
 union {
 struct {
 union {
-};
-};
-struct {
-union {
-};
-};
-};
-};
-};
-struct {
-union {
-struct {
-union {
-};
-};
-};
-union {
-struct {
-union {
-struct {
-struct {
-union {
-tceu_code_mem_SPI_Transaction __mem_1275;
-};
-};
-struct {
-union {
-tceu_code_mem_SPI_Transfer_8 __mem_1281;
-};
-};
-};
-struct {
-struct {
-union {
-tceu_code_mem_SPI_Transaction __mem_1295;
-};
-};
-struct {
-union {
-tceu_code_mem_SPI_Transfer_8 __mem_1301;
-};
-};
-};
-};
-};
-};
-};
-};
-};
-tceu_code_mem_NRF24L01_Write __mem_1336;
-struct {
-union {
-struct {
-union {
-s32 __wclk_1339;
+s32 __wclk_1242;
 };
 };
 };
@@ -2051,7 +2051,7 @@ struct {
 #line 369 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 bool  ret;
 union {
-tceu_code_mem_NRF24L01_Write __mem_1386;
+tceu_code_mem_NRF24L01_Write __mem_1289;
 struct {
 struct {
 union {
@@ -2059,7 +2059,7 @@ union {
 };
 struct {
 union {
-tceu_code_mem_NRF24L01_Write __mem_1404;
+tceu_code_mem_NRF24L01_Write __mem_1307;
 struct {
 union {
 struct {
@@ -2089,14 +2089,14 @@ union {
 struct {
 struct {
 union {
-tceu_code_mem_SPI_Transaction __mem_1418;
+tceu_code_mem_SPI_Transaction __mem_1321;
 };
 };
 struct {
 #line 343 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-usize  i_1427;
+usize  i_1330;
 union {
-tceu_code_mem_SPI_Transfer_8 __mem_1424;
+tceu_code_mem_SPI_Transfer_8 __mem_1327;
 struct {
 union {
 struct {
@@ -2104,12 +2104,12 @@ struct {
 union {
 };
 };
-usize __fr_3173;
-usize __lim_3173;
+usize __fr_3025;
+usize __lim_3025;
 };
 };
 };
-tceu_code_mem_SPI_Transfer __mem_1452;
+tceu_code_mem_SPI_Transfer __mem_1355;
 };
 };
 };
@@ -2124,9 +2124,9 @@ tceu_code_mem_SPI_Transfer __mem_1452;
 };
 struct {
 #line 370 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-byte  status_1501;
+byte  status_1404;
 union {
-tceu_code_mem_NRF24L01_Read __mem_1499;
+tceu_code_mem_NRF24L01_Read __mem_1402;
 struct {
 union {
 };
@@ -2145,7 +2145,7 @@ union {
 };
 };
 };
-tceu_code_mem_NRF24L01_Write __mem_1562;
+tceu_code_mem_NRF24L01_Write __mem_1465;
 };
 };
 };
@@ -2354,7 +2354,6 @@ byte  adc_pending;
 tceu_data_ADC_Channel adc_channels_98_buf[6];
 tceu_vector adc_channels_98;
 #line 7 "./libraries/driver-asensor/asensor.ceu"
-#line 8 "./libraries/driver-asensor/asensor.ceu"
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 #line 5 "./libraries/driver-spi/avr/../spi.ceu"
 #line 6 "./libraries/driver-spi/avr/../spi.ceu"
@@ -2384,24 +2383,24 @@ union {
 };
 struct {
 union {
-tceu_code_mem_NRF24L01_Init __mem_1735;
+tceu_code_mem_NRF24L01_Init __mem_1638;
 };
 union {
 struct {
 struct {
 #line 37 "libraries/driver-gpio/examples/out-01.ceu"
-int  asensor_value_1757;
+int  asensor_value_1660;
 #line 42 "libraries/driver-gpio/examples/out-01.ceu"
-byte str_1779_buf[9];
-tceu_vector str_1779;
+byte str_1682_buf[9];
+tceu_vector str_1682;
 union {
-s32 __wclk_1744;
+s32 __wclk_1647;
 struct {
 union {
-tceu_code_mem_ASensor_Get __mem_1767;
+tceu_code_mem_ASensor_Get __mem_1670;
 };
 };
-tceu_code_mem_NRF24L01_Tx __mem_1797;
+tceu_code_mem_NRF24L01_Tx __mem_1700;
 };
 };
 };
@@ -3399,7 +3398,7 @@ int ceu_callback_output_ADC_ (tceu_output_ADC* ps
 #line 55 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Do (n=2165, ln=54) */
+/* Do (n=2068, ln=54) */
 
 #line 54 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_LABEL_Do__OUT_45:;
@@ -3462,12 +3461,12 @@ goto CEU_LABEL_Do__OUT_51;
 }
 } else {
     
-/* Block (n=2172, ln=62) */
+/* Block (n=2075, ln=62) */
 
 #line 62 "./libraries/driver-adc/avr/../adc.ceu"
 {
 
-/* Block (n=2172, ln=62) */
+/* Block (n=2075, ln=62) */
 
 #line 62 "./libraries/driver-adc/avr/../adc.ceu"
 }
@@ -3492,7 +3491,7 @@ goto CEU_LABEL_Do__OUT_51;
 #line 59 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Do (n=2178, ln=58) */
+/* Do (n=2081, ln=58) */
 
 #line 58 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_LABEL_Do__OUT_51:;
@@ -3582,8 +3581,8 @@ union {
 };
 };
 };
-int __fr_2199;
-int __lim_2199;
+int __fr_2102;
+int __lim_2102;
 };
 };
 };
@@ -3672,43 +3671,43 @@ CEU_ISR(ADC_vect)
 #line 85 "./libraries/driver-adc/avr/../adc.ceu"
 ((_ceu_loc.mask_255)) = (0b00000001);
 
-/* Block (n=2201, ln=87) */
+/* Block (n=2104, ln=87) */
 
 #line 87 "./libraries/driver-adc/avr/../adc.ceu"
 {
 
-/* Loop_Num (n=2199, ln=87) */
+/* Loop_Num (n=2102, ln=87) */
 
 #line 87 "./libraries/driver-adc/avr/../adc.ceu"
-(_ceu_loc.__lim_2199) = 6 + (1*1*-1);
+(_ceu_loc.__lim_2102) = 6 + (1*1*-1);
 
-/* Loop_Num (n=2199, ln=87) */
+/* Loop_Num (n=2102, ln=87) */
 
 #line 87 "./libraries/driver-adc/avr/../adc.ceu"
-ceu_assert((_ceu_loc.__lim_2199) < 6, "`loop` limit underflow/overflow");
+ceu_assert((_ceu_loc.__lim_2102) < 6, "`loop` limit underflow/overflow");
 
-/* Loop_Num (n=2199, ln=87) */
+/* Loop_Num (n=2102, ln=87) */
 
 #line 87 "./libraries/driver-adc/avr/../adc.ceu"
 ceu_assert(1> 0, "invalid `loop` step : expected positive number");
 
-/* Loop_Num (n=2199, ln=87) */
+/* Loop_Num (n=2102, ln=87) */
 
 #line 87 "./libraries/driver-adc/avr/../adc.ceu"
-(_ceu_loc.__fr_2199) = 0;
+(_ceu_loc.__fr_2102) = 0;
 ((_ceu_loc.i_258)) = 0 + 1 * 0;
-ceu_assert_ex(((_ceu_loc.i_258))>=(int)(_ceu_loc.__fr_2199),
+ceu_assert_ex(((_ceu_loc.i_258))>=(int)(_ceu_loc.__fr_2102),
     "control variable overflow", CEU_TRACE(-3));
 while (1) {
 
-/* Loop_Num (n=2199, ln=87) */
+/* Loop_Num (n=2102, ln=87) */
 
 #line 87 "./libraries/driver-adc/avr/../adc.ceu"
-    if (((_ceu_loc.i_258)) > (_ceu_loc.__lim_2199)) {
+    if (((_ceu_loc.i_258)) > (_ceu_loc.__lim_2102)) {
         break;
     }
 
-/* Loop_Num (n=2199, ln=87) */
+/* Loop_Num (n=2102, ln=87) */
 
 #line 87 "./libraries/driver-adc/avr/../adc.ceu"
         
@@ -3768,12 +3767,12 @@ goto CEU_LABEL_Do__OUT_64;
 }
 } else {
     
-/* Block (n=2203, ln=88) */
+/* Block (n=2106, ln=88) */
 
 #line 88 "./libraries/driver-adc/avr/../adc.ceu"
 {
 
-/* Block (n=2203, ln=88) */
+/* Block (n=2106, ln=88) */
 
 #line 88 "./libraries/driver-adc/avr/../adc.ceu"
 }
@@ -3789,25 +3788,25 @@ goto CEU_LABEL_Do__OUT_64;
 #line 88 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Loop_Num (n=2199, ln=87) */
+/* Loop_Num (n=2102, ln=87) */
 
 #line 87 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_LABEL_Loop_Continue__CNT_59:;
 
-/* Loop_Num (n=2199, ln=87) */
+/* Loop_Num (n=2102, ln=87) */
 
 #line 87 "./libraries/driver-adc/avr/../adc.ceu"
     ((_ceu_loc.i_258)) = ((_ceu_loc.i_258)) + 1;
-    ceu_assert_ex(((_ceu_loc.i_258))>(int)(_ceu_loc.__fr_2199),
+    ceu_assert_ex(((_ceu_loc.i_258))>(int)(_ceu_loc.__fr_2102),
         "control variable overflow", CEU_TRACE(-2));
         }
 
-/* Loop_Num (n=2199, ln=87) */
+/* Loop_Num (n=2102, ln=87) */
 
 #line 87 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_LABEL_Loop_Break__OUT_61:;
 
-/* Block (n=2201, ln=87) */
+/* Block (n=2104, ln=87) */
 
 #line 87 "./libraries/driver-adc/avr/../adc.ceu"
 }
@@ -3827,12 +3826,12 @@ CEU_LABEL_Do__OUT_64:;
 #line 73 "./libraries/driver-adc/avr/../adc.ceu"
 }
 }
-typedef struct tceu_isr_mem_634 {
+typedef struct tceu_isr_mem_537 {
     struct {
 union {
 };
 };
-} tceu_isr_mem_634;
+} tceu_isr_mem_537;
 
 #ifndef CEU_ISR
 #error Missing architecture definition for `CEU_ISR`.
@@ -3841,19 +3840,19 @@ union {
 CEU_ISR(INT0_vect)
 {
     tceu_code_mem* _ceu_mem = &CEU_APP.root._mem;
-    tceu_isr_mem_634 _ceu_loc;
+    tceu_isr_mem_537 _ceu_loc;
     
-/* Block (n=633, ln=18) */
+/* Block (n=536, ln=18) */
 
 #line 18 "./libraries/driver-gpio/avr/int0.ceu"
 {
 
-/* Emit_Ext_emit (n=631, ln=18) */
+/* Emit_Ext_emit (n=534, ln=18) */
 
 #line 18 "./libraries/driver-gpio/avr/int0.ceu"
 {
 
-/* Emit_Ext_emit (n=631, ln=18) */
+/* Emit_Ext_emit (n=534, ln=18) */
 
 #line 18 "./libraries/driver-gpio/avr/int0.ceu"
 {
@@ -3866,17 +3865,17 @@ CEU_ISR(INT0_vect)
 #endif
 }
 
-/* Emit_Ext_emit (n=631, ln=18) */
+/* Emit_Ext_emit (n=534, ln=18) */
 
 #line 18 "./libraries/driver-gpio/avr/int0.ceu"
 }
 
-/* Block (n=633, ln=18) */
+/* Block (n=536, ln=18) */
 
 #line 18 "./libraries/driver-gpio/avr/int0.ceu"
 }
 }
-typedef struct tceu_isr_mem_695 {
+typedef struct tceu_isr_mem_598 {
     struct {
 union {
 struct {
@@ -3889,7 +3888,7 @@ union {
 };
 };
 };
-} tceu_isr_mem_695;
+} tceu_isr_mem_598;
 
 #ifndef CEU_ISR
 #error Missing architecture definition for `CEU_ISR`.
@@ -3898,52 +3897,52 @@ union {
 CEU_ISR(SPI_STC_vect)
 {
     tceu_code_mem* _ceu_mem = &CEU_APP.root._mem;
-    tceu_isr_mem_695 _ceu_loc;
+    tceu_isr_mem_598 _ceu_loc;
     
-/* Block (n=694, ln=36) */
+/* Block (n=597, ln=36) */
 
 #line 36 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Nat_Stmt (n=679, ln=36) */
+/* Nat_Stmt (n=582, ln=36) */
 
 #line 36 "./libraries/driver-spi/avr/spi.ceu"
  *((byte*) ceu_vector_buf_get(spi_buf,spi_buf_i-1)) = SPDR; 
-/* If (n=692, ln=37) */
+/* If (n=595, ln=37) */
 
 #line 37 "./libraries/driver-spi/avr/spi.ceu"
 if (((spi_buf_i)<(spi_buf->len))) {
     
-/* Block (n=686, ln=38) */
+/* Block (n=589, ln=38) */
 
 #line 38 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Nat_Stmt (n=683, ln=38) */
+/* Nat_Stmt (n=586, ln=38) */
 
 #line 38 "./libraries/driver-spi/avr/spi.ceu"
  SPDR = *(byte*)(ceu_vector_geti(spi_buf,spi_buf_i)); 
-/* Nat_Stmt (n=684, ln=39) */
+/* Nat_Stmt (n=587, ln=39) */
 
 #line 39 "./libraries/driver-spi/avr/spi.ceu"
  spi_buf_i++; 
-/* Block (n=686, ln=38) */
+/* Block (n=589, ln=38) */
 
 #line 38 "./libraries/driver-spi/avr/spi.ceu"
 }
 } else {
     
-/* Block (n=691, ln=42) */
+/* Block (n=594, ln=42) */
 
 #line 42 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Emit_Ext_emit (n=689, ln=42) */
+/* Emit_Ext_emit (n=592, ln=42) */
 
 #line 42 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Emit_Ext_emit (n=689, ln=42) */
+/* Emit_Ext_emit (n=592, ln=42) */
 
 #line 42 "./libraries/driver-spi/avr/spi.ceu"
 {
@@ -3956,18 +3955,18 @@ if (((spi_buf_i)<(spi_buf->len))) {
 #endif
 }
 
-/* Emit_Ext_emit (n=689, ln=42) */
+/* Emit_Ext_emit (n=592, ln=42) */
 
 #line 42 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Block (n=691, ln=42) */
+/* Block (n=594, ln=42) */
 
 #line 42 "./libraries/driver-spi/avr/spi.ceu"
 }
 }
 
-/* Block (n=694, ln=36) */
+/* Block (n=597, ln=36) */
 
 #line 36 "./libraries/driver-spi/avr/spi.ceu"
 }
@@ -4111,17 +4110,17 @@ _CEU_LBL_:
         case CEU_LABEL_NONE:
             break;
         
-/* ROOT (n=1845, ln=1) */
+/* ROOT (n=1748, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_ROOT:;
 
-/* Block (n=1844, ln=1) */
+/* Block (n=1747, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Block (n=1839, ln=1) */
+/* Block (n=1742, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 {
@@ -4132,29 +4131,29 @@ case CEU_LABEL_ROOT:;
 
     ceu_wclock_init();
 
-/* Code (n=2086, ln=19) */
+/* Code (n=1989, ln=19) */
 
 #line 19 "./libraries/driver-dht11/dht11.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=2086, ln=19) */
+/* Code (n=1989, ln=19) */
 
 #line 19 "./libraries/driver-dht11/dht11.ceu"
 case CEU_LABEL_Code_DHT_Read:;
 
-/* Block (n=2085, ln=19) */
+/* Block (n=1988, ln=19) */
 
 #line 19 "./libraries/driver-dht11/dht11.ceu"
 {
 
-/* Block (n=2081, ln=19) */
+/* Block (n=1984, ln=19) */
 
 #line 19 "./libraries/driver-dht11/dht11.ceu"
 {
 
-/* Block (n=2079, ln=19) */
+/* Block (n=1982, ln=19) */
 
 #line 19 "./libraries/driver-dht11/dht11.ceu"
 {
@@ -4235,32 +4234,32 @@ case CEU_LABEL_Code_DHT_Read:;
 #line 20 "./libraries/driver-dht11/dht11.ceu"
 }
 
-/* Block (n=2079, ln=19) */
+/* Block (n=1982, ln=19) */
 
 #line 19 "./libraries/driver-dht11/dht11.ceu"
 }
 
-/* Block (n=2081, ln=19) */
+/* Block (n=1984, ln=19) */
 
 #line 19 "./libraries/driver-dht11/dht11.ceu"
 }
 
-/* Do (n=2082, ln=19) */
+/* Do (n=1985, ln=19) */
 
 #line 19 "./libraries/driver-dht11/dht11.ceu"
 case CEU_LABEL_DHT_Read_Do__OUT_9:;
 
-/* Block (n=2085, ln=19) */
+/* Block (n=1988, ln=19) */
 
 #line 19 "./libraries/driver-dht11/dht11.ceu"
 }
 
-/* Code (n=2086, ln=19) */
+/* Code (n=1989, ln=19) */
 
 #line 19 "./libraries/driver-dht11/dht11.ceu"
 return 0;
 
-/* Code (n=2086, ln=19) */
+/* Code (n=1989, ln=19) */
 
 #line 19 "./libraries/driver-dht11/dht11.ceu"
 }
@@ -4275,7 +4274,7 @@ return 0;
 #line 34 "./libraries/driver-adc/avr/../adc.ceu"
 ((CEU_APP.root.adc_pending)) = 0;
 
-/* Vec_Init (n=3268, ln=42) */
+/* Vec_Init (n=3120, ln=42) */
 
 #line 42 "./libraries/driver-adc/avr/../adc.ceu"
 ceu_vector_init(&((CEU_APP.root.adc_channels_98)),6, 0, 0, sizeof(tceu_data_ADC_Channel),
@@ -4286,12 +4285,12 @@ ceu_vector_init(&((CEU_APP.root.adc_channels_98)),6, 0, 0, sizeof(tceu_data_ADC_
 #line 44 "./libraries/driver-adc/avr/../adc.ceu"
 {
 
-/* Set_Exp (n=3278, ln=37) */
+/* Set_Exp (n=3130, ln=37) */
 
 #line 37 "./libraries/driver-adc/avr/../adc.ceu"
 ((((CEU_APP.root.ch_109)).is_available)) = 0;
 
-/* Set_Exp (n=3286, ln=38) */
+/* Set_Exp (n=3138, ln=38) */
 
 #line 38 "./libraries/driver-adc/avr/../adc.ceu"
 ((((CEU_APP.root.ch_109)).is_busy)) = 0;
@@ -4389,62 +4388,62 @@ case CEU_LABEL_Do__OUT_42:;
 
 #line 48 "./libraries/driver-adc/avr/../adc.ceu"
  ceu_adc_init(); 
-/* Code (n=2221, ln=101) */
+/* Code (n=2124, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=2221, ln=101) */
+/* Code (n=2124, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Code_Adc:;
 
-/* Block (n=2220, ln=101) */
+/* Block (n=2123, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 {
 
-/* Par_Or (n=4459, ln=101) */
+/* Par_Or (n=4286, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_Adc_Par_Or_sub_2_IN_69;
 
-/* Par_Or (n=4459, ln=101) */
+/* Par_Or (n=4286, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Par_Or_sub_1_IN_68);
 
-/* Par_Or (n=4459, ln=101) */
+/* Par_Or (n=4286, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Par_Or_sub_1_IN_68:;
 
-/* Finalize_Case (n=4030, ln=101) */
+/* Finalize_Case (n=3857, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[1].lbl    = CEU_LABEL_Adc_Finalize_Case__IN_73;
 
-/* Finalize_Case (n=4030, ln=101) */
+/* Finalize_Case (n=3857, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 if (0) {
 
-/* Finalize_Case (n=4030, ln=101) */
+/* Finalize_Case (n=3857, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Finalize_Case__IN_73:;
 
-/* Block (n=2215, ln=101) */
+/* Block (n=2118, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 {
 
-/* Code_Finalize (n=2213, ln=101) */
+/* Code_Finalize (n=2116, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 if (_ceu_mem->has_term) {
@@ -4458,12 +4457,12 @@ if (_ceu_mem->has_term) {
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
 
-/* Code_Finalize (n=2213, ln=101) */
+/* Code_Finalize (n=2116, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_nxt->params_n = 0;
 
-/* Code_Finalize (n=2213, ln=101) */
+/* Code_Finalize (n=2116, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 }
@@ -4485,47 +4484,47 @@ if (_ceu_mem->has_term) {
     return 0;
 }
 
-/* Code_Finalize (n=2213, ln=101) */
+/* Code_Finalize (n=2116, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Block (n=2215, ln=101) */
+/* Block (n=2118, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Finalize_Case (n=4030, ln=101) */
+/* Finalize_Case (n=3857, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Finalize_Case (n=4030, ln=101) */
+/* Finalize_Case (n=3857, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Await_Forever (n=4456, ln=101) */
+/* Await_Forever (n=4283, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Par_Or (n=4459, ln=101) */
+/* Par_Or (n=4286, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Par_Or__OUT_70);
 
-/* Par_Or (n=4459, ln=101) */
+/* Par_Or (n=4286, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Par_Or_sub_2_IN_69:;
 
-/* Block (n=2211, ln=101) */
+/* Block (n=2114, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 {
 
-/* Block (n=2209, ln=101) */
+/* Block (n=2112, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 {
@@ -4565,35 +4564,35 @@ ceu_callback_output_ADC(&__ceu_ps, CEU_TRACE(-2));
 #line 102 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Par_Or (n=4465, ln=103) */
+/* Par_Or (n=4292, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[4].level  = _ceu_level;
 _ceu_mem->_trails[4].lbl    = CEU_LABEL_Adc_Par_Or_sub_2_IN_76;
 
-/* Par_Or (n=4465, ln=103) */
+/* Par_Or (n=4292, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Par_Or_sub_1_IN_75);
 
-/* Par_Or (n=4465, ln=103) */
+/* Par_Or (n=4292, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Par_Or_sub_1_IN_75:;
 
-/* Finalize_Case (n=4032, ln=103) */
+/* Finalize_Case (n=3859, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[3].lbl    = CEU_LABEL_Adc_Finalize_Case__IN_81;
 
-/* Finalize_Case (n=4032, ln=103) */
+/* Finalize_Case (n=3859, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 if (0) {
 
-/* Finalize_Case (n=4032, ln=103) */
+/* Finalize_Case (n=3859, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Finalize_Case__IN_81:;
@@ -4638,27 +4637,27 @@ ceu_callback_output_ADC(&__ceu_ps, CEU_TRACE(-2));
 #line 104 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Finalize_Case (n=4032, ln=103) */
+/* Finalize_Case (n=3859, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Finalize_Case (n=4032, ln=103) */
+/* Finalize_Case (n=3859, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Await_Forever (n=4462, ln=103) */
+/* Await_Forever (n=4289, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Par_Or (n=4465, ln=103) */
+/* Par_Or (n=4292, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Par_Or__OUT_77);
 
-/* Par_Or (n=4465, ln=103) */
+/* Par_Or (n=4292, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Par_Or_sub_2_IN_76:;
@@ -4668,21 +4667,21 @@ case CEU_LABEL_Adc_Par_Or_sub_2_IN_76:;
 #line 106 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Nat_Stmt (n=3365, ln=102) */
+/* Nat_Stmt (n=3217, ln=102) */
 
 #line 102 "./libraries/driver-adc/avr/../adc.ceu"
 ceu_assert(0, "reached end of `code`");
-/* Par_Or (n=4465, ln=103) */
+/* Par_Or (n=4292, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Par_Or__OUT_77);
 
-/* Par_Or (n=4465, ln=103) */
+/* Par_Or (n=4292, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Par_Or__OUT_77:;
 
-/* Par_Or (n=4465, ln=103) */
+/* Par_Or (n=4292, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -4697,7 +4696,7 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_Adc_Par_Or__CLR_78;
     return 1;
 }
 
-/* Par_Or (n=4465, ln=103) */
+/* Par_Or (n=4292, ln=103) */
 
 #line 103 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Par_Or__CLR_78:;
@@ -4707,37 +4706,37 @@ case CEU_LABEL_Adc_Par_Or__CLR_78:;
 #line 102 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Block (n=2209, ln=101) */
+/* Block (n=2112, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Block (n=2211, ln=101) */
+/* Block (n=2114, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Do (n=2212, ln=101) */
+/* Do (n=2115, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Do__OUT_85:;
 
-/* Do (n=2212, ln=101) */
+/* Do (n=2115, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
     _ceu_mem->has_term = 1;
 
-/* Par_Or (n=4459, ln=101) */
+/* Par_Or (n=4286, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Par_Or__OUT_70);
 
-/* Par_Or (n=4459, ln=101) */
+/* Par_Or (n=4286, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Par_Or__OUT_70:;
 
-/* Par_Or (n=4459, ln=101) */
+/* Par_Or (n=4286, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
@@ -4752,82 +4751,82 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_Adc_Par_Or__CLR_71;
     return 1;
 }
 
-/* Par_Or (n=4459, ln=101) */
+/* Par_Or (n=4286, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Par_Or__CLR_71:;
 
-/* Block (n=2220, ln=101) */
+/* Block (n=2123, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Code (n=2221, ln=101) */
+/* Code (n=2124, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Code (n=2221, ln=101) */
+/* Code (n=2124, ln=101) */
 
 #line 101 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Code (n=2243, ln=109) */
+/* Code (n=2146, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=2243, ln=109) */
+/* Code (n=2146, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Code_Adc_Conversion:;
 
-/* Block (n=2242, ln=109) */
+/* Block (n=2145, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 {
 
-/* Par_Or (n=4471, ln=109) */
+/* Par_Or (n=4298, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_Adc_Conversion_Par_Or_sub_2_IN_90;
 
-/* Par_Or (n=4471, ln=109) */
+/* Par_Or (n=4298, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Conversion_Par_Or_sub_1_IN_89);
 
-/* Par_Or (n=4471, ln=109) */
+/* Par_Or (n=4298, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Par_Or_sub_1_IN_89:;
 
-/* Finalize_Case (n=4034, ln=109) */
+/* Finalize_Case (n=3861, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[1].lbl    = CEU_LABEL_Adc_Conversion_Finalize_Case__IN_94;
 
-/* Finalize_Case (n=4034, ln=109) */
+/* Finalize_Case (n=3861, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 if (0) {
 
-/* Finalize_Case (n=4034, ln=109) */
+/* Finalize_Case (n=3861, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Finalize_Case__IN_94:;
 
-/* Block (n=2237, ln=109) */
+/* Block (n=2140, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 {
 
-/* Code_Finalize (n=2235, ln=109) */
+/* Code_Finalize (n=2138, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 if (_ceu_mem->has_term) {
@@ -4841,12 +4840,12 @@ if (_ceu_mem->has_term) {
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
 
-/* Code_Finalize (n=2235, ln=109) */
+/* Code_Finalize (n=2138, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 ceu_params_cpy(_ceu_nxt, &((*((tceu_code_mem_Adc_Conversion*)_ceu_mem))._ret), sizeof(((*((tceu_code_mem_Adc_Conversion*)_ceu_mem))._ret)));
 
-/* Code_Finalize (n=2235, ln=109) */
+/* Code_Finalize (n=2138, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 }
@@ -4868,47 +4867,47 @@ if (_ceu_mem->has_term) {
     return 0;
 }
 
-/* Code_Finalize (n=2235, ln=109) */
+/* Code_Finalize (n=2138, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Block (n=2237, ln=109) */
+/* Block (n=2140, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Finalize_Case (n=4034, ln=109) */
+/* Finalize_Case (n=3861, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Finalize_Case (n=4034, ln=109) */
+/* Finalize_Case (n=3861, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Await_Forever (n=4468, ln=109) */
+/* Await_Forever (n=4295, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Par_Or (n=4471, ln=109) */
+/* Par_Or (n=4298, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Conversion_Par_Or__OUT_91);
 
-/* Par_Or (n=4471, ln=109) */
+/* Par_Or (n=4298, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Par_Or_sub_2_IN_90:;
 
-/* Block (n=2229, ln=109) */
+/* Block (n=2132, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 {
 
-/* Block (n=2227, ln=109) */
+/* Block (n=2130, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 {
@@ -4944,35 +4943,35 @@ ceu_pm_set(CEU_PM_ADC, 1);
 (((*(tceu_data_ADC_Channel*) ceu_vector_geti(&((CEU_APP.root.adc_channels_98)),(((*((tceu_code_mem_Adc_Conversion*)_ceu_mem)).idx))))
 .is_busy)) = 1;
 
-/* Par_Or (n=4477, ln=117) */
+/* Par_Or (n=4304, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[4].level  = _ceu_level;
 _ceu_mem->_trails[4].lbl    = CEU_LABEL_Adc_Conversion_Par_Or_sub_2_IN_96;
 
-/* Par_Or (n=4477, ln=117) */
+/* Par_Or (n=4304, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Conversion_Par_Or_sub_1_IN_95);
 
-/* Par_Or (n=4477, ln=117) */
+/* Par_Or (n=4304, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Par_Or_sub_1_IN_95:;
 
-/* Finalize_Case (n=4036, ln=117) */
+/* Finalize_Case (n=3863, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[3].lbl    = CEU_LABEL_Adc_Conversion_Finalize_Case__IN_102;
 
-/* Finalize_Case (n=4036, ln=117) */
+/* Finalize_Case (n=3863, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 if (0) {
 
-/* Finalize_Case (n=4036, ln=117) */
+/* Finalize_Case (n=3863, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Finalize_Case__IN_102:;
@@ -5002,12 +5001,12 @@ ceu_pm_set(CEU_PM_ADC, 0);
 }
 } else {
     
-/* Block (n=2250, ln=118) */
+/* Block (n=2153, ln=118) */
 
 #line 118 "./libraries/driver-adc/avr/../adc.ceu"
 {
 
-/* Block (n=2250, ln=118) */
+/* Block (n=2153, ln=118) */
 
 #line 118 "./libraries/driver-adc/avr/../adc.ceu"
 }
@@ -5024,27 +5023,27 @@ ceu_pm_set(CEU_PM_ADC, 0);
 #line 118 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Finalize_Case (n=4036, ln=117) */
+/* Finalize_Case (n=3863, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Finalize_Case (n=4036, ln=117) */
+/* Finalize_Case (n=3863, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Await_Forever (n=4474, ln=117) */
+/* Await_Forever (n=4301, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Par_Or (n=4477, ln=117) */
+/* Par_Or (n=4304, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Conversion_Par_Or__OUT_97);
 
-/* Par_Or (n=4477, ln=117) */
+/* Par_Or (n=4304, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Par_Or_sub_2_IN_96:;
@@ -5116,7 +5115,7 @@ case CEU_LABEL_Adc_Conversion_Await_ADC_DONE__OUT_104:;
 (((*(tceu_data_ADC_Channel*) ceu_vector_geti(&((CEU_APP.root.adc_channels_98)),(((*((tceu_code_mem_Adc_Conversion*)_ceu_mem)).idx))))
 .is_available)) = 0;
 
-/* Set_Exp (n=2251, ln=128) */
+/* Set_Exp (n=2154, ln=128) */
 
 #line 128 "./libraries/driver-adc/avr/../adc.ceu"
 (((*((tceu_code_mem_Adc_Conversion*)_ceu_mem))._ret)) = (((*(tceu_data_ADC_Channel*) ceu_vector_geti(&((CEU_APP.root.adc_channels_98)),(((*((tceu_code_mem_Adc_Conversion*)_ceu_mem)).idx))))
@@ -5127,17 +5126,17 @@ case CEU_LABEL_Adc_Conversion_Await_ADC_DONE__OUT_104:;
 #line 128 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Conversion_Do__OUT_108);
 
-/* Par_Or (n=4477, ln=117) */
+/* Par_Or (n=4304, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Conversion_Par_Or__OUT_97);
 
-/* Par_Or (n=4477, ln=117) */
+/* Par_Or (n=4304, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Par_Or__OUT_97:;
 
-/* Par_Or (n=4477, ln=117) */
+/* Par_Or (n=4304, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -5152,7 +5151,7 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_Adc_Conversion_Par_Or__CLR_98;
     return 1;
 }
 
-/* Par_Or (n=4477, ln=117) */
+/* Par_Or (n=4304, ln=117) */
 
 #line 117 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Par_Or__CLR_98:;
@@ -5162,32 +5161,32 @@ case CEU_LABEL_Adc_Conversion_Par_Or__CLR_98:;
 #line 110 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Block (n=2227, ln=109) */
+/* Block (n=2130, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Block (n=2229, ln=109) */
+/* Block (n=2132, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Do (n=2230, ln=109) */
+/* Do (n=2133, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=2230, ln=109) */
+/* Do (n=2133, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Do__OUT_108:;
 
-/* Do (n=2230, ln=109) */
+/* Do (n=2133, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
     _ceu_mem->has_term = 1;
 
-/* Do (n=2230, ln=109) */
+/* Do (n=2133, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -5202,22 +5201,22 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_Adc_Conversion_Do__CLR_109;
     return 1;
 }
 
-/* Do (n=2230, ln=109) */
+/* Do (n=2133, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Do__CLR_109:;
 
-/* Par_Or (n=4471, ln=109) */
+/* Par_Or (n=4298, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 CEU_GOTO(CEU_LABEL_Adc_Conversion_Par_Or__OUT_91);
 
-/* Par_Or (n=4471, ln=109) */
+/* Par_Or (n=4298, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Par_Or__OUT_91:;
 
-/* Par_Or (n=4471, ln=109) */
+/* Par_Or (n=4298, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
@@ -5232,84 +5231,84 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_Adc_Conversion_Par_Or__CLR_92;
     return 1;
 }
 
-/* Par_Or (n=4471, ln=109) */
+/* Par_Or (n=4298, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 case CEU_LABEL_Adc_Conversion_Par_Or__CLR_92:;
 
-/* Block (n=2242, ln=109) */
+/* Block (n=2145, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Code (n=2243, ln=109) */
+/* Code (n=2146, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 return 0;
 
-/* Code (n=2243, ln=109) */
+/* Code (n=2146, ln=109) */
 
 #line 109 "./libraries/driver-adc/avr/../adc.ceu"
 }
 
-/* Code (n=2350, ln=50) */
+/* Code (n=2202, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=2350, ln=50) */
+/* Code (n=2202, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_Code_ASensor_Get:;
 
-/* Block (n=2349, ln=50) */
+/* Block (n=2201, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* Par_Or (n=4489, ln=50) */
+/* Par_Or (n=4316, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_ASensor_Get_Par_Or_sub_2_IN_126;
 
-/* Par_Or (n=4489, ln=50) */
+/* Par_Or (n=4316, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 CEU_GOTO(CEU_LABEL_ASensor_Get_Par_Or_sub_1_IN_125);
 
-/* Par_Or (n=4489, ln=50) */
+/* Par_Or (n=4316, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or_sub_1_IN_125:;
 
-/* Finalize_Case (n=4040, ln=50) */
+/* Finalize_Case (n=3867, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[1].lbl    = CEU_LABEL_ASensor_Get_Finalize_Case__IN_130;
 
-/* Finalize_Case (n=4040, ln=50) */
+/* Finalize_Case (n=3867, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 if (0) {
 
-/* Finalize_Case (n=4040, ln=50) */
+/* Finalize_Case (n=3867, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Finalize_Case__IN_130:;
 
-/* Block (n=2344, ln=50) */
+/* Block (n=2196, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* Code_Finalize (n=2342, ln=50) */
+/* Code_Finalize (n=2194, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 if (_ceu_mem->has_term) {
     /* generate only if terminating from inside */
     _ceu_mem->_trails[1].evt.id = CEU_INPUT__STACKED;
@@ -5321,14 +5320,14 @@ if (_ceu_mem->has_term) {
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
 
-/* Code_Finalize (n=2342, ln=50) */
+/* Code_Finalize (n=2194, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 ceu_params_cpy(_ceu_nxt, &((*((tceu_code_mem_ASensor_Get*)_ceu_mem))._ret), sizeof(((*((tceu_code_mem_ASensor_Get*)_ceu_mem))._ret)));
 
-/* Code_Finalize (n=2342, ln=50) */
+/* Code_Finalize (n=2194, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 }
 
 #ifdef CEU_FEATURES_POOL
@@ -5348,332 +5347,332 @@ if (_ceu_mem->has_term) {
     return 0;
 }
 
-/* Code_Finalize (n=2342, ln=50) */
+/* Code_Finalize (n=2194, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 return 0;
 
-/* Block (n=2344, ln=50) */
+/* Block (n=2196, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 }
 
-/* Finalize_Case (n=4040, ln=50) */
+/* Finalize_Case (n=3867, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 return 0;
 
-/* Finalize_Case (n=4040, ln=50) */
+/* Finalize_Case (n=3867, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 }
 
-/* Await_Forever (n=4486, ln=50) */
+/* Await_Forever (n=4313, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 return 0;
 
-/* Par_Or (n=4489, ln=50) */
+/* Par_Or (n=4316, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 CEU_GOTO(CEU_LABEL_ASensor_Get_Par_Or__OUT_127);
 
-/* Par_Or (n=4489, ln=50) */
+/* Par_Or (n=4316, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or_sub_2_IN_126:;
 
-/* Block (n=2336, ln=50) */
+/* Block (n=2188, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* Block (n=2334, ln=50) */
+/* Block (n=2186, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* Block (n=599, ln=51) */
+/* Block (n=502, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* Par_Or (n=4495, ln=51) */
+/* Par_Or (n=4322, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[4].level  = _ceu_level;
 _ceu_mem->_trails[4].lbl    = CEU_LABEL_ASensor_Get_Par_Or_sub_2_IN_132;
 
-/* Par_Or (n=4495, ln=51) */
+/* Par_Or (n=4322, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 CEU_GOTO(CEU_LABEL_ASensor_Get_Par_Or_sub_1_IN_131);
 
-/* Par_Or (n=4495, ln=51) */
+/* Par_Or (n=4322, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or_sub_1_IN_131:;
 
-/* Finalize_Case (n=4042, ln=51) */
+/* Finalize_Case (n=3869, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[3].lbl    = CEU_LABEL_ASensor_Get_Finalize_Case__IN_138;
 
-/* Finalize_Case (n=4042, ln=51) */
+/* Finalize_Case (n=3869, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 if (0) {
 
-/* Finalize_Case (n=4042, ln=51) */
+/* Finalize_Case (n=3869, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Finalize_Case__IN_138:;
 
-/* Block (n=554, ln=52) */
+/* Block (n=457, ln=16) */
 
-#line 52 "./libraries/driver-asensor/asensor.ceu"
+#line 16 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* If (n=552, ln=52) */
+/* If (n=455, ln=16) */
 
-#line 52 "./libraries/driver-asensor/asensor.ceu"
+#line 16 "./libraries/driver-asensor/asensor.ceu"
 if (((((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).energyPort)).is_set)) {
     
-/* Block (n=551, ln=53) */
+/* Block (n=454, ln=17) */
 
-#line 53 "./libraries/driver-asensor/asensor.ceu"
+#line 17 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* Stmt_Call (n=549, ln=53) */
+/* Stmt_Call (n=452, ln=17) */
 
-#line 53 "./libraries/driver-asensor/asensor.ceu"
+#line 17 "./libraries/driver-asensor/asensor.ceu"
 digitalWrite((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).energyPort)), CEU_TRACE(0))->value),0);
 
-/* Block (n=551, ln=53) */
+/* Block (n=454, ln=17) */
 
-#line 53 "./libraries/driver-asensor/asensor.ceu"
+#line 17 "./libraries/driver-asensor/asensor.ceu"
 }
 } else {
     
-/* Block (n=2355, ln=52) */
+/* Block (n=2207, ln=16) */
 
-#line 52 "./libraries/driver-asensor/asensor.ceu"
+#line 16 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* Block (n=2355, ln=52) */
+/* Block (n=2207, ln=16) */
 
-#line 52 "./libraries/driver-asensor/asensor.ceu"
+#line 16 "./libraries/driver-asensor/asensor.ceu"
 }
 }
 
-/* Block (n=554, ln=52) */
+/* Block (n=457, ln=16) */
 
-#line 52 "./libraries/driver-asensor/asensor.ceu"
+#line 16 "./libraries/driver-asensor/asensor.ceu"
 }
 
-/* Finalize_Case (n=4042, ln=51) */
+/* Finalize_Case (n=3869, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 return 0;
 
-/* Finalize_Case (n=4042, ln=51) */
+/* Finalize_Case (n=3869, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 }
 
-/* Await_Forever (n=4492, ln=51) */
+/* Await_Forever (n=4319, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 return 0;
 
-/* Par_Or (n=4495, ln=51) */
+/* Par_Or (n=4322, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 CEU_GOTO(CEU_LABEL_ASensor_Get_Par_Or__OUT_133);
 
-/* Par_Or (n=4495, ln=51) */
+/* Par_Or (n=4322, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or_sub_2_IN_132:;
 
-/* If (n=581, ln=57) */
+/* If (n=484, ln=21) */
 
-#line 57 "./libraries/driver-asensor/asensor.ceu"
+#line 21 "./libraries/driver-asensor/asensor.ceu"
 if (((((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).energyPort)).is_set)) {
     
-/* Block (n=580, ln=59) */
+/* Block (n=483, ln=23) */
 
-#line 59 "./libraries/driver-asensor/asensor.ceu"
+#line 23 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* Nat_Stmt (n=562, ln=59) */
+/* Nat_Stmt (n=465, ln=23) */
 
-#line 59 "./libraries/driver-asensor/asensor.ceu"
+#line 23 "./libraries/driver-asensor/asensor.ceu"
 
             pinMode((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).energyPort)), CEU_TRACE(0))->value), OUTPUT);
             digitalWrite((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).energyPort)), CEU_TRACE(0))->value), HIGH);
         
-/* If (n=578, ln=65) */
+/* If (n=481, ln=29) */
 
-#line 65 "./libraries/driver-asensor/asensor.ceu"
+#line 29 "./libraries/driver-asensor/asensor.ceu"
 if (((((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).time)).is_set)) {
     
-/* Block (n=571, ln=66) */
+/* Block (n=474, ln=30) */
 
-#line 66 "./libraries/driver-asensor/asensor.ceu"
+#line 30 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* Await_Wclock (n=569, ln=66) */
+/* Await_Wclock (n=472, ln=30) */
 
-#line 66 "./libraries/driver-asensor/asensor.ceu"
-ceu_wclock(((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).time)), CEU_TRACE(0))->value))*1000.0, &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__wclk_569), NULL, CEU_TRACE(0));
+#line 30 "./libraries/driver-asensor/asensor.ceu"
+ceu_wclock(((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).time)), CEU_TRACE(0))->value))*1000.0, &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__wclk_472), NULL, CEU_TRACE(0));
 
-_CEU_HALT_569_:
+_CEU_HALT_472_:
 
-/* Await_Wclock (n=569, ln=66) */
+/* Await_Wclock (n=472, ln=30) */
 
-#line 66 "./libraries/driver-asensor/asensor.ceu"
+#line 30 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__WCLOCK;
 
-/* Await_Wclock (n=569, ln=66) */
+/* Await_Wclock (n=472, ln=30) */
 
-#line 66 "./libraries/driver-asensor/asensor.ceu"
+#line 30 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[4].lbl = CEU_LABEL_ASensor_Get_Await_Wclock__OUT_139;
 
-/* Await_Wclock (n=569, ln=66) */
+/* Await_Wclock (n=472, ln=30) */
 
-#line 66 "./libraries/driver-asensor/asensor.ceu"
+#line 30 "./libraries/driver-asensor/asensor.ceu"
 return 0;
 
-/* Await_Wclock (n=569, ln=66) */
+/* Await_Wclock (n=472, ln=30) */
 
-#line 66 "./libraries/driver-asensor/asensor.ceu"
+#line 30 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Await_Wclock__OUT_139:;
 
-/* Await_Wclock (n=569, ln=66) */
+/* Await_Wclock (n=472, ln=30) */
 
-#line 66 "./libraries/driver-asensor/asensor.ceu"
+#line 30 "./libraries/driver-asensor/asensor.ceu"
 /* subtract time and check if I have to awake */
 {
     s32* dt = (s32*)_ceu_cur->params;
-    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__wclk_569), CEU_TRACE(0)) ) {
-        goto _CEU_HALT_569_;
+    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__wclk_472), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_472_;
     }
 }
 
-/* Block (n=571, ln=66) */
+/* Block (n=474, ln=30) */
 
-#line 66 "./libraries/driver-asensor/asensor.ceu"
+#line 30 "./libraries/driver-asensor/asensor.ceu"
 }
 } else {
     
-/* Block (n=577, ln=68) */
+/* Block (n=480, ln=32) */
 
-#line 68 "./libraries/driver-asensor/asensor.ceu"
+#line 32 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* Await_Wclock (n=575, ln=68) */
+/* Await_Wclock (n=478, ln=32) */
 
-#line 68 "./libraries/driver-asensor/asensor.ceu"
-ceu_wclock((1)*1000.0, &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__wclk_575), NULL, CEU_TRACE(0));
+#line 32 "./libraries/driver-asensor/asensor.ceu"
+ceu_wclock((1)*1000.0, &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__wclk_478), NULL, CEU_TRACE(0));
 
-_CEU_HALT_575_:
+_CEU_HALT_478_:
 
-/* Await_Wclock (n=575, ln=68) */
+/* Await_Wclock (n=478, ln=32) */
 
-#line 68 "./libraries/driver-asensor/asensor.ceu"
+#line 32 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__WCLOCK;
 
-/* Await_Wclock (n=575, ln=68) */
+/* Await_Wclock (n=478, ln=32) */
 
-#line 68 "./libraries/driver-asensor/asensor.ceu"
+#line 32 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[4].lbl = CEU_LABEL_ASensor_Get_Await_Wclock__OUT_141;
 
-/* Await_Wclock (n=575, ln=68) */
+/* Await_Wclock (n=478, ln=32) */
 
-#line 68 "./libraries/driver-asensor/asensor.ceu"
+#line 32 "./libraries/driver-asensor/asensor.ceu"
 return 0;
 
-/* Await_Wclock (n=575, ln=68) */
+/* Await_Wclock (n=478, ln=32) */
 
-#line 68 "./libraries/driver-asensor/asensor.ceu"
+#line 32 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Await_Wclock__OUT_141:;
 
-/* Await_Wclock (n=575, ln=68) */
+/* Await_Wclock (n=478, ln=32) */
 
-#line 68 "./libraries/driver-asensor/asensor.ceu"
+#line 32 "./libraries/driver-asensor/asensor.ceu"
 /* subtract time and check if I have to awake */
 {
     s32* dt = (s32*)_ceu_cur->params;
-    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__wclk_575), CEU_TRACE(0)) ) {
-        goto _CEU_HALT_575_;
+    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__wclk_478), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_478_;
     }
 }
 
-/* Block (n=577, ln=68) */
+/* Block (n=480, ln=32) */
 
-#line 68 "./libraries/driver-asensor/asensor.ceu"
+#line 32 "./libraries/driver-asensor/asensor.ceu"
 }
 }
 
-/* Block (n=580, ln=59) */
+/* Block (n=483, ln=23) */
 
-#line 59 "./libraries/driver-asensor/asensor.ceu"
+#line 23 "./libraries/driver-asensor/asensor.ceu"
 }
 } else {
     
-/* Block (n=2357, ln=57) */
+/* Block (n=2209, ln=21) */
 
-#line 57 "./libraries/driver-asensor/asensor.ceu"
+#line 21 "./libraries/driver-asensor/asensor.ceu"
 {
 
-/* Block (n=2357, ln=57) */
+/* Block (n=2209, ln=21) */
 
-#line 57 "./libraries/driver-asensor/asensor.ceu"
+#line 21 "./libraries/driver-asensor/asensor.ceu"
 }
 }
 
-/* Par_Or (n=4501, ln=72) */
+/* Par_Or (n=4328, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[6].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[6].level  = _ceu_level;
 _ceu_mem->_trails[6].lbl    = CEU_LABEL_ASensor_Get_Par_Or_sub_2_IN_146;
 
-/* Par_Or (n=4501, ln=72) */
+/* Par_Or (n=4328, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 CEU_GOTO(CEU_LABEL_ASensor_Get_Par_Or_sub_1_IN_145);
 
-/* Par_Or (n=4501, ln=72) */
+/* Par_Or (n=4328, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or_sub_1_IN_145:;
 
-/* Abs_Spawn (n=585, ln=72) */
+/* Abs_Spawn (n=488, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[5].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Spawn (n=585, ln=72) */
+/* Abs_Spawn (n=488, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
-_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__mem_585);
+#line 36 "./libraries/driver-asensor/asensor.ceu"
+_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__mem_488);
 
-/* Abs_Spawn (n=585, ln=72) */
+/* Abs_Spawn (n=488, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[5].lbl = CEU_LABEL_ASensor_Get_Await_Spawn__OUT_149;
 
-/* Abs_Spawn (n=585, ln=72) */
+/* Abs_Spawn (n=488, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 {
-    *((tceu_code_mem_Adc*)(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585))) = 
+    *((tceu_code_mem_Adc*)(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_Adc __ceu_584;; __ceu_584;})
+({tceu_code_mem_Adc __ceu_487;; __ceu_487;})
 
 #else
 (tceu_code_mem_Adc) {  }
@@ -5681,74 +5680,74 @@ _ceu_mem->_trails[5].lbl = CEU_LABEL_ASensor_Get_Await_Spawn__OUT_149;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585))->_mem.trails_n = 5;
-    memset(&(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585))->_mem._trails, 0, 5*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585))->_mem._trails[0].lbl    = CEU_CODE_Adc_to_lbl((&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585)));
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488))->_mem.trails_n = 5;
+    memset(&(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488))->_mem._trails[0].lbl    = CEU_CODE_Adc_to_lbl((&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_585)), 0, 5-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_488)), 0, 5-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Spawn (n=585, ln=72) */
+/* Abs_Spawn (n=488, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 return 1;
 
-/* Abs_Spawn (n=585, ln=72) */
+/* Abs_Spawn (n=488, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Await_Spawn__OUT_149:;
 
-/* Await_Forever (n=4498, ln=72) */
+/* Await_Forever (n=4325, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 return 0;
 
-/* Par_Or (n=4501, ln=72) */
+/* Par_Or (n=4328, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 CEU_GOTO(CEU_LABEL_ASensor_Get_Par_Or__OUT_147);
 
-/* Par_Or (n=4501, ln=72) */
+/* Par_Or (n=4328, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or_sub_2_IN_146:;
 
-/* Abs_Await (n=593, ln=73) */
+/* Abs_Await (n=496, ln=37) */
 
-#line 73 "./libraries/driver-asensor/asensor.ceu"
+#line 37 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[6].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=593, ln=73) */
+/* Abs_Await (n=496, ln=37) */
 
-#line 73 "./libraries/driver-asensor/asensor.ceu"
-_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__mem_593);
+#line 37 "./libraries/driver-asensor/asensor.ceu"
+_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__mem_496);
 
-/* Abs_Await (n=593, ln=73) */
+/* Abs_Await (n=496, ln=37) */
 
-#line 73 "./libraries/driver-asensor/asensor.ceu"
+#line 37 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[6].lbl = CEU_LABEL_ASensor_Get_Await_Await__OUT_150;
 
-/* Abs_Await (n=593, ln=73) */
+/* Abs_Await (n=496, ln=37) */
 
-#line 73 "./libraries/driver-asensor/asensor.ceu"
+#line 37 "./libraries/driver-asensor/asensor.ceu"
 {
-    *((tceu_code_mem_Adc_Conversion*)(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593))) = 
+    *((tceu_code_mem_Adc_Conversion*)(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_Adc_Conversion __ceu_591;__ceu_591.pin = (((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).dataPort));; __ceu_591;})
+({tceu_code_mem_Adc_Conversion __ceu_494;__ceu_494.pin = (((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).dataPort));; __ceu_494;})
 
 #else
 (tceu_code_mem_Adc_Conversion) { .pin = (((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).dataPort)) }
@@ -5756,65 +5755,65 @@ _ceu_mem->_trails[6].lbl = CEU_LABEL_ASensor_Get_Await_Await__OUT_150;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593))->_mem.trails_n = 5;
-    memset(&(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593))->_mem._trails, 0, 5*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593))->_mem._trails[0].lbl    = CEU_CODE_Adc_Conversion_to_lbl((&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593)));
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496))->_mem.trails_n = 5;
+    memset(&(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496))->_mem._trails[0].lbl    = CEU_CODE_Adc_Conversion_to_lbl((&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_593)), 0, 5-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_ASensor_Get*)_ceu_mem)). __mem_496)), 0, 5-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=593, ln=73) */
+/* Abs_Await (n=496, ln=37) */
 
-#line 73 "./libraries/driver-asensor/asensor.ceu"
+#line 37 "./libraries/driver-asensor/asensor.ceu"
 return 1;
 
-/* Abs_Await (n=593, ln=73) */
+/* Abs_Await (n=496, ln=37) */
 
-#line 73 "./libraries/driver-asensor/asensor.ceu"
+#line 37 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Await_Await__OUT_150:;
 
-/* Set_Abs_Await (n=594, ln=73) */
+/* Set_Abs_Await (n=497, ln=37) */
 
-#line 73 "./libraries/driver-asensor/asensor.ceu"
-(((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).value)) = ((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__mem_593)._ret;
+#line 37 "./libraries/driver-asensor/asensor.ceu"
+(((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).value)) = ((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).__mem_496)._ret;
 
-/* Set_Exp (n=2362, ln=75) */
+/* Set_Exp (n=2214, ln=39) */
 
-#line 75 "./libraries/driver-asensor/asensor.ceu"
+#line 39 "./libraries/driver-asensor/asensor.ceu"
 (((*((tceu_code_mem_ASensor_Get*)_ceu_mem))._ret)) = (((*((tceu_code_mem_ASensor_Get*)_ceu_mem)).value));
 
-/* Escape (n=597, ln=75) */
+/* Escape (n=500, ln=39) */
 
-#line 75 "./libraries/driver-asensor/asensor.ceu"
+#line 39 "./libraries/driver-asensor/asensor.ceu"
 CEU_GOTO(CEU_LABEL_ASensor_Get_Do__OUT_154);
 
-/* Par_Or (n=4501, ln=72) */
+/* Par_Or (n=4328, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 CEU_GOTO(CEU_LABEL_ASensor_Get_Par_Or__OUT_147);
 
-/* Par_Or (n=4501, ln=72) */
+/* Par_Or (n=4328, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or__OUT_147:;
 
-/* Par_Or (n=4501, ln=72) */
+/* Par_Or (n=4328, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[4].level  = _ceu_level;
 _ceu_mem->_trails[4].lbl    = CEU_LABEL_ASensor_Get_Par_Or__CLR_148;
@@ -5827,24 +5826,24 @@ _ceu_mem->_trails[4].lbl    = CEU_LABEL_ASensor_Get_Par_Or__CLR_148;
     return 1;
 }
 
-/* Par_Or (n=4501, ln=72) */
+/* Par_Or (n=4328, ln=36) */
 
-#line 72 "./libraries/driver-asensor/asensor.ceu"
+#line 36 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or__CLR_148:;
 
-/* Par_Or (n=4495, ln=51) */
+/* Par_Or (n=4322, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 CEU_GOTO(CEU_LABEL_ASensor_Get_Par_Or__OUT_133);
 
-/* Par_Or (n=4495, ln=51) */
+/* Par_Or (n=4322, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or__OUT_133:;
 
-/* Par_Or (n=4495, ln=51) */
+/* Par_Or (n=4322, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_ASensor_Get_Par_Or__CLR_134;
@@ -5857,44 +5856,44 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_ASensor_Get_Par_Or__CLR_134;
     return 1;
 }
 
-/* Par_Or (n=4495, ln=51) */
+/* Par_Or (n=4322, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or__CLR_134:;
 
-/* Block (n=599, ln=51) */
+/* Block (n=502, ln=15) */
 
-#line 51 "./libraries/driver-asensor/asensor.ceu"
+#line 15 "./libraries/driver-asensor/asensor.ceu"
 }
 
-/* Block (n=2334, ln=50) */
+/* Block (n=2186, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 }
 
-/* Block (n=2336, ln=50) */
+/* Block (n=2188, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 }
 
-/* Do (n=2337, ln=50) */
+/* Do (n=2189, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=2337, ln=50) */
+/* Do (n=2189, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Do__OUT_154:;
 
-/* Do (n=2337, ln=50) */
+/* Do (n=2189, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
     _ceu_mem->has_term = 1;
 
-/* Do (n=2337, ln=50) */
+/* Do (n=2189, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_ASensor_Get_Do__CLR_155;
@@ -5907,24 +5906,24 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_ASensor_Get_Do__CLR_155;
     return 1;
 }
 
-/* Do (n=2337, ln=50) */
+/* Do (n=2189, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Do__CLR_155:;
 
-/* Par_Or (n=4489, ln=50) */
+/* Par_Or (n=4316, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 CEU_GOTO(CEU_LABEL_ASensor_Get_Par_Or__OUT_127);
 
-/* Par_Or (n=4489, ln=50) */
+/* Par_Or (n=4316, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or__OUT_127:;
 
-/* Par_Or (n=4489, ln=50) */
+/* Par_Or (n=4316, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[0].level  = _ceu_level;
 _ceu_mem->_trails[0].lbl    = CEU_LABEL_ASensor_Get_Par_Or__CLR_128;
@@ -5937,109 +5936,109 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_ASensor_Get_Par_Or__CLR_128;
     return 1;
 }
 
-/* Par_Or (n=4489, ln=50) */
+/* Par_Or (n=4316, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 case CEU_LABEL_ASensor_Get_Par_Or__CLR_128:;
 
-/* Block (n=2349, ln=50) */
+/* Block (n=2201, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 }
 
-/* Code (n=2350, ln=50) */
+/* Code (n=2202, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 return 0;
 
-/* Code (n=2350, ln=50) */
+/* Code (n=2202, ln=14) */
 
-#line 50 "./libraries/driver-asensor/asensor.ceu"
+#line 14 "./libraries/driver-asensor/asensor.ceu"
 }
 
-/* Code (n=2380, ln=5) */
+/* Code (n=2232, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=2380, ln=5) */
+/* Code (n=2232, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 case CEU_LABEL_Code_INT0_Get:;
 
-/* Block (n=2379, ln=5) */
+/* Block (n=2231, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 {
 
-/* Block (n=2371, ln=5) */
+/* Block (n=2223, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 {
 
-/* Block (n=2369, ln=5) */
+/* Block (n=2221, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 {
 
-/* Block (n=621, ln=6) */
+/* Block (n=524, ln=6) */
 
 #line 6 "./libraries/driver-gpio/avr/int0.ceu"
 {
 
-/* Set_Exp (n=2381, ln=6) */
+/* Set_Exp (n=2233, ln=6) */
 
 #line 6 "./libraries/driver-gpio/avr/int0.ceu"
 (((*((tceu_code_mem_INT0_Get*)_ceu_mem))._ret)) = (((bool)((((bool)(digitalRead(2)))? 1 : 0)))? 1 : 0);
 
-/* Escape (n=619, ln=6) */
+/* Escape (n=522, ln=6) */
 
 #line 6 "./libraries/driver-gpio/avr/int0.ceu"
 CEU_GOTO(CEU_LABEL_INT0_Get_Do__OUT_161);
 
-/* Block (n=621, ln=6) */
+/* Block (n=524, ln=6) */
 
 #line 6 "./libraries/driver-gpio/avr/int0.ceu"
 }
 
-/* Block (n=2369, ln=5) */
+/* Block (n=2221, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 }
 
-/* Block (n=2371, ln=5) */
+/* Block (n=2223, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 }
 
-/* Do (n=2372, ln=5) */
+/* Do (n=2224, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=2372, ln=5) */
+/* Do (n=2224, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 case CEU_LABEL_INT0_Get_Do__OUT_161:;
 
-/* Block (n=2379, ln=5) */
+/* Block (n=2231, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 }
 
-/* Code (n=2380, ln=5) */
+/* Code (n=2232, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 return 0;
 
-/* Code (n=2380, ln=5) */
+/* Code (n=2232, ln=5) */
 
 #line 5 "./libraries/driver-gpio/avr/int0.ceu"
 }
 
-/* Nat_Stmt (n=625, ln=11) */
+/* Nat_Stmt (n=528, ln=11) */
 
 #line 11 "./libraries/driver-gpio/avr/int0.ceu"
 
@@ -6047,62 +6046,62 @@ return 0;
     EICRA = (EICRA & ~((1<<ISC00) | (1<<ISC01))) | (CHANGE << ISC00);
     EIMSK |= (1 << INT0);
 
-/* Code (n=2480, ln=50) */
+/* Code (n=2332, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=2480, ln=50) */
+/* Code (n=2332, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_Code_SPI_Transaction:;
 
-/* Block (n=2479, ln=50) */
+/* Block (n=2331, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Par_Or (n=4525, ln=50) */
+/* Par_Or (n=4352, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_SPI_Transaction_Par_Or_sub_2_IN_212;
 
-/* Par_Or (n=4525, ln=50) */
+/* Par_Or (n=4352, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transaction_Par_Or_sub_1_IN_211);
 
-/* Par_Or (n=4525, ln=50) */
+/* Par_Or (n=4352, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transaction_Par_Or_sub_1_IN_211:;
 
-/* Finalize_Case (n=4050, ln=50) */
+/* Finalize_Case (n=3877, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[1].lbl    = CEU_LABEL_SPI_Transaction_Finalize_Case__IN_216;
 
-/* Finalize_Case (n=4050, ln=50) */
+/* Finalize_Case (n=3877, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 if (0) {
 
-/* Finalize_Case (n=4050, ln=50) */
+/* Finalize_Case (n=3877, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transaction_Finalize_Case__IN_216:;
 
-/* Block (n=2474, ln=50) */
+/* Block (n=2326, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Code_Finalize (n=2472, ln=50) */
+/* Code_Finalize (n=2324, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 if (_ceu_mem->has_term) {
@@ -6116,12 +6115,12 @@ if (_ceu_mem->has_term) {
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
 
-/* Code_Finalize (n=2472, ln=50) */
+/* Code_Finalize (n=2324, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_nxt->params_n = 0;
 
-/* Code_Finalize (n=2472, ln=50) */
+/* Code_Finalize (n=2324, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 }
@@ -6143,57 +6142,57 @@ if (_ceu_mem->has_term) {
     return 0;
 }
 
-/* Code_Finalize (n=2472, ln=50) */
+/* Code_Finalize (n=2324, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Block (n=2474, ln=50) */
+/* Block (n=2326, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Finalize_Case (n=4050, ln=50) */
+/* Finalize_Case (n=3877, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Finalize_Case (n=4050, ln=50) */
+/* Finalize_Case (n=3877, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Await_Forever (n=4522, ln=50) */
+/* Await_Forever (n=4349, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Par_Or (n=4525, ln=50) */
+/* Par_Or (n=4352, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transaction_Par_Or__OUT_213);
 
-/* Par_Or (n=4525, ln=50) */
+/* Par_Or (n=4352, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transaction_Par_Or_sub_2_IN_212:;
 
-/* Block (n=2470, ln=50) */
+/* Block (n=2322, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Block (n=2468, ln=50) */
+/* Block (n=2320, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Block (n=775, ln=51) */
+/* Block (n=678, ln=51) */
 
 #line 51 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Nat_Stmt (n=720, ln=51) */
+/* Nat_Stmt (n=623, ln=51) */
 
 #line 51 "./libraries/driver-spi/avr/spi.ceu"
 {
@@ -6223,230 +6222,230 @@ case CEU_LABEL_SPI_Transaction_Par_Or_sub_2_IN_212:;
 
         ceu_pm_set(CEU_PM_SPI, 1);
     }
-/* If (n=2489, ln=79) */
+/* If (n=2341, ln=79) */
 
 #line 79 "./libraries/driver-spi/avr/spi.ceu"
 if (((((*((tceu_code_mem_SPI_Transaction*)_ceu_mem)).cs)).is_set)) {
     
-/* Block (n=731, ln=80) */
+/* Block (n=634, ln=80) */
 
 #line 80 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Stmt_Call (n=729, ln=80) */
+/* Stmt_Call (n=632, ln=80) */
 
 #line 80 "./libraries/driver-spi/avr/spi.ceu"
 digitalWrite((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_SPI_Transaction*)_ceu_mem)).cs)), CEU_TRACE(0))->value),HIGH);
 
-/* Block (n=731, ln=80) */
+/* Block (n=634, ln=80) */
 
 #line 80 "./libraries/driver-spi/avr/spi.ceu"
 }
 } else {
     
-/* Block (n=2488, ln=79) */
+/* Block (n=2340, ln=79) */
 
 #line 79 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* If (n=2486, ln=79) */
+/* If (n=2338, ln=79) */
 
 #line 79 "./libraries/driver-spi/avr/spi.ceu"
 if (((((*((tceu_code_mem_SPI_Transaction*)_ceu_mem)).csn)).is_set)) {
     
-/* Block (n=742, ln=82) */
+/* Block (n=645, ln=82) */
 
 #line 82 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Stmt_Call (n=740, ln=82) */
+/* Stmt_Call (n=643, ln=82) */
 
 #line 82 "./libraries/driver-spi/avr/spi.ceu"
 digitalWrite((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_SPI_Transaction*)_ceu_mem)).csn)), CEU_TRACE(0))->value),LOW);
 
-/* Block (n=742, ln=82) */
+/* Block (n=645, ln=82) */
 
 #line 82 "./libraries/driver-spi/avr/spi.ceu"
 }
 } else {
     
-/* Block (n=2491, ln=79) */
+/* Block (n=2343, ln=79) */
 
 #line 79 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Block (n=2491, ln=79) */
+/* Block (n=2343, ln=79) */
 
 #line 79 "./libraries/driver-spi/avr/spi.ceu"
 }
 }
 
-/* Block (n=2488, ln=79) */
+/* Block (n=2340, ln=79) */
 
 #line 79 "./libraries/driver-spi/avr/spi.ceu"
 }
 }
 
-/* Par_Or (n=4531, ln=85) */
+/* Par_Or (n=4358, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[4].level  = _ceu_level;
 _ceu_mem->_trails[4].lbl    = CEU_LABEL_SPI_Transaction_Par_Or_sub_2_IN_222;
 
-/* Par_Or (n=4531, ln=85) */
+/* Par_Or (n=4358, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transaction_Par_Or_sub_1_IN_221);
 
-/* Par_Or (n=4531, ln=85) */
+/* Par_Or (n=4358, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transaction_Par_Or_sub_1_IN_221:;
 
-/* Finalize_Case (n=4052, ln=85) */
+/* Finalize_Case (n=3879, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[3].lbl    = CEU_LABEL_SPI_Transaction_Finalize_Case__IN_230;
 
-/* Finalize_Case (n=4052, ln=85) */
+/* Finalize_Case (n=3879, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 if (0) {
 
-/* Finalize_Case (n=4052, ln=85) */
+/* Finalize_Case (n=3879, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transaction_Finalize_Case__IN_230:;
 
-/* Block (n=770, ln=86) */
+/* Block (n=673, ln=86) */
 
 #line 86 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* If (n=2495, ln=86) */
+/* If (n=2347, ln=86) */
 
 #line 86 "./libraries/driver-spi/avr/spi.ceu"
 if (((((*((tceu_code_mem_SPI_Transaction*)_ceu_mem)).cs)).is_set)) {
     
-/* Block (n=754, ln=87) */
+/* Block (n=657, ln=87) */
 
 #line 87 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Stmt_Call (n=752, ln=87) */
+/* Stmt_Call (n=655, ln=87) */
 
 #line 87 "./libraries/driver-spi/avr/spi.ceu"
 digitalWrite((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_SPI_Transaction*)_ceu_mem)).cs)), CEU_TRACE(0))->value),LOW);
 
-/* Block (n=754, ln=87) */
+/* Block (n=657, ln=87) */
 
 #line 87 "./libraries/driver-spi/avr/spi.ceu"
 }
 } else {
     
-/* Block (n=2494, ln=86) */
+/* Block (n=2346, ln=86) */
 
 #line 86 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* If (n=2492, ln=86) */
+/* If (n=2344, ln=86) */
 
 #line 86 "./libraries/driver-spi/avr/spi.ceu"
 if (((((*((tceu_code_mem_SPI_Transaction*)_ceu_mem)).csn)).is_set)) {
     
-/* Block (n=765, ln=89) */
+/* Block (n=668, ln=89) */
 
 #line 89 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Stmt_Call (n=763, ln=89) */
+/* Stmt_Call (n=666, ln=89) */
 
 #line 89 "./libraries/driver-spi/avr/spi.ceu"
 digitalWrite((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_SPI_Transaction*)_ceu_mem)).csn)), CEU_TRACE(0))->value),HIGH);
 
-/* Block (n=765, ln=89) */
+/* Block (n=668, ln=89) */
 
 #line 89 "./libraries/driver-spi/avr/spi.ceu"
 }
 } else {
     
-/* Block (n=2497, ln=86) */
+/* Block (n=2349, ln=86) */
 
 #line 86 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Block (n=2497, ln=86) */
+/* Block (n=2349, ln=86) */
 
 #line 86 "./libraries/driver-spi/avr/spi.ceu"
 }
 }
 
-/* Block (n=2494, ln=86) */
+/* Block (n=2346, ln=86) */
 
 #line 86 "./libraries/driver-spi/avr/spi.ceu"
 }
 }
 
-/* Nat_Stmt (n=767, ln=91) */
+/* Nat_Stmt (n=670, ln=91) */
 
 #line 91 "./libraries/driver-spi/avr/spi.ceu"
  bitClear(SPCR,SPIE); 
-/* Nat_Stmt (n=768, ln=92) */
+/* Nat_Stmt (n=671, ln=92) */
 
 #line 92 "./libraries/driver-spi/avr/spi.ceu"
 ceu_pm_set(CEU_PM_SPI, 0);
-/* Block (n=770, ln=86) */
+/* Block (n=673, ln=86) */
 
 #line 86 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Finalize_Case (n=4052, ln=85) */
+/* Finalize_Case (n=3879, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Finalize_Case (n=4052, ln=85) */
+/* Finalize_Case (n=3879, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Await_Forever (n=4528, ln=85) */
+/* Await_Forever (n=4355, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Par_Or (n=4531, ln=85) */
+/* Par_Or (n=4358, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transaction_Par_Or__OUT_223);
 
-/* Par_Or (n=4531, ln=85) */
+/* Par_Or (n=4358, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transaction_Par_Or_sub_2_IN_222:;
 
-/* Await_Forever (n=773, ln=94) */
+/* Await_Forever (n=676, ln=94) */
 
 #line 94 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Nat_Stmt (n=3471, ln=51) */
+/* Nat_Stmt (n=3300, ln=51) */
 
 #line 51 "./libraries/driver-spi/avr/spi.ceu"
 ceu_assert(0, "reached end of `code`");
-/* Par_Or (n=4531, ln=85) */
+/* Par_Or (n=4358, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transaction_Par_Or__OUT_223);
 
-/* Par_Or (n=4531, ln=85) */
+/* Par_Or (n=4358, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transaction_Par_Or__OUT_223:;
 
-/* Par_Or (n=4531, ln=85) */
+/* Par_Or (n=4358, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -6461,47 +6460,47 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_SPI_Transaction_Par_Or__CLR_224;
     return 1;
 }
 
-/* Par_Or (n=4531, ln=85) */
+/* Par_Or (n=4358, ln=85) */
 
 #line 85 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transaction_Par_Or__CLR_224:;
 
-/* Block (n=775, ln=51) */
+/* Block (n=678, ln=51) */
 
 #line 51 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Block (n=2468, ln=50) */
+/* Block (n=2320, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Block (n=2470, ln=50) */
+/* Block (n=2322, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Do (n=2471, ln=50) */
+/* Do (n=2323, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transaction_Do__OUT_234:;
 
-/* Do (n=2471, ln=50) */
+/* Do (n=2323, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
     _ceu_mem->has_term = 1;
 
-/* Par_Or (n=4525, ln=50) */
+/* Par_Or (n=4352, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transaction_Par_Or__OUT_213);
 
-/* Par_Or (n=4525, ln=50) */
+/* Par_Or (n=4352, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transaction_Par_Or__OUT_213:;
 
-/* Par_Or (n=4525, ln=50) */
+/* Par_Or (n=4352, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
@@ -6516,82 +6515,82 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_SPI_Transaction_Par_Or__CLR_214;
     return 1;
 }
 
-/* Par_Or (n=4525, ln=50) */
+/* Par_Or (n=4352, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transaction_Par_Or__CLR_214:;
 
-/* Block (n=2479, ln=50) */
+/* Block (n=2331, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Code (n=2480, ln=50) */
+/* Code (n=2332, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Code (n=2480, ln=50) */
+/* Code (n=2332, ln=50) */
 
 #line 50 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Code (n=2515, ln=97) */
+/* Code (n=2367, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=2515, ln=97) */
+/* Code (n=2367, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_Code_SPI_Transfer:;
 
-/* Block (n=2514, ln=97) */
+/* Block (n=2366, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Par_Or (n=4537, ln=97) */
+/* Par_Or (n=4364, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_SPI_Transfer_Par_Or_sub_2_IN_239;
 
-/* Par_Or (n=4537, ln=97) */
+/* Par_Or (n=4364, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transfer_Par_Or_sub_1_IN_238);
 
-/* Par_Or (n=4537, ln=97) */
+/* Par_Or (n=4364, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_Par_Or_sub_1_IN_238:;
 
-/* Finalize_Case (n=4054, ln=97) */
+/* Finalize_Case (n=3881, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[1].lbl    = CEU_LABEL_SPI_Transfer_Finalize_Case__IN_243;
 
-/* Finalize_Case (n=4054, ln=97) */
+/* Finalize_Case (n=3881, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 if (0) {
 
-/* Finalize_Case (n=4054, ln=97) */
+/* Finalize_Case (n=3881, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_Finalize_Case__IN_243:;
 
-/* Block (n=2509, ln=97) */
+/* Block (n=2361, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Code_Finalize (n=2507, ln=97) */
+/* Code_Finalize (n=2359, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 if (_ceu_mem->has_term) {
@@ -6605,12 +6604,12 @@ if (_ceu_mem->has_term) {
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
 
-/* Code_Finalize (n=2507, ln=97) */
+/* Code_Finalize (n=2359, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_nxt->params_n = 0;
 
-/* Code_Finalize (n=2507, ln=97) */
+/* Code_Finalize (n=2359, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 }
@@ -6632,125 +6631,125 @@ if (_ceu_mem->has_term) {
     return 0;
 }
 
-/* Code_Finalize (n=2507, ln=97) */
+/* Code_Finalize (n=2359, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Block (n=2509, ln=97) */
+/* Block (n=2361, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Finalize_Case (n=4054, ln=97) */
+/* Finalize_Case (n=3881, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Finalize_Case (n=4054, ln=97) */
+/* Finalize_Case (n=3881, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Await_Forever (n=4534, ln=97) */
+/* Await_Forever (n=4361, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Par_Or (n=4537, ln=97) */
+/* Par_Or (n=4364, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transfer_Par_Or__OUT_240);
 
-/* Par_Or (n=4537, ln=97) */
+/* Par_Or (n=4364, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_Par_Or_sub_2_IN_239:;
 
-/* Block (n=2505, ln=97) */
+/* Block (n=2357, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Block (n=2503, ln=97) */
+/* Block (n=2355, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Block (n=800, ln=98) */
+/* Block (n=703, ln=98) */
 
 #line 98 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Nat_Stmt (n=787, ln=98) */
+/* Nat_Stmt (n=690, ln=98) */
 
 #line 98 "./libraries/driver-spi/avr/spi.ceu"
 
         spi_buf = ((((*((tceu_code_mem_SPI_Transfer*)_ceu_mem)).buf))); // safe because finalize disables SPI
         spi_buf_i = 1;
     
-/* Set_Exp (n=793, ln=102) */
+/* Set_Exp (n=696, ln=102) */
 
 #line 102 "./libraries/driver-spi/avr/spi.ceu"
 SPDR = (*(byte*) ceu_vector_geti((((*((tceu_code_mem_SPI_Transfer*)_ceu_mem)).buf)),0))
 ;
 
-/* Await_Ext (n=797, ln=103) */
+/* Await_Ext (n=700, ln=103) */
 
 #line 103 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[2].evt = ((tceu_evt){CEU_INPUT_SPI_TRANSFER_DONE,{NULL}});
 
-/* Await_Ext (n=797, ln=103) */
+/* Await_Ext (n=700, ln=103) */
 
 #line 103 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_SPI_Transfer_Await_SPI_TRANSFER_DONE__OUT_244;
 
-/* Await_Ext (n=797, ln=103) */
+/* Await_Ext (n=700, ln=103) */
 
 #line 103 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Await_Ext (n=797, ln=103) */
+/* Await_Ext (n=700, ln=103) */
 
 #line 103 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_Await_SPI_TRANSFER_DONE__OUT_244:;
 
-/* Block (n=800, ln=98) */
+/* Block (n=703, ln=98) */
 
 #line 98 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Block (n=2503, ln=97) */
+/* Block (n=2355, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Block (n=2505, ln=97) */
+/* Block (n=2357, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Do (n=2506, ln=97) */
+/* Do (n=2358, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_Do__OUT_248:;
 
-/* Do (n=2506, ln=97) */
+/* Do (n=2358, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
     _ceu_mem->has_term = 1;
 
-/* Par_Or (n=4537, ln=97) */
+/* Par_Or (n=4364, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transfer_Par_Or__OUT_240);
 
-/* Par_Or (n=4537, ln=97) */
+/* Par_Or (n=4364, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_Par_Or__OUT_240:;
 
-/* Par_Or (n=4537, ln=97) */
+/* Par_Or (n=4364, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
@@ -6765,82 +6764,82 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_SPI_Transfer_Par_Or__CLR_241;
     return 1;
 }
 
-/* Par_Or (n=4537, ln=97) */
+/* Par_Or (n=4364, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_Par_Or__CLR_241:;
 
-/* Block (n=2514, ln=97) */
+/* Block (n=2366, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Code (n=2515, ln=97) */
+/* Code (n=2367, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Code (n=2515, ln=97) */
+/* Code (n=2367, ln=97) */
 
 #line 97 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Code (n=2538, ln=106) */
+/* Code (n=2390, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=2538, ln=106) */
+/* Code (n=2390, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_Code_SPI_Transfer_8:;
 
-/* Block (n=2537, ln=106) */
+/* Block (n=2389, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Par_Or (n=4543, ln=106) */
+/* Par_Or (n=4370, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_SPI_Transfer_8_Par_Or_sub_2_IN_253;
 
-/* Par_Or (n=4543, ln=106) */
+/* Par_Or (n=4370, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transfer_8_Par_Or_sub_1_IN_252);
 
-/* Par_Or (n=4543, ln=106) */
+/* Par_Or (n=4370, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_8_Par_Or_sub_1_IN_252:;
 
-/* Finalize_Case (n=4056, ln=106) */
+/* Finalize_Case (n=3883, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[1].lbl    = CEU_LABEL_SPI_Transfer_8_Finalize_Case__IN_257;
 
-/* Finalize_Case (n=4056, ln=106) */
+/* Finalize_Case (n=3883, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 if (0) {
 
-/* Finalize_Case (n=4056, ln=106) */
+/* Finalize_Case (n=3883, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_8_Finalize_Case__IN_257:;
 
-/* Block (n=2532, ln=106) */
+/* Block (n=2384, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Code_Finalize (n=2530, ln=106) */
+/* Code_Finalize (n=2382, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 if (_ceu_mem->has_term) {
@@ -6854,12 +6853,12 @@ if (_ceu_mem->has_term) {
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
 
-/* Code_Finalize (n=2530, ln=106) */
+/* Code_Finalize (n=2382, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 ceu_params_cpy(_ceu_nxt, &((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem))._ret), sizeof(((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem))._ret)));
 
-/* Code_Finalize (n=2530, ln=106) */
+/* Code_Finalize (n=2382, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 }
@@ -6881,153 +6880,153 @@ if (_ceu_mem->has_term) {
     return 0;
 }
 
-/* Code_Finalize (n=2530, ln=106) */
+/* Code_Finalize (n=2382, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Block (n=2532, ln=106) */
+/* Block (n=2384, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Finalize_Case (n=4056, ln=106) */
+/* Finalize_Case (n=3883, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Finalize_Case (n=4056, ln=106) */
+/* Finalize_Case (n=3883, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Await_Forever (n=4540, ln=106) */
+/* Await_Forever (n=4367, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Par_Or (n=4543, ln=106) */
+/* Par_Or (n=4370, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transfer_8_Par_Or__OUT_254);
 
-/* Par_Or (n=4543, ln=106) */
+/* Par_Or (n=4370, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_8_Par_Or_sub_2_IN_253:;
 
-/* Block (n=2524, ln=106) */
+/* Block (n=2376, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Block (n=2522, ln=106) */
+/* Block (n=2374, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Block (n=843, ln=107) */
+/* Block (n=746, ln=107) */
 
 #line 107 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* If (n=820, ln=107) */
+/* If (n=723, ln=107) */
 
 #line 107 "./libraries/driver-spi/avr/spi.ceu"
 if ((!((((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).v)).is_set))) {
     
-/* Block (n=819, ln=108) */
+/* Block (n=722, ln=108) */
 
 #line 108 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Set_Exp (n=816, ln=108) */
+/* Set_Exp (n=719, ln=108) */
 
 #line 108 "./libraries/driver-spi/avr/spi.ceu"
 (((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).v)).is_set = 1;
 
-/* Set_Exp (n=816, ln=108) */
+/* Set_Exp (n=719, ln=108) */
 
 #line 108 "./libraries/driver-spi/avr/spi.ceu"
 ((((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).v)).value) = SPDR;
 
-/* Block (n=819, ln=108) */
+/* Block (n=722, ln=108) */
 
 #line 108 "./libraries/driver-spi/avr/spi.ceu"
 }
 } else {
     
-/* Block (n=2541, ln=107) */
+/* Block (n=2393, ln=107) */
 
 #line 107 "./libraries/driver-spi/avr/spi.ceu"
 {
 
-/* Block (n=2541, ln=107) */
+/* Block (n=2393, ln=107) */
 
 #line 107 "./libraries/driver-spi/avr/spi.ceu"
 }
 }
 
-/* Vec_Init (n=3509, ln=110) */
+/* Vec_Init (n=3338, ln=110) */
 
 #line 110 "./libraries/driver-spi/avr/spi.ceu"
 ceu_vector_init(&(((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).vs)),1, 0, 0, sizeof(byte),
                 (byte*)&(((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).vs_buf)));
 
-/* Set_Vec (n=829, ln=110) */
+/* Set_Vec (n=732, ln=110) */
 
 #line 110 "./libraries/driver-spi/avr/spi.ceu"
 {
     usize __ceu_nxt;
 
-/* Set_Vec (n=829, ln=110) */
+/* Set_Vec (n=732, ln=110) */
 
 #line 110 "./libraries/driver-spi/avr/spi.ceu"
     ceu_vector_setlen(&(((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).vs)), 0, 0);
     __ceu_nxt = 0;
 
-/* Set_Vec (n=829, ln=110) */
+/* Set_Vec (n=732, ln=110) */
 
 #line 110 "./libraries/driver-spi/avr/spi.ceu"
     ceu_vector_setlen(&(((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).vs)), ((((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).vs)).len + 1), 1);
 
-/* Set_Vec (n=829, ln=110) */
+/* Set_Vec (n=732, ln=110) */
 
 #line 110 "./libraries/driver-spi/avr/spi.ceu"
     *((byte*)
         ceu_vector_buf_get(&(((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).vs)), __ceu_nxt++)) = (CEU_OPTION_tceu_opt_byte(&(((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).v)), CEU_TRACE(0))->value);
 
-/* Set_Vec (n=829, ln=110) */
+/* Set_Vec (n=732, ln=110) */
 
 #line 110 "./libraries/driver-spi/avr/spi.ceu"
 
-/* Set_Vec (n=829, ln=110) */
+/* Set_Vec (n=732, ln=110) */
 
 #line 110 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Abs_Await (n=837, ln=111) */
+/* Abs_Await (n=740, ln=111) */
 
 #line 111 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=837, ln=111) */
+/* Abs_Await (n=740, ln=111) */
 
 #line 111 "./libraries/driver-spi/avr/spi.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).__mem_837);
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).__mem_740);
 
-/* Abs_Await (n=837, ln=111) */
+/* Abs_Await (n=740, ln=111) */
 
 #line 111 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_SPI_Transfer_8_Await_Await__OUT_260;
 
-/* Abs_Await (n=837, ln=111) */
+/* Abs_Await (n=740, ln=111) */
 
 #line 111 "./libraries/driver-spi/avr/spi.ceu"
 {
-    *((tceu_code_mem_SPI_Transfer*)(&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837))) = 
+    *((tceu_code_mem_SPI_Transfer*)(&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transfer __ceu_835;__ceu_835.buf = (&(((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).vs)));; __ceu_835;})
+({tceu_code_mem_SPI_Transfer __ceu_738;__ceu_738.buf = (&(((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).vs)));; __ceu_738;})
 
 #else
 (tceu_code_mem_SPI_Transfer) { .buf = (&(((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).vs))) }
@@ -7035,89 +7034,89 @@ _ceu_mem->_trails[2].lbl = CEU_LABEL_SPI_Transfer_8_Await_Await__OUT_260;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837))->_mem.trails_n = 3;
-    memset(&(&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837))->_mem._trails, 0, 3*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_to_lbl((&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837)));
+    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740))->_mem.trails_n = 3;
+    memset(&(&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740))->_mem._trails, 0, 3*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_to_lbl((&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_837)), 0, 3-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)). __mem_740)), 0, 3-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=837, ln=111) */
+/* Abs_Await (n=740, ln=111) */
 
 #line 111 "./libraries/driver-spi/avr/spi.ceu"
 return 1;
 
-/* Abs_Await (n=837, ln=111) */
+/* Abs_Await (n=740, ln=111) */
 
 #line 111 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_8_Await_Await__OUT_260:;
 
-/* Set_Exp (n=2546, ln=112) */
+/* Set_Exp (n=2398, ln=112) */
 
 #line 112 "./libraries/driver-spi/avr/spi.ceu"
 (((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem))._ret)) = (*(byte*) ceu_vector_geti(&(((*((tceu_code_mem_SPI_Transfer_8*)_ceu_mem)).vs)),0))
 ;
 
-/* Escape (n=841, ln=112) */
+/* Escape (n=744, ln=112) */
 
 #line 112 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transfer_8_Do__OUT_264);
 
-/* Block (n=843, ln=107) */
+/* Block (n=746, ln=107) */
 
 #line 107 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Block (n=2522, ln=106) */
+/* Block (n=2374, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Block (n=2524, ln=106) */
+/* Block (n=2376, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Do (n=2525, ln=106) */
+/* Do (n=2377, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=2525, ln=106) */
+/* Do (n=2377, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_8_Do__OUT_264:;
 
-/* Do (n=2525, ln=106) */
+/* Do (n=2377, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
     _ceu_mem->has_term = 1;
 
-/* Par_Or (n=4543, ln=106) */
+/* Par_Or (n=4370, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 CEU_GOTO(CEU_LABEL_SPI_Transfer_8_Par_Or__OUT_254);
 
-/* Par_Or (n=4543, ln=106) */
+/* Par_Or (n=4370, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_8_Par_Or__OUT_254:;
 
-/* Par_Or (n=4543, ln=106) */
+/* Par_Or (n=4370, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
@@ -7132,82 +7131,82 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_SPI_Transfer_8_Par_Or__CLR_255;
     return 1;
 }
 
-/* Par_Or (n=4543, ln=106) */
+/* Par_Or (n=4370, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 case CEU_LABEL_SPI_Transfer_8_Par_Or__CLR_255:;
 
-/* Block (n=2537, ln=106) */
+/* Block (n=2389, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Code (n=2538, ln=106) */
+/* Code (n=2390, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 return 0;
 
-/* Code (n=2538, ln=106) */
+/* Code (n=2390, ln=106) */
 
 #line 106 "./libraries/driver-spi/avr/spi.ceu"
 }
 
-/* Code (n=2790, ln=247) */
+/* Code (n=2642, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=2790, ln=247) */
+/* Code (n=2642, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_Code_NRF24L01_Write:;
 
-/* Block (n=2789, ln=247) */
+/* Block (n=2641, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Par_Or (n=4561, ln=247) */
+/* Par_Or (n=4388, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Write_Par_Or_sub_2_IN_296;
 
-/* Par_Or (n=4561, ln=247) */
+/* Par_Or (n=4388, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Write_Par_Or_sub_1_IN_295);
 
-/* Par_Or (n=4561, ln=247) */
+/* Par_Or (n=4388, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or_sub_1_IN_295:;
 
-/* Finalize_Case (n=4062, ln=247) */
+/* Finalize_Case (n=3889, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[1].lbl    = CEU_LABEL_NRF24L01_Write_Finalize_Case__IN_300;
 
-/* Finalize_Case (n=4062, ln=247) */
+/* Finalize_Case (n=3889, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (0) {
 
-/* Finalize_Case (n=4062, ln=247) */
+/* Finalize_Case (n=3889, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Finalize_Case__IN_300:;
 
-/* Block (n=2784, ln=247) */
+/* Block (n=2636, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Code_Finalize (n=2782, ln=247) */
+/* Code_Finalize (n=2634, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (_ceu_mem->has_term) {
@@ -7221,12 +7220,12 @@ if (_ceu_mem->has_term) {
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
 
-/* Code_Finalize (n=2782, ln=247) */
+/* Code_Finalize (n=2634, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_params_cpy(_ceu_nxt, &((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem))._ret), sizeof(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem))._ret)));
 
-/* Code_Finalize (n=2782, ln=247) */
+/* Code_Finalize (n=2634, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
@@ -7248,193 +7247,193 @@ if (_ceu_mem->has_term) {
     return 0;
 }
 
-/* Code_Finalize (n=2782, ln=247) */
+/* Code_Finalize (n=2634, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Block (n=2784, ln=247) */
+/* Block (n=2636, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Finalize_Case (n=4062, ln=247) */
+/* Finalize_Case (n=3889, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Finalize_Case (n=4062, ln=247) */
+/* Finalize_Case (n=3889, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Await_Forever (n=4558, ln=247) */
+/* Await_Forever (n=4385, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Par_Or (n=4561, ln=247) */
+/* Par_Or (n=4388, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Write_Par_Or__OUT_297);
 
-/* Par_Or (n=4561, ln=247) */
+/* Par_Or (n=4388, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or_sub_2_IN_296:;
 
-/* Block (n=2776, ln=247) */
+/* Block (n=2628, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=2774, ln=247) */
+/* Block (n=2626, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=964, ln=248) */
+/* Block (n=867, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=2837, ln=248) */
+/* Block (n=2689, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Loop (n=2814, ln=248) */
+/* Loop (n=2666, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 while (1) {
         
-/* Block (n=2813, ln=248) */
+/* Block (n=2665, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* If (n=2811, ln=248) */
+/* If (n=2663, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if ((((*((*((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).nrf)).spi)).is_locked))) {
     
-/* Block (n=2807, ln=248) */
+/* Block (n=2659, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Await_Int (n=2804, ln=248) */
+/* Await_Int (n=2656, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt = ((tceu_evt){ CEU_EVENT_LOCK_OK_UNLOCKED, {&(*((*((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).nrf)).spi))} });
 
-/* Await_Int (n=2804, ln=248) */
+/* Await_Int (n=2656, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Write_Await_ok_unlocked__OUT_301;
 
-/* Await_Int (n=2804, ln=248) */
+/* Await_Int (n=2656, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Await_Int (n=2804, ln=248) */
+/* Await_Int (n=2656, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Await_ok_unlocked__OUT_301:;
 
-/* Block (n=2807, ln=248) */
+/* Block (n=2659, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 } else {
     
-/* Block (n=2810, ln=248) */
+/* Block (n=2662, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Break (n=2808, ln=248) */
+/* Break (n=2660, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Write_Loop_Break__OUT_308);
 
-/* Block (n=2810, ln=248) */
+/* Block (n=2662, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 }
 
-/* Block (n=2813, ln=248) */
+/* Block (n=2665, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Loop (n=2814, ln=248) */
+/* Loop (n=2666, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Loop_Continue__CNT_306:;
 
-/* Loop (n=2814, ln=248) */
+/* Loop (n=2666, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
         *_ceu_trlK = 1;
 }
 
-/* Loop (n=2814, ln=248) */
+/* Loop (n=2666, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Loop_Break__OUT_308:;
 
-/* Set_Exp (n=2820, ln=248) */
+/* Set_Exp (n=2672, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 (((*((*((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).nrf)).spi)).is_locked)) = 1;
 
-/* Par_Or (n=4567, ln=248) */
+/* Par_Or (n=4394, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[4].level  = _ceu_level;
 _ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Write_Par_Or_sub_2_IN_310;
 
-/* Par_Or (n=4567, ln=248) */
+/* Par_Or (n=4394, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Write_Par_Or_sub_1_IN_309);
 
-/* Par_Or (n=4567, ln=248) */
+/* Par_Or (n=4394, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or_sub_1_IN_309:;
 
-/* Finalize_Case (n=4064, ln=248) */
+/* Finalize_Case (n=3891, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[3].lbl    = CEU_LABEL_NRF24L01_Write_Finalize_Case__IN_315;
 
-/* Finalize_Case (n=4064, ln=248) */
+/* Finalize_Case (n=3891, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (0) {
 
-/* Finalize_Case (n=4064, ln=248) */
+/* Finalize_Case (n=3891, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Finalize_Case__IN_315:;
 
-/* Block (n=2834, ln=248) */
+/* Block (n=2686, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Set_Exp (n=2826, ln=248) */
+/* Set_Exp (n=2678, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 (((*((*((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).nrf)).spi)).is_locked)) = 0;
 
-/* Emit_Evt (n=2832, ln=248) */
+/* Emit_Evt (n=2684, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__STACKED;
@@ -7446,101 +7445,101 @@ _ceu_mem->_trails[3].lbl    = CEU_LABEL_NRF24L01_Write_Emit_Int__OUT_313;
     _ceu_nxt->evt     = __ceu_evt;
     _ceu_nxt->range   = __ceu_range;
 
-/* Emit_Evt (n=2832, ln=248) */
+/* Emit_Evt (n=2684, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     _ceu_nxt->params_n = 0;
 
-/* Emit_Evt (n=2832, ln=248) */
+/* Emit_Evt (n=2684, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     return 1;
 }
 
-/* Emit_Evt (n=2832, ln=248) */
+/* Emit_Evt (n=2684, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Emit_Int__OUT_313:;
 
-/* Block (n=2834, ln=248) */
+/* Block (n=2686, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Finalize_Case (n=4064, ln=248) */
+/* Finalize_Case (n=3891, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Finalize_Case (n=4064, ln=248) */
+/* Finalize_Case (n=3891, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Await_Forever (n=4564, ln=248) */
+/* Await_Forever (n=4391, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Par_Or (n=4567, ln=248) */
+/* Par_Or (n=4394, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Write_Par_Or__OUT_311);
 
-/* Par_Or (n=4567, ln=248) */
+/* Par_Or (n=4394, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or_sub_2_IN_310:;
 
-/* Block (n=961, ln=249) */
+/* Block (n=864, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Par_Or (n=2842, ln=249) */
+/* Par_Or (n=2694, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[6].level  = _ceu_level;
 _ceu_mem->_trails[6].lbl    = CEU_LABEL_NRF24L01_Write_Par_Or_sub_2_IN_317;
 
-/* Par_Or (n=2842, ln=249) */
+/* Par_Or (n=2694, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Write_Par_Or_sub_1_IN_316);
 
-/* Par_Or (n=2842, ln=249) */
+/* Par_Or (n=2694, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or_sub_1_IN_316:;
 
-/* Block (n=2841, ln=249) */
+/* Block (n=2693, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Abs_Await (n=931, ln=249) */
+/* Abs_Await (n=834, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[5].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=931, ln=249) */
+/* Abs_Await (n=834, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).__mem_931);
+_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).__mem_834);
 
-/* Abs_Await (n=931, ln=249) */
+/* Abs_Await (n=834, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[5].lbl = CEU_LABEL_NRF24L01_Write_Await_Await__OUT_320;
 
-/* Abs_Await (n=931, ln=249) */
+/* Abs_Await (n=834, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931))) = 
+    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transaction __ceu_929;__ceu_929.freq = 4000000;__ceu_929.bit_order = 1;__ceu_929.mode = 0;__ceu_929.cs = { .is_set=0 };__ceu_929.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).nrf)).csn))};; __ceu_929;})
+({tceu_code_mem_SPI_Transaction __ceu_832;__ceu_832.freq = 4000000;__ceu_832.bit_order = 1;__ceu_832.mode = 0;__ceu_832.cs = { .is_set=0 };__ceu_832.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).nrf)).csn))};; __ceu_832;})
 
 #else
 (tceu_code_mem_SPI_Transaction) { .freq = 4000000,.bit_order = 1,.mode = 0,.cs = { .is_set=0 },.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).nrf)).csn))} }
@@ -7548,188 +7547,188 @@ _ceu_mem->_trails[5].lbl = CEU_LABEL_NRF24L01_Write_Await_Await__OUT_320;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931))->_mem.trails_n = 5;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931))->_mem._trails, 0, 5*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931)));
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834))->_mem.trails_n = 5;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_931)), 0, 5-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_834)), 0, 5-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=931, ln=249) */
+/* Abs_Await (n=834, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=931, ln=249) */
+/* Abs_Await (n=834, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Await_Await__OUT_320:;
 
-/* Block (n=2841, ln=249) */
+/* Block (n=2693, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=2842, ln=249) */
+/* Par_Or (n=2694, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Write_Par_Or__OUT_318);
 
-/* Par_Or (n=2842, ln=249) */
+/* Par_Or (n=2694, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or_sub_2_IN_317:;
 
-/* Block (n=958, ln=250) */
+/* Block (n=861, ln=250) */
 
 #line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Vec_Init (n=3544, ln=250) */
+/* Vec_Init (n=3373, ln=250) */
 
 #line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-ceu_vector_init(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_945)),2, 0, 0, sizeof(byte),
-                (byte*)&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_945_buf)));
+ceu_vector_init(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_848)),2, 0, 0, sizeof(byte),
+                (byte*)&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_848_buf)));
 
-/* Set_Vec (n=944, ln=250) */
+/* Set_Vec (n=847, ln=250) */
 
 #line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
     usize __ceu_nxt;
 
-/* Set_Vec (n=944, ln=250) */
+/* Set_Vec (n=847, ln=250) */
 
 #line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_945)), 0, 0);
+    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_848)), 0, 0);
     __ceu_nxt = 0;
 
-/* Set_Vec (n=944, ln=250) */
+/* Set_Vec (n=847, ln=250) */
 
 #line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_945)), ((((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_945)).len + 2), 1);
+    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_848)), ((((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_848)).len + 2), 1);
 
-/* Set_Vec (n=944, ln=250) */
-
-#line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_945)), __ceu_nxt++)) = (32|(31&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).reg))));
-
-/* Set_Vec (n=944, ln=250) */
+/* Set_Vec (n=847, ln=250) */
 
 #line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_945)), __ceu_nxt++)) = (((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).value));
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_848)), __ceu_nxt++)) = (32|(31&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).reg))));
 
-/* Set_Vec (n=944, ln=250) */
+/* Set_Vec (n=847, ln=250) */
+
+#line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_848)), __ceu_nxt++)) = (((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).value));
+
+/* Set_Vec (n=847, ln=250) */
 
 #line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 
-/* Set_Vec (n=944, ln=250) */
+/* Set_Vec (n=847, ln=250) */
 
 #line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Abs_Await (n=952, ln=251) */
+/* Abs_Await (n=855, ln=251) */
 
 #line 251 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=952, ln=251) */
+/* Abs_Await (n=855, ln=251) */
 
 #line 251 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).__mem_952);
+_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).__mem_855);
 
-/* Abs_Await (n=952, ln=251) */
+/* Abs_Await (n=855, ln=251) */
 
 #line 251 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].lbl = CEU_LABEL_NRF24L01_Write_Await_Await__OUT_322;
 
-/* Abs_Await (n=952, ln=251) */
+/* Abs_Await (n=855, ln=251) */
 
 #line 251 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_SPI_Transfer*)(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952))) = 
+    *((tceu_code_mem_SPI_Transfer*)(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transfer __ceu_950;__ceu_950.buf = (&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_945)));; __ceu_950;})
+({tceu_code_mem_SPI_Transfer __ceu_853;__ceu_853.buf = (&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_848)));; __ceu_853;})
 
 #else
-(tceu_code_mem_SPI_Transfer) { .buf = (&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_945))) }
+(tceu_code_mem_SPI_Transfer) { .buf = (&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_848))) }
 
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952))->_mem.trails_n = 3;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952))->_mem._trails, 0, 3*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_to_lbl((&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952)));
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855))->_mem.trails_n = 3;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855))->_mem._trails, 0, 3*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_to_lbl((&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_952)), 0, 3-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)). __mem_855)), 0, 3-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=952, ln=251) */
+/* Abs_Await (n=855, ln=251) */
 
 #line 251 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=952, ln=251) */
+/* Abs_Await (n=855, ln=251) */
 
 #line 251 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Await_Await__OUT_322:;
 
-/* Set_Exp (n=2848, ln=252) */
+/* Set_Exp (n=2700, ln=252) */
 
 #line 252 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem))._ret)) = (*(byte*) ceu_vector_geti(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_945)),0))
+(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem))._ret)) = (*(byte*) ceu_vector_geti(&(((*((tceu_code_mem_NRF24L01_Write*)_ceu_mem)).vs_848)),0))
 ;
 
-/* Escape (n=956, ln=252) */
+/* Escape (n=859, ln=252) */
 
 #line 252 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Write_Do__OUT_331);
 
-/* Block (n=958, ln=250) */
+/* Block (n=861, ln=250) */
 
 #line 250 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=2842, ln=249) */
+/* Par_Or (n=2694, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Write_Par_Or__OUT_318);
 
-/* Par_Or (n=2842, ln=249) */
+/* Par_Or (n=2694, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or__OUT_318:;
 
-/* Par_Or (n=2842, ln=249) */
+/* Par_Or (n=2694, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
@@ -7744,27 +7743,27 @@ _ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Write_Par_Or__CLR_319;
     return 1;
 }
 
-/* Par_Or (n=2842, ln=249) */
+/* Par_Or (n=2694, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or__CLR_319:;
 
-/* Block (n=961, ln=249) */
+/* Block (n=864, ln=249) */
 
 #line 249 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=4567, ln=248) */
+/* Par_Or (n=4394, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Write_Par_Or__OUT_311);
 
-/* Par_Or (n=4567, ln=248) */
+/* Par_Or (n=4394, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or__OUT_311:;
 
-/* Par_Or (n=4567, ln=248) */
+/* Par_Or (n=4394, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -7779,52 +7778,52 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Write_Par_Or__CLR_312;
     return 1;
 }
 
-/* Par_Or (n=4567, ln=248) */
+/* Par_Or (n=4394, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or__CLR_312:;
 
-/* Block (n=2837, ln=248) */
+/* Block (n=2689, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=2838, ln=248) */
+/* Do (n=2690, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Do__OUT_326:;
 
-/* Block (n=964, ln=248) */
+/* Block (n=867, ln=248) */
 
 #line 248 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Block (n=2774, ln=247) */
+/* Block (n=2626, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Block (n=2776, ln=247) */
+/* Block (n=2628, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=2777, ln=247) */
+/* Do (n=2629, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=2777, ln=247) */
+/* Do (n=2629, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Do__OUT_331:;
 
-/* Do (n=2777, ln=247) */
+/* Do (n=2629, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     _ceu_mem->has_term = 1;
 
-/* Do (n=2777, ln=247) */
+/* Do (n=2629, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -7839,22 +7838,22 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Write_Do__CLR_332;
     return 1;
 }
 
-/* Do (n=2777, ln=247) */
+/* Do (n=2629, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Do__CLR_332:;
 
-/* Par_Or (n=4561, ln=247) */
+/* Par_Or (n=4388, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Write_Par_Or__OUT_297);
 
-/* Par_Or (n=4561, ln=247) */
+/* Par_Or (n=4388, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or__OUT_297:;
 
-/* Par_Or (n=4561, ln=247) */
+/* Par_Or (n=4388, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
@@ -7869,82 +7868,82 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_NRF24L01_Write_Par_Or__CLR_298;
     return 1;
 }
 
-/* Par_Or (n=4561, ln=247) */
+/* Par_Or (n=4388, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Write_Par_Or__CLR_298:;
 
-/* Block (n=2789, ln=247) */
+/* Block (n=2641, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Code (n=2790, ln=247) */
+/* Code (n=2642, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Code (n=2790, ln=247) */
+/* Code (n=2642, ln=247) */
 
 #line 247 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Code (n=2870, ln=257) */
+/* Code (n=2722, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=2870, ln=257) */
+/* Code (n=2722, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_Code_NRF24L01_Writes:;
 
-/* Block (n=2869, ln=257) */
+/* Block (n=2721, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Par_Or (n=4573, ln=257) */
+/* Par_Or (n=4400, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Writes_Par_Or_sub_2_IN_337;
 
-/* Par_Or (n=4573, ln=257) */
+/* Par_Or (n=4400, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Writes_Par_Or_sub_1_IN_336);
 
-/* Par_Or (n=4573, ln=257) */
+/* Par_Or (n=4400, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or_sub_1_IN_336:;
 
-/* Finalize_Case (n=4066, ln=257) */
+/* Finalize_Case (n=3893, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[1].lbl    = CEU_LABEL_NRF24L01_Writes_Finalize_Case__IN_341;
 
-/* Finalize_Case (n=4066, ln=257) */
+/* Finalize_Case (n=3893, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (0) {
 
-/* Finalize_Case (n=4066, ln=257) */
+/* Finalize_Case (n=3893, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Finalize_Case__IN_341:;
 
-/* Block (n=2864, ln=257) */
+/* Block (n=2716, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Code_Finalize (n=2862, ln=257) */
+/* Code_Finalize (n=2714, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (_ceu_mem->has_term) {
@@ -7958,12 +7957,12 @@ if (_ceu_mem->has_term) {
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
 
-/* Code_Finalize (n=2862, ln=257) */
+/* Code_Finalize (n=2714, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_params_cpy(_ceu_nxt, &((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem))._ret), sizeof(((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem))._ret)));
 
-/* Code_Finalize (n=2862, ln=257) */
+/* Code_Finalize (n=2714, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
@@ -7985,193 +7984,193 @@ if (_ceu_mem->has_term) {
     return 0;
 }
 
-/* Code_Finalize (n=2862, ln=257) */
+/* Code_Finalize (n=2714, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Block (n=2864, ln=257) */
+/* Block (n=2716, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Finalize_Case (n=4066, ln=257) */
+/* Finalize_Case (n=3893, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Finalize_Case (n=4066, ln=257) */
+/* Finalize_Case (n=3893, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Await_Forever (n=4570, ln=257) */
+/* Await_Forever (n=4397, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Par_Or (n=4573, ln=257) */
+/* Par_Or (n=4400, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Writes_Par_Or__OUT_338);
 
-/* Par_Or (n=4573, ln=257) */
+/* Par_Or (n=4400, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or_sub_2_IN_337:;
 
-/* Block (n=2856, ln=257) */
+/* Block (n=2708, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=2854, ln=257) */
+/* Block (n=2706, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=1024, ln=258) */
+/* Block (n=927, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=2917, ln=258) */
+/* Block (n=2769, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Loop (n=2894, ln=258) */
+/* Loop (n=2746, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 while (1) {
         
-/* Block (n=2893, ln=258) */
+/* Block (n=2745, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* If (n=2891, ln=258) */
+/* If (n=2743, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if ((((*((*((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).nrf)).spi)).is_locked))) {
     
-/* Block (n=2887, ln=258) */
+/* Block (n=2739, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Await_Int (n=2884, ln=258) */
+/* Await_Int (n=2736, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt = ((tceu_evt){ CEU_EVENT_LOCK_OK_UNLOCKED, {&(*((*((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).nrf)).spi))} });
 
-/* Await_Int (n=2884, ln=258) */
+/* Await_Int (n=2736, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Writes_Await_ok_unlocked__OUT_342;
 
-/* Await_Int (n=2884, ln=258) */
+/* Await_Int (n=2736, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Await_Int (n=2884, ln=258) */
+/* Await_Int (n=2736, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Await_ok_unlocked__OUT_342:;
 
-/* Block (n=2887, ln=258) */
+/* Block (n=2739, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 } else {
     
-/* Block (n=2890, ln=258) */
+/* Block (n=2742, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Break (n=2888, ln=258) */
+/* Break (n=2740, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Writes_Loop_Break__OUT_349);
 
-/* Block (n=2890, ln=258) */
+/* Block (n=2742, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 }
 
-/* Block (n=2893, ln=258) */
+/* Block (n=2745, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Loop (n=2894, ln=258) */
+/* Loop (n=2746, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Loop_Continue__CNT_347:;
 
-/* Loop (n=2894, ln=258) */
+/* Loop (n=2746, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
         *_ceu_trlK = 1;
 }
 
-/* Loop (n=2894, ln=258) */
+/* Loop (n=2746, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Loop_Break__OUT_349:;
 
-/* Set_Exp (n=2900, ln=258) */
+/* Set_Exp (n=2752, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 (((*((*((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).nrf)).spi)).is_locked)) = 1;
 
-/* Par_Or (n=4579, ln=258) */
+/* Par_Or (n=4406, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[4].level  = _ceu_level;
 _ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Writes_Par_Or_sub_2_IN_351;
 
-/* Par_Or (n=4579, ln=258) */
+/* Par_Or (n=4406, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Writes_Par_Or_sub_1_IN_350);
 
-/* Par_Or (n=4579, ln=258) */
+/* Par_Or (n=4406, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or_sub_1_IN_350:;
 
-/* Finalize_Case (n=4068, ln=258) */
+/* Finalize_Case (n=3895, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[3].lbl    = CEU_LABEL_NRF24L01_Writes_Finalize_Case__IN_356;
 
-/* Finalize_Case (n=4068, ln=258) */
+/* Finalize_Case (n=3895, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (0) {
 
-/* Finalize_Case (n=4068, ln=258) */
+/* Finalize_Case (n=3895, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Finalize_Case__IN_356:;
 
-/* Block (n=2914, ln=258) */
+/* Block (n=2766, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Set_Exp (n=2906, ln=258) */
+/* Set_Exp (n=2758, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 (((*((*((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).nrf)).spi)).is_locked)) = 0;
 
-/* Emit_Evt (n=2912, ln=258) */
+/* Emit_Evt (n=2764, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__STACKED;
@@ -8183,101 +8182,101 @@ _ceu_mem->_trails[3].lbl    = CEU_LABEL_NRF24L01_Writes_Emit_Int__OUT_354;
     _ceu_nxt->evt     = __ceu_evt;
     _ceu_nxt->range   = __ceu_range;
 
-/* Emit_Evt (n=2912, ln=258) */
+/* Emit_Evt (n=2764, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     _ceu_nxt->params_n = 0;
 
-/* Emit_Evt (n=2912, ln=258) */
+/* Emit_Evt (n=2764, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     return 1;
 }
 
-/* Emit_Evt (n=2912, ln=258) */
+/* Emit_Evt (n=2764, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Emit_Int__OUT_354:;
 
-/* Block (n=2914, ln=258) */
+/* Block (n=2766, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Finalize_Case (n=4068, ln=258) */
+/* Finalize_Case (n=3895, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Finalize_Case (n=4068, ln=258) */
+/* Finalize_Case (n=3895, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Await_Forever (n=4576, ln=258) */
+/* Await_Forever (n=4403, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Par_Or (n=4579, ln=258) */
+/* Par_Or (n=4406, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Writes_Par_Or__OUT_352);
 
-/* Par_Or (n=4579, ln=258) */
+/* Par_Or (n=4406, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or_sub_2_IN_351:;
 
-/* Block (n=1021, ln=259) */
+/* Block (n=924, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Par_Or (n=2922, ln=259) */
+/* Par_Or (n=2774, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[6].level  = _ceu_level;
 _ceu_mem->_trails[6].lbl    = CEU_LABEL_NRF24L01_Writes_Par_Or_sub_2_IN_358;
 
-/* Par_Or (n=2922, ln=259) */
+/* Par_Or (n=2774, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Writes_Par_Or_sub_1_IN_357);
 
-/* Par_Or (n=2922, ln=259) */
+/* Par_Or (n=2774, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or_sub_1_IN_357:;
 
-/* Block (n=2921, ln=259) */
+/* Block (n=2773, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Abs_Await (n=993, ln=259) */
+/* Abs_Await (n=896, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[5].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=993, ln=259) */
+/* Abs_Await (n=896, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).__mem_993);
+_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).__mem_896);
 
-/* Abs_Await (n=993, ln=259) */
+/* Abs_Await (n=896, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[5].lbl = CEU_LABEL_NRF24L01_Writes_Await_Await__OUT_361;
 
-/* Abs_Await (n=993, ln=259) */
+/* Abs_Await (n=896, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993))) = 
+    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transaction __ceu_991;__ceu_991.freq = 4000000;__ceu_991.bit_order = 1;__ceu_991.mode = 0;__ceu_991.cs = { .is_set=0 };__ceu_991.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).nrf)).csn))};; __ceu_991;})
+({tceu_code_mem_SPI_Transaction __ceu_894;__ceu_894.freq = 4000000;__ceu_894.bit_order = 1;__ceu_894.mode = 0;__ceu_894.cs = { .is_set=0 };__ceu_894.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).nrf)).csn))};; __ceu_894;})
 
 #else
 (tceu_code_mem_SPI_Transaction) { .freq = 4000000,.bit_order = 1,.mode = 0,.cs = { .is_set=0 },.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).nrf)).csn))} }
@@ -8285,79 +8284,79 @@ _ceu_mem->_trails[5].lbl = CEU_LABEL_NRF24L01_Writes_Await_Await__OUT_361;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993))->_mem.trails_n = 5;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993))->_mem._trails, 0, 5*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993)));
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896))->_mem.trails_n = 5;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_993)), 0, 5-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_896)), 0, 5-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=993, ln=259) */
+/* Abs_Await (n=896, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=993, ln=259) */
+/* Abs_Await (n=896, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Await_Await__OUT_361:;
 
-/* Block (n=2921, ln=259) */
+/* Block (n=2773, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=2922, ln=259) */
+/* Par_Or (n=2774, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Writes_Par_Or__OUT_359);
 
-/* Par_Or (n=2922, ln=259) */
+/* Par_Or (n=2774, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or_sub_2_IN_358:;
 
-/* Block (n=1018, ln=260) */
+/* Block (n=921, ln=260) */
 
 #line 260 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Abs_Await (n=1005, ln=260) */
+/* Abs_Await (n=908, ln=260) */
 
 #line 260 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1005, ln=260) */
+/* Abs_Await (n=908, ln=260) */
 
 #line 260 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).__mem_1005);
+_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).__mem_908);
 
-/* Abs_Await (n=1005, ln=260) */
+/* Abs_Await (n=908, ln=260) */
 
 #line 260 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].lbl = CEU_LABEL_NRF24L01_Writes_Await_Await__OUT_363;
 
-/* Abs_Await (n=1005, ln=260) */
+/* Abs_Await (n=908, ln=260) */
 
 #line 260 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_SPI_Transfer_8*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005))) = 
+    *((tceu_code_mem_SPI_Transfer_8*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transfer_8 __ceu_1003;__ceu_1003.v = { .is_set=1, .value=(32|(31&(((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).reg))))};; __ceu_1003;})
+({tceu_code_mem_SPI_Transfer_8 __ceu_906;__ceu_906.v = { .is_set=1, .value=(32|(31&(((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).reg))))};; __ceu_906;})
 
 #else
 (tceu_code_mem_SPI_Transfer_8) { .v = { .is_set=1, .value=(32|(31&(((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).reg))))} }
@@ -8365,64 +8364,64 @@ _ceu_mem->_trails[6].lbl = CEU_LABEL_NRF24L01_Writes_Await_Await__OUT_363;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005))->_mem.trails_n = 3;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005))->_mem._trails, 0, 3*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_8_to_lbl((&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005)));
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908))->_mem.trails_n = 3;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908))->_mem._trails, 0, 3*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_8_to_lbl((&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1005)), 0, 3-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_908)), 0, 3-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1005, ln=260) */
+/* Abs_Await (n=908, ln=260) */
 
 #line 260 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1005, ln=260) */
+/* Abs_Await (n=908, ln=260) */
 
 #line 260 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Await_Await__OUT_363:;
 
-/* Set_Abs_Await (n=1006, ln=260) */
+/* Set_Abs_Await (n=909, ln=260) */
 
 #line 260 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-(((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).status_1007)) = ((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).__mem_1005)._ret;
+(((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).status_910)) = ((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).__mem_908)._ret;
 
-/* Abs_Await (n=1014, ln=261) */
+/* Abs_Await (n=917, ln=261) */
 
 #line 261 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1014, ln=261) */
+/* Abs_Await (n=917, ln=261) */
 
 #line 261 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).__mem_1014);
+_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).__mem_917);
 
-/* Abs_Await (n=1014, ln=261) */
+/* Abs_Await (n=917, ln=261) */
 
 #line 261 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].lbl = CEU_LABEL_NRF24L01_Writes_Await_Await__OUT_364;
 
-/* Abs_Await (n=1014, ln=261) */
+/* Abs_Await (n=917, ln=261) */
 
 #line 261 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_SPI_Transfer*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014))) = 
+    *((tceu_code_mem_SPI_Transfer*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transfer __ceu_1012;__ceu_1012.buf = ((((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).values)));; __ceu_1012;})
+({tceu_code_mem_SPI_Transfer __ceu_915;__ceu_915.buf = ((((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).values)));; __ceu_915;})
 
 #else
 (tceu_code_mem_SPI_Transfer) { .buf = ((((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).values))) }
@@ -8430,63 +8429,63 @@ _ceu_mem->_trails[6].lbl = CEU_LABEL_NRF24L01_Writes_Await_Await__OUT_364;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014))->_mem.trails_n = 3;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014))->_mem._trails, 0, 3*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_to_lbl((&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014)));
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917))->_mem.trails_n = 3;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917))->_mem._trails, 0, 3*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_to_lbl((&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_1014)), 0, 3-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)). __mem_917)), 0, 3-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1014, ln=261) */
+/* Abs_Await (n=917, ln=261) */
 
 #line 261 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1014, ln=261) */
+/* Abs_Await (n=917, ln=261) */
 
 #line 261 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Await_Await__OUT_364:;
 
-/* Set_Exp (n=2928, ln=262) */
+/* Set_Exp (n=2780, ln=262) */
 
 #line 262 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-(((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem))._ret)) = (((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).status_1007));
+(((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem))._ret)) = (((*((tceu_code_mem_NRF24L01_Writes*)_ceu_mem)).status_910));
 
-/* Escape (n=1016, ln=262) */
+/* Escape (n=919, ln=262) */
 
 #line 262 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Writes_Do__OUT_373);
 
-/* Block (n=1018, ln=260) */
+/* Block (n=921, ln=260) */
 
 #line 260 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=2922, ln=259) */
+/* Par_Or (n=2774, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Writes_Par_Or__OUT_359);
 
-/* Par_Or (n=2922, ln=259) */
+/* Par_Or (n=2774, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or__OUT_359:;
 
-/* Par_Or (n=2922, ln=259) */
+/* Par_Or (n=2774, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
@@ -8501,27 +8500,27 @@ _ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Writes_Par_Or__CLR_360;
     return 1;
 }
 
-/* Par_Or (n=2922, ln=259) */
+/* Par_Or (n=2774, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or__CLR_360:;
 
-/* Block (n=1021, ln=259) */
+/* Block (n=924, ln=259) */
 
 #line 259 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=4579, ln=258) */
+/* Par_Or (n=4406, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Writes_Par_Or__OUT_352);
 
-/* Par_Or (n=4579, ln=258) */
+/* Par_Or (n=4406, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or__OUT_352:;
 
-/* Par_Or (n=4579, ln=258) */
+/* Par_Or (n=4406, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -8536,52 +8535,52 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Writes_Par_Or__CLR_353;
     return 1;
 }
 
-/* Par_Or (n=4579, ln=258) */
+/* Par_Or (n=4406, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or__CLR_353:;
 
-/* Block (n=2917, ln=258) */
+/* Block (n=2769, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=2918, ln=258) */
+/* Do (n=2770, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Do__OUT_368:;
 
-/* Block (n=1024, ln=258) */
+/* Block (n=927, ln=258) */
 
 #line 258 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Block (n=2854, ln=257) */
+/* Block (n=2706, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Block (n=2856, ln=257) */
+/* Block (n=2708, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=2857, ln=257) */
+/* Do (n=2709, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=2857, ln=257) */
+/* Do (n=2709, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Do__OUT_373:;
 
-/* Do (n=2857, ln=257) */
+/* Do (n=2709, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     _ceu_mem->has_term = 1;
 
-/* Do (n=2857, ln=257) */
+/* Do (n=2709, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -8596,22 +8595,22 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Writes_Do__CLR_374;
     return 1;
 }
 
-/* Do (n=2857, ln=257) */
+/* Do (n=2709, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Do__CLR_374:;
 
-/* Par_Or (n=4573, ln=257) */
+/* Par_Or (n=4400, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Writes_Par_Or__OUT_338);
 
-/* Par_Or (n=4573, ln=257) */
+/* Par_Or (n=4400, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or__OUT_338:;
 
-/* Par_Or (n=4573, ln=257) */
+/* Par_Or (n=4400, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
@@ -8626,82 +8625,82 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_NRF24L01_Writes_Par_Or__CLR_339;
     return 1;
 }
 
-/* Par_Or (n=4573, ln=257) */
+/* Par_Or (n=4400, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Writes_Par_Or__CLR_339:;
 
-/* Block (n=2869, ln=257) */
+/* Block (n=2721, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Code (n=2870, ln=257) */
+/* Code (n=2722, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Code (n=2870, ln=257) */
+/* Code (n=2722, ln=257) */
 
 #line 257 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Code (n=2950, ln=267) */
+/* Code (n=2802, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=2950, ln=267) */
+/* Code (n=2802, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_Code_NRF24L01_Read:;
 
-/* Block (n=2949, ln=267) */
+/* Block (n=2801, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Par_Or (n=4585, ln=267) */
+/* Par_Or (n=4412, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Read_Par_Or_sub_2_IN_379;
 
-/* Par_Or (n=4585, ln=267) */
+/* Par_Or (n=4412, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Read_Par_Or_sub_1_IN_378);
 
-/* Par_Or (n=4585, ln=267) */
+/* Par_Or (n=4412, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or_sub_1_IN_378:;
 
-/* Finalize_Case (n=4070, ln=267) */
+/* Finalize_Case (n=3897, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[1].lbl    = CEU_LABEL_NRF24L01_Read_Finalize_Case__IN_383;
 
-/* Finalize_Case (n=4070, ln=267) */
+/* Finalize_Case (n=3897, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (0) {
 
-/* Finalize_Case (n=4070, ln=267) */
+/* Finalize_Case (n=3897, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Finalize_Case__IN_383:;
 
-/* Block (n=2944, ln=267) */
+/* Block (n=2796, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Code_Finalize (n=2942, ln=267) */
+/* Code_Finalize (n=2794, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (_ceu_mem->has_term) {
@@ -8715,12 +8714,12 @@ if (_ceu_mem->has_term) {
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
 
-/* Code_Finalize (n=2942, ln=267) */
+/* Code_Finalize (n=2794, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_params_cpy(_ceu_nxt, &((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem))._ret), sizeof(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem))._ret)));
 
-/* Code_Finalize (n=2942, ln=267) */
+/* Code_Finalize (n=2794, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
@@ -8742,193 +8741,193 @@ if (_ceu_mem->has_term) {
     return 0;
 }
 
-/* Code_Finalize (n=2942, ln=267) */
+/* Code_Finalize (n=2794, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Block (n=2944, ln=267) */
+/* Block (n=2796, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Finalize_Case (n=4070, ln=267) */
+/* Finalize_Case (n=3897, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Finalize_Case (n=4070, ln=267) */
+/* Finalize_Case (n=3897, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Await_Forever (n=4582, ln=267) */
+/* Await_Forever (n=4409, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Par_Or (n=4585, ln=267) */
+/* Par_Or (n=4412, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Read_Par_Or__OUT_380);
 
-/* Par_Or (n=4585, ln=267) */
+/* Par_Or (n=4412, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or_sub_2_IN_379:;
 
-/* Block (n=2936, ln=267) */
+/* Block (n=2788, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=2934, ln=267) */
+/* Block (n=2786, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=1083, ln=268) */
+/* Block (n=986, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=2996, ln=268) */
+/* Block (n=2848, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Loop (n=2973, ln=268) */
+/* Loop (n=2825, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 while (1) {
         
-/* Block (n=2972, ln=268) */
+/* Block (n=2824, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* If (n=2970, ln=268) */
+/* If (n=2822, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if ((((*((*((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).nrf)).spi)).is_locked))) {
     
-/* Block (n=2966, ln=268) */
+/* Block (n=2818, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Await_Int (n=2963, ln=268) */
+/* Await_Int (n=2815, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt = ((tceu_evt){ CEU_EVENT_LOCK_OK_UNLOCKED, {&(*((*((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).nrf)).spi))} });
 
-/* Await_Int (n=2963, ln=268) */
+/* Await_Int (n=2815, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Read_Await_ok_unlocked__OUT_384;
 
-/* Await_Int (n=2963, ln=268) */
+/* Await_Int (n=2815, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Await_Int (n=2963, ln=268) */
+/* Await_Int (n=2815, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Await_ok_unlocked__OUT_384:;
 
-/* Block (n=2966, ln=268) */
+/* Block (n=2818, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 } else {
     
-/* Block (n=2969, ln=268) */
+/* Block (n=2821, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Break (n=2967, ln=268) */
+/* Break (n=2819, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Read_Loop_Break__OUT_391);
 
-/* Block (n=2969, ln=268) */
+/* Block (n=2821, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 }
 
-/* Block (n=2972, ln=268) */
+/* Block (n=2824, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Loop (n=2973, ln=268) */
+/* Loop (n=2825, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Loop_Continue__CNT_389:;
 
-/* Loop (n=2973, ln=268) */
+/* Loop (n=2825, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
         *_ceu_trlK = 1;
 }
 
-/* Loop (n=2973, ln=268) */
+/* Loop (n=2825, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Loop_Break__OUT_391:;
 
-/* Set_Exp (n=2979, ln=268) */
+/* Set_Exp (n=2831, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 (((*((*((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).nrf)).spi)).is_locked)) = 1;
 
-/* Par_Or (n=4591, ln=268) */
+/* Par_Or (n=4418, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[4].level  = _ceu_level;
 _ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Read_Par_Or_sub_2_IN_393;
 
-/* Par_Or (n=4591, ln=268) */
+/* Par_Or (n=4418, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Read_Par_Or_sub_1_IN_392);
 
-/* Par_Or (n=4591, ln=268) */
+/* Par_Or (n=4418, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or_sub_1_IN_392:;
 
-/* Finalize_Case (n=4072, ln=268) */
+/* Finalize_Case (n=3899, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[3].lbl    = CEU_LABEL_NRF24L01_Read_Finalize_Case__IN_398;
 
-/* Finalize_Case (n=4072, ln=268) */
+/* Finalize_Case (n=3899, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (0) {
 
-/* Finalize_Case (n=4072, ln=268) */
+/* Finalize_Case (n=3899, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Finalize_Case__IN_398:;
 
-/* Block (n=2993, ln=268) */
+/* Block (n=2845, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Set_Exp (n=2985, ln=268) */
+/* Set_Exp (n=2837, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 (((*((*((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).nrf)).spi)).is_locked)) = 0;
 
-/* Emit_Evt (n=2991, ln=268) */
+/* Emit_Evt (n=2843, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__STACKED;
@@ -8940,101 +8939,101 @@ _ceu_mem->_trails[3].lbl    = CEU_LABEL_NRF24L01_Read_Emit_Int__OUT_396;
     _ceu_nxt->evt     = __ceu_evt;
     _ceu_nxt->range   = __ceu_range;
 
-/* Emit_Evt (n=2991, ln=268) */
+/* Emit_Evt (n=2843, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     _ceu_nxt->params_n = 0;
 
-/* Emit_Evt (n=2991, ln=268) */
+/* Emit_Evt (n=2843, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     return 1;
 }
 
-/* Emit_Evt (n=2991, ln=268) */
+/* Emit_Evt (n=2843, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Emit_Int__OUT_396:;
 
-/* Block (n=2993, ln=268) */
+/* Block (n=2845, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Finalize_Case (n=4072, ln=268) */
+/* Finalize_Case (n=3899, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Finalize_Case (n=4072, ln=268) */
+/* Finalize_Case (n=3899, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Await_Forever (n=4588, ln=268) */
+/* Await_Forever (n=4415, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Par_Or (n=4591, ln=268) */
+/* Par_Or (n=4418, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Read_Par_Or__OUT_394);
 
-/* Par_Or (n=4591, ln=268) */
+/* Par_Or (n=4418, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or_sub_2_IN_393:;
 
-/* Block (n=1080, ln=269) */
+/* Block (n=983, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Par_Or (n=3001, ln=269) */
+/* Par_Or (n=2853, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[6].level  = _ceu_level;
 _ceu_mem->_trails[6].lbl    = CEU_LABEL_NRF24L01_Read_Par_Or_sub_2_IN_400;
 
-/* Par_Or (n=3001, ln=269) */
+/* Par_Or (n=2853, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Read_Par_Or_sub_1_IN_399);
 
-/* Par_Or (n=3001, ln=269) */
+/* Par_Or (n=2853, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or_sub_1_IN_399:;
 
-/* Block (n=3000, ln=269) */
+/* Block (n=2852, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Abs_Await (n=1050, ln=269) */
+/* Abs_Await (n=953, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[5].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1050, ln=269) */
+/* Abs_Await (n=953, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).__mem_1050);
+_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).__mem_953);
 
-/* Abs_Await (n=1050, ln=269) */
+/* Abs_Await (n=953, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[5].lbl = CEU_LABEL_NRF24L01_Read_Await_Await__OUT_403;
 
-/* Abs_Await (n=1050, ln=269) */
+/* Abs_Await (n=953, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050))) = 
+    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transaction __ceu_1048;__ceu_1048.freq = 4000000;__ceu_1048.bit_order = 1;__ceu_1048.mode = 0;__ceu_1048.cs = { .is_set=0 };__ceu_1048.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).nrf)).csn))};; __ceu_1048;})
+({tceu_code_mem_SPI_Transaction __ceu_951;__ceu_951.freq = 4000000;__ceu_951.bit_order = 1;__ceu_951.mode = 0;__ceu_951.cs = { .is_set=0 };__ceu_951.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).nrf)).csn))};; __ceu_951;})
 
 #else
 (tceu_code_mem_SPI_Transaction) { .freq = 4000000,.bit_order = 1,.mode = 0,.cs = { .is_set=0 },.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).nrf)).csn))} }
@@ -9042,188 +9041,188 @@ _ceu_mem->_trails[5].lbl = CEU_LABEL_NRF24L01_Read_Await_Await__OUT_403;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050))->_mem.trails_n = 5;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050))->_mem._trails, 0, 5*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050)));
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953))->_mem.trails_n = 5;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1050)), 0, 5-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_953)), 0, 5-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1050, ln=269) */
+/* Abs_Await (n=953, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1050, ln=269) */
+/* Abs_Await (n=953, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Await_Await__OUT_403:;
 
-/* Block (n=3000, ln=269) */
+/* Block (n=2852, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=3001, ln=269) */
+/* Par_Or (n=2853, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Read_Par_Or__OUT_401);
 
-/* Par_Or (n=3001, ln=269) */
+/* Par_Or (n=2853, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or_sub_2_IN_400:;
 
-/* Block (n=1077, ln=270) */
+/* Block (n=980, ln=270) */
 
 #line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Vec_Init (n=3613, ln=270) */
+/* Vec_Init (n=3442, ln=270) */
 
 #line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-ceu_vector_init(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_1064)),2, 0, 0, sizeof(byte),
-                (byte*)&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_1064_buf)));
+ceu_vector_init(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_967)),2, 0, 0, sizeof(byte),
+                (byte*)&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_967_buf)));
 
-/* Set_Vec (n=1063, ln=270) */
+/* Set_Vec (n=966, ln=270) */
 
 #line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
     usize __ceu_nxt;
 
-/* Set_Vec (n=1063, ln=270) */
+/* Set_Vec (n=966, ln=270) */
 
 #line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_1064)), 0, 0);
+    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_967)), 0, 0);
     __ceu_nxt = 0;
 
-/* Set_Vec (n=1063, ln=270) */
+/* Set_Vec (n=966, ln=270) */
 
 #line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_1064)), ((((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_1064)).len + 2), 1);
+    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_967)), ((((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_967)).len + 2), 1);
 
-/* Set_Vec (n=1063, ln=270) */
-
-#line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_1064)), __ceu_nxt++)) = (0|(31&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).reg))));
-
-/* Set_Vec (n=1063, ln=270) */
+/* Set_Vec (n=966, ln=270) */
 
 #line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_1064)), __ceu_nxt++)) = 255;
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_967)), __ceu_nxt++)) = (0|(31&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).reg))));
 
-/* Set_Vec (n=1063, ln=270) */
+/* Set_Vec (n=966, ln=270) */
+
+#line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_967)), __ceu_nxt++)) = 255;
+
+/* Set_Vec (n=966, ln=270) */
 
 #line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 
-/* Set_Vec (n=1063, ln=270) */
+/* Set_Vec (n=966, ln=270) */
 
 #line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Abs_Await (n=1071, ln=271) */
+/* Abs_Await (n=974, ln=271) */
 
 #line 271 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1071, ln=271) */
+/* Abs_Await (n=974, ln=271) */
 
 #line 271 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).__mem_1071);
+_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).__mem_974);
 
-/* Abs_Await (n=1071, ln=271) */
+/* Abs_Await (n=974, ln=271) */
 
 #line 271 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].lbl = CEU_LABEL_NRF24L01_Read_Await_Await__OUT_405;
 
-/* Abs_Await (n=1071, ln=271) */
+/* Abs_Await (n=974, ln=271) */
 
 #line 271 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_SPI_Transfer*)(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071))) = 
+    *((tceu_code_mem_SPI_Transfer*)(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transfer __ceu_1069;__ceu_1069.buf = (&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_1064)));; __ceu_1069;})
+({tceu_code_mem_SPI_Transfer __ceu_972;__ceu_972.buf = (&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_967)));; __ceu_972;})
 
 #else
-(tceu_code_mem_SPI_Transfer) { .buf = (&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_1064))) }
+(tceu_code_mem_SPI_Transfer) { .buf = (&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_967))) }
 
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071))->_mem.trails_n = 3;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071))->_mem._trails, 0, 3*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_to_lbl((&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071)));
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974))->_mem.trails_n = 3;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974))->_mem._trails, 0, 3*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_to_lbl((&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_1071)), 0, 3-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)). __mem_974)), 0, 3-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1071, ln=271) */
+/* Abs_Await (n=974, ln=271) */
 
 #line 271 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1071, ln=271) */
+/* Abs_Await (n=974, ln=271) */
 
 #line 271 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Await_Await__OUT_405:;
 
-/* Set_Exp (n=3007, ln=272) */
+/* Set_Exp (n=2859, ln=272) */
 
 #line 272 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem))._ret)) = (*(byte*) ceu_vector_geti(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_1064)),1))
+(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem))._ret)) = (*(byte*) ceu_vector_geti(&(((*((tceu_code_mem_NRF24L01_Read*)_ceu_mem)).vs_967)),1))
 ;
 
-/* Escape (n=1075, ln=272) */
+/* Escape (n=978, ln=272) */
 
 #line 272 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Read_Do__OUT_414);
 
-/* Block (n=1077, ln=270) */
+/* Block (n=980, ln=270) */
 
 #line 270 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=3001, ln=269) */
+/* Par_Or (n=2853, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Read_Par_Or__OUT_401);
 
-/* Par_Or (n=3001, ln=269) */
+/* Par_Or (n=2853, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or__OUT_401:;
 
-/* Par_Or (n=3001, ln=269) */
+/* Par_Or (n=2853, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
@@ -9238,27 +9237,27 @@ _ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Read_Par_Or__CLR_402;
     return 1;
 }
 
-/* Par_Or (n=3001, ln=269) */
+/* Par_Or (n=2853, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or__CLR_402:;
 
-/* Block (n=1080, ln=269) */
+/* Block (n=983, ln=269) */
 
 #line 269 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=4591, ln=268) */
+/* Par_Or (n=4418, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Read_Par_Or__OUT_394);
 
-/* Par_Or (n=4591, ln=268) */
+/* Par_Or (n=4418, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or__OUT_394:;
 
-/* Par_Or (n=4591, ln=268) */
+/* Par_Or (n=4418, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -9273,52 +9272,52 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Read_Par_Or__CLR_395;
     return 1;
 }
 
-/* Par_Or (n=4591, ln=268) */
+/* Par_Or (n=4418, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or__CLR_395:;
 
-/* Block (n=2996, ln=268) */
+/* Block (n=2848, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=2997, ln=268) */
+/* Do (n=2849, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Do__OUT_409:;
 
-/* Block (n=1083, ln=268) */
+/* Block (n=986, ln=268) */
 
 #line 268 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Block (n=2934, ln=267) */
+/* Block (n=2786, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Block (n=2936, ln=267) */
+/* Block (n=2788, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=2937, ln=267) */
+/* Do (n=2789, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=2937, ln=267) */
+/* Do (n=2789, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Do__OUT_414:;
 
-/* Do (n=2937, ln=267) */
+/* Do (n=2789, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     _ceu_mem->has_term = 1;
 
-/* Do (n=2937, ln=267) */
+/* Do (n=2789, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -9333,22 +9332,22 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Read_Do__CLR_415;
     return 1;
 }
 
-/* Do (n=2937, ln=267) */
+/* Do (n=2789, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Do__CLR_415:;
 
-/* Par_Or (n=4585, ln=267) */
+/* Par_Or (n=4412, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Read_Par_Or__OUT_380);
 
-/* Par_Or (n=4585, ln=267) */
+/* Par_Or (n=4412, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or__OUT_380:;
 
-/* Par_Or (n=4585, ln=267) */
+/* Par_Or (n=4412, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
@@ -9363,82 +9362,82 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_NRF24L01_Read_Par_Or__CLR_381;
     return 1;
 }
 
-/* Par_Or (n=4585, ln=267) */
+/* Par_Or (n=4412, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Read_Par_Or__CLR_381:;
 
-/* Block (n=2949, ln=267) */
+/* Block (n=2801, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Code (n=2950, ln=267) */
+/* Code (n=2802, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Code (n=2950, ln=267) */
+/* Code (n=2802, ln=267) */
 
 #line 267 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Code (n=3024, ln=277) */
+/* Code (n=2876, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=3024, ln=277) */
+/* Code (n=2876, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_Code_NRF24L01_Init:;
 
-/* Block (n=3023, ln=277) */
+/* Block (n=2875, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Par_Or (n=4597, ln=277) */
+/* Par_Or (n=4424, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_420;
 
-/* Par_Or (n=4597, ln=277) */
+/* Par_Or (n=4424, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_419);
 
-/* Par_Or (n=4597, ln=277) */
+/* Par_Or (n=4424, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_419:;
 
-/* Finalize_Case (n=4074, ln=277) */
+/* Finalize_Case (n=3901, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[1].lbl    = CEU_LABEL_NRF24L01_Init_Finalize_Case__IN_424;
 
-/* Finalize_Case (n=4074, ln=277) */
+/* Finalize_Case (n=3901, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (0) {
 
-/* Finalize_Case (n=4074, ln=277) */
+/* Finalize_Case (n=3901, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Finalize_Case__IN_424:;
 
-/* Block (n=3018, ln=277) */
+/* Block (n=2870, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Code_Finalize (n=3016, ln=277) */
+/* Code_Finalize (n=2868, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (_ceu_mem->has_term) {
@@ -9452,12 +9451,12 @@ if (_ceu_mem->has_term) {
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
 
-/* Code_Finalize (n=3016, ln=277) */
+/* Code_Finalize (n=2868, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_nxt->params_n = 0;
 
-/* Code_Finalize (n=3016, ln=277) */
+/* Code_Finalize (n=2868, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
@@ -9479,139 +9478,583 @@ if (_ceu_mem->has_term) {
     return 0;
 }
 
-/* Code_Finalize (n=3016, ln=277) */
+/* Code_Finalize (n=2868, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Block (n=3018, ln=277) */
+/* Block (n=2870, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Finalize_Case (n=4074, ln=277) */
+/* Finalize_Case (n=3901, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Finalize_Case (n=4074, ln=277) */
+/* Finalize_Case (n=3901, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Await_Forever (n=4594, ln=277) */
+/* Await_Forever (n=4421, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Par_Or (n=4597, ln=277) */
+/* Par_Or (n=4424, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_421);
 
-/* Par_Or (n=4597, ln=277) */
+/* Par_Or (n=4424, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_420:;
 
-/* Block (n=3014, ln=277) */
+/* Block (n=2866, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=3012, ln=277) */
+/* Block (n=2864, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=1352, ln=279) */
+/* Block (n=1255, ln=279) */
 
 #line 279 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Stmt_Call (n=1097, ln=279) */
+/* Stmt_Call (n=1000, ln=279) */
 
 #line 279 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 pinMode((((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).ce)),OUTPUT);
 
-/* Stmt_Call (n=1104, ln=280) */
+/* Stmt_Call (n=1007, ln=280) */
 
 #line 280 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 pinMode((((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).csn)),OUTPUT);
 
-/* Stmt_Call (n=1111, ln=281) */
+/* Stmt_Call (n=1014, ln=281) */
 
 #line 281 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 digitalWrite((((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).ce)),LOW);
 
-/* Stmt_Call (n=1118, ln=282) */
+/* Stmt_Call (n=1021, ln=282) */
 
 #line 282 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 digitalWrite((((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).csn)),HIGH);
 
-/* Await_Wclock (n=1121, ln=284) */
+/* Await_Wclock (n=1024, ln=284) */
 
 #line 284 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-ceu_wclock(5000.0, &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__wclk_1121), NULL, CEU_TRACE(0));
+ceu_wclock(5000.0, &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__wclk_1024), NULL, CEU_TRACE(0));
 
-_CEU_HALT_1121_:
+_CEU_HALT_1024_:
 
-/* Await_Wclock (n=1121, ln=284) */
+/* Await_Wclock (n=1024, ln=284) */
 
 #line 284 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__WCLOCK;
 
-/* Await_Wclock (n=1121, ln=284) */
+/* Await_Wclock (n=1024, ln=284) */
 
 #line 284 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Wclock__OUT_425;
 
-/* Await_Wclock (n=1121, ln=284) */
+/* Await_Wclock (n=1024, ln=284) */
 
 #line 284 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Await_Wclock (n=1121, ln=284) */
+/* Await_Wclock (n=1024, ln=284) */
 
 #line 284 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Await_Wclock__OUT_425:;
 
-/* Await_Wclock (n=1121, ln=284) */
+/* Await_Wclock (n=1024, ln=284) */
 
 #line 284 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 /* subtract time and check if I have to awake */
 {
     s32* dt = (s32*)_ceu_cur->params;
-    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__wclk_1121), CEU_TRACE(0)) ) {
-        goto _CEU_HALT_1121_;
+    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__wclk_1024), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_1024_;
     }
 }
 
-/* Abs_Await (n=1130, ln=287) */
+/* Abs_Await (n=1033, ln=287) */
 
 #line 287 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1130, ln=287) */
+/* Abs_Await (n=1033, ln=287) */
 
 #line 287 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1130);
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1033);
 
-/* Abs_Await (n=1130, ln=287) */
+/* Abs_Await (n=1033, ln=287) */
 
 #line 287 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_426;
 
-/* Abs_Await (n=1130, ln=287) */
+/* Abs_Await (n=1033, ln=287) */
 
 #line 287 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1130))) = 
+    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Write __ceu_1128;__ceu_1128.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1128.reg = 5;__ceu_1128.value = 76;; __ceu_1128;})
+({tceu_code_mem_NRF24L01_Write __ceu_1031;__ceu_1031.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1031.reg = 5;__ceu_1031.value = 76;; __ceu_1031;})
 
 #else
 (tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 5,.value = 76 }
+
+#endif
+;
+#ifdef CEU_FEATURES_POOL
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033))->_mem.pak    = NULL;
+#endif
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033))->_mem.trails_n = 7;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033)));
+}
+
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1033)), 0, 7-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    //return 1; (later, after deciding for spawn/await)
+}
+
+/* Abs_Await (n=1033, ln=287) */
+
+#line 287 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+return 1;
+
+/* Abs_Await (n=1033, ln=287) */
+
+#line 287 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_426:;
+
+/* Abs_Await (n=1060, ln=292) */
+
+#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Await (n=1060, ln=292) */
+
+#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1060);
+
+/* Abs_Await (n=1060, ln=292) */
+
+#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_427;
+
+/* Abs_Await (n=1060, ln=292) */
+
+#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060))) = 
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_NRF24L01_Write __ceu_1058;__ceu_1058.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1058.reg = 6;__ceu_1058.value = (((bit(5)|bit(3))|bit(1))|bit(2));; __ceu_1058;})
+
+#else
+(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 6,.value = (((bit(5)|bit(3))|bit(1))|bit(2)) }
+
+#endif
+;
+#ifdef CEU_FEATURES_POOL
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060))->_mem.pak    = NULL;
+#endif
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060))->_mem.trails_n = 7;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060)));
+}
+
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1060)), 0, 7-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    //return 1; (later, after deciding for spawn/await)
+}
+
+/* Abs_Await (n=1060, ln=292) */
+
+#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+return 1;
+
+/* Abs_Await (n=1060, ln=292) */
+
+#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_427:;
+
+/* Abs_Await (n=1072, ln=295) */
+
+#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Await (n=1072, ln=295) */
+
+#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1072);
+
+/* Abs_Await (n=1072, ln=295) */
+
+#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_428;
+
+/* Abs_Await (n=1072, ln=295) */
+
+#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072))) = 
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_NRF24L01_Write __ceu_1070;__ceu_1070.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1070.reg = 2;__ceu_1070.value = bit(0);; __ceu_1070;})
+
+#else
+(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 2,.value = bit(0) }
+
+#endif
+;
+#ifdef CEU_FEATURES_POOL
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072))->_mem.pak    = NULL;
+#endif
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072))->_mem.trails_n = 7;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072)));
+}
+
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1072)), 0, 7-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    //return 1; (later, after deciding for spawn/await)
+}
+
+/* Abs_Await (n=1072, ln=295) */
+
+#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+return 1;
+
+/* Abs_Await (n=1072, ln=295) */
+
+#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_428:;
+
+/* Block (n=1097, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+
+/* Vec_Init (n=3500, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+ceu_vector_init(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085)),5, 0, 0, sizeof(byte),
+                (byte*)&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085_buf)));
+
+/* Set_Vec (n=1084, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+    usize __ceu_nxt;
+
+/* Set_Vec (n=1084, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085)), 0, 0);
+    __ceu_nxt = 0;
+
+/* Set_Vec (n=1084, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085)), ((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085)).len + 5), 1);
+
+/* Set_Vec (n=1084, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085)), __ceu_nxt++)) = 238;
+
+/* Set_Vec (n=1084, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085)), __ceu_nxt++)) = 221;
+
+/* Set_Vec (n=1084, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085)), __ceu_nxt++)) = 204;
+
+/* Set_Vec (n=1084, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085)), __ceu_nxt++)) = 187;
+
+/* Set_Vec (n=1084, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085)), __ceu_nxt++)) = 170;
+
+/* Set_Vec (n=1084, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+
+/* Set_Vec (n=1084, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
+
+/* Abs_Await (n=1095, ln=298) */
+
+#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Await (n=1095, ln=298) */
+
+#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1095);
+
+/* Abs_Await (n=1095, ln=298) */
+
+#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_429;
+
+/* Abs_Await (n=1095, ln=298) */
+
+#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+    *((tceu_code_mem_NRF24L01_Writes*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095))) = 
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_NRF24L01_Writes __ceu_1093;__ceu_1093.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1093.reg = 10;__ceu_1093.values = (&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085)));; __ceu_1093;})
+
+#else
+(tceu_code_mem_NRF24L01_Writes) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 10,.values = (&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1085))) }
+
+#endif
+;
+#ifdef CEU_FEATURES_POOL
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095))->_mem.pak    = NULL;
+#endif
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095))->_mem.trails_n = 7;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Writes_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095)));
+}
+
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1095)), 0, 7-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    //return 1; (later, after deciding for spawn/await)
+}
+
+/* Abs_Await (n=1095, ln=298) */
+
+#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+return 1;
+
+/* Abs_Await (n=1095, ln=298) */
+
+#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_429:;
+
+/* Block (n=1097, ln=297) */
+
+#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
+
+/* Do (n=1098, ln=296) */
+
+#line 296 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Do__OUT_431:;
+
+/* Abs_Await (n=1107, ln=300) */
+
+#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Await (n=1107, ln=300) */
+
+#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1107);
+
+/* Abs_Await (n=1107, ln=300) */
+
+#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_433;
+
+/* Abs_Await (n=1107, ln=300) */
+
+#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107))) = 
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_NRF24L01_Write __ceu_1105;__ceu_1105.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1105.reg = 17;__ceu_1105.value = 1;; __ceu_1105;})
+
+#else
+(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 17,.value = 1 }
+
+#endif
+;
+#ifdef CEU_FEATURES_POOL
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107))->_mem.pak    = NULL;
+#endif
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107))->_mem.trails_n = 7;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107)));
+}
+
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1107)), 0, 7-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    //return 1; (later, after deciding for spawn/await)
+}
+
+/* Abs_Await (n=1107, ln=300) */
+
+#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+return 1;
+
+/* Abs_Await (n=1107, ln=300) */
+
+#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_433:;
+
+/* Block (n=1132, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+
+/* Vec_Init (n=3529, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+ceu_vector_init(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120)),5, 0, 0, sizeof(byte),
+                (byte*)&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120_buf)));
+
+/* Set_Vec (n=1119, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+    usize __ceu_nxt;
+
+/* Set_Vec (n=1119, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120)), 0, 0);
+    __ceu_nxt = 0;
+
+/* Set_Vec (n=1119, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120)), ((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120)).len + 5), 1);
+
+/* Set_Vec (n=1119, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120)), __ceu_nxt++)) = 238;
+
+/* Set_Vec (n=1119, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120)), __ceu_nxt++)) = 221;
+
+/* Set_Vec (n=1119, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120)), __ceu_nxt++)) = 204;
+
+/* Set_Vec (n=1119, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120)), __ceu_nxt++)) = 187;
+
+/* Set_Vec (n=1119, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120)), __ceu_nxt++)) = 170;
+
+/* Set_Vec (n=1119, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+
+/* Set_Vec (n=1119, ln=302) */
+
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
+
+/* Abs_Await (n=1130, ln=303) */
+
+#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Await (n=1130, ln=303) */
+
+#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1130);
+
+/* Abs_Await (n=1130, ln=303) */
+
+#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_434;
+
+/* Abs_Await (n=1130, ln=303) */
+
+#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+    *((tceu_code_mem_NRF24L01_Writes*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1130))) = 
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_NRF24L01_Writes __ceu_1128;__ceu_1128.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1128.reg = 16;__ceu_1128.values = (&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120)));; __ceu_1128;})
+
+#else
+(tceu_code_mem_NRF24L01_Writes) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 16,.values = (&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1120))) }
 
 #endif
 ;
@@ -9625,7 +10068,7 @@ _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_426;
     memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1130))->_mem._trails, 0, 7*sizeof(tceu_trl));
     (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1130))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
     (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1130))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1130))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1130)));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1130))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Writes_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1130)));
 }
 
 {
@@ -9637,298 +10080,669 @@ _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_426;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1130, ln=287) */
+/* Abs_Await (n=1130, ln=303) */
 
-#line 287 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1130, ln=287) */
+/* Abs_Await (n=1130, ln=303) */
 
-#line 287 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_426:;
+#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_434:;
 
-/* Abs_Await (n=1157, ln=292) */
+/* Block (n=1132, ln=302) */
 
-#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
+
+/* Do (n=1133, ln=301) */
+
+#line 301 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Do__OUT_436:;
+
+/* Abs_Await (n=1142, ln=307) */
+
+#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1157, ln=292) */
+/* Abs_Await (n=1142, ln=307) */
 
-#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1157);
+#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1142);
 
-/* Abs_Await (n=1157, ln=292) */
+/* Abs_Await (n=1142, ln=307) */
 
-#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_427;
+#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_438;
 
-/* Abs_Await (n=1157, ln=292) */
+/* Abs_Await (n=1142, ln=307) */
 
-#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157))) = 
+    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Write __ceu_1155;__ceu_1155.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1155.reg = 6;__ceu_1155.value = (((bit(5)|bit(3))|bit(1))|bit(2));; __ceu_1155;})
+({tceu_code_mem_NRF24L01_Write __ceu_1140;__ceu_1140.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1140.reg = 1;__ceu_1140.value = 0;; __ceu_1140;})
 
 #else
-(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 6,.value = (((bit(5)|bit(3))|bit(1))|bit(2)) }
+(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 1,.value = 0 }
 
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157))->_mem.trails_n = 7;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157)));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142))->_mem.trails_n = 7;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1157)), 0, 7-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1142)), 0, 7-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1157, ln=292) */
+/* Abs_Await (n=1142, ln=307) */
 
-#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1157, ln=292) */
+/* Abs_Await (n=1142, ln=307) */
 
-#line 292 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_427:;
+#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_438:;
 
-/* Abs_Await (n=1169, ln=295) */
+/* Abs_Await (n=1164, ln=310) */
 
-#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1169, ln=295) */
+/* Abs_Await (n=1164, ln=310) */
 
-#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1169);
+#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1164);
 
-/* Abs_Await (n=1169, ln=295) */
+/* Abs_Await (n=1164, ln=310) */
 
-#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_428;
+#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_439;
 
-/* Abs_Await (n=1169, ln=295) */
+/* Abs_Await (n=1164, ln=310) */
 
-#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169))) = 
+    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Write __ceu_1167;__ceu_1167.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1167.reg = 2;__ceu_1167.value = bit(0);; __ceu_1167;})
+({tceu_code_mem_NRF24L01_Write __ceu_1162;__ceu_1162.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1162.reg = 7;__ceu_1162.value = ((bit(6)|bit(5))|bit(4));; __ceu_1162;})
 
 #else
-(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 2,.value = bit(0) }
+(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 7,.value = ((bit(6)|bit(5))|bit(4)) }
 
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169))->_mem.trails_n = 7;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169)));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164))->_mem.trails_n = 7;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1169)), 0, 7-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1164)), 0, 7-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1169, ln=295) */
+/* Abs_Await (n=1164, ln=310) */
 
-#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1169, ln=295) */
+/* Abs_Await (n=1164, ln=310) */
 
-#line 295 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_428:;
+#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_439:;
 
-/* Block (n=1194, ln=297) */
+/* Block (n=2929, ln=313) */
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Vec_Init (n=3671, ln=297) */
+/* Loop (n=2906, ln=313) */
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-ceu_vector_init(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182)),5, 0, 0, sizeof(byte),
-                (byte*)&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182_buf)));
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+while (1) {
+        
+/* Block (n=2905, ln=313) */
 
-/* Set_Vec (n=1181, ln=297) */
-
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    usize __ceu_nxt;
 
-/* Set_Vec (n=1181, ln=297) */
+/* If (n=2903, ln=313) */
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182)), 0, 0);
-    __ceu_nxt = 0;
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+if ((((*((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).spi)).is_locked))) {
+    
+/* Block (n=2899, ln=313) */
 
-/* Set_Vec (n=1181, ln=297) */
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182)), ((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182)).len + 5), 1);
+/* Await_Int (n=2896, ln=313) */
 
-/* Set_Vec (n=1181, ln=297) */
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt = ((tceu_evt){ CEU_EVENT_LOCK_OK_UNLOCKED, {&(*((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).spi))} });
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182)), __ceu_nxt++)) = 238;
+/* Await_Int (n=2896, ln=313) */
 
-/* Set_Vec (n=1181, ln=297) */
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_ok_unlocked__OUT_440;
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182)), __ceu_nxt++)) = 221;
+/* Await_Int (n=2896, ln=313) */
 
-/* Set_Vec (n=1181, ln=297) */
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+return 0;
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182)), __ceu_nxt++)) = 204;
+/* Await_Int (n=2896, ln=313) */
 
-/* Set_Vec (n=1181, ln=297) */
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_ok_unlocked__OUT_440:;
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182)), __ceu_nxt++)) = 187;
+/* Block (n=2899, ln=313) */
 
-/* Set_Vec (n=1181, ln=297) */
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
+} else {
+    
+/* Block (n=2902, ln=313) */
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182)), __ceu_nxt++)) = 170;
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
 
-/* Set_Vec (n=1181, ln=297) */
+/* Break (n=2900, ln=313) */
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+CEU_GOTO(CEU_LABEL_NRF24L01_Init_Loop_Break__OUT_447);
 
-/* Set_Vec (n=1181, ln=297) */
+/* Block (n=2902, ln=313) */
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
 }
 
-/* Abs_Await (n=1192, ln=298) */
+/* Block (n=2905, ln=313) */
 
-#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
 
-/* Abs_Await (n=1192, ln=298) */
+/* Loop (n=2906, ln=313) */
 
-#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1192);
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Loop_Continue__CNT_445:;
 
-/* Abs_Await (n=1192, ln=298) */
+/* Loop (n=2906, ln=313) */
 
-#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_429;
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+        *_ceu_trlK = 1;
+}
 
-/* Abs_Await (n=1192, ln=298) */
+/* Loop (n=2906, ln=313) */
 
-#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Loop_Break__OUT_447:;
+
+/* Set_Exp (n=2912, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+(((*((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).spi)).is_locked)) = 1;
+
+/* Par_Or (n=4430, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[4].level  = _ceu_level;
+_ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_449;
+
+/* Par_Or (n=4430, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_448);
+
+/* Par_Or (n=4430, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_448:;
+
+/* Finalize_Case (n=3903, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
+_ceu_mem->_trails[3].lbl    = CEU_LABEL_NRF24L01_Init_Finalize_Case__IN_454;
+
+/* Finalize_Case (n=3903, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+if (0) {
+
+/* Finalize_Case (n=3903, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Finalize_Case__IN_454:;
+
+/* Block (n=2926, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_NRF24L01_Writes*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192))) = 
+
+/* Set_Exp (n=2918, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+(((*((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).spi)).is_locked)) = 0;
+
+/* Emit_Evt (n=2924, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[3].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[3].level  = _ceu_level;
+_ceu_mem->_trails[3].lbl    = CEU_LABEL_NRF24L01_Init_Emit_Int__OUT_452;
+{
+    tceu_evt   __ceu_evt   = ((tceu_evt){ CEU_EVENT_LOCK_OK_UNLOCKED, {&(*((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).spi))} });
+    tceu_range __ceu_range = { &CEU_APP.root._mem, 0, CEU_TRAILS_N-1 };
+    _ceu_nxt->evt     = __ceu_evt;
+    _ceu_nxt->range   = __ceu_range;
+
+/* Emit_Evt (n=2924, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    _ceu_nxt->params_n = 0;
+
+/* Emit_Evt (n=2924, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+    return 1;
+}
+
+/* Emit_Evt (n=2924, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Emit_Int__OUT_452:;
+
+/* Block (n=2926, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
+
+/* Finalize_Case (n=3903, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+return 0;
+
+/* Finalize_Case (n=3903, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
+
+/* Await_Forever (n=4427, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+return 0;
+
+/* Par_Or (n=4430, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_450);
+
+/* Par_Or (n=4430, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_449:;
+
+/* Block (n=1209, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+
+/* Par_Or (n=2934, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[6].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[6].level  = _ceu_level;
+_ceu_mem->_trails[6].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_456;
+
+/* Par_Or (n=2934, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_455);
+
+/* Par_Or (n=2934, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_455:;
+
+/* Block (n=2933, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+
+/* Abs_Await (n=1178, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[5].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Await (n=1178, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1178);
+
+/* Abs_Await (n=1178, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[5].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_459;
+
+/* Abs_Await (n=1178, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Writes __ceu_1190;__ceu_1190.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1190.reg = 10;__ceu_1190.values = (&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182)));; __ceu_1190;})
+({tceu_code_mem_SPI_Transaction __ceu_1176;__ceu_1176.freq = 4000000;__ceu_1176.bit_order = 1;__ceu_1176.mode = 0;__ceu_1176.cs = { .is_set=0 };__ceu_1176.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).csn))};; __ceu_1176;})
 
 #else
-(tceu_code_mem_NRF24L01_Writes) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 10,.values = (&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1182))) }
+(tceu_code_mem_SPI_Transaction) { .freq = 4000000,.bit_order = 1,.mode = 0,.cs = { .is_set=0 },.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).csn))} }
 
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192))->_mem.trails_n = 7;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Writes_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192)));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178))->_mem.trails_n = 5;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1192)), 0, 7-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1178)), 0, 5-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1192, ln=298) */
+/* Abs_Await (n=1178, ln=314) */
 
-#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1192, ln=298) */
+/* Abs_Await (n=1178, ln=314) */
 
-#line 298 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_429:;
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_459:;
 
-/* Block (n=1194, ln=297) */
+/* Block (n=2933, ln=314) */
 
-#line 297 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=1195, ln=296) */
+/* Par_Or (n=2934, ln=314) */
 
-#line 296 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Do__OUT_431:;
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_457);
 
-/* Abs_Await (n=1204, ln=300) */
+/* Par_Or (n=2934, ln=314) */
 
-#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_456:;
 
-/* Abs_Await (n=1204, ln=300) */
+/* Block (n=1186, ln=315) */
 
-#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1204);
-
-/* Abs_Await (n=1204, ln=300) */
-
-#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_433;
-
-/* Abs_Await (n=1204, ln=300) */
-
-#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))) = 
+
+/* Abs_Await (n=1184, ln=315) */
+
+#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[6].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Await (n=1184, ln=315) */
+
+#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1184);
+
+/* Abs_Await (n=1184, ln=315) */
+
+#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[6].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_461;
+
+/* Abs_Await (n=1184, ln=315) */
+
+#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+    *((tceu_code_mem_SPI_Transfer_8*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Write __ceu_1202;__ceu_1202.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1202.reg = 17;__ceu_1202.value = 1;; __ceu_1202;})
+({tceu_code_mem_SPI_Transfer_8 __ceu_1182;__ceu_1182.v = { .is_set=1, .value=226};; __ceu_1182;})
 
 #else
-(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 17,.value = 1 }
+(tceu_code_mem_SPI_Transfer_8) { .v = { .is_set=1, .value=226} }
+
+#endif
+;
+#ifdef CEU_FEATURES_POOL
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184))->_mem.pak    = NULL;
+#endif
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184))->_mem.trails_n = 3;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184))->_mem._trails, 0, 3*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_8_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184)));
+}
+
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1184)), 0, 3-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    //return 1; (later, after deciding for spawn/await)
+}
+
+/* Abs_Await (n=1184, ln=315) */
+
+#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+return 1;
+
+/* Abs_Await (n=1184, ln=315) */
+
+#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_461:;
+
+/* Block (n=1186, ln=315) */
+
+#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
+
+/* Par_Or (n=2934, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_457);
+
+/* Par_Or (n=2934, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or__OUT_457:;
+
+/* Par_Or (n=2934, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[4].level  = _ceu_level;
+_ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or__CLR_458;
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 4+1, 6 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    return 1;
+}
+
+/* Par_Or (n=2934, ln=314) */
+
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or__CLR_458:;
+
+/* Par_Or (n=2938, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[6].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[6].level  = _ceu_level;
+_ceu_mem->_trails[6].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_464;
+
+/* Par_Or (n=2938, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_463);
+
+/* Par_Or (n=2938, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_463:;
+
+/* Block (n=2937, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+
+/* Abs_Await (n=1198, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[5].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Await (n=1198, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1198);
+
+/* Abs_Await (n=1198, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[5].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_467;
+
+/* Abs_Await (n=1198, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198))) = 
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_SPI_Transaction __ceu_1196;__ceu_1196.freq = 4000000;__ceu_1196.bit_order = 1;__ceu_1196.mode = 0;__ceu_1196.cs = { .is_set=0 };__ceu_1196.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).csn))};; __ceu_1196;})
+
+#else
+(tceu_code_mem_SPI_Transaction) { .freq = 4000000,.bit_order = 1,.mode = 0,.cs = { .is_set=0 },.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).csn))} }
+
+#endif
+;
+#ifdef CEU_FEATURES_POOL
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198))->_mem.pak    = NULL;
+#endif
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198))->_mem.trails_n = 5;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198)));
+}
+
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1198)), 0, 5-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    //return 1; (later, after deciding for spawn/await)
+}
+
+/* Abs_Await (n=1198, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+return 1;
+
+/* Abs_Await (n=1198, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_467:;
+
+/* Block (n=2937, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
+
+/* Par_Or (n=2938, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_465);
+
+/* Par_Or (n=2938, ln=317) */
+
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_464:;
+
+/* Block (n=1206, ln=318) */
+
+#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+
+/* Abs_Await (n=1204, ln=318) */
+
+#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[6].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Await (n=1204, ln=318) */
+
+#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1204);
+
+/* Abs_Await (n=1204, ln=318) */
+
+#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[6].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_469;
+
+/* Abs_Await (n=1204, ln=318) */
+
+#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+{
+    *((tceu_code_mem_SPI_Transfer_8*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))) = 
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_SPI_Transfer_8 __ceu_1202;__ceu_1202.v = { .is_set=1, .value=225};; __ceu_1202;})
+
+#else
+(tceu_code_mem_SPI_Transfer_8) { .v = { .is_set=1, .value=225} }
 
 #endif
 ;
@@ -9938,194 +10752,142 @@ _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_433;
     (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))->_mem.up_mem = _ceu_mem;
     (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))->_mem.depth  = 0;
     (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))->_mem.trails_n = 7;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))->_mem.trails_n = 3;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))->_mem._trails, 0, 3*sizeof(tceu_trl));
     (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
     (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204)));
+    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_8_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204)), 0, 7-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1204)), 0, 3-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1204, ln=300) */
+/* Abs_Await (n=1204, ln=318) */
 
-#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1204, ln=300) */
+/* Abs_Await (n=1204, ln=318) */
 
-#line 300 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_433:;
+#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_469:;
 
-/* Block (n=1229, ln=302) */
+/* Block (n=1206, ln=318) */
 
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-
-/* Vec_Init (n=3700, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-ceu_vector_init(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217)),5, 0, 0, sizeof(byte),
-                (byte*)&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217_buf)));
-
-/* Set_Vec (n=1216, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-    usize __ceu_nxt;
-
-/* Set_Vec (n=1216, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217)), 0, 0);
-    __ceu_nxt = 0;
-
-/* Set_Vec (n=1216, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    ceu_vector_setlen(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217)), ((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217)).len + 5), 1);
-
-/* Set_Vec (n=1216, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217)), __ceu_nxt++)) = 238;
-
-/* Set_Vec (n=1216, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217)), __ceu_nxt++)) = 221;
-
-/* Set_Vec (n=1216, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217)), __ceu_nxt++)) = 204;
-
-/* Set_Vec (n=1216, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217)), __ceu_nxt++)) = 187;
-
-/* Set_Vec (n=1216, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    *((byte*)
-        ceu_vector_buf_get(&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217)), __ceu_nxt++)) = 170;
-
-/* Set_Vec (n=1216, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-
-/* Set_Vec (n=1216, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Abs_Await (n=1227, ln=303) */
+/* Par_Or (n=2938, ln=317) */
 
-#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_465);
 
-/* Abs_Await (n=1227, ln=303) */
+/* Par_Or (n=2938, ln=317) */
 
-#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1227);
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or__OUT_465:;
 
-/* Abs_Await (n=1227, ln=303) */
+/* Par_Or (n=2938, ln=317) */
 
-#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_434;
-
-/* Abs_Await (n=1227, ln=303) */
-
-#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[4].level  = _ceu_level;
+_ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or__CLR_466;
 {
-    *((tceu_code_mem_NRF24L01_Writes*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227))) = 
-#if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Writes __ceu_1225;__ceu_1225.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1225.reg = 16;__ceu_1225.values = (&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217)));; __ceu_1225;})
-
-#else
-(tceu_code_mem_NRF24L01_Writes) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 16,.values = (&(((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).addr_1217))) }
-
-#endif
-;
-#ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227))->_mem.pak    = NULL;
-#endif
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227))->_mem.trails_n = 7;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Writes_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227)));
-}
-
-{
-    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1227)), 0, 7-1 };
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 4+1, 6 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
-    //return 1; (later, after deciding for spawn/await)
+    return 1;
 }
 
-/* Abs_Await (n=1227, ln=303) */
+/* Par_Or (n=2938, ln=317) */
 
-#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-return 1;
+#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or__CLR_466:;
 
-/* Abs_Await (n=1227, ln=303) */
+/* Block (n=1209, ln=314) */
 
-#line 303 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_434:;
-
-/* Block (n=1229, ln=302) */
-
-#line 302 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=1230, ln=301) */
+/* Par_Or (n=4430, ln=313) */
 
-#line 301 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Do__OUT_436:;
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_450);
 
-/* Abs_Await (n=1239, ln=307) */
+/* Par_Or (n=4430, ln=313) */
 
-#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or__OUT_450:;
+
+/* Par_Or (n=4430, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[2].level  = _ceu_level;
+_ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or__CLR_451;
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 2+1, 6 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    return 1;
+}
+
+/* Par_Or (n=4430, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Par_Or__CLR_451:;
+
+/* Block (n=2929, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
+
+/* Do (n=2930, ln=313) */
+
+#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+case CEU_LABEL_NRF24L01_Init_Do__OUT_473:;
+
+/* Set_Exp (n=1228, ln=324) */
+
+#line 324 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+(((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).config)) = ((bit(1)|bit(3))|bit(2));
+
+/* Abs_Await (n=1239, ln=325) */
+
+#line 325 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1239, ln=307) */
+/* Abs_Await (n=1239, ln=325) */
 
-#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 325 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1239);
 
-/* Abs_Await (n=1239, ln=307) */
+/* Abs_Await (n=1239, ln=325) */
 
-#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_438;
+#line 325 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_475;
 
-/* Abs_Await (n=1239, ln=307) */
+/* Abs_Await (n=1239, ln=325) */
 
-#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+#line 325 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
     *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1239))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Write __ceu_1237;__ceu_1237.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1237.reg = 1;__ceu_1237.value = 0;; __ceu_1237;})
+({tceu_code_mem_NRF24L01_Write __ceu_1237;__ceu_1237.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1237.reg = 0;__ceu_1237.value = (((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).config));; __ceu_1237;})
 
 #else
-(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 1,.value = 0 }
+(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 0,.value = (((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).config)) }
 
 #endif
 ;
@@ -10151,840 +10913,77 @@ _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_438;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1239, ln=307) */
-
-#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-return 1;
-
-/* Abs_Await (n=1239, ln=307) */
-
-#line 307 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_438:;
-
-/* Abs_Await (n=1261, ln=310) */
-
-#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
-
-/* Abs_Await (n=1261, ln=310) */
-
-#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1261);
-
-/* Abs_Await (n=1261, ln=310) */
-
-#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_439;
-
-/* Abs_Await (n=1261, ln=310) */
-
-#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261))) = 
-#if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Write __ceu_1259;__ceu_1259.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1259.reg = 7;__ceu_1259.value = ((bit(6)|bit(5))|bit(4));; __ceu_1259;})
-
-#else
-(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 7,.value = ((bit(6)|bit(5))|bit(4)) }
-
-#endif
-;
-#ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261))->_mem.pak    = NULL;
-#endif
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261))->_mem.trails_n = 7;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261)));
-}
-
-{
-    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1261)), 0, 7-1 };
-    _ceu_nxt->evt      = __ceu_evt;
-    _ceu_nxt->range    = __ceu_range;
-    _ceu_nxt->params_n = 0;
-    //return 1; (later, after deciding for spawn/await)
-}
-
-/* Abs_Await (n=1261, ln=310) */
-
-#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-return 1;
-
-/* Abs_Await (n=1261, ln=310) */
-
-#line 310 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_439:;
-
-/* Block (n=3077, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-
-/* Loop (n=3054, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-while (1) {
-        
-/* Block (n=3053, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-
-/* If (n=3051, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-if ((((*((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).spi)).is_locked))) {
-    
-/* Block (n=3047, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-
-/* Await_Int (n=3044, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt = ((tceu_evt){ CEU_EVENT_LOCK_OK_UNLOCKED, {&(*((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).spi))} });
-
-/* Await_Int (n=3044, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_ok_unlocked__OUT_440;
-
-/* Await_Int (n=3044, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-return 0;
-
-/* Await_Int (n=3044, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_ok_unlocked__OUT_440:;
-
-/* Block (n=3047, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-} else {
-    
-/* Block (n=3050, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-
-/* Break (n=3048, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-CEU_GOTO(CEU_LABEL_NRF24L01_Init_Loop_Break__OUT_447);
-
-/* Block (n=3050, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-}
-
-/* Block (n=3053, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-
-/* Loop (n=3054, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Loop_Continue__CNT_445:;
-
-/* Loop (n=3054, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-        *_ceu_trlK = 1;
-}
-
-/* Loop (n=3054, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Loop_Break__OUT_447:;
-
-/* Set_Exp (n=3060, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-(((*((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).spi)).is_locked)) = 1;
-
-/* Par_Or (n=4603, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
-_ceu_mem->_trails[4].level  = _ceu_level;
-_ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_449;
-
-/* Par_Or (n=4603, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_448);
-
-/* Par_Or (n=4603, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_448:;
-
-/* Finalize_Case (n=4076, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
-_ceu_mem->_trails[3].lbl    = CEU_LABEL_NRF24L01_Init_Finalize_Case__IN_454;
-
-/* Finalize_Case (n=4076, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-if (0) {
-
-/* Finalize_Case (n=4076, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Finalize_Case__IN_454:;
-
-/* Block (n=3074, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-
-/* Set_Exp (n=3066, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-(((*((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).spi)).is_locked)) = 0;
-
-/* Emit_Evt (n=3072, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[3].evt.id = CEU_INPUT__STACKED;
-_ceu_mem->_trails[3].level  = _ceu_level;
-_ceu_mem->_trails[3].lbl    = CEU_LABEL_NRF24L01_Init_Emit_Int__OUT_452;
-{
-    tceu_evt   __ceu_evt   = ((tceu_evt){ CEU_EVENT_LOCK_OK_UNLOCKED, {&(*((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).spi))} });
-    tceu_range __ceu_range = { &CEU_APP.root._mem, 0, CEU_TRAILS_N-1 };
-    _ceu_nxt->evt     = __ceu_evt;
-    _ceu_nxt->range   = __ceu_range;
-
-/* Emit_Evt (n=3072, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    _ceu_nxt->params_n = 0;
-
-/* Emit_Evt (n=3072, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    return 1;
-}
-
-/* Emit_Evt (n=3072, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Emit_Int__OUT_452:;
-
-/* Block (n=3074, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-
-/* Finalize_Case (n=4076, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-return 0;
-
-/* Finalize_Case (n=4076, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-
-/* Await_Forever (n=4600, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-return 0;
-
-/* Par_Or (n=4603, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_450);
-
-/* Par_Or (n=4603, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_449:;
-
-/* Block (n=1306, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-
-/* Par_Or (n=3082, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].evt.id = CEU_INPUT__STACKED;
-_ceu_mem->_trails[6].level  = _ceu_level;
-_ceu_mem->_trails[6].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_456;
-
-/* Par_Or (n=3082, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_455);
-
-/* Par_Or (n=3082, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_455:;
-
-/* Block (n=3081, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-
-/* Abs_Await (n=1275, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[5].evt.id = CEU_INPUT__PROPAGATE_CODE;
-
-/* Abs_Await (n=1275, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1275);
-
-/* Abs_Await (n=1275, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[5].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_459;
-
-/* Abs_Await (n=1275, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275))) = 
-#if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transaction __ceu_1273;__ceu_1273.freq = 4000000;__ceu_1273.bit_order = 1;__ceu_1273.mode = 0;__ceu_1273.cs = { .is_set=0 };__ceu_1273.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).csn))};; __ceu_1273;})
-
-#else
-(tceu_code_mem_SPI_Transaction) { .freq = 4000000,.bit_order = 1,.mode = 0,.cs = { .is_set=0 },.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).csn))} }
-
-#endif
-;
-#ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275))->_mem.pak    = NULL;
-#endif
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275))->_mem.trails_n = 5;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275))->_mem._trails, 0, 5*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275)));
-}
-
-{
-    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1275)), 0, 5-1 };
-    _ceu_nxt->evt      = __ceu_evt;
-    _ceu_nxt->range    = __ceu_range;
-    _ceu_nxt->params_n = 0;
-    //return 1; (later, after deciding for spawn/await)
-}
-
-/* Abs_Await (n=1275, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-return 1;
-
-/* Abs_Await (n=1275, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_459:;
-
-/* Block (n=3081, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-
-/* Par_Or (n=3082, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_457);
-
-/* Par_Or (n=3082, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_456:;
-
-/* Block (n=1283, ln=315) */
-
-#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-
-/* Abs_Await (n=1281, ln=315) */
-
-#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].evt.id = CEU_INPUT__PROPAGATE_CODE;
-
-/* Abs_Await (n=1281, ln=315) */
-
-#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1281);
-
-/* Abs_Await (n=1281, ln=315) */
-
-#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_461;
-
-/* Abs_Await (n=1281, ln=315) */
-
-#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-    *((tceu_code_mem_SPI_Transfer_8*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281))) = 
-#if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transfer_8 __ceu_1279;__ceu_1279.v = { .is_set=1, .value=226};; __ceu_1279;})
-
-#else
-(tceu_code_mem_SPI_Transfer_8) { .v = { .is_set=1, .value=226} }
-
-#endif
-;
-#ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281))->_mem.pak    = NULL;
-#endif
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281))->_mem.trails_n = 3;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281))->_mem._trails, 0, 3*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_8_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281)));
-}
-
-{
-    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1281)), 0, 3-1 };
-    _ceu_nxt->evt      = __ceu_evt;
-    _ceu_nxt->range    = __ceu_range;
-    _ceu_nxt->params_n = 0;
-    //return 1; (later, after deciding for spawn/await)
-}
-
-/* Abs_Await (n=1281, ln=315) */
-
-#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-return 1;
-
-/* Abs_Await (n=1281, ln=315) */
-
-#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_461:;
-
-/* Block (n=1283, ln=315) */
-
-#line 315 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-
-/* Par_Or (n=3082, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_457);
-
-/* Par_Or (n=3082, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or__OUT_457:;
-
-/* Par_Or (n=3082, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
-_ceu_mem->_trails[4].level  = _ceu_level;
-_ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or__CLR_458;
-{
-    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
-    tceu_range __ceu_range = { _ceu_mem, 4+1, 6 };
-    _ceu_nxt->evt      = __ceu_evt;
-    _ceu_nxt->range    = __ceu_range;
-    _ceu_nxt->params_n = 0;
-    return 1;
-}
-
-/* Par_Or (n=3082, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or__CLR_458:;
-
-/* Par_Or (n=3086, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].evt.id = CEU_INPUT__STACKED;
-_ceu_mem->_trails[6].level  = _ceu_level;
-_ceu_mem->_trails[6].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_464;
-
-/* Par_Or (n=3086, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_463);
-
-/* Par_Or (n=3086, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_463:;
-
-/* Block (n=3085, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-
-/* Abs_Await (n=1295, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[5].evt.id = CEU_INPUT__PROPAGATE_CODE;
-
-/* Abs_Await (n=1295, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[5].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1295);
-
-/* Abs_Await (n=1295, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[5].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_467;
-
-/* Abs_Await (n=1295, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295))) = 
-#if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transaction __ceu_1293;__ceu_1293.freq = 4000000;__ceu_1293.bit_order = 1;__ceu_1293.mode = 0;__ceu_1293.cs = { .is_set=0 };__ceu_1293.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).csn))};; __ceu_1293;})
-
-#else
-(tceu_code_mem_SPI_Transaction) { .freq = 4000000,.bit_order = 1,.mode = 0,.cs = { .is_set=0 },.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).csn))} }
-
-#endif
-;
-#ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295))->_mem.pak    = NULL;
-#endif
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295))->_mem.trails_n = 5;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295))->_mem._trails, 0, 5*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295)));
-}
-
-{
-    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1295)), 0, 5-1 };
-    _ceu_nxt->evt      = __ceu_evt;
-    _ceu_nxt->range    = __ceu_range;
-    _ceu_nxt->params_n = 0;
-    //return 1; (later, after deciding for spawn/await)
-}
-
-/* Abs_Await (n=1295, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-return 1;
-
-/* Abs_Await (n=1295, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_467:;
-
-/* Block (n=3085, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-
-/* Par_Or (n=3086, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_465);
-
-/* Par_Or (n=3086, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_464:;
-
-/* Block (n=1303, ln=318) */
-
-#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-
-/* Abs_Await (n=1301, ln=318) */
-
-#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].evt.id = CEU_INPUT__PROPAGATE_CODE;
-
-/* Abs_Await (n=1301, ln=318) */
-
-#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1301);
-
-/* Abs_Await (n=1301, ln=318) */
-
-#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[6].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_469;
-
-/* Abs_Await (n=1301, ln=318) */
-
-#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-    *((tceu_code_mem_SPI_Transfer_8*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301))) = 
-#if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transfer_8 __ceu_1299;__ceu_1299.v = { .is_set=1, .value=225};; __ceu_1299;})
-
-#else
-(tceu_code_mem_SPI_Transfer_8) { .v = { .is_set=1, .value=225} }
-
-#endif
-;
-#ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301))->_mem.pak    = NULL;
-#endif
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301))->_mem.trails_n = 3;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301))->_mem._trails, 0, 3*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_8_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301)));
-}
-
-{
-    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1301)), 0, 3-1 };
-    _ceu_nxt->evt      = __ceu_evt;
-    _ceu_nxt->range    = __ceu_range;
-    _ceu_nxt->params_n = 0;
-    //return 1; (later, after deciding for spawn/await)
-}
-
-/* Abs_Await (n=1301, ln=318) */
-
-#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-return 1;
-
-/* Abs_Await (n=1301, ln=318) */
-
-#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_469:;
-
-/* Block (n=1303, ln=318) */
-
-#line 318 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-
-/* Par_Or (n=3086, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_465);
-
-/* Par_Or (n=3086, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or__OUT_465:;
-
-/* Par_Or (n=3086, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
-_ceu_mem->_trails[4].level  = _ceu_level;
-_ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or__CLR_466;
-{
-    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
-    tceu_range __ceu_range = { _ceu_mem, 4+1, 6 };
-    _ceu_nxt->evt      = __ceu_evt;
-    _ceu_nxt->range    = __ceu_range;
-    _ceu_nxt->params_n = 0;
-    return 1;
-}
-
-/* Par_Or (n=3086, ln=317) */
-
-#line 317 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or__CLR_466:;
-
-/* Block (n=1306, ln=314) */
-
-#line 314 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-
-/* Par_Or (n=4603, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_450);
-
-/* Par_Or (n=4603, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or__OUT_450:;
-
-/* Par_Or (n=4603, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
-_ceu_mem->_trails[2].level  = _ceu_level;
-_ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or__CLR_451;
-{
-    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
-    tceu_range __ceu_range = { _ceu_mem, 2+1, 6 };
-    _ceu_nxt->evt      = __ceu_evt;
-    _ceu_nxt->range    = __ceu_range;
-    _ceu_nxt->params_n = 0;
-    return 1;
-}
-
-/* Par_Or (n=4603, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Par_Or__CLR_451:;
-
-/* Block (n=3077, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-
-/* Do (n=3078, ln=313) */
-
-#line 313 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-case CEU_LABEL_NRF24L01_Init_Do__OUT_473:;
-
-/* Set_Exp (n=1325, ln=324) */
-
-#line 324 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-(((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).config)) = ((bit(1)|bit(3))|bit(2));
-
-/* Abs_Await (n=1336, ln=325) */
-
-#line 325 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
-
-/* Abs_Await (n=1336, ln=325) */
-
-#line 325 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__mem_1336);
-
-/* Abs_Await (n=1336, ln=325) */
-
-#line 325 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Init_Await_Await__OUT_475;
-
-/* Abs_Await (n=1336, ln=325) */
-
-#line 325 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-{
-    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336))) = 
-#if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Write __ceu_1334;__ceu_1334.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)));__ceu_1334.reg = 0;__ceu_1334.value = (((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).config));; __ceu_1334;})
-
-#else
-(tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf))),.reg = 0,.value = (((*((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).nrf)).config)) }
-
-#endif
-;
-#ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336))->_mem.pak    = NULL;
-#endif
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336))->_mem.trails_n = 7;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336)));
-}
-
-{
-    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)). __mem_1336)), 0, 7-1 };
-    _ceu_nxt->evt      = __ceu_evt;
-    _ceu_nxt->range    = __ceu_range;
-    _ceu_nxt->params_n = 0;
-    //return 1; (later, after deciding for spawn/await)
-}
-
-/* Abs_Await (n=1336, ln=325) */
+/* Abs_Await (n=1239, ln=325) */
 
 #line 325 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1336, ln=325) */
+/* Abs_Await (n=1239, ln=325) */
 
 #line 325 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Await_Await__OUT_475:;
 
-/* Par_Or (n=4609, ln=326) */
+/* Par_Or (n=4436, ln=326) */
 
 #line 326 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[4].level  = _ceu_level;
 _ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_477;
 
-/* Par_Or (n=4609, ln=326) */
+/* Par_Or (n=4436, ln=326) */
 
 #line 326 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_476);
 
-/* Par_Or (n=4609, ln=326) */
+/* Par_Or (n=4436, ln=326) */
 
 #line 326 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Par_Or_sub_1_IN_476:;
 
-/* Block (n=1347, ln=327) */
+/* Block (n=1250, ln=327) */
 
 #line 327 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Await_Wclock (n=1339, ln=327) */
+/* Await_Wclock (n=1242, ln=327) */
 
 #line 327 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-ceu_wclock(150000.0, &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__wclk_1339), NULL, CEU_TRACE(0));
+ceu_wclock(150000.0, &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__wclk_1242), NULL, CEU_TRACE(0));
 
-_CEU_HALT_1339_:
+_CEU_HALT_1242_:
 
-/* Await_Wclock (n=1339, ln=327) */
+/* Await_Wclock (n=1242, ln=327) */
 
 #line 327 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__WCLOCK;
 
-/* Await_Wclock (n=1339, ln=327) */
+/* Await_Wclock (n=1242, ln=327) */
 
 #line 327 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[3].lbl = CEU_LABEL_NRF24L01_Init_Await_Wclock__OUT_480;
 
-/* Await_Wclock (n=1339, ln=327) */
+/* Await_Wclock (n=1242, ln=327) */
 
 #line 327 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Await_Wclock (n=1339, ln=327) */
+/* Await_Wclock (n=1242, ln=327) */
 
 #line 327 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Await_Wclock__OUT_480:;
 
-/* Await_Wclock (n=1339, ln=327) */
+/* Await_Wclock (n=1242, ln=327) */
 
 #line 327 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 /* subtract time and check if I have to awake */
 {
     s32* dt = (s32*)_ceu_cur->params;
-    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__wclk_1339), CEU_TRACE(0)) ) {
-        goto _CEU_HALT_1339_;
+    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_NRF24L01_Init*)_ceu_mem)).__wclk_1242), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_1242_;
     }
 }
 
-/* Emit_Evt (n=1345, ln=328) */
+/* Emit_Evt (n=1248, ln=328) */
 
 #line 328 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[3].evt.id = CEU_INPUT__STACKED;
@@ -10996,62 +10995,62 @@ _ceu_mem->_trails[3].lbl    = CEU_LABEL_NRF24L01_Init_Emit_Int__OUT_481;
     _ceu_nxt->evt     = __ceu_evt;
     _ceu_nxt->range   = __ceu_range;
 
-/* Emit_Evt (n=1345, ln=328) */
+/* Emit_Evt (n=1248, ln=328) */
 
 #line 328 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     _ceu_nxt->params_n = 0;
 
-/* Emit_Evt (n=1345, ln=328) */
+/* Emit_Evt (n=1248, ln=328) */
 
 #line 328 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     return 1;
 }
 
-/* Emit_Evt (n=1345, ln=328) */
+/* Emit_Evt (n=1248, ln=328) */
 
 #line 328 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Emit_Int__OUT_481:;
 
-/* Block (n=1347, ln=327) */
+/* Block (n=1250, ln=327) */
 
 #line 327 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Await_Forever (n=4606, ln=326) */
+/* Await_Forever (n=4433, ln=326) */
 
 #line 326 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Par_Or (n=4609, ln=326) */
+/* Par_Or (n=4436, ln=326) */
 
 #line 326 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_478);
 
-/* Par_Or (n=4609, ln=326) */
+/* Par_Or (n=4436, ln=326) */
 
 #line 326 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Par_Or_sub_2_IN_477:;
 
-/* Await_Forever (n=1350, ln=331) */
+/* Await_Forever (n=1253, ln=331) */
 
 #line 331 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Nat_Stmt (n=3637, ln=279) */
+/* Nat_Stmt (n=3466, ln=279) */
 
 #line 279 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_assert(0, "reached end of `code`");
-/* Par_Or (n=4609, ln=326) */
+/* Par_Or (n=4436, ln=326) */
 
 #line 326 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_478);
 
-/* Par_Or (n=4609, ln=326) */
+/* Par_Or (n=4436, ln=326) */
 
 #line 326 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Par_Or__OUT_478:;
 
-/* Par_Or (n=4609, ln=326) */
+/* Par_Or (n=4436, ln=326) */
 
 #line 326 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -11066,47 +11065,47 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or__CLR_479;
     return 1;
 }
 
-/* Par_Or (n=4609, ln=326) */
+/* Par_Or (n=4436, ln=326) */
 
 #line 326 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Par_Or__CLR_479:;
 
-/* Block (n=1352, ln=279) */
+/* Block (n=1255, ln=279) */
 
 #line 279 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Block (n=3012, ln=277) */
+/* Block (n=2864, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Block (n=3014, ln=277) */
+/* Block (n=2866, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=3015, ln=277) */
+/* Do (n=2867, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Do__OUT_486:;
 
-/* Do (n=3015, ln=277) */
+/* Do (n=2867, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     _ceu_mem->has_term = 1;
 
-/* Par_Or (n=4597, ln=277) */
+/* Par_Or (n=4424, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Init_Par_Or__OUT_421);
 
-/* Par_Or (n=4597, ln=277) */
+/* Par_Or (n=4424, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Par_Or__OUT_421:;
 
-/* Par_Or (n=4597, ln=277) */
+/* Par_Or (n=4424, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
@@ -11121,82 +11120,82 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_NRF24L01_Init_Par_Or__CLR_422;
     return 1;
 }
 
-/* Par_Or (n=4597, ln=277) */
+/* Par_Or (n=4424, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Init_Par_Or__CLR_422:;
 
-/* Block (n=3023, ln=277) */
+/* Block (n=2875, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Code (n=3024, ln=277) */
+/* Code (n=2876, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Code (n=3024, ln=277) */
+/* Code (n=2876, ln=277) */
 
 #line 277 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Code (n=3110, ln=334) */
+/* Code (n=2962, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=3110, ln=334) */
+/* Code (n=2962, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_Code_NRF24L01_Tx:;
 
-/* Block (n=3109, ln=334) */
+/* Block (n=2961, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Par_Or (n=4615, ln=334) */
+/* Par_Or (n=4442, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Tx_Par_Or_sub_2_IN_491;
 
-/* Par_Or (n=4615, ln=334) */
+/* Par_Or (n=4442, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or_sub_1_IN_490);
 
-/* Par_Or (n=4615, ln=334) */
+/* Par_Or (n=4442, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or_sub_1_IN_490:;
 
-/* Finalize_Case (n=4078, ln=334) */
+/* Finalize_Case (n=3905, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[1].lbl    = CEU_LABEL_NRF24L01_Tx_Finalize_Case__IN_495;
 
-/* Finalize_Case (n=4078, ln=334) */
+/* Finalize_Case (n=3905, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (0) {
 
-/* Finalize_Case (n=4078, ln=334) */
+/* Finalize_Case (n=3905, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Finalize_Case__IN_495:;
 
-/* Block (n=3104, ln=334) */
+/* Block (n=2956, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Code_Finalize (n=3102, ln=334) */
+/* Code_Finalize (n=2954, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (_ceu_mem->has_term) {
@@ -11210,12 +11209,12 @@ if (_ceu_mem->has_term) {
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
 
-/* Code_Finalize (n=3102, ln=334) */
+/* Code_Finalize (n=2954, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_params_cpy(_ceu_nxt, &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem))._ret), sizeof(((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem))._ret)));
 
-/* Code_Finalize (n=3102, ln=334) */
+/* Code_Finalize (n=2954, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
@@ -11237,78 +11236,78 @@ if (_ceu_mem->has_term) {
     return 0;
 }
 
-/* Code_Finalize (n=3102, ln=334) */
+/* Code_Finalize (n=2954, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Block (n=3104, ln=334) */
+/* Block (n=2956, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Finalize_Case (n=4078, ln=334) */
+/* Finalize_Case (n=3905, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Finalize_Case (n=4078, ln=334) */
+/* Finalize_Case (n=3905, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Await_Forever (n=4612, ln=334) */
+/* Await_Forever (n=4439, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Par_Or (n=4615, ln=334) */
+/* Par_Or (n=4442, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_492);
 
-/* Par_Or (n=4615, ln=334) */
+/* Par_Or (n=4442, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or_sub_2_IN_491:;
 
-/* Block (n=3096, ln=334) */
+/* Block (n=2948, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=3094, ln=334) */
+/* Block (n=2946, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Block (n=1566, ln=336) */
+/* Block (n=1469, ln=336) */
 
 #line 336 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Abs_Await (n=1386, ln=336) */
+/* Abs_Await (n=1289, ln=336) */
 
 #line 336 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1386, ln=336) */
+/* Abs_Await (n=1289, ln=336) */
 
 #line 336 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1386);
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1289);
 
-/* Abs_Await (n=1386, ln=336) */
+/* Abs_Await (n=1289, ln=336) */
 
 #line 336 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_496;
 
-/* Abs_Await (n=1386, ln=336) */
+/* Abs_Await (n=1289, ln=336) */
 
 #line 336 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386))) = 
+    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Write __ceu_1384;__ceu_1384.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)));__ceu_1384.reg = 7;__ceu_1384.value = ((bit(6)|bit(5))|bit(4));; __ceu_1384;})
+({tceu_code_mem_NRF24L01_Write __ceu_1287;__ceu_1287.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)));__ceu_1287.reg = 7;__ceu_1287.value = ((bit(6)|bit(5))|bit(4));; __ceu_1287;})
 
 #else
 (tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf))),.reg = 7,.value = ((bit(6)|bit(5))|bit(4)) }
@@ -11316,121 +11315,121 @@ _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_496;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386))->_mem.trails_n = 7;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386)));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289))->_mem.trails_n = 7;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1386)), 0, 7-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1289)), 0, 7-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1386, ln=336) */
+/* Abs_Await (n=1289, ln=336) */
 
 #line 336 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1386, ln=336) */
+/* Abs_Await (n=1289, ln=336) */
 
 #line 336 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_496:;
 
-/* Par_Or (n=3115, ln=338) */
+/* Par_Or (n=2967, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[4].level  = _ceu_level;
 _ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Tx_Par_Or_sub_2_IN_498;
 
-/* Par_Or (n=3115, ln=338) */
+/* Par_Or (n=2967, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or_sub_1_IN_497);
 
-/* Par_Or (n=3115, ln=338) */
+/* Par_Or (n=2967, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or_sub_1_IN_497:;
 
-/* Block (n=3114, ln=338) */
+/* Block (n=2966, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Await_Ext (n=1389, ln=338) */
+/* Await_Ext (n=1292, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[3].evt = ((tceu_evt){CEU_INPUT_INT0,{NULL}});
 
-/* Await_Ext (n=1389, ln=338) */
+/* Await_Ext (n=1292, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[3].lbl = CEU_LABEL_NRF24L01_Tx_Await_INT0__OUT_501;
 
-/* Await_Ext (n=1389, ln=338) */
+/* Await_Ext (n=1292, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Await_Ext (n=1389, ln=338) */
+/* Await_Ext (n=1292, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Await_INT0__OUT_501:;
 
-/* Block (n=3114, ln=338) */
+/* Block (n=2966, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=3115, ln=338) */
+/* Par_Or (n=2967, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_499);
 
-/* Par_Or (n=3115, ln=338) */
+/* Par_Or (n=2967, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or_sub_2_IN_498:;
 
-/* Block (n=1486, ln=339) */
+/* Block (n=1389, ln=339) */
 
 #line 339 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Abs_Await (n=1404, ln=339) */
+/* Abs_Await (n=1307, ln=339) */
 
 #line 339 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1404, ln=339) */
+/* Abs_Await (n=1307, ln=339) */
 
 #line 339 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[4].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1404);
+_ceu_mem->_trails[4].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1307);
 
-/* Abs_Await (n=1404, ln=339) */
+/* Abs_Await (n=1307, ln=339) */
 
 #line 339 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_503;
 
-/* Abs_Await (n=1404, ln=339) */
+/* Abs_Await (n=1307, ln=339) */
 
 #line 339 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404))) = 
+    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Write __ceu_1402;__ceu_1402.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)));__ceu_1402.reg = 0;__ceu_1402.value = ((((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).config))|bit(6));; __ceu_1402;})
+({tceu_code_mem_NRF24L01_Write __ceu_1305;__ceu_1305.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)));__ceu_1305.reg = 0;__ceu_1305.value = ((((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).config))|bit(6));; __ceu_1305;})
 
 #else
 (tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf))),.reg = 0,.value = ((((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).config))|bit(6)) }
@@ -11438,174 +11437,174 @@ _ceu_mem->_trails[4].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_503;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404))->_mem.trails_n = 7;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404)));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307))->_mem.trails_n = 7;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1404)), 0, 7-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1307)), 0, 7-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1404, ln=339) */
+/* Abs_Await (n=1307, ln=339) */
 
 #line 339 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1404, ln=339) */
+/* Abs_Await (n=1307, ln=339) */
 
 #line 339 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_503:;
 
-/* Block (n=3160, ln=340) */
+/* Block (n=3012, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Loop (n=3137, ln=340) */
+/* Loop (n=2989, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 while (1) {
         
-/* Block (n=3136, ln=340) */
+/* Block (n=2988, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* If (n=3134, ln=340) */
+/* If (n=2986, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if ((((*((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).spi)).is_locked))) {
     
-/* Block (n=3130, ln=340) */
+/* Block (n=2982, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Await_Int (n=3127, ln=340) */
+/* Await_Int (n=2979, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].evt = ((tceu_evt){ CEU_EVENT_LOCK_OK_UNLOCKED, {&(*((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).spi))} });
 
-/* Await_Int (n=3127, ln=340) */
+/* Await_Int (n=2979, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].lbl = CEU_LABEL_NRF24L01_Tx_Await_ok_unlocked__OUT_504;
 
-/* Await_Int (n=3127, ln=340) */
+/* Await_Int (n=2979, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Await_Int (n=3127, ln=340) */
+/* Await_Int (n=2979, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Await_ok_unlocked__OUT_504:;
 
-/* Block (n=3130, ln=340) */
+/* Block (n=2982, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 } else {
     
-/* Block (n=3133, ln=340) */
+/* Block (n=2985, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Break (n=3131, ln=340) */
+/* Break (n=2983, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Loop_Break__OUT_511);
 
-/* Block (n=3133, ln=340) */
+/* Block (n=2985, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 }
 
-/* Block (n=3136, ln=340) */
+/* Block (n=2988, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Loop (n=3137, ln=340) */
+/* Loop (n=2989, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Loop_Continue__CNT_509:;
 
-/* Loop (n=3137, ln=340) */
+/* Loop (n=2989, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
         *_ceu_trlK = 3;
 }
 
-/* Loop (n=3137, ln=340) */
+/* Loop (n=2989, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Loop_Break__OUT_511:;
 
-/* Set_Exp (n=3143, ln=340) */
+/* Set_Exp (n=2995, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 (((*((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).spi)).is_locked)) = 1;
 
-/* Par_Or (n=4621, ln=340) */
+/* Par_Or (n=4448, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[6].level  = _ceu_level;
 _ceu_mem->_trails[6].lbl    = CEU_LABEL_NRF24L01_Tx_Par_Or_sub_2_IN_513;
 
-/* Par_Or (n=4621, ln=340) */
+/* Par_Or (n=4448, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or_sub_1_IN_512);
 
-/* Par_Or (n=4621, ln=340) */
+/* Par_Or (n=4448, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or_sub_1_IN_512:;
 
-/* Finalize_Case (n=4080, ln=340) */
+/* Finalize_Case (n=3907, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[5].evt.id = CEU_INPUT__FINALIZE;
 _ceu_mem->_trails[5].lbl    = CEU_LABEL_NRF24L01_Tx_Finalize_Case__IN_518;
 
-/* Finalize_Case (n=4080, ln=340) */
+/* Finalize_Case (n=3907, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 if (0) {
 
-/* Finalize_Case (n=4080, ln=340) */
+/* Finalize_Case (n=3907, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Finalize_Case__IN_518:;
 
-/* Block (n=3157, ln=340) */
+/* Block (n=3009, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Set_Exp (n=3149, ln=340) */
+/* Set_Exp (n=3001, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 (((*((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).spi)).is_locked)) = 0;
 
-/* Emit_Evt (n=3155, ln=340) */
+/* Emit_Evt (n=3007, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[5].evt.id = CEU_INPUT__STACKED;
@@ -11617,101 +11616,101 @@ _ceu_mem->_trails[5].lbl    = CEU_LABEL_NRF24L01_Tx_Emit_Int__OUT_516;
     _ceu_nxt->evt     = __ceu_evt;
     _ceu_nxt->range   = __ceu_range;
 
-/* Emit_Evt (n=3155, ln=340) */
+/* Emit_Evt (n=3007, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     _ceu_nxt->params_n = 0;
 
-/* Emit_Evt (n=3155, ln=340) */
+/* Emit_Evt (n=3007, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     return 1;
 }
 
-/* Emit_Evt (n=3155, ln=340) */
+/* Emit_Evt (n=3007, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Emit_Int__OUT_516:;
 
-/* Block (n=3157, ln=340) */
+/* Block (n=3009, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Finalize_Case (n=4080, ln=340) */
+/* Finalize_Case (n=3907, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Finalize_Case (n=4080, ln=340) */
+/* Finalize_Case (n=3907, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Await_Forever (n=4618, ln=340) */
+/* Await_Forever (n=4445, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Par_Or (n=4621, ln=340) */
+/* Par_Or (n=4448, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_514);
 
-/* Par_Or (n=4621, ln=340) */
+/* Par_Or (n=4448, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or_sub_2_IN_513:;
 
-/* Block (n=1457, ln=341) */
+/* Block (n=1360, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Par_Or (n=3165, ln=341) */
+/* Par_Or (n=3017, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[8].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[8].level  = _ceu_level;
 _ceu_mem->_trails[8].lbl    = CEU_LABEL_NRF24L01_Tx_Par_Or_sub_2_IN_520;
 
-/* Par_Or (n=3165, ln=341) */
+/* Par_Or (n=3017, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or_sub_1_IN_519);
 
-/* Par_Or (n=3165, ln=341) */
+/* Par_Or (n=3017, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or_sub_1_IN_519:;
 
-/* Block (n=3164, ln=341) */
+/* Block (n=3016, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Abs_Await (n=1418, ln=341) */
+/* Abs_Await (n=1321, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[7].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1418, ln=341) */
+/* Abs_Await (n=1321, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[7].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1418);
+_ceu_mem->_trails[7].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1321);
 
-/* Abs_Await (n=1418, ln=341) */
+/* Abs_Await (n=1321, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[7].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_523;
 
-/* Abs_Await (n=1418, ln=341) */
+/* Abs_Await (n=1321, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418))) = 
+    *((tceu_code_mem_SPI_Transaction*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transaction __ceu_1416;__ceu_1416.freq = 4000000;__ceu_1416.bit_order = 1;__ceu_1416.mode = 0;__ceu_1416.cs = { .is_set=0 };__ceu_1416.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).csn))};; __ceu_1416;})
+({tceu_code_mem_SPI_Transaction __ceu_1319;__ceu_1319.freq = 4000000;__ceu_1319.bit_order = 1;__ceu_1319.mode = 0;__ceu_1319.cs = { .is_set=0 };__ceu_1319.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).csn))};; __ceu_1319;})
 
 #else
 (tceu_code_mem_SPI_Transaction) { .freq = 4000000,.bit_order = 1,.mode = 0,.cs = { .is_set=0 },.csn = { .is_set=1, .value=(((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).csn))} }
@@ -11719,79 +11718,79 @@ _ceu_mem->_trails[7].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_523;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418))->_mem.trails_n = 5;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418))->_mem._trails, 0, 5*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418)));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321))->_mem.trails_n = 5;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transaction_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1418)), 0, 5-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1321)), 0, 5-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1418, ln=341) */
+/* Abs_Await (n=1321, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1418, ln=341) */
+/* Abs_Await (n=1321, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_523:;
 
-/* Block (n=3164, ln=341) */
+/* Block (n=3016, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=3165, ln=341) */
+/* Par_Or (n=3017, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_521);
 
-/* Par_Or (n=3165, ln=341) */
+/* Par_Or (n=3017, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or_sub_2_IN_520:;
 
-/* Block (n=1454, ln=342) */
+/* Block (n=1357, ln=342) */
 
 #line 342 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Abs_Await (n=1424, ln=342) */
+/* Abs_Await (n=1327, ln=342) */
 
 #line 342 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[8].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1424, ln=342) */
+/* Abs_Await (n=1327, ln=342) */
 
 #line 342 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[8].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1424);
+_ceu_mem->_trails[8].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1327);
 
-/* Abs_Await (n=1424, ln=342) */
+/* Abs_Await (n=1327, ln=342) */
 
 #line 342 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[8].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_525;
 
-/* Abs_Await (n=1424, ln=342) */
+/* Abs_Await (n=1327, ln=342) */
 
 #line 342 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_SPI_Transfer_8*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424))) = 
+    *((tceu_code_mem_SPI_Transfer_8*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transfer_8 __ceu_1422;__ceu_1422.v = { .is_set=1, .value=160};; __ceu_1422;})
+({tceu_code_mem_SPI_Transfer_8 __ceu_1325;__ceu_1325.v = { .is_set=1, .value=160};; __ceu_1325;})
 
 #else
 (tceu_code_mem_SPI_Transfer_8) { .v = { .is_set=1, .value=160} }
@@ -11799,169 +11798,169 @@ _ceu_mem->_trails[8].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_525;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424))->_mem.trails_n = 3;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424))->_mem._trails, 0, 3*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_8_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424)));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327))->_mem.trails_n = 3;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327))->_mem._trails, 0, 3*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_8_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1424)), 0, 3-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1327)), 0, 3-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1424, ln=342) */
+/* Abs_Await (n=1327, ln=342) */
 
 #line 342 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1424, ln=342) */
+/* Abs_Await (n=1327, ln=342) */
 
 #line 342 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_525:;
 
-/* Block (n=3175, ln=346) */
+/* Block (n=3027, ln=346) */
 
 #line 346 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Loop_Num (n=3173, ln=346) */
+/* Loop_Num (n=3025, ln=346) */
 
 #line 346 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__lim_3173) = ((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)).max) + (1*1*-1);
+((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__lim_3025) = ((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)).max) + (1*1*-1);
 
-/* Loop_Num (n=3173, ln=346) */
+/* Loop_Num (n=3025, ln=346) */
 
 #line 346 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-ceu_assert(((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__lim_3173) < ((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)).max), "`loop` limit underflow/overflow");
+ceu_assert(((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__lim_3025) < ((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)).max), "`loop` limit underflow/overflow");
 
-/* Loop_Num (n=3173, ln=346) */
+/* Loop_Num (n=3025, ln=346) */
 
 #line 346 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_assert(1> 0, "invalid `loop` step : expected positive number");
 
-/* Loop_Num (n=3173, ln=346) */
+/* Loop_Num (n=3025, ln=346) */
 
 #line 346 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__fr_3173) = ((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)).len);
-(((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1427)) = ((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)).len) + 1 * 0;
-ceu_assert_ex((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1427))>=(usize)((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__fr_3173),
+((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__fr_3025) = ((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)).len);
+(((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1330)) = ((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)).len) + 1 * 0;
+ceu_assert_ex((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1330))>=(usize)((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__fr_3025),
     "control variable overflow", CEU_TRACE(-3));
 while (1) {
 
-/* Loop_Num (n=3173, ln=346) */
+/* Loop_Num (n=3025, ln=346) */
 
 #line 346 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    if ((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1427)) > ((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__lim_3173)) {
+    if ((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1330)) > ((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__lim_3025)) {
         break;
     }
 
-/* Loop_Num (n=3173, ln=346) */
+/* Loop_Num (n=3025, ln=346) */
 
 #line 346 "./libraries/driver-nrf24l01/nrf24l01.ceu"
         
-/* Block (n=1444, ln=347) */
+/* Block (n=1347, ln=347) */
 
 #line 347 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Set_Vec (n=1441, ln=347) */
+/* Set_Vec (n=1344, ln=347) */
 
 #line 347 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
     usize __ceu_nxt;
 
-/* Set_Vec (n=1441, ln=347) */
+/* Set_Vec (n=1344, ln=347) */
 
 #line 347 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     __ceu_nxt = (*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)).len;
 
-/* Set_Vec (n=1441, ln=347) */
+/* Set_Vec (n=1344, ln=347) */
 
 #line 347 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     __ceu_nxt = (*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)).len;
 
-/* Set_Vec (n=1441, ln=347) */
+/* Set_Vec (n=1344, ln=347) */
 
 #line 347 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     ceu_vector_setlen(&(*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)), ((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)).len + 1), 1);
 
-/* Set_Vec (n=1441, ln=347) */
+/* Set_Vec (n=1344, ln=347) */
 
 #line 347 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     *((byte*)
         ceu_vector_buf_get(&(*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)), __ceu_nxt++)) = 0;
 
-/* Set_Vec (n=1441, ln=347) */
+/* Set_Vec (n=1344, ln=347) */
 
 #line 347 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 
-/* Set_Vec (n=1441, ln=347) */
-
-#line 347 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-}
-
-/* Block (n=1444, ln=347) */
+/* Set_Vec (n=1344, ln=347) */
 
 #line 347 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Loop_Num (n=3173, ln=346) */
+/* Block (n=1347, ln=347) */
+
+#line 347 "./libraries/driver-nrf24l01/nrf24l01.ceu"
+}
+
+/* Loop_Num (n=3025, ln=346) */
 
 #line 346 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Loop_Continue__CNT_528:;
 
-/* Loop_Num (n=3173, ln=346) */
+/* Loop_Num (n=3025, ln=346) */
 
 #line 346 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-    (((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1427)) = (((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1427)) + 1;
-    ceu_assert_ex((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1427))>(usize)((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__fr_3173),
+    (((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1330)) = (((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1330)) + 1;
+    ceu_assert_ex((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).i_1330))>(usize)((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__fr_3025),
         "control variable overflow", CEU_TRACE(-2));
         *_ceu_trlK = 7;
 }
 
-/* Loop_Num (n=3173, ln=346) */
+/* Loop_Num (n=3025, ln=346) */
 
 #line 346 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Loop_Break__OUT_530:;
 
-/* Block (n=3175, ln=346) */
+/* Block (n=3027, ln=346) */
 
 #line 346 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Abs_Await (n=1452, ln=350) */
+/* Abs_Await (n=1355, ln=350) */
 
 #line 350 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[8].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1452, ln=350) */
+/* Abs_Await (n=1355, ln=350) */
 
 #line 350 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[8].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1452);
+_ceu_mem->_trails[8].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1355);
 
-/* Abs_Await (n=1452, ln=350) */
+/* Abs_Await (n=1355, ln=350) */
 
 #line 350 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[8].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_532;
 
-/* Abs_Await (n=1452, ln=350) */
+/* Abs_Await (n=1355, ln=350) */
 
 #line 350 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_SPI_Transfer*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452))) = 
+    *((tceu_code_mem_SPI_Transfer*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_SPI_Transfer __ceu_1450;__ceu_1450.buf = ((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)));; __ceu_1450;})
+({tceu_code_mem_SPI_Transfer __ceu_1353;__ceu_1353.buf = ((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf)));; __ceu_1353;})
 
 #else
 (tceu_code_mem_SPI_Transfer) { .buf = ((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).buf))) }
@@ -11969,53 +11968,53 @@ _ceu_mem->_trails[8].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_532;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452))->_mem.trails_n = 3;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452))->_mem._trails, 0, 3*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452)));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355))->_mem.trails_n = 3;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355))->_mem._trails, 0, 3*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355))->_mem._trails[0].lbl    = CEU_CODE_SPI_Transfer_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1452)), 0, 3-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1355)), 0, 3-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1452, ln=350) */
+/* Abs_Await (n=1355, ln=350) */
 
 #line 350 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1452, ln=350) */
+/* Abs_Await (n=1355, ln=350) */
 
 #line 350 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_532:;
 
-/* Block (n=1454, ln=342) */
+/* Block (n=1357, ln=342) */
 
 #line 342 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=3165, ln=341) */
+/* Par_Or (n=3017, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_521);
 
-/* Par_Or (n=3165, ln=341) */
+/* Par_Or (n=3017, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_521:;
 
-/* Par_Or (n=3165, ln=341) */
+/* Par_Or (n=3017, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[6].evt.id = CEU_INPUT__STACKED;
@@ -12030,27 +12029,27 @@ _ceu_mem->_trails[6].lbl    = CEU_LABEL_NRF24L01_Tx_Par_Or__CLR_522;
     return 1;
 }
 
-/* Par_Or (n=3165, ln=341) */
+/* Par_Or (n=3017, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or__CLR_522:;
 
-/* Block (n=1457, ln=341) */
+/* Block (n=1360, ln=341) */
 
 #line 341 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=4621, ln=340) */
+/* Par_Or (n=4448, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_514);
 
-/* Par_Or (n=4621, ln=340) */
+/* Par_Or (n=4448, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_514:;
 
-/* Par_Or (n=4621, ln=340) */
+/* Par_Or (n=4448, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
@@ -12065,62 +12064,62 @@ _ceu_mem->_trails[4].lbl    = CEU_LABEL_NRF24L01_Tx_Par_Or__CLR_515;
     return 1;
 }
 
-/* Par_Or (n=4621, ln=340) */
+/* Par_Or (n=4448, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or__CLR_515:;
 
-/* Block (n=3160, ln=340) */
+/* Block (n=3012, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=3161, ln=340) */
+/* Do (n=3013, ln=340) */
 
 #line 340 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Do__OUT_536:;
 
-/* Stmt_Call (n=1465, ln=354) */
+/* Stmt_Call (n=1368, ln=354) */
 
 #line 354 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 digitalWrite((((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).ce)),1);
 
-/* Stmt_Call (n=1470, ln=355) */
+/* Stmt_Call (n=1373, ln=355) */
 
 #line 355 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 delayMicroseconds(10);
 
-/* Stmt_Call (n=1477, ln=356) */
+/* Stmt_Call (n=1380, ln=356) */
 
 #line 356 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 digitalWrite((((*((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)).ce)),0);
 
-/* Stmt_Call (n=1482, ln=358) */
+/* Stmt_Call (n=1385, ln=358) */
 
 #line 358 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 delayMicroseconds(125);
 
-/* Await_Forever (n=1484, ln=365) */
+/* Await_Forever (n=1387, ln=365) */
 
 #line 365 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Block (n=1486, ln=339) */
+/* Block (n=1389, ln=339) */
 
 #line 339 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Par_Or (n=3115, ln=338) */
+/* Par_Or (n=2967, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_499);
 
-/* Par_Or (n=3115, ln=338) */
+/* Par_Or (n=2967, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_499:;
 
-/* Par_Or (n=3115, ln=338) */
+/* Par_Or (n=2967, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -12135,38 +12134,38 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Tx_Par_Or__CLR_500;
     return 1;
 }
 
-/* Par_Or (n=3115, ln=338) */
+/* Par_Or (n=2967, ln=338) */
 
 #line 338 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or__CLR_500:;
 
-/* Block (n=1542, ln=370) */
+/* Block (n=1445, ln=370) */
 
 #line 370 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Abs_Await (n=1499, ln=370) */
+/* Abs_Await (n=1402, ln=370) */
 
 #line 370 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1499, ln=370) */
+/* Abs_Await (n=1402, ln=370) */
 
 #line 370 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1499);
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1402);
 
-/* Abs_Await (n=1499, ln=370) */
+/* Abs_Await (n=1402, ln=370) */
 
 #line 370 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_539;
 
-/* Abs_Await (n=1499, ln=370) */
+/* Abs_Await (n=1402, ln=370) */
 
 #line 370 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_NRF24L01_Read*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499))) = 
+    *((tceu_code_mem_NRF24L01_Read*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Read __ceu_1497;__ceu_1497.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)));__ceu_1497.reg = 7;; __ceu_1497;})
+({tceu_code_mem_NRF24L01_Read __ceu_1400;__ceu_1400.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)));__ceu_1400.reg = 7;; __ceu_1400;})
 
 #else
 (tceu_code_mem_NRF24L01_Read) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf))),.reg = 7 }
@@ -12174,163 +12173,163 @@ _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_539;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499))->_mem.trails_n = 7;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Read_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499)));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402))->_mem.trails_n = 7;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Read_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1499)), 0, 7-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1402)), 0, 7-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1499, ln=370) */
+/* Abs_Await (n=1402, ln=370) */
 
 #line 370 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1499, ln=370) */
+/* Abs_Await (n=1402, ln=370) */
 
 #line 370 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_539:;
 
-/* Set_Abs_Await (n=1500, ln=370) */
+/* Set_Abs_Await (n=1403, ln=370) */
 
 #line 370 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-(((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).status_1501)) = ((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1499)._ret;
+(((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).status_1404)) = ((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1402)._ret;
 
-/* If (n=3187, ln=371) */
+/* If (n=3039, ln=371) */
 
 #line 371 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-if ((((bool)(bitRead((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).status_1501)),(5))))? 1 : 0)) {
+if ((((bool)(bitRead((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).status_1404)),(5))))? 1 : 0)) {
     
-/* Block (n=1513, ln=372) */
+/* Block (n=1416, ln=372) */
 
 #line 372 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Set_Exp (n=3188, ln=372) */
+/* Set_Exp (n=3040, ln=372) */
 
 #line 372 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 (((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).ret)) = 1;
 
-/* Escape (n=1511, ln=372) */
+/* Escape (n=1414, ln=372) */
 
 #line 372 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Do__OUT_545);
 
-/* Block (n=1513, ln=372) */
+/* Block (n=1416, ln=372) */
 
 #line 372 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 } else {
     
-/* Block (n=3186, ln=371) */
+/* Block (n=3038, ln=371) */
 
 #line 371 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* If (n=3184, ln=371) */
+/* If (n=3036, ln=371) */
 
 #line 371 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-if ((((bool)(bitRead((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).status_1501)),(4))))? 1 : 0)) {
+if ((((bool)(bitRead((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).status_1404)),(4))))? 1 : 0)) {
     
-/* Block (n=1525, ln=374) */
+/* Block (n=1428, ln=374) */
 
 #line 374 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Set_Exp (n=3189, ln=374) */
+/* Set_Exp (n=3041, ln=374) */
 
 #line 374 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 (((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).ret)) = 0;
 
-/* Escape (n=1523, ln=374) */
+/* Escape (n=1426, ln=374) */
 
 #line 374 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Do__OUT_545);
 
-/* Block (n=1525, ln=374) */
+/* Block (n=1428, ln=374) */
 
 #line 374 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 } else {
     
-/* Block (n=1539, ln=376) */
+/* Block (n=1442, ln=376) */
 
 #line 376 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
 
-/* Stmt_Call (n=1531, ln=376) */
+/* Stmt_Call (n=1434, ln=376) */
 
 #line 376 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_arduino_assert(0,4);
 
-/* Stmt_Call (n=1537, ln=377) */
+/* Stmt_Call (n=1440, ln=377) */
 
 #line 377 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_assert(0,"unexpected interrupt");
 
-/* Block (n=1539, ln=376) */
+/* Block (n=1442, ln=376) */
 
 #line 376 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 }
 
-/* Block (n=3186, ln=371) */
+/* Block (n=3038, ln=371) */
 
 #line 371 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 }
 
-/* Block (n=1542, ln=370) */
+/* Block (n=1445, ln=370) */
 
 #line 370 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=1543, ln=369) */
+/* Do (n=1446, ln=369) */
 
 #line 369 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=1543, ln=369) */
+/* Do (n=1446, ln=369) */
 
 #line 369 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Do__OUT_545:;
 
-/* Abs_Await (n=1562, ln=381) */
+/* Abs_Await (n=1465, ln=381) */
 
 #line 381 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1562, ln=381) */
+/* Abs_Await (n=1465, ln=381) */
 
 #line 381 "./libraries/driver-nrf24l01/nrf24l01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1562);
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).__mem_1465);
 
-/* Abs_Await (n=1562, ln=381) */
+/* Abs_Await (n=1465, ln=381) */
 
 #line 381 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_547;
 
-/* Abs_Await (n=1562, ln=381) */
+/* Abs_Await (n=1465, ln=381) */
 
 #line 381 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 {
-    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562))) = 
+    *((tceu_code_mem_NRF24L01_Write*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Write __ceu_1560;__ceu_1560.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)));__ceu_1560.reg = 7;__ceu_1560.value = (bit(5)|bit(4));; __ceu_1560;})
+({tceu_code_mem_NRF24L01_Write __ceu_1463;__ceu_1463.nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf)));__ceu_1463.reg = 7;__ceu_1463.value = (bit(5)|bit(4));; __ceu_1463;})
 
 #else
 (tceu_code_mem_NRF24L01_Write) { .nrf = (tceu_data_NRF24L01_Data*)((((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).nrf))),.reg = 7,.value = (bit(5)|bit(4)) }
@@ -12338,78 +12337,78 @@ _ceu_mem->_trails[2].lbl = CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_547;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562))->_mem.pak    = NULL;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465))->_mem.pak    = NULL;
 #endif
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562))->_mem.up_mem = _ceu_mem;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562))->_mem.depth  = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562))->_mem.has_term = 0;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562))->_mem.trails_n = 7;
-    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562))->_mem._trails[0].level  = _ceu_level+1;
-    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562)));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465))->_mem.up_mem = _ceu_mem;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465))->_mem.depth  = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465))->_mem.has_term = 0;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465))->_mem.trails_n = 7;
+    memset(&(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465))->_mem._trails[0].level  = _ceu_level+1;
+    (&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Write_to_lbl((&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1562)), 0, 7-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)). __mem_1465)), 0, 7-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1562, ln=381) */
+/* Abs_Await (n=1465, ln=381) */
 
 #line 381 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 1;
 
-/* Abs_Await (n=1562, ln=381) */
+/* Abs_Await (n=1465, ln=381) */
 
 #line 381 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Await_Await__OUT_547:;
 
-/* Set_Exp (n=3190, ln=383) */
+/* Set_Exp (n=3042, ln=383) */
 
 #line 383 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 (((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem))._ret)) = (((*((tceu_code_mem_NRF24L01_Tx*)_ceu_mem)).ret));
 
-/* Escape (n=1564, ln=383) */
+/* Escape (n=1467, ln=383) */
 
 #line 383 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Do__OUT_551);
 
-/* Block (n=1566, ln=336) */
+/* Block (n=1469, ln=336) */
 
 #line 336 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Block (n=3094, ln=334) */
+/* Block (n=2946, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Block (n=3096, ln=334) */
+/* Block (n=2948, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Do (n=3097, ln=334) */
+/* Do (n=2949, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=3097, ln=334) */
+/* Do (n=2949, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Do__OUT_551:;
 
-/* Do (n=3097, ln=334) */
+/* Do (n=2949, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
     _ceu_mem->has_term = 1;
 
-/* Do (n=3097, ln=334) */
+/* Do (n=2949, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
@@ -12424,22 +12423,22 @@ _ceu_mem->_trails[2].lbl    = CEU_LABEL_NRF24L01_Tx_Do__CLR_552;
     return 1;
 }
 
-/* Do (n=3097, ln=334) */
+/* Do (n=2949, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Do__CLR_552:;
 
-/* Par_Or (n=4615, ln=334) */
+/* Par_Or (n=4442, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 CEU_GOTO(CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_492);
 
-/* Par_Or (n=4615, ln=334) */
+/* Par_Or (n=4442, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or__OUT_492:;
 
-/* Par_Or (n=4615, ln=334) */
+/* Par_Or (n=4442, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
@@ -12454,131 +12453,131 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_NRF24L01_Tx_Par_Or__CLR_493;
     return 1;
 }
 
-/* Par_Or (n=4615, ln=334) */
+/* Par_Or (n=4442, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 case CEU_LABEL_NRF24L01_Tx_Par_Or__CLR_493:;
 
-/* Block (n=3109, ln=334) */
+/* Block (n=2961, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Code (n=3110, ln=334) */
+/* Code (n=2962, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 return 0;
 
-/* Code (n=3110, ln=334) */
+/* Code (n=2962, ln=334) */
 
 #line 334 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 }
 
-/* Set_Exp (n=1645, ln=15) */
+/* Set_Exp (n=1548, ln=15) */
 
 #line 15 "libraries/driver-gpio/examples/out-01.ceu"
 ((CEU_APP.root.temp)) = 0;
 
-/* Set_Exp (n=1650, ln=16) */
+/* Set_Exp (n=1553, ln=16) */
 
 #line 16 "libraries/driver-gpio/examples/out-01.ceu"
 ((CEU_APP.root.hum)) = 0;
 
-/* Set_Exp (n=3912, ln=1) */
+/* Set_Exp (n=3741, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 ((((CEU_APP.root.spi)).is_locked)) = 0;
 
-/* Code (n=3240, ln=20) */
+/* Code (n=3092, ln=20) */
 
 #line 20 "libraries/driver-gpio/examples/out-01.ceu"
 /* do not enter from outside */
 if (0)
 {
 
-/* Code (n=3240, ln=20) */
+/* Code (n=3092, ln=20) */
 
 #line 20 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Code_String_Format:;
 
-/* Block (n=3239, ln=20) */
+/* Block (n=3091, ln=20) */
 
 #line 20 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Block (n=3235, ln=20) */
+/* Block (n=3087, ln=20) */
 
 #line 20 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Block (n=3233, ln=20) */
+/* Block (n=3085, ln=20) */
 
 #line 20 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Block (n=1708, ln=21) */
+/* Block (n=1611, ln=21) */
 
 #line 21 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Stmt_Call (n=1686, ln=21) */
+/* Stmt_Call (n=1589, ln=21) */
 
 #line 21 "libraries/driver-gpio/examples/out-01.ceu"
 sprintf(((char*)((((byte*) ceu_vector_buf_get((((*((tceu_code_mem_String_Format*)_ceu_mem)).dst)),0))
 ))),"%4d%4d",((int)(((((*((tceu_code_mem_String_Format*)_ceu_mem)).hum))*100))),(((*((tceu_code_mem_String_Format*)_ceu_mem)).asensor_value)));
 
-/* Stmt_Call (n=1706, ln=22) */
+/* Stmt_Call (n=1609, ln=22) */
 
 #line 22 "libraries/driver-gpio/examples/out-01.ceu"
 ceu_vector_setlen(((((*((tceu_code_mem_String_Format*)_ceu_mem)).dst))),(((*((*((tceu_code_mem_String_Format*)_ceu_mem)).dst)).len)+strlen(((char*)((((byte*) ceu_vector_buf_get((((*((tceu_code_mem_String_Format*)_ceu_mem)).dst)),0))
 ))))),1);
 
-/* Block (n=1708, ln=21) */
+/* Block (n=1611, ln=21) */
 
 #line 21 "libraries/driver-gpio/examples/out-01.ceu"
 }
 
-/* Block (n=3233, ln=20) */
+/* Block (n=3085, ln=20) */
 
 #line 20 "libraries/driver-gpio/examples/out-01.ceu"
 }
 
-/* Block (n=3235, ln=20) */
+/* Block (n=3087, ln=20) */
 
 #line 20 "libraries/driver-gpio/examples/out-01.ceu"
 }
 
-/* Do (n=3236, ln=20) */
+/* Do (n=3088, ln=20) */
 
 #line 20 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_String_Format_Do__OUT_558:;
 
-/* Block (n=3239, ln=20) */
+/* Block (n=3091, ln=20) */
 
 #line 20 "libraries/driver-gpio/examples/out-01.ceu"
 }
 
-/* Code (n=3240, ln=20) */
+/* Code (n=3092, ln=20) */
 
 #line 20 "libraries/driver-gpio/examples/out-01.ceu"
 return 0;
 
-/* Code (n=3240, ln=20) */
+/* Code (n=3092, ln=20) */
 
 #line 20 "libraries/driver-gpio/examples/out-01.ceu"
 }
 
-/* Set_Exp (n=3963, ln=13) */
+/* Set_Exp (n=3792, ln=13) */
 
 #line 13 "./libraries/driver-nrf24l01/nrf24l01.ceu"
 ((((CEU_APP.root.nrf)).payload_size)) = 32;
 
-/* Set_Abs_Val (n=1728, ln=29) */
+/* Set_Abs_Val (n=1631, ln=29) */
 
 #line 29 "libraries/driver-gpio/examples/out-01.ceu"
 ((CEU_APP.root.nrf)) = CEU_tceu_data_NRF24L01_Data__TO__tceu_data_NRF24L01_Data(
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_data_NRF24L01_Data __ceu_1726;__ceu_1726.spi = (tceu_data_Lock*)(&((CEU_APP.root.spi)));__ceu_1726.ce = 8;__ceu_1726.csn = 7;__ceu_1726.payload_size = ((CEU_APP.root.nrf)).payload_size;__ceu_1726.config = ((CEU_APP.root.nrf)).config;__ceu_1726.pipe0 = ((CEU_APP.root.nrf)).pipe0;; __ceu_1726;})
+({tceu_data_NRF24L01_Data __ceu_1629;__ceu_1629.spi = (tceu_data_Lock*)(&((CEU_APP.root.spi)));__ceu_1629.ce = 8;__ceu_1629.csn = 7;__ceu_1629.payload_size = ((CEU_APP.root.nrf)).payload_size;__ceu_1629.config = ((CEU_APP.root.nrf)).config;__ceu_1629.pipe0 = ((CEU_APP.root.nrf)).pipe0;; __ceu_1629;})
 
 #else
 (tceu_data_NRF24L01_Data) { .spi = (tceu_data_Lock*)(&((CEU_APP.root.spi))),.ce = 8,.csn = 7,.payload_size = ((CEU_APP.root.nrf)).payload_size,.config = ((CEU_APP.root.nrf)).config,.pipe0 = ((CEU_APP.root.nrf)).pipe0 }
@@ -12586,45 +12585,45 @@ return 0;
 #endif
 );
 
-/* Par_Or (n=4627, ln=30) */
+/* Par_Or (n=4454, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
 _ceu_mem->_trails[2].level  = _ceu_level;
 _ceu_mem->_trails[2].lbl    = CEU_LABEL_Par_Or_sub_2_IN_564;
 
-/* Par_Or (n=4627, ln=30) */
+/* Par_Or (n=4454, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 CEU_GOTO(CEU_LABEL_Par_Or_sub_1_IN_563);
 
-/* Par_Or (n=4627, ln=30) */
+/* Par_Or (n=4454, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Par_Or_sub_1_IN_563:;
 
-/* Abs_Spawn (n=1735, ln=30) */
+/* Abs_Spawn (n=1638, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[1].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Spawn (n=1735, ln=30) */
+/* Abs_Spawn (n=1638, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
-_ceu_mem->_trails[1].evt.mem = (tceu_code_mem*) &(CEU_APP.root.__mem_1735);
+_ceu_mem->_trails[1].evt.mem = (tceu_code_mem*) &(CEU_APP.root.__mem_1638);
 
-/* Abs_Spawn (n=1735, ln=30) */
+/* Abs_Spawn (n=1638, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[1].lbl = CEU_LABEL_Await_Spawn__OUT_567;
 
-/* Abs_Spawn (n=1735, ln=30) */
+/* Abs_Spawn (n=1638, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 {
-    *((tceu_code_mem_NRF24L01_Init*)(&(CEU_APP.root. __mem_1735))) = 
+    *((tceu_code_mem_NRF24L01_Init*)(&(CEU_APP.root. __mem_1638))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Init __ceu_1734;__ceu_1734.nrf = (tceu_data_NRF24L01_Data*)(&((CEU_APP.root.nrf)));; __ceu_1734;})
+({tceu_code_mem_NRF24L01_Init __ceu_1637;__ceu_1637.nrf = (tceu_data_NRF24L01_Data*)(&((CEU_APP.root.nrf)));; __ceu_1637;})
 
 #else
 (tceu_code_mem_NRF24L01_Init) { .nrf = (tceu_data_NRF24L01_Data*)(&((CEU_APP.root.nrf))) }
@@ -12632,126 +12631,126 @@ _ceu_mem->_trails[1].lbl = CEU_LABEL_Await_Spawn__OUT_567;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&(CEU_APP.root. __mem_1735))->_mem.pak    = NULL;
+    (&(CEU_APP.root. __mem_1638))->_mem.pak    = NULL;
 #endif
-    (&(CEU_APP.root. __mem_1735))->_mem.up_mem = _ceu_mem;
-    (&(CEU_APP.root. __mem_1735))->_mem.depth  = 0;
-    (&(CEU_APP.root. __mem_1735))->_mem.has_term = 0;
-    (&(CEU_APP.root. __mem_1735))->_mem.trails_n = 7;
-    memset(&(&(CEU_APP.root. __mem_1735))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&(CEU_APP.root. __mem_1735))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&(CEU_APP.root. __mem_1735))->_mem._trails[0].level  = _ceu_level+1;
-    (&(CEU_APP.root. __mem_1735))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Init_to_lbl((&(CEU_APP.root. __mem_1735)));
+    (&(CEU_APP.root. __mem_1638))->_mem.up_mem = _ceu_mem;
+    (&(CEU_APP.root. __mem_1638))->_mem.depth  = 0;
+    (&(CEU_APP.root. __mem_1638))->_mem.has_term = 0;
+    (&(CEU_APP.root. __mem_1638))->_mem.trails_n = 7;
+    memset(&(&(CEU_APP.root. __mem_1638))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&(CEU_APP.root. __mem_1638))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&(CEU_APP.root. __mem_1638))->_mem._trails[0].level  = _ceu_level+1;
+    (&(CEU_APP.root. __mem_1638))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Init_to_lbl((&(CEU_APP.root. __mem_1638)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&(CEU_APP.root. __mem_1735)), 0, 7-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&(CEU_APP.root. __mem_1638)), 0, 7-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Spawn (n=1735, ln=30) */
+/* Abs_Spawn (n=1638, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 return 1;
 
-/* Abs_Spawn (n=1735, ln=30) */
+/* Abs_Spawn (n=1638, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Await_Spawn__OUT_567:;
 
-/* Await_Forever (n=4624, ln=30) */
+/* Await_Forever (n=4451, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 return 0;
 
-/* Par_Or (n=4627, ln=30) */
+/* Par_Or (n=4454, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 CEU_GOTO(CEU_LABEL_Par_Or__OUT_565);
 
-/* Par_Or (n=4627, ln=30) */
+/* Par_Or (n=4454, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Par_Or_sub_2_IN_564:;
 
-/* Await_Int (n=1740, ln=31) */
+/* Await_Int (n=1643, ln=31) */
 
 #line 31 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[2].evt = ((tceu_evt){ CEU_EVENT_NRF24L01_DATA_OK, {&((CEU_APP.root.nrf))} });
 
-/* Await_Int (n=1740, ln=31) */
+/* Await_Int (n=1643, ln=31) */
 
 #line 31 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_Await_ok__OUT_568;
 
-/* Await_Int (n=1740, ln=31) */
+/* Await_Int (n=1643, ln=31) */
 
 #line 31 "libraries/driver-gpio/examples/out-01.ceu"
 return 0;
 
-/* Await_Int (n=1740, ln=31) */
+/* Await_Int (n=1643, ln=31) */
 
 #line 31 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Await_ok__OUT_568:;
 
-/* Loop (n=1800, ln=33) */
+/* Loop (n=1703, ln=33) */
 
 #line 33 "libraries/driver-gpio/examples/out-01.ceu"
 while (1) {
         
-/* Block (n=1799, ln=34) */
+/* Block (n=1702, ln=34) */
 
 #line 34 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Await_Wclock (n=1744, ln=34) */
+/* Await_Wclock (n=1647, ln=34) */
 
 #line 34 "libraries/driver-gpio/examples/out-01.ceu"
-ceu_wclock(2000000.0, &(CEU_APP.root.__wclk_1744), NULL, CEU_TRACE(0));
+ceu_wclock(2000000.0, &(CEU_APP.root.__wclk_1647), NULL, CEU_TRACE(0));
 
-_CEU_HALT_1744_:
+_CEU_HALT_1647_:
 
-/* Await_Wclock (n=1744, ln=34) */
+/* Await_Wclock (n=1647, ln=34) */
 
 #line 34 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__WCLOCK;
 
-/* Await_Wclock (n=1744, ln=34) */
+/* Await_Wclock (n=1647, ln=34) */
 
 #line 34 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_Await_Wclock__OUT_569;
 
-/* Await_Wclock (n=1744, ln=34) */
+/* Await_Wclock (n=1647, ln=34) */
 
 #line 34 "libraries/driver-gpio/examples/out-01.ceu"
 return 0;
 
-/* Await_Wclock (n=1744, ln=34) */
+/* Await_Wclock (n=1647, ln=34) */
 
 #line 34 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Await_Wclock__OUT_569:;
 
-/* Await_Wclock (n=1744, ln=34) */
+/* Await_Wclock (n=1647, ln=34) */
 
 #line 34 "libraries/driver-gpio/examples/out-01.ceu"
 /* subtract time and check if I have to awake */
 {
     s32* dt = (s32*)_ceu_cur->params;
-    if (!ceu_wclock(*dt, NULL, &(CEU_APP.root.__wclk_1744), CEU_TRACE(0)) ) {
-        goto _CEU_HALT_1744_;
+    if (!ceu_wclock(*dt, NULL, &(CEU_APP.root.__wclk_1647), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_1647_;
     }
 }
 
-/* Stmt_Call (n=1754, ln=35) */
+/* Stmt_Call (n=1657, ln=35) */
 
 #line 35 "libraries/driver-gpio/examples/out-01.ceu"
 CEU_CODE_DHT_Read(
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_DHT_Read __ceu_1752;__ceu_1752.pin = 3;__ceu_1752.temp = (&((CEU_APP.root.temp)));__ceu_1752.hum = (&((CEU_APP.root.hum)));; __ceu_1752;})
+({tceu_code_mem_DHT_Read __ceu_1655;__ceu_1655.pin = 3;__ceu_1655.temp = (&((CEU_APP.root.temp)));__ceu_1655.hum = (&((CEU_APP.root.hum)));; __ceu_1655;})
 
 #else
 (tceu_code_mem_DHT_Read) { .pin = 3,.temp = (&((CEU_APP.root.temp))),.hum = (&((CEU_APP.root.hum))) }
@@ -12760,33 +12759,33 @@ CEU_CODE_DHT_Read(
 ,((tceu_code_mem*)_ceu_mem))
 ;
 
-/* Block (n=1771, ln=39) */
+/* Block (n=1674, ln=39) */
 
 #line 39 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Abs_Await (n=1767, ln=39) */
+/* Abs_Await (n=1670, ln=39) */
 
 #line 39 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1767, ln=39) */
+/* Abs_Await (n=1670, ln=39) */
 
 #line 39 "libraries/driver-gpio/examples/out-01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &(CEU_APP.root.__mem_1767);
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &(CEU_APP.root.__mem_1670);
 
-/* Abs_Await (n=1767, ln=39) */
+/* Abs_Await (n=1670, ln=39) */
 
 #line 39 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_Await_Await__OUT_570;
 
-/* Abs_Await (n=1767, ln=39) */
+/* Abs_Await (n=1670, ln=39) */
 
 #line 39 "libraries/driver-gpio/examples/out-01.ceu"
 {
-    *((tceu_code_mem_ASensor_Get*)(&(CEU_APP.root. __mem_1767))) = 
+    *((tceu_code_mem_ASensor_Get*)(&(CEU_APP.root. __mem_1670))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_ASensor_Get __ceu_1765;__ceu_1765.dataPort = A0;__ceu_1765.energyPort = { .is_set=1, .value=4};__ceu_1765.time = { .is_set=1, .value=50};; __ceu_1765;})
+({tceu_code_mem_ASensor_Get __ceu_1668;__ceu_1668.dataPort = A0;__ceu_1668.energyPort = { .is_set=1, .value=4};__ceu_1668.time = { .is_set=1, .value=50};; __ceu_1668;})
 
 #else
 (tceu_code_mem_ASensor_Get) { .dataPort = A0,.energyPort = { .is_set=1, .value=4},.time = { .is_set=1, .value=50} }
@@ -12794,181 +12793,181 @@ _ceu_mem->_trails[2].lbl = CEU_LABEL_Await_Await__OUT_570;
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&(CEU_APP.root. __mem_1767))->_mem.pak    = NULL;
+    (&(CEU_APP.root. __mem_1670))->_mem.pak    = NULL;
 #endif
-    (&(CEU_APP.root. __mem_1767))->_mem.up_mem = _ceu_mem;
-    (&(CEU_APP.root. __mem_1767))->_mem.depth  = 0;
-    (&(CEU_APP.root. __mem_1767))->_mem.has_term = 0;
-    (&(CEU_APP.root. __mem_1767))->_mem.trails_n = 7;
-    memset(&(&(CEU_APP.root. __mem_1767))->_mem._trails, 0, 7*sizeof(tceu_trl));
-    (&(CEU_APP.root. __mem_1767))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&(CEU_APP.root. __mem_1767))->_mem._trails[0].level  = _ceu_level+1;
-    (&(CEU_APP.root. __mem_1767))->_mem._trails[0].lbl    = CEU_CODE_ASensor_Get_to_lbl((&(CEU_APP.root. __mem_1767)));
+    (&(CEU_APP.root. __mem_1670))->_mem.up_mem = _ceu_mem;
+    (&(CEU_APP.root. __mem_1670))->_mem.depth  = 0;
+    (&(CEU_APP.root. __mem_1670))->_mem.has_term = 0;
+    (&(CEU_APP.root. __mem_1670))->_mem.trails_n = 7;
+    memset(&(&(CEU_APP.root. __mem_1670))->_mem._trails, 0, 7*sizeof(tceu_trl));
+    (&(CEU_APP.root. __mem_1670))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&(CEU_APP.root. __mem_1670))->_mem._trails[0].level  = _ceu_level+1;
+    (&(CEU_APP.root. __mem_1670))->_mem._trails[0].lbl    = CEU_CODE_ASensor_Get_to_lbl((&(CEU_APP.root. __mem_1670)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&(CEU_APP.root. __mem_1767)), 0, 7-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&(CEU_APP.root. __mem_1670)), 0, 7-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1767, ln=39) */
+/* Abs_Await (n=1670, ln=39) */
 
 #line 39 "libraries/driver-gpio/examples/out-01.ceu"
 return 1;
 
-/* Abs_Await (n=1767, ln=39) */
+/* Abs_Await (n=1670, ln=39) */
 
 #line 39 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Await_Await__OUT_570:;
 
-/* Set_Abs_Await (n=1768, ln=39) */
+/* Set_Abs_Await (n=1671, ln=39) */
 
 #line 39 "libraries/driver-gpio/examples/out-01.ceu"
-((CEU_APP.root.asensor_value_1757)) = (CEU_APP.root.__mem_1767)._ret;
+((CEU_APP.root.asensor_value_1660)) = (CEU_APP.root.__mem_1670)._ret;
 
-/* Block (n=1771, ln=39) */
+/* Block (n=1674, ln=39) */
 
 #line 39 "libraries/driver-gpio/examples/out-01.ceu"
 }
 
-/* Do (n=1772, ln=38) */
+/* Do (n=1675, ln=38) */
 
 #line 38 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Do__OUT_572:;
 
-/* Vec_Init (n=4011, ln=42) */
+/* Vec_Init (n=3840, ln=42) */
 
 #line 42 "libraries/driver-gpio/examples/out-01.ceu"
-ceu_vector_init(&((CEU_APP.root.str_1779)),9, 0, 0, sizeof(byte),
-                (byte*)&((CEU_APP.root.str_1779_buf)));
+ceu_vector_init(&((CEU_APP.root.str_1682)),9, 0, 0, sizeof(byte),
+                (byte*)&((CEU_APP.root.str_1682_buf)));
 
-/* Set_Vec (n=1778, ln=42) */
+/* Set_Vec (n=1681, ln=42) */
 
 #line 42 "libraries/driver-gpio/examples/out-01.ceu"
 {
     usize __ceu_nxt;
 
-/* Set_Vec (n=1778, ln=42) */
+/* Set_Vec (n=1681, ln=42) */
 
 #line 42 "libraries/driver-gpio/examples/out-01.ceu"
-    ceu_vector_setlen(&((CEU_APP.root.str_1779)), 0, 0);
+    ceu_vector_setlen(&((CEU_APP.root.str_1682)), 0, 0);
     __ceu_nxt = 0;
 
-/* Set_Vec (n=1778, ln=42) */
+/* Set_Vec (n=1681, ln=42) */
 
 #line 42 "libraries/driver-gpio/examples/out-01.ceu"
 }
 
-/* Stmt_Call (n=1788, ln=43) */
+/* Stmt_Call (n=1691, ln=43) */
 
 #line 43 "libraries/driver-gpio/examples/out-01.ceu"
 CEU_CODE_String_Format(
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_String_Format __ceu_1786;__ceu_1786.dst = (&((CEU_APP.root.str_1779)));__ceu_1786.hum = ((CEU_APP.root.hum));__ceu_1786.asensor_value = ((CEU_APP.root.asensor_value_1757));; __ceu_1786;})
+({tceu_code_mem_String_Format __ceu_1689;__ceu_1689.dst = (&((CEU_APP.root.str_1682)));__ceu_1689.hum = ((CEU_APP.root.hum));__ceu_1689.asensor_value = ((CEU_APP.root.asensor_value_1660));; __ceu_1689;})
 
 #else
-(tceu_code_mem_String_Format) { .dst = (&((CEU_APP.root.str_1779))),.hum = ((CEU_APP.root.hum)),.asensor_value = ((CEU_APP.root.asensor_value_1757)) }
+(tceu_code_mem_String_Format) { .dst = (&((CEU_APP.root.str_1682))),.hum = ((CEU_APP.root.hum)),.asensor_value = ((CEU_APP.root.asensor_value_1660)) }
 
 #endif
 ,((tceu_code_mem*)_ceu_mem))
 ;
 
-/* Abs_Await (n=1797, ln=44) */
+/* Abs_Await (n=1700, ln=44) */
 
 #line 44 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[2].evt.id = CEU_INPUT__PROPAGATE_CODE;
 
-/* Abs_Await (n=1797, ln=44) */
+/* Abs_Await (n=1700, ln=44) */
 
 #line 44 "libraries/driver-gpio/examples/out-01.ceu"
-_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &(CEU_APP.root.__mem_1797);
+_ceu_mem->_trails[2].evt.mem = (tceu_code_mem*) &(CEU_APP.root.__mem_1700);
 
-/* Abs_Await (n=1797, ln=44) */
+/* Abs_Await (n=1700, ln=44) */
 
 #line 44 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[2].lbl = CEU_LABEL_Await_Await__OUT_574;
 
-/* Abs_Await (n=1797, ln=44) */
+/* Abs_Await (n=1700, ln=44) */
 
 #line 44 "libraries/driver-gpio/examples/out-01.ceu"
 {
-    *((tceu_code_mem_NRF24L01_Tx*)(&(CEU_APP.root. __mem_1797))) = 
+    *((tceu_code_mem_NRF24L01_Tx*)(&(CEU_APP.root. __mem_1700))) = 
 #if defined(__GNUC__) && defined(__cplusplus)
-({tceu_code_mem_NRF24L01_Tx __ceu_1795;__ceu_1795.nrf = (tceu_data_NRF24L01_Data*)(&((CEU_APP.root.nrf)));__ceu_1795.buf = (&((CEU_APP.root.str_1779)));; __ceu_1795;})
+({tceu_code_mem_NRF24L01_Tx __ceu_1698;__ceu_1698.nrf = (tceu_data_NRF24L01_Data*)(&((CEU_APP.root.nrf)));__ceu_1698.buf = (&((CEU_APP.root.str_1682)));; __ceu_1698;})
 
 #else
-(tceu_code_mem_NRF24L01_Tx) { .nrf = (tceu_data_NRF24L01_Data*)(&((CEU_APP.root.nrf))),.buf = (&((CEU_APP.root.str_1779))) }
+(tceu_code_mem_NRF24L01_Tx) { .nrf = (tceu_data_NRF24L01_Data*)(&((CEU_APP.root.nrf))),.buf = (&((CEU_APP.root.str_1682))) }
 
 #endif
 ;
 #ifdef CEU_FEATURES_POOL
-    (&(CEU_APP.root. __mem_1797))->_mem.pak    = NULL;
+    (&(CEU_APP.root. __mem_1700))->_mem.pak    = NULL;
 #endif
-    (&(CEU_APP.root. __mem_1797))->_mem.up_mem = _ceu_mem;
-    (&(CEU_APP.root. __mem_1797))->_mem.depth  = 0;
-    (&(CEU_APP.root. __mem_1797))->_mem.has_term = 0;
-    (&(CEU_APP.root. __mem_1797))->_mem.trails_n = 9;
-    memset(&(&(CEU_APP.root. __mem_1797))->_mem._trails, 0, 9*sizeof(tceu_trl));
-    (&(CEU_APP.root. __mem_1797))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
-    (&(CEU_APP.root. __mem_1797))->_mem._trails[0].level  = _ceu_level+1;
-    (&(CEU_APP.root. __mem_1797))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Tx_to_lbl((&(CEU_APP.root. __mem_1797)));
+    (&(CEU_APP.root. __mem_1700))->_mem.up_mem = _ceu_mem;
+    (&(CEU_APP.root. __mem_1700))->_mem.depth  = 0;
+    (&(CEU_APP.root. __mem_1700))->_mem.has_term = 0;
+    (&(CEU_APP.root. __mem_1700))->_mem.trails_n = 9;
+    memset(&(&(CEU_APP.root. __mem_1700))->_mem._trails, 0, 9*sizeof(tceu_trl));
+    (&(CEU_APP.root. __mem_1700))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&(CEU_APP.root. __mem_1700))->_mem._trails[0].level  = _ceu_level+1;
+    (&(CEU_APP.root. __mem_1700))->_mem._trails[0].lbl    = CEU_CODE_NRF24L01_Tx_to_lbl((&(CEU_APP.root. __mem_1700)));
 }
 
 {
     tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
-    tceu_range __ceu_range = { (tceu_code_mem*)(&(CEU_APP.root. __mem_1797)), 0, 9-1 };
+    tceu_range __ceu_range = { (tceu_code_mem*)(&(CEU_APP.root. __mem_1700)), 0, 9-1 };
     _ceu_nxt->evt      = __ceu_evt;
     _ceu_nxt->range    = __ceu_range;
     _ceu_nxt->params_n = 0;
     //return 1; (later, after deciding for spawn/await)
 }
 
-/* Abs_Await (n=1797, ln=44) */
+/* Abs_Await (n=1700, ln=44) */
 
 #line 44 "libraries/driver-gpio/examples/out-01.ceu"
 return 1;
 
-/* Abs_Await (n=1797, ln=44) */
+/* Abs_Await (n=1700, ln=44) */
 
 #line 44 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Await_Await__OUT_574:;
 
-/* Block (n=1799, ln=34) */
+/* Block (n=1702, ln=34) */
 
 #line 34 "libraries/driver-gpio/examples/out-01.ceu"
 }
 
-/* Loop (n=1800, ln=33) */
+/* Loop (n=1703, ln=33) */
 
 #line 33 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Loop_Continue__CNT_577:;
 
-/* Loop (n=1800, ln=33) */
+/* Loop (n=1703, ln=33) */
 
 #line 33 "libraries/driver-gpio/examples/out-01.ceu"
         *_ceu_trlK = 1;
 }
 
-/* Loop (n=1800, ln=33) */
+/* Loop (n=1703, ln=33) */
 
 #line 33 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Loop_Break__OUT_579:;
 
-/* Par_Or (n=4627, ln=30) */
+/* Par_Or (n=4454, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 CEU_GOTO(CEU_LABEL_Par_Or__OUT_565);
 
-/* Par_Or (n=4627, ln=30) */
+/* Par_Or (n=4454, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Par_Or__OUT_565:;
 
-/* Par_Or (n=4627, ln=30) */
+/* Par_Or (n=4454, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 _ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
@@ -12983,27 +12982,27 @@ _ceu_mem->_trails[0].lbl    = CEU_LABEL_Par_Or__CLR_566;
     return 1;
 }
 
-/* Par_Or (n=4627, ln=30) */
+/* Par_Or (n=4454, ln=30) */
 
 #line 30 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Par_Or__CLR_566:;
 
-/* Block (n=1839, ln=1) */
+/* Block (n=1742, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 }
 
-/* Do (n=1840, ln=1) */
+/* Do (n=1743, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=1840, ln=1) */
+/* Do (n=1743, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_Do__OUT_581:;
 
-/* Block (n=1844, ln=1) */
+/* Block (n=1747, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 }

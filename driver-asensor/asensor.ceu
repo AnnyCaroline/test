@@ -1,6 +1,14 @@
 #include "wclock.ceu"
 #include "adc.ceu"
 
+///////////////////////////////////////////////////////////////////////////////
+// EXTERNAL INTERFACE
+///////////////////////////////////////////////////////////////////////////////
+code/await ASensor_Get(var int dataPort, var int? energyPort, var int? time) -> int;
+
+///////////////////////////////////////////////////////////////////////////////
+// DECLARATIONS
+///////////////////////////////////////////////////////////////////////////////
 #define A_SENSOR_DEFAULT_TIME 1
 
 code/await ASensor_Get(var int dataPort, var int? energyPort, var int? time) -> int do
@@ -8,9 +16,6 @@ code/await ASensor_Get(var int dataPort, var int? energyPort, var int? time) -> 
         if (energyPort?) then
             _digitalWrite(energyPort!, low);
         end
-        {
-            Serial.println("finalize");
-        }
     end
 
     if (energyPort?) then
