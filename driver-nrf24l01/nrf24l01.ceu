@@ -21,7 +21,6 @@ data NRF24L01_Data with
 end
 
 code/await NRF24L01_Init (var& NRF24L01_Data nrf)                  -> NEVER;
-code/await NRF24L01_Rx   (var& NRF24L01_Data nrf, var&[] byte buf) -> u8;
 code/await NRF24L01_Tx   (var& NRF24L01_Data nrf, var&[] byte buf) -> bool;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -289,7 +288,7 @@ do
 
     // RF24_2MBPS, 0dBm
     //await NRF24L01_Write(&nrf, RF_SETUP, _bit(RF_DR_HIGH)|_bit(RF_PWR_LOW)|_bit(RF_PWR_HIGH));
-    // 1MBPS, 0dBm
+    // 1MBPS
     await NRF24L01_Write(&nrf, RF_SETUP, _bit(RF_DR_LOW)|_bit(RF_DR_HIGH)|_bit(RF_PWR_LOW)|_bit(RF_PWR_HIGH));
 
     // set pipe addresses, lengths
@@ -330,46 +329,6 @@ do
     end
 
     await FOREVER;
-end
-
-code/await NRF24L01_Rx (var& NRF24L01_Data nrf, var&[] byte buf) -> u8
-do
-    await NRF24L01_Write(&nrf, RX_PW_P0, $$buf as byte);
-    await NRF24L01_Write(&nrf, STATUS, _bit(RX_DR) | _bit(TX_DS) | _bit(MAX_RT));
-    await NRF24L01_Write(&nrf, CONFIG, nrf.config | _bit(PRIM_RX) | _bit(MASK_TX_DS) | _bit(MASK_MAX_RT));
-
-    _digitalWrite(nrf.ce, 1);
-    do finalize with
-        _digitalWrite(nrf.ce, 0);
-    end
-
-    await NRF24L01_IRQ;
-
-    // read status for receiving pipe
-    var u8 pipe = do
-        lock nrf.spi do
-            watching SPI_Transaction(4000000, SPI_MSBFIRST, SPI_MODE0, _, nrf.csn) do
-                var byte v = await SPI_Transfer_8(0xFF);
-                escape v as u8;
-            end
-        end
-    end;
-    pipe = (pipe >> RX_P_NO) & 0x07;
-
-    lock nrf.spi do
-        watching SPI_Transaction(4000000, SPI_MSBFIRST, SPI_MODE0, _, nrf.csn) do
-            await SPI_Transfer_8(R_RX_PAYLOAD);
-            var usize i;
-            loop i in [0 -> $$buf[ do
-                buf = buf .. [0xFF];
-            end
-            await SPI_Transfer(&buf);
-        end
-    end
-
-    await NRF24L01_Write(&nrf, STATUS, _bit(RX_DR));
-
-    escape pipe;
 end
 
 code/await NRF24L01_Tx (var& NRF24L01_Data nrf, var&[] byte buf) -> bool
@@ -423,47 +382,7 @@ _ceu_arduino_assert(0, 4);
 
     escape ret;
 end
-
-code/await NRF24L01_Set_Channel (var& NRF24L01_Data nrf, var u8 channel) -> none do
-    _ceu_assert(channel <= 125, "invalid channel");
-    await NRF24L01_Write(&nrf, RF_CH, channel as byte);
-end
-
 #define NRF24L01_IDX(i) {(((byte*) &@(address))[i])}
-
-code/await NRF24L01_Open_Reading_Pipe (var& NRF24L01_Data nrf, var u8 pipe, var u64 address) -> none do
-    _ceu_assert(pipe < 6, "invalid pipe");
-
-    // If this is pipe 0, cache the address.  This is needed because
-    // openWritingPipe() will overwrite the pipe 0 address, so
-    // startListening() will have to restore it.
-    if pipe == 0 then
-        nrf.pipe0 = address;
-    end
-
-    // For pipes 2-5, only write the LSB
-    if pipe < 2 then
-        var[5] byte address_ = [NRF24L01_IDX(0), NRF24L01_IDX(1), NRF24L01_IDX(2), NRF24L01_IDX(3), NRF24L01_IDX(4)];
-        await NRF24L01_Writes(&nrf, {pgm_read_byte(&child_pipe[@pipe])}, &address_);
-    else
-        await NRF24L01_Write(&nrf, {pgm_read_byte(&child_pipe[@pipe])}, NRF24L01_IDX(0));
-    end
-
-    await NRF24L01_Write(&nrf, {pgm_read_byte(&child_payload_size[@pipe])}, nrf.payload_size as byte);
-
-    // Note it would be more efficient to set all of the bits for all open
-    // pipes at once.  However, I thought it would make the calling code
-    // more simple to do it this way.
-    var byte en_rxaddr = await NRF24L01_Read(&nrf, EN_RXADDR);
-    await NRF24L01_Write(&nrf, EN_RXADDR, en_rxaddr | {_BV(pgm_read_byte(&child_pipe_enable[@pipe]))});
-end
-
-code/await NRF24L01_Open_Writing_Pipe (var& NRF24L01_Data nrf, var u64 address) -> none do
-    var[5] byte address_ = [NRF24L01_IDX(0), NRF24L01_IDX(1), NRF24L01_IDX(2), NRF24L01_IDX(3), NRF24L01_IDX(4)];
-    await NRF24L01_Writes(&nrf, RX_ADDR_P0, &address_);
-    await NRF24L01_Writes(&nrf, TX_ADDR,    &address_);
-    await NRF24L01_Write(&nrf, RX_PW_P0, nrf.payload_size as byte);
-end
 
 code/await NRF24L01_Set_Auto_Ack (var& NRF24L01_Data nrf, var u8 pipe, var bool enable) -> none do
     _ceu_assert(pipe < 6, "invalid pipe");
