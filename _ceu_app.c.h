@@ -67,17 +67,17 @@ typedef double   r64;
 
 /* CEU_C */
 
-#define CEU_FEATURES_ISR static
-#define CEU_FEATURES_ISR_STATIC
-#undef CEU_FEATURES_POOL
-#undef CEU_FEATURES_ASYNC
 #undef CEU_FEATURES_DYNAMIC
 #undef CEU_FEATURES_TRACE
-#undef CEU_FEATURES_EXCEPTION
-#undef CEU_FEATURES_LUA
-#undef CEU_FEATURES_PAUSE
+#define CEU_FEATURES_ISR static
+#define CEU_FEATURES_ISR_STATIC
 #undef CEU_FEATURES_THREAD
 #undef CEU_FEATURES_OS
+#undef CEU_FEATURES_ASYNC
+#undef CEU_FEATURES_LUA
+#undef CEU_FEATURES_POOL
+#undef CEU_FEATURES_PAUSE
+#undef CEU_FEATURES_EXCEPTION
         /* CEU_FEATURES */
 
 #include <stddef.h>     /* offsetof */
@@ -114,7 +114,7 @@ typedef u8  tceu_nstk;   /* TODO */
 typedef u8 tceu_ntrl;
 typedef u8 tceu_nlbl;
 
-#define CEU_TRAILS_N 1
+#define CEU_TRAILS_N 9
 #ifndef CEU_STACK_N
 #define CEU_STACK_N 500
 #endif
@@ -430,6 +430,18 @@ void ceu_pm_set (u8 dev, bool v) {
 
     }
 
+#define __WCLOCK_CEU__
+    void ceu_wclock_init (void);
+    //void ceu_wclock         (bool v);      // TODO: ???
+    void ceu_wclock_request (s32 us, bool was_active);
+    void ceu_wclock_done (void);
+    s32 ceu_wclock_dt (void);
+    u32 ceu_wclock_now (void);
+
+#define USART_BAUD(bps) ((F_CPU/4/bps - 1) / 2)
+
+#include <string.h>
+
 
 /* EVENTS_ENUM */
 
@@ -454,17 +466,23 @@ CEU_INPUT__PRIM,
     CEU_INPUT__WCLOCK,
 
 //CEU_INPUT__MIN,
-    
+    CEU_INPUT_CEU_WCLOCK,
+CEU_INPUT_USART_RX,
+CEU_INPUT_INT0,
+
 //CEU_INPUT__MAX,
 
 CEU_EVENT__MIN,
     CEU_EVENT_LOCK_OK_UNLOCKED,
+CEU_EVENT_CHANGE_257,
 
 };
 
 enum {
     CEU_OUTPUT__NONE = 0,
-    
+    CEU_OUTPUT_OUT,
+CEU_OUTPUT_OUT_13,
+
 };
 
 /* CEU_MAIN */
@@ -548,12 +566,20 @@ static void ceu_trace (tceu_trace trace, const char* msg) {
 #define ceu_trace(a,b)
 #endif
 
-#define CEU_ISRS_N 0
+#define CEU_ISRS_N 4
 
 /* CEU_ISRS_DEFINES */
+#define CEU_ISR__TIMER1_COMPA_vect
+#define CEU_ISR__USART_RX_vect
+#define CEU_ISR__INT0_vect
 
 
 /* EVENTS_DEFINES */
+#define _CEU_INPUT_CEU_WCLOCK_
+#define _CEU_OUTPUT_OUT_
+#define _CEU_INPUT_USART_RX_
+#define _CEU_INPUT_INT0_
+#define _CEU_OUTPUT_OUT_13_
 
 
 /* CEU_DATAS_HIERS */
@@ -935,6 +961,42 @@ typedef struct tceu_data_Exception {
 char*  message;
 } tceu_data_Exception;
 
+#ifdef CEU_FEATURES_TRACE
+#define CEU_OPTION_tceu_opt_usize(a,b) CEU_OPTION_tceu_opt_usize_(a,b)
+#else
+#define CEU_OPTION_tceu_opt_usize(a,b) CEU_OPTION_tceu_opt_usize_(a)
+#endif
+typedef struct tceu_opt_usize {
+    bool      is_set;
+    usize value;
+} tceu_opt_usize;
+
+static tceu_opt_usize* CEU_OPTION_tceu_opt_usize_ (tceu_opt_usize* opt
+#ifdef CEU_FEATURES_TRACE
+                                              , tceu_trace trace
+#endif
+                                              ) {
+    ceu_assert_ex(opt->is_set, "value is not set", trace);
+    return opt;
+}
+#ifdef CEU_FEATURES_TRACE
+#define CEU_OPTION_tceu_opt_int(a,b) CEU_OPTION_tceu_opt_int_(a,b)
+#else
+#define CEU_OPTION_tceu_opt_int(a,b) CEU_OPTION_tceu_opt_int_(a)
+#endif
+typedef struct tceu_opt_int {
+    bool      is_set;
+    int value;
+} tceu_opt_int;
+
+static tceu_opt_int* CEU_OPTION_tceu_opt_int_ (tceu_opt_int* opt
+#ifdef CEU_FEATURES_TRACE
+                                              , tceu_trace trace
+#endif
+                                              ) {
+    ceu_assert_ex(opt->is_set, "value is not set", trace);
+    return opt;
+}
 
 
 #pragma pack(pop)
@@ -964,13 +1026,340 @@ static tceu_opt_Exception* CEU_OPTION_tceu_opt_Exception_ (tceu_opt_Exception* o
 
 /*****************************************************************************/
 
+typedef struct tceu_input_CEU_WCLOCK {
+} tceu_input_CEU_WCLOCK;
+typedef struct tceu_output_OUT {
+    int _1;
+    bool _2;
+} tceu_output_OUT;
+typedef struct tceu_output_mem_OUT {
+    struct {
+#line 8 "./libraries/driver-gpio/out.ceu"
+int  pin;
+#line 8 "./libraries/driver-gpio/out.ceu"
+bool  v;
+union {
+struct {
+union {
+};
+};
+};
+};
+} tceu_output_mem_OUT;
+typedef struct tceu_input_USART_RX {
+} tceu_input_USART_RX;
+typedef struct tceu_input_INT0 {
+} tceu_input_INT0;
+typedef struct tceu_output_OUT_13 {
+    bool _1;
+} tceu_output_OUT_13;
 
 typedef struct tceu_event___lpar____rpar__ {
 } tceu_event___lpar____rpar__;
+typedef struct tceu_event___lpar__bool__rpar__ {
+    bool _1;
+} tceu_event___lpar__bool__rpar__;
 
-typedef struct tceu_code_mem_ROOT {
+typedef struct tceu_code_mem_USART_Init {
+    tceu_code_mem _mem;
+    tceu_trl      _trails[5];
+    byte          _params[0];
+    union {
+        /* MULTIS */
+        struct {
+union {
+struct {
+union {
+struct {
+union {
+};
+};
+};
+union {
+struct {
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+int  bps;
+union {
+union {
+};
+struct {
+union {
+struct {
+union {
+struct {
+union {
+struct {
+union {
+};
+};
+};
+union {
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+    };
+} tceu_code_mem_USART_Init;
+typedef struct tceu_code_mem_USART_Rx {
+    tceu_code_mem _mem;
+    tceu_trl      _trails[5];
+    byte          _params[0];
+    union {
+        /* MULTIS */
+        struct {
+union {
+struct {
+union {
+struct {
+union {
+};
+};
+};
+union {
+struct {
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+tceu_vector* buf;
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+tceu_opt_usize  n;
+union {
+union {
+};
+union {
+};
+struct {
+union {
+struct {
+union {
+struct {
+union {
+struct {
+union {
+struct {
+union {
+};
+};
+struct {
+union {
+};
+};
+};
+};
+};
+union {
+struct {
+struct {
+union {
+struct {
+union {
+};
+};
+struct {
+union {
+};
+};
+struct {
+union {
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+    };
+} tceu_code_mem_USART_Rx;
+typedef struct tceu_code_mem_INT0_Get {
     tceu_code_mem _mem;
     tceu_trl      _trails[1];
+    byte          _params[0];
+    union {
+        /* MULTIS */
+        struct {
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+bool  _ret;
+union {
+struct {
+union {
+struct {
+union {
+struct {
+union {
+};
+};
+};
+};
+};
+};
+};
+};
+    };
+} tceu_code_mem_INT0_Get;
+typedef struct tceu_code_mem_DSensor_INT0 {
+    tceu_code_mem _mem;
+    tceu_trl      _trails[5];
+    byte          _params[0];
+    union {
+        /* MULTIS */
+        struct {
+union {
+struct {
+union {
+struct {
+union {
+};
+};
+};
+union {
+struct {
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+tceu_opt_int  energyPort;
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+tceu_opt_int  time;
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+tceu_opt_int  debounce;
+union {
+union {
+};
+union {
+};
+union {
+};
+struct {
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+union {
+struct {
+union {
+struct {
+union {
+struct {
+union {
+struct {
+union {
+};
+};
+struct {
+union {
+};
+};
+};
+};
+};
+union {
+struct {
+union {
+struct {
+union {
+s32 __wclk_288;
+};
+};
+struct {
+union {
+s32 __wclk_294;
+};
+};
+};
+};
+struct {
+union {
+};
+};
+struct {
+struct {
+#line 38 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+bool  v_328;
+union {
+struct {
+union {
+s32 __wclk_311;
+};
+};
+struct {
+union {
+s32 __wclk_317;
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+    };
+} tceu_code_mem_DSensor_INT0;
+typedef struct tceu_code_mem_String_Equal_STR {
+    tceu_code_mem _mem;
+    tceu_trl      _trails[1];
+    byte          _params[0];
+    union {
+        /* MULTIS */
+        struct {
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+bool  _ret;
+union {
+struct {
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+tceu_vector* str1;
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+char*  str2;
+union {
+union {
+};
+union {
+};
+struct {
+union {
+struct {
+#line 9 "/home/anny/dev/ceu/include/string.ceu"
+int  result;
+union {
+struct {
+union {
+};
+};
+struct {
+union {
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
+    };
+} tceu_code_mem_String_Equal_STR;
+typedef struct tceu_code_mem_ROOT {
+    tceu_code_mem _mem;
+    tceu_trl      _trails[9];
     byte          _params[0];
     struct {
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
@@ -1050,9 +1439,113 @@ int  _RET;
 #line 25 "././include/arduino/arduino.ceu"
 #line 25 "././include/arduino/arduino.ceu"
 #line 25 "././include/arduino/arduino.ceu"
+#line 14 "./libraries/driver-wclock/avr/timer1-compa.ceu"
+#line 59 "./libraries/driver-wclock/avr/../wclock.ceu"
+#line 5 "./libraries/driver-gpio/out.ceu"
+#line 8 "./libraries/driver-gpio/out.ceu"
+#line 26 "./libraries/driver-usart/avr/usart.ceu"
+#line 28 "./libraries/driver-usart/avr/usart.ceu"
+#line 30 "./libraries/driver-usart/avr/usart.ceu"
+#line 30 "./libraries/driver-usart/avr/usart.ceu"
+#line 1 "./libraries/driver-gpio/avr/int0.ceu"
+#line 9 "./libraries/driver-gpio/avr/int0.ceu"
+#line 7 "libraries/driver-gpio/examples/out-01.ceu"
+union {
+struct {
+#line 5 "./libraries/driver-usart/avr/../usart.ceu"
+#line 6 "./libraries/driver-usart/avr/../usart.ceu"
+#line 17 "./libraries/driver-usart/avr/usart.ceu"
+tceu_data_Lock  usart_lock;
+#line 18 "./libraries/driver-usart/avr/usart.ceu"
+u8  usart_pm_refs;
+#line 20 "./libraries/driver-usart/avr/usart.ceu"
+byte usart_rx_buf_76_buf[32];
+tceu_vector usart_rx_buf_76;
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
 union {
 struct {
 union {
+tceu_code_mem_USART_Init __mem_398;
+};
+union {
+struct {
+struct {
+union {
+struct {
+struct {
+union {
+struct {
+struct {
+#line 14 "libraries/driver-gpio/examples/out-01.ceu"
+byte str_406_buf[2];
+tceu_vector str_406;
+union {
+tceu_code_mem_USART_Rx __mem_414;
+struct {
+union {
+};
+};
+struct {
+union {
+};
+};
+};
+};
+};
+};
+};
+struct {
+union {
+struct {
+struct {
+union {
+struct {
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+struct tceu_code_mem_DSensor_INT0* mysensor_446;
+#line 25 "libraries/driver-gpio/examples/out-01.ceu"
+bool  v_459;
+union {
+struct {
+union {
+tceu_code_mem_DSensor_INT0 __mem_444;
+};
+union {
+};
+};
+};
+};
+s32 __wclk_470;
+};
+};
+};
+};
+};
+};
+struct {
+struct {
+#line 35 "libraries/driver-gpio/examples/out-01.ceu"
+byte str_488_buf[2];
+tceu_vector str_488;
+union {
+tceu_code_mem_USART_Rx __mem_496;
+struct {
+union {
+};
+};
+struct {
+union {
+};
+};
+};
+};
+};
+};
+};
+};
+};
+};
 };
 };
 };
@@ -1067,9 +1560,202 @@ enum {
 CEU_LABEL_Block__CLR_2,
 CEU_LABEL_Block__CLR_3,
 CEU_LABEL_Block__CLR_4,
-CEU_LABEL_Do__OUT_5,
-CEU_LABEL_Do__CLR_6,
-CEU_LABEL_Block__CLR_7,
+CEU_LABEL_Async_Isr__FIN_5,
+CEU_LABEL_Block__CLR_6,
+CEU_LABEL_Do__OUT_7,
+CEU_LABEL_Do__CLR_8,
+CEU_LABEL_Block__CLR_9,
+CEU_LABEL_USART_Init_Par_Or_sub_1_IN_10,
+CEU_LABEL_USART_Init_Par_Or_sub_2_IN_11,
+CEU_LABEL_USART_Init_Par_Or__OUT_12,
+CEU_LABEL_USART_Init_Par_Or__CLR_13,
+CEU_LABEL_USART_Init_Block__CLR_14,
+CEU_LABEL_USART_Init_Finalize_Case__IN_15,
+CEU_LABEL_USART_Init_Block__CLR_16,
+CEU_LABEL_USART_Init_Block__CLR_17,
+CEU_LABEL_USART_Init_Do__OUT_18,
+CEU_LABEL_USART_Init_Do__CLR_19,
+CEU_LABEL_USART_Init_Block__CLR_20,
+CEU_LABEL_Code_USART_Init,
+CEU_LABEL_USART_Init_Code_USART_Init__TERM_22,
+CEU_LABEL_USART_Rx_Par_Or_sub_1_IN_23,
+CEU_LABEL_USART_Rx_Par_Or_sub_2_IN_24,
+CEU_LABEL_USART_Rx_Par_Or__OUT_25,
+CEU_LABEL_USART_Rx_Par_Or__CLR_26,
+CEU_LABEL_USART_Rx_Block__CLR_27,
+CEU_LABEL_USART_Rx_Finalize_Case__IN_28,
+CEU_LABEL_USART_Rx_Block__CLR_29,
+CEU_LABEL_USART_Rx_Block__CLR_30,
+CEU_LABEL_USART_Rx_Do__OUT_31,
+CEU_LABEL_USART_Rx_Do__CLR_32,
+CEU_LABEL_USART_Rx_Block__CLR_33,
+CEU_LABEL_Code_USART_Rx,
+CEU_LABEL_USART_Rx_Code_USART_Rx__TERM_35,
+CEU_LABEL_Block__CLR_36,
+CEU_LABEL_Async_Isr__FIN_37,
+CEU_LABEL_USART_Init_Par_Or_sub_1_IN_38,
+CEU_LABEL_USART_Init_Par_Or_sub_2_IN_39,
+CEU_LABEL_USART_Init_Par_Or__OUT_40,
+CEU_LABEL_USART_Init_Par_Or__CLR_41,
+CEU_LABEL_USART_Init_Block__CLR_42,
+CEU_LABEL_USART_Init_Finalize_Case__IN_43,
+CEU_LABEL_USART_Init_Par_Or_sub_1_IN_44,
+CEU_LABEL_USART_Init_Par_Or_sub_2_IN_45,
+CEU_LABEL_USART_Init_Par_Or__OUT_46,
+CEU_LABEL_USART_Init_Par_Or__CLR_47,
+CEU_LABEL_USART_Init_Block__CLR_48,
+CEU_LABEL_USART_Init_Finalize_Case__IN_49,
+CEU_LABEL_USART_Init_Block__CLR_50,
+CEU_LABEL_USART_Init_Block__CLR_51,
+CEU_LABEL_USART_Init_Block__CLR_52,
+CEU_LABEL_USART_Init_Do__OUT_53,
+CEU_LABEL_USART_Init_Do__CLR_54,
+CEU_LABEL_USART_Init_Block__CLR_55,
+CEU_LABEL_USART_Init_Code_USART_Init__TERM_56,
+CEU_LABEL_USART_Rx_Par_Or_sub_1_IN_57,
+CEU_LABEL_USART_Rx_Par_Or_sub_2_IN_58,
+CEU_LABEL_USART_Rx_Par_Or__OUT_59,
+CEU_LABEL_USART_Rx_Par_Or__CLR_60,
+CEU_LABEL_USART_Rx_Block__CLR_61,
+CEU_LABEL_USART_Rx_Finalize_Case__IN_62,
+CEU_LABEL_USART_Rx_Par_Or_sub_1_IN_63,
+CEU_LABEL_USART_Rx_Par_Or_sub_2_IN_64,
+CEU_LABEL_USART_Rx_Par_Or__OUT_65,
+CEU_LABEL_USART_Rx_Par_Or__CLR_66,
+CEU_LABEL_USART_Rx_Block__CLR_67,
+CEU_LABEL_USART_Rx_Block__CLR_68,
+CEU_LABEL_USART_Rx_Block__CLR_69,
+CEU_LABEL_USART_Rx_Finalize_Case__IN_70,
+CEU_LABEL_USART_Rx_Block__CLR_71,
+CEU_LABEL_USART_Rx_Block__CLR_72,
+CEU_LABEL_USART_Rx_Block__CLR_73,
+CEU_LABEL_USART_Rx_Await_USART_RX__OUT_74,
+CEU_LABEL_USART_Rx_Block__CLR_75,
+CEU_LABEL_USART_Rx_Loop__CLR_76,
+CEU_LABEL_USART_Rx_Loop_Continue__CNT_77,
+CEU_LABEL_USART_Rx_Loop_Continue__CLR_78,
+CEU_LABEL_USART_Rx_Loop_Break__OUT_79,
+CEU_LABEL_USART_Rx_Block__CLR_80,
+CEU_LABEL_USART_Rx_Block__CLR_81,
+CEU_LABEL_USART_Rx_Block__CLR_82,
+CEU_LABEL_USART_Rx_Do__OUT_83,
+CEU_LABEL_USART_Rx_Do__CLR_84,
+CEU_LABEL_USART_Rx_Block__CLR_85,
+CEU_LABEL_USART_Rx_Code_USART_Rx__TERM_86,
+CEU_LABEL_INT0_Get_Block__CLR_87,
+CEU_LABEL_INT0_Get_Block__CLR_88,
+CEU_LABEL_INT0_Get_Block__CLR_89,
+CEU_LABEL_INT0_Get_Do__OUT_90,
+CEU_LABEL_INT0_Get_Do__CLR_91,
+CEU_LABEL_INT0_Get_Block__CLR_92,
+CEU_LABEL_Code_INT0_Get,
+CEU_LABEL_INT0_Get_Code_INT0_Get__TERM_94,
+CEU_LABEL_Block__CLR_95,
+CEU_LABEL_Async_Isr__FIN_96,
+CEU_LABEL_DSensor_INT0_Par_Or_sub_1_IN_97,
+CEU_LABEL_DSensor_INT0_Par_Or_sub_2_IN_98,
+CEU_LABEL_DSensor_INT0_Par_Or__OUT_99,
+CEU_LABEL_DSensor_INT0_Par_Or__CLR_100,
+CEU_LABEL_DSensor_INT0_Block__CLR_101,
+CEU_LABEL_DSensor_INT0_Finalize_Case__IN_102,
+CEU_LABEL_DSensor_INT0_Par_Or_sub_1_IN_103,
+CEU_LABEL_DSensor_INT0_Par_Or_sub_2_IN_104,
+CEU_LABEL_DSensor_INT0_Par_Or__OUT_105,
+CEU_LABEL_DSensor_INT0_Par_Or__CLR_106,
+CEU_LABEL_DSensor_INT0_Block__CLR_107,
+CEU_LABEL_DSensor_INT0_Block__CLR_108,
+CEU_LABEL_DSensor_INT0_Block__CLR_109,
+CEU_LABEL_DSensor_INT0_Finalize_Case__IN_110,
+CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_111,
+CEU_LABEL_DSensor_INT0_Block__CLR_112,
+CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_113,
+CEU_LABEL_DSensor_INT0_Block__CLR_114,
+CEU_LABEL_DSensor_INT0_Block__CLR_115,
+CEU_LABEL_DSensor_INT0_Block__CLR_116,
+CEU_LABEL_DSensor_INT0_Await_INT0__OUT_117,
+CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_118,
+CEU_LABEL_DSensor_INT0_Block__CLR_119,
+CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_120,
+CEU_LABEL_DSensor_INT0_Block__CLR_121,
+CEU_LABEL_DSensor_INT0_Emit_Int__OUT_122,
+CEU_LABEL_DSensor_INT0_Block__CLR_123,
+CEU_LABEL_DSensor_INT0_Loop__CLR_124,
+CEU_LABEL_DSensor_INT0_Loop_Continue__CNT_125,
+CEU_LABEL_DSensor_INT0_Loop_Continue__CLR_126,
+CEU_LABEL_DSensor_INT0_Loop_Break__OUT_127,
+CEU_LABEL_DSensor_INT0_Block__CLR_128,
+CEU_LABEL_DSensor_INT0_Block__CLR_129,
+CEU_LABEL_DSensor_INT0_Block__CLR_130,
+CEU_LABEL_DSensor_INT0_Do__OUT_131,
+CEU_LABEL_DSensor_INT0_Do__CLR_132,
+CEU_LABEL_DSensor_INT0_Block__CLR_133,
+CEU_LABEL_Code_DSensor_INT0,
+CEU_LABEL_DSensor_INT0_Code_DSensor_INT0__TERM_135,
+CEU_LABEL_String_Equal_STR_Block__CLR_136,
+CEU_LABEL_String_Equal_STR_Block__CLR_137,
+CEU_LABEL_String_Equal_STR_Block__CLR_138,
+CEU_LABEL_String_Equal_STR_Block__CLR_139,
+CEU_LABEL_String_Equal_STR_Block__CLR_140,
+CEU_LABEL_String_Equal_STR_Do__OUT_141,
+CEU_LABEL_String_Equal_STR_Do__CLR_142,
+CEU_LABEL_String_Equal_STR_Block__CLR_143,
+CEU_LABEL_Code_String_Equal_STR,
+CEU_LABEL_String_Equal_STR_Code_String_Equal_STR__TERM_145,
+CEU_LABEL_Par_Or_sub_1_IN_146,
+CEU_LABEL_Par_Or_sub_2_IN_147,
+CEU_LABEL_Par_Or__OUT_148,
+CEU_LABEL_Par_Or__CLR_149,
+CEU_LABEL_Await_Spawn__OUT_150,
+CEU_LABEL_Par_Or_sub_1_IN_151,
+CEU_LABEL_Par_Or_sub_2_IN_152,
+CEU_LABEL_Par_Or__OUT_153,
+CEU_LABEL_Par_Or__CLR_154,
+CEU_LABEL_Await_Await__OUT_155,
+CEU_LABEL_Emit_Ext_emit__OUT_13__OUT_156,
+CEU_LABEL_Block__CLR_157,
+CEU_LABEL_Block__CLR_158,
+CEU_LABEL_Block__CLR_159,
+CEU_LABEL_Loop__CLR_160,
+CEU_LABEL_Loop_Continue__CNT_161,
+CEU_LABEL_Loop_Continue__CLR_162,
+CEU_LABEL_Loop_Break__OUT_163,
+CEU_LABEL_Block__CLR_164,
+CEU_LABEL_Par_Or_sub_1_IN_165,
+CEU_LABEL_Par_Or_sub_2_IN_166,
+CEU_LABEL_Par_Or__OUT_167,
+CEU_LABEL_Par_Or__CLR_168,
+CEU_LABEL_Await_Spawn__OUT_169,
+CEU_LABEL_Await_change__OUT_170,
+CEU_LABEL_Block__CLR_171,
+CEU_LABEL_Do__OUT_172,
+CEU_LABEL_Do__CLR_173,
+CEU_LABEL_Emit_Ext_emit__OUT_13__OUT_174,
+CEU_LABEL_Await_Wclock__OUT_175,
+CEU_LABEL_Emit_Ext_emit__OUT_13__OUT_176,
+CEU_LABEL_Block__CLR_177,
+CEU_LABEL_Loop__CLR_178,
+CEU_LABEL_Loop_Continue__CNT_179,
+CEU_LABEL_Loop_Continue__CLR_180,
+CEU_LABEL_Loop_Break__OUT_181,
+CEU_LABEL_Block__CLR_182,
+CEU_LABEL_Await_Await__OUT_183,
+CEU_LABEL_Emit_Ext_emit__OUT_13__OUT_184,
+CEU_LABEL_Block__CLR_185,
+CEU_LABEL_Block__CLR_186,
+CEU_LABEL_Block__CLR_187,
+CEU_LABEL_Loop__CLR_188,
+CEU_LABEL_Loop_Continue__CNT_189,
+CEU_LABEL_Loop_Continue__CLR_190,
+CEU_LABEL_Loop_Break__OUT_191,
+CEU_LABEL_Block__CLR_192,
+CEU_LABEL_Loop__CLR_193,
+CEU_LABEL_Loop_Continue__CNT_194,
+CEU_LABEL_Loop_Continue__CLR_195,
+CEU_LABEL_Loop_Break__OUT_196,
+CEU_LABEL_Block__CLR_197,
+CEU_LABEL_Do__OUT_198,
+CEU_LABEL_Do__CLR_199,
+CEU_LABEL_Block__CLR_200,
 
 };
 
@@ -1238,11 +1924,356 @@ static void ceu_lua_createargtable (lua_State* lua, char** argv, int argc, int s
 static int ceu_lbl (tceu_nstk _ceu_level, tceu_stk* _ceu_cur, tceu_stk* _ceu_nxt, tceu_code_mem* _ceu_mem, tceu_nlbl _ceu_lbl, tceu_ntrl* _ceu_trlK);
 
 
+    static bool ceu_wclock_is_active = 0;
+
+    void ceu_arduino_callback_wclock_min (s32 dt) {
+        ceu_wclock_request(dt, ceu_wclock_is_active);
+        ceu_wclock_is_active = (dt != CEU_WCLOCK_INACTIVE);
+        ceu_pm_set(CEU_PM_TIMER1, ceu_wclock_is_active);
+    }
+
+    s32 ceu_arduino_callback_wclock_dt (void) {
+        return (ceu_wclock_is_active) ? ceu_wclock_dt() : CEU_WCLOCK_INACTIVE;
+    }
+
+    static u16 ceu_timer1_old;
+
+    void ceu_wclock_init (void) {
+        ceu_timer1_old = TCNT1;
+        TCCR1A = 0;
 
 
 
 
 
+
+
+        TCCR1B = 0b101;
+
+
+
+    }
+
+    void ceu_wclock_request (s32 us, bool was_active) {
+        if (us == CEU_WCLOCK_INACTIVE) {
+            bitClear(TIMSK1, OCIE1A);
+        } else {
+            s32 v = ((s32)(((double)(us))*F_CPU/1024/1000000L));
+            ceu_assert(v < U16_MAX, "bug found");
+            OCR1A = (ceu_timer1_old + v);
+            bitSet(TIMSK1, OCIE1A);
+        }
+    }
+
+    void ceu_wclock_done (void) {
+        // ok
+    }
+
+    s32 ceu_wclock_dt (void) {
+        u16 now = TCNT1;
+        //ceu_assert(now<128, "bug found");     (not really, only if called due to CEU_WCLOCK)
+        s32 dt = (u16)(now - ceu_timer1_old);
+        ceu_timer1_old = now;
+        return ((s32)(((double)(dt))*1000000L*1024/F_CPU)+1);
+    }
+
+    u32 ceu_wclock_now (void) {
+        return ((s32)(((double)(TCNT1))*1000000L*1024/F_CPU)+1);
+    }
+
+#define ceu_callback_output_OUT_13(ps,trace) digitalWrite(13, *((bool*)ps))
+
+
+static tceu_nlbl CEU_CODE_USART_Init_to_lbl (tceu_code_mem_USART_Init* mem)
+{
+    tceu_nlbl lbl = CEU_LABEL_Code_USART_Init;
+    return lbl;
+}
+static tceu_nlbl CEU_CODE_USART_Rx_to_lbl (tceu_code_mem_USART_Rx* mem)
+{
+    tceu_nlbl lbl = CEU_LABEL_Code_USART_Rx;
+    return lbl;
+}
+static bool /* space */
+CEU_CODE_INT0_Get (tceu_code_mem_INT0_Get mem_,
+                         tceu_code_mem* up_mem
+#ifdef CEU_FEATURES_TRACE
+                      , tceu_trace trace
+#endif
+#ifdef CEU_FEATURES_LUA
+                      , lua_State* lua
+#endif
+                        )
+{
+    tceu_code_mem_INT0_Get* mem = &mem_;
+    mem_._mem.up_mem = up_mem;
+    mem_._mem.depth  = 0;
+#ifdef CEU_FEATURES_TRACE
+    mem_._mem.trace = trace;
+#endif
+#ifdef CEU_FEATURES_LUA
+    mem_._mem.lua = lua;
+#endif
+    tceu_nlbl lbl = CEU_LABEL_Code_INT0_Get;
+    ceu_lbl(0, NULL, NULL, (tceu_code_mem*)mem, lbl, 0);
+    return mem_._ret;
+}
+static tceu_nlbl CEU_CODE_DSensor_INT0_to_lbl (tceu_code_mem_DSensor_INT0* mem)
+{
+    tceu_nlbl lbl = CEU_LABEL_Code_DSensor_INT0;
+    return lbl;
+}
+static bool /* space */
+CEU_CODE_String_Equal_STR (tceu_code_mem_String_Equal_STR mem_,
+                         tceu_code_mem* up_mem
+#ifdef CEU_FEATURES_TRACE
+                      , tceu_trace trace
+#endif
+#ifdef CEU_FEATURES_LUA
+                      , lua_State* lua
+#endif
+                        )
+{
+    tceu_code_mem_String_Equal_STR* mem = &mem_;
+    mem_._mem.up_mem = up_mem;
+    mem_._mem.depth  = 0;
+#ifdef CEU_FEATURES_TRACE
+    mem_._mem.trace = trace;
+#endif
+#ifdef CEU_FEATURES_LUA
+    mem_._mem.lua = lua;
+#endif
+    tceu_nlbl lbl = CEU_LABEL_Code_String_Equal_STR;
+    ceu_lbl(0, NULL, NULL, (tceu_code_mem*)mem, lbl, 0);
+    return mem_._ret;
+}
+
+
+#ifdef CEU_FEATURES_TRACE
+#define ceu_callback_output_OUT(a,b) ceu_callback_output_OUT_(a,b)
+#else
+#define ceu_callback_output_OUT(a,b) ceu_callback_output_OUT_(a)
+#endif
+int ceu_callback_output_OUT_ (tceu_output_OUT* ps
+#ifdef CEU_FEATURES_TRACE
+                                                                  , tceu_trace trace
+#endif
+                                                                  )
+{
+#define CEU_TRACE(n) trace
+    tceu_output_mem_OUT _ceu_loc;
+
+/* Block (n=42, ln=9) */
+
+#line 9 "./libraries/driver-gpio/out.ceu"
+{
+
+/* Stmt_Call (n=40, ln=9) */
+
+#line 9 "./libraries/driver-gpio/out.ceu"
+digitalWrite((((*ps)._1)),(((*ps)._2)));
+
+/* Block (n=42, ln=9) */
+
+#line 9 "./libraries/driver-gpio/out.ceu"
+}
+
+/* Do (n=799, ln=8) */
+
+#line 8 "./libraries/driver-gpio/out.ceu"
+CEU_LABEL_Do__OUT_7:;
+#undef CEU_TRACE
+return 0;
+}
+
+
+typedef struct tceu_isr_mem_21 {
+    struct {
+union {
+};
+};
+} tceu_isr_mem_21;
+
+#ifndef CEU_ISR
+#error Missing architecture definition for `CEU_ISR`.
+#endif
+
+CEU_ISR(TIMER1_COMPA_vect)
+{
+    tceu_code_mem* _ceu_mem = &CEU_APP.root._mem;
+    tceu_isr_mem_21 _ceu_loc;
+    
+/* Block (n=20, ln=61) */
+
+#line 61 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Nat_Stmt (n=15, ln=61) */
+
+#line 61 "./libraries/driver-wclock/avr/../wclock.ceu"
+ceu_wclock_done();
+/* Emit_Ext_emit (n=18, ln=62) */
+
+#line 62 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+
+/* Emit_Ext_emit (n=18, ln=62) */
+
+#line 62 "./libraries/driver-wclock/avr/../wclock.ceu"
+{
+#ifdef CEU_FEATURES_ISR_STATIC
+    tceu_isr_evt __ceu_evt = { ((tceu_evt){CEU_INPUT_CEU_WCLOCK,{NULL}}).id, 0, NULL };
+    ceu_callback_isr_emit(0, (void*)&__ceu_evt, CEU_TRACE(0));
+#else
+    tceu_evt_id_params __ceu_evt = { ((tceu_evt){CEU_INPUT_CEU_WCLOCK,{NULL}}).id, NULL };
+    ceu_callback_isr_emit(TIMER1_COMPA_vect, (void*)&__ceu_evt, CEU_TRACE(0));
+#endif
+}
+
+/* Emit_Ext_emit (n=18, ln=62) */
+
+#line 62 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+
+/* Block (n=20, ln=61) */
+
+#line 61 "./libraries/driver-wclock/avr/../wclock.ceu"
+}
+}
+typedef struct tceu_isr_mem_102 {
+    struct {
+union {
+};
+};
+} tceu_isr_mem_102;
+
+#ifndef CEU_ISR
+#error Missing architecture definition for `CEU_ISR`.
+#endif
+
+CEU_ISR(USART_RX_vect)
+{
+    tceu_code_mem* _ceu_mem = &CEU_APP.root._mem;
+    tceu_isr_mem_102 _ceu_loc;
+    
+/* Block (n=101, ln=38) */
+
+#line 38 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Set_Vec (n=95, ln=38) */
+
+#line 38 "./libraries/driver-usart/avr/usart.ceu"
+{
+    usize __ceu_nxt;
+
+/* Set_Vec (n=95, ln=38) */
+
+#line 38 "./libraries/driver-usart/avr/usart.ceu"
+    __ceu_nxt = ((CEU_APP.root.usart_rx_buf_76)).len;
+
+/* Set_Vec (n=95, ln=38) */
+
+#line 38 "./libraries/driver-usart/avr/usart.ceu"
+    __ceu_nxt = ((CEU_APP.root.usart_rx_buf_76)).len;
+
+/* Set_Vec (n=95, ln=38) */
+
+#line 38 "./libraries/driver-usart/avr/usart.ceu"
+    ceu_vector_setlen(&((CEU_APP.root.usart_rx_buf_76)), (((CEU_APP.root.usart_rx_buf_76)).len + 1), 1);
+
+/* Set_Vec (n=95, ln=38) */
+
+#line 38 "./libraries/driver-usart/avr/usart.ceu"
+    *((byte*)
+        ceu_vector_buf_get(&((CEU_APP.root.usart_rx_buf_76)), __ceu_nxt++)) = UDR0;
+
+/* Set_Vec (n=95, ln=38) */
+
+#line 38 "./libraries/driver-usart/avr/usart.ceu"
+
+/* Set_Vec (n=95, ln=38) */
+
+#line 38 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Emit_Ext_emit (n=99, ln=39) */
+
+#line 39 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Emit_Ext_emit (n=99, ln=39) */
+
+#line 39 "./libraries/driver-usart/avr/usart.ceu"
+{
+#ifdef CEU_FEATURES_ISR_STATIC
+    tceu_isr_evt __ceu_evt = { ((tceu_evt){CEU_INPUT_USART_RX,{NULL}}).id, 0, NULL };
+    ceu_callback_isr_emit(2, (void*)&__ceu_evt, CEU_TRACE(0));
+#else
+    tceu_evt_id_params __ceu_evt = { ((tceu_evt){CEU_INPUT_USART_RX,{NULL}}).id, NULL };
+    ceu_callback_isr_emit(USART_RX_vect, (void*)&__ceu_evt, CEU_TRACE(0));
+#endif
+}
+
+/* Emit_Ext_emit (n=99, ln=39) */
+
+#line 39 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Block (n=101, ln=38) */
+
+#line 38 "./libraries/driver-usart/avr/usart.ceu"
+}
+}
+typedef struct tceu_isr_mem_244 {
+    struct {
+union {
+};
+};
+} tceu_isr_mem_244;
+
+#ifndef CEU_ISR
+#error Missing architecture definition for `CEU_ISR`.
+#endif
+
+CEU_ISR(INT0_vect)
+{
+    tceu_code_mem* _ceu_mem = &CEU_APP.root._mem;
+    tceu_isr_mem_244 _ceu_loc;
+    
+/* Block (n=243, ln=18) */
+
+#line 18 "./libraries/driver-gpio/avr/int0.ceu"
+{
+
+/* Emit_Ext_emit (n=241, ln=18) */
+
+#line 18 "./libraries/driver-gpio/avr/int0.ceu"
+{
+
+/* Emit_Ext_emit (n=241, ln=18) */
+
+#line 18 "./libraries/driver-gpio/avr/int0.ceu"
+{
+#ifdef CEU_FEATURES_ISR_STATIC
+    tceu_isr_evt __ceu_evt = { ((tceu_evt){CEU_INPUT_INT0,{NULL}}).id, 0, NULL };
+    ceu_callback_isr_emit(3, (void*)&__ceu_evt, CEU_TRACE(0));
+#else
+    tceu_evt_id_params __ceu_evt = { ((tceu_evt){CEU_INPUT_INT0,{NULL}}).id, NULL };
+    ceu_callback_isr_emit(INT0_vect, (void*)&__ceu_evt, CEU_TRACE(0));
+#endif
+}
+
+/* Emit_Ext_emit (n=241, ln=18) */
+
+#line 18 "./libraries/driver-gpio/avr/int0.ceu"
+}
+
+/* Block (n=243, ln=18) */
+
+#line 18 "./libraries/driver-gpio/avr/int0.ceu"
+}
+}
 
 
 
@@ -1382,42 +2413,2728 @@ _CEU_LBL_:
         case CEU_LABEL_NONE:
             break;
         
-/* ROOT (n=50, ln=1) */
+/* ROOT (n=563, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 case CEU_LABEL_ROOT:;
 
-/* Block (n=49, ln=1) */
+/* Block (n=562, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Block (n=44, ln=1) */
+/* Block (n=557, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 {
 
-/* Await_Forever (n=5, ln=1) */
+/* Nat_Stmt (n=7, ln=51) */
+
+#line 51 "./libraries/driver-wclock/avr/../wclock.ceu"
+
+    ceu_wclock_init();
+
+/* Nat_Stmt (n=46, ln=24) */
+
+#line 24 "./libraries/driver-gpio/out.ceu"
+
+#ifdef _CEU_OUTPUT_OUT_13_
+    pinMode(13, OUTPUT);
+#endif
+
+/* Set_Exp (n=1012, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
+((((CEU_APP.root.usart_lock)).is_locked)) = 0;
+
+/* Set_Exp (n=71, ln=18) */
+
+#line 18 "./libraries/driver-usart/avr/usart.ceu"
+((CEU_APP.root.usart_pm_refs)) = 0;
+
+/* Vec_Init (n=1028, ln=20) */
+
+#line 20 "./libraries/driver-usart/avr/usart.ceu"
+ceu_vector_init(&((CEU_APP.root.usart_rx_buf_76)),32, 1, 0, sizeof(byte),
+                (byte*)&((CEU_APP.root.usart_rx_buf_76_buf)));
+
+/* Code (n=876, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+/* do not enter from outside */
+if (0)
+{
+
+/* Code (n=876, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_Code_USART_Init:;
+
+/* Block (n=875, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Par_Or (n=1352, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[2].level  = _ceu_level;
+_ceu_mem->_trails[2].lbl    = CEU_LABEL_USART_Init_Par_Or_sub_2_IN_39;
+
+/* Par_Or (n=1352, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Init_Par_Or_sub_1_IN_38);
+
+/* Par_Or (n=1352, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Init_Par_Or_sub_1_IN_38:;
+
+/* Finalize_Case (n=1202, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
+_ceu_mem->_trails[1].lbl    = CEU_LABEL_USART_Init_Finalize_Case__IN_43;
+
+/* Finalize_Case (n=1202, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+if (0) {
+
+/* Finalize_Case (n=1202, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Init_Finalize_Case__IN_43:;
+
+/* Block (n=870, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Code_Finalize (n=868, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+if (_ceu_mem->has_term) {
+    /* generate only if terminating from inside */
+    _ceu_mem->_trails[1].evt.id = CEU_INPUT__STACKED;
+    _ceu_mem->_trails[1].level  = _ceu_level;
+    _ceu_mem->_trails[1].lbl    = CEU_LABEL_USART_Init_Code_USART_Init__TERM_56;
+
+    tceu_evt   __ceu_evt   = { CEU_INPUT__CODE_TERMINATED, {_ceu_mem} };
+    tceu_range __ceu_range = { &CEU_APP.root._mem, 0, CEU_TRAILS_N-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+
+/* Code_Finalize (n=868, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_nxt->params_n = 0;
+
+/* Code_Finalize (n=868, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+#ifdef CEU_FEATURES_POOL
+if (_ceu_mem->pak != NULL) {
+    tceu_code_mem_dyn* __ceu_dyn =
+        (tceu_code_mem_dyn*)(((byte*)(_ceu_mem)) - sizeof(tceu_code_mem_dyn));
+    __ceu_dyn->is_alive = 0;
+}
+#endif
+
+ceu_stack_clear(_ceu_cur, _ceu_mem);
+
+if (_ceu_mem->has_term) {
+    _ceu_mem->has_term = 0;
+    return 1;
+} else {
+    return 0;
+}
+
+/* Code_Finalize (n=868, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
 return 0;
 
-/* Block (n=44, ln=1) */
+/* Block (n=870, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Finalize_Case (n=1202, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Finalize_Case (n=1202, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Await_Forever (n=1349, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Par_Or (n=1352, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Init_Par_Or__OUT_40);
+
+/* Par_Or (n=1352, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Init_Par_Or_sub_2_IN_39:;
+
+/* Block (n=866, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Block (n=864, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Block (n=118, ln=47) */
+
+#line 47 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Nat_Stmt (n=110, ln=47) */
+
+#line 47 "./libraries/driver-usart/avr/usart.ceu"
+
+        UCSR0A = 1 << U2X0;
+        UBRR0H = (USART_BAUD((((*((tceu_code_mem_USART_Init*)_ceu_mem)).bps)))>>8); // set baud rate
+        UBRR0L = (USART_BAUD((((*((tceu_code_mem_USART_Init*)_ceu_mem)).bps))));
+        UCSR0C = (1<<USBS0) | (3<<UCSZ00); // 8data, 2stop-bit
+        UCSR0B = (1<<RXEN0) | (1<<RXCIE0); // enables RX & ISRS
+    
+/* Par_Or (n=1358, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[4].level  = _ceu_level;
+_ceu_mem->_trails[4].lbl    = CEU_LABEL_USART_Init_Par_Or_sub_2_IN_45;
+
+/* Par_Or (n=1358, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Init_Par_Or_sub_1_IN_44);
+
+/* Par_Or (n=1358, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Init_Par_Or_sub_1_IN_44:;
+
+/* Finalize_Case (n=1204, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
+_ceu_mem->_trails[3].lbl    = CEU_LABEL_USART_Init_Finalize_Case__IN_49;
+
+/* Finalize_Case (n=1204, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+if (0) {
+
+/* Finalize_Case (n=1204, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Init_Finalize_Case__IN_49:;
+
+/* Block (n=113, ln=55) */
+
+#line 55 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Nat_Stmt (n=111, ln=55) */
+
+#line 55 "./libraries/driver-usart/avr/usart.ceu"
+
+            UCSR0B = 0; // disables TX/RX & ISRS
+        
+/* Block (n=113, ln=55) */
+
+#line 55 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Finalize_Case (n=1204, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Finalize_Case (n=1204, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Await_Forever (n=1355, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Par_Or (n=1358, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Init_Par_Or__OUT_46);
+
+/* Par_Or (n=1358, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Init_Par_Or_sub_2_IN_45:;
+
+/* Await_Forever (n=116, ln=59) */
+
+#line 59 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Nat_Stmt (n=1034, ln=47) */
+
+#line 47 "./libraries/driver-usart/avr/usart.ceu"
+ceu_assert(0, "reached end of `code`");
+/* Par_Or (n=1358, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Init_Par_Or__OUT_46);
+
+/* Par_Or (n=1358, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Init_Par_Or__OUT_46:;
+
+/* Par_Or (n=1358, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[2].level  = _ceu_level;
+_ceu_mem->_trails[2].lbl    = CEU_LABEL_USART_Init_Par_Or__CLR_47;
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 2+1, 4 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    return 1;
+}
+
+/* Par_Or (n=1358, ln=54) */
+
+#line 54 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Init_Par_Or__CLR_47:;
+
+/* Block (n=118, ln=47) */
+
+#line 47 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Block (n=864, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Block (n=866, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Do (n=867, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Init_Do__OUT_53:;
+
+/* Do (n=867, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+    _ceu_mem->has_term = 1;
+
+/* Par_Or (n=1352, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Init_Par_Or__OUT_40);
+
+/* Par_Or (n=1352, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Init_Par_Or__OUT_40:;
+
+/* Par_Or (n=1352, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[0].level  = _ceu_level;
+_ceu_mem->_trails[0].lbl    = CEU_LABEL_USART_Init_Par_Or__CLR_41;
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 0+1, 4 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    return 1;
+}
+
+/* Par_Or (n=1352, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Init_Par_Or__CLR_41:;
+
+/* Block (n=875, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Code (n=876, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Code (n=876, ln=46) */
+
+#line 46 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Code (n=895, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+/* do not enter from outside */
+if (0)
+{
+
+/* Code (n=895, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_Code_USART_Rx:;
+
+/* Block (n=894, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Par_Or (n=1364, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[2].level  = _ceu_level;
+_ceu_mem->_trails[2].lbl    = CEU_LABEL_USART_Rx_Par_Or_sub_2_IN_58;
+
+/* Par_Or (n=1364, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Rx_Par_Or_sub_1_IN_57);
+
+/* Par_Or (n=1364, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Par_Or_sub_1_IN_57:;
+
+/* Finalize_Case (n=1206, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
+_ceu_mem->_trails[1].lbl    = CEU_LABEL_USART_Rx_Finalize_Case__IN_62;
+
+/* Finalize_Case (n=1206, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+if (0) {
+
+/* Finalize_Case (n=1206, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Finalize_Case__IN_62:;
+
+/* Block (n=889, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Code_Finalize (n=887, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+if (_ceu_mem->has_term) {
+    /* generate only if terminating from inside */
+    _ceu_mem->_trails[1].evt.id = CEU_INPUT__STACKED;
+    _ceu_mem->_trails[1].level  = _ceu_level;
+    _ceu_mem->_trails[1].lbl    = CEU_LABEL_USART_Rx_Code_USART_Rx__TERM_86;
+
+    tceu_evt   __ceu_evt   = { CEU_INPUT__CODE_TERMINATED, {_ceu_mem} };
+    tceu_range __ceu_range = { &CEU_APP.root._mem, 0, CEU_TRAILS_N-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+
+/* Code_Finalize (n=887, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_nxt->params_n = 0;
+
+/* Code_Finalize (n=887, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+#ifdef CEU_FEATURES_POOL
+if (_ceu_mem->pak != NULL) {
+    tceu_code_mem_dyn* __ceu_dyn =
+        (tceu_code_mem_dyn*)(((byte*)(_ceu_mem)) - sizeof(tceu_code_mem_dyn));
+    __ceu_dyn->is_alive = 0;
+}
+#endif
+
+ceu_stack_clear(_ceu_cur, _ceu_mem);
+
+if (_ceu_mem->has_term) {
+    _ceu_mem->has_term = 0;
+    return 1;
+} else {
+    return 0;
+}
+
+/* Code_Finalize (n=887, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Block (n=889, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Finalize_Case (n=1206, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Finalize_Case (n=1206, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Await_Forever (n=1361, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Par_Or (n=1364, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Rx_Par_Or__OUT_59);
+
+/* Par_Or (n=1364, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Par_Or_sub_2_IN_58:;
+
+/* Block (n=885, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Block (n=883, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Block (n=209, ln=64) */
+
+#line 64 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Set_Exp (n=138, ln=64) */
+
+#line 64 "./libraries/driver-usart/avr/usart.ceu"
+((CEU_APP.root.usart_pm_refs)) = (((CEU_APP.root.usart_pm_refs))+1);
+
+/* Nat_Stmt (n=140, ln=65) */
+
+#line 65 "./libraries/driver-usart/avr/usart.ceu"
+ceu_pm_set(CEU_PM_USART, 1);
+/* Par_Or (n=1370, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[4].level  = _ceu_level;
+_ceu_mem->_trails[4].lbl    = CEU_LABEL_USART_Rx_Par_Or_sub_2_IN_64;
+
+/* Par_Or (n=1370, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Rx_Par_Or_sub_1_IN_63);
+
+/* Par_Or (n=1370, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Par_Or_sub_1_IN_63:;
+
+/* Finalize_Case (n=1208, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
+_ceu_mem->_trails[3].lbl    = CEU_LABEL_USART_Rx_Finalize_Case__IN_70;
+
+/* Finalize_Case (n=1208, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+if (0) {
+
+/* Finalize_Case (n=1208, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Finalize_Case__IN_70:;
+
+/* Block (n=159, ln=67) */
+
+#line 67 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Set_Exp (n=148, ln=67) */
+
+#line 67 "./libraries/driver-usart/avr/usart.ceu"
+((CEU_APP.root.usart_pm_refs)) = (((CEU_APP.root.usart_pm_refs))-1);
+
+/* If (n=157, ln=68) */
+
+#line 68 "./libraries/driver-usart/avr/usart.ceu"
+if ((((CEU_APP.root.usart_pm_refs))==0)) {
+    
+/* Block (n=156, ln=69) */
+
+#line 69 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Nat_Stmt (n=154, ln=69) */
+
+#line 69 "./libraries/driver-usart/avr/usart.ceu"
+ceu_pm_set(CEU_PM_USART, 0);
+/* Block (n=156, ln=69) */
+
+#line 69 "./libraries/driver-usart/avr/usart.ceu"
+}
+} else {
+    
+/* Block (n=899, ln=68) */
+
+#line 68 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Block (n=899, ln=68) */
+
+#line 68 "./libraries/driver-usart/avr/usart.ceu"
+}
+}
+
+/* Block (n=159, ln=67) */
+
+#line 67 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Finalize_Case (n=1208, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Finalize_Case (n=1208, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Await_Forever (n=1367, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Par_Or (n=1370, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Rx_Par_Or__OUT_65);
+
+/* Par_Or (n=1370, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Par_Or_sub_2_IN_64:;
+
+/* Loop (n=207, ln=73) */
+
+#line 73 "./libraries/driver-usart/avr/usart.ceu"
+while (1) {
+        
+/* Block (n=206, ln=74) */
+
+#line 74 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Atomic (n=179, ln=74) */
+
+#line 74 "./libraries/driver-usart/avr/usart.ceu"
+ceu_callback_isr_enable(0, CEU_TRACE(0));
+/* Block (n=178, ln=75) */
+
+#line 75 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Set_Vec (n=168, ln=75) */
+
+#line 75 "./libraries/driver-usart/avr/usart.ceu"
+{
+    usize __ceu_nxt;
+
+/* Set_Vec (n=168, ln=75) */
+
+#line 75 "./libraries/driver-usart/avr/usart.ceu"
+    __ceu_nxt = (*((*((tceu_code_mem_USART_Rx*)_ceu_mem)).buf)).len;
+
+/* Set_Vec (n=168, ln=75) */
+
+#line 75 "./libraries/driver-usart/avr/usart.ceu"
+    __ceu_nxt = (*((*((tceu_code_mem_USART_Rx*)_ceu_mem)).buf)).len;
+
+/* Set_Vec (n=168, ln=75) */
+
+#line 75 "./libraries/driver-usart/avr/usart.ceu"
+    ceu_assert(&((CEU_APP.root.usart_rx_buf_76)) != &(*((*((tceu_code_mem_USART_Rx*)_ceu_mem)).buf)), "source is the same as destination");
+
+/* Set_Vec (n=168, ln=75) */
+
+#line 75 "./libraries/driver-usart/avr/usart.ceu"
+    ceu_vector_copy(&(*((*((tceu_code_mem_USART_Rx*)_ceu_mem)).buf)), __ceu_nxt, &((CEU_APP.root.usart_rx_buf_76)), 0, ((CEU_APP.root.usart_rx_buf_76)).len);
+
+/* Set_Vec (n=168, ln=75) */
+
+#line 75 "./libraries/driver-usart/avr/usart.ceu"
+    __ceu_nxt = (*((*((tceu_code_mem_USART_Rx*)_ceu_mem)).buf)).len;
+
+/* Set_Vec (n=168, ln=75) */
+
+#line 75 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Set_Vec (n=175, ln=76) */
+
+#line 76 "./libraries/driver-usart/avr/usart.ceu"
+{
+    usize __ceu_nxt;
+
+/* Set_Vec (n=175, ln=76) */
+
+#line 76 "./libraries/driver-usart/avr/usart.ceu"
+    ceu_vector_setlen(&((CEU_APP.root.usart_rx_buf_76)), 0, 0);
+    __ceu_nxt = 0;
+
+/* Set_Vec (n=175, ln=76) */
+
+#line 76 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Block (n=178, ln=75) */
+
+#line 75 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Atomic (n=179, ln=74) */
+
+#line 74 "./libraries/driver-usart/avr/usart.ceu"
+ceu_callback_isr_enable(1, CEU_TRACE(0));
+/* If (n=200, ln=78) */
+
+#line 78 "./libraries/driver-usart/avr/usart.ceu"
+if (((((((*((tceu_code_mem_USART_Rx*)_ceu_mem)).n)).is_set)&&(((*((*((tceu_code_mem_USART_Rx*)_ceu_mem)).buf)).len)>=(CEU_OPTION_tceu_opt_usize(&(((*((tceu_code_mem_USART_Rx*)_ceu_mem)).n)), CEU_TRACE(0))->value)))||((!((((*((tceu_code_mem_USART_Rx*)_ceu_mem)).n)).is_set))&&(((*((*((tceu_code_mem_USART_Rx*)_ceu_mem)).buf)).len)>0)))) {
+    
+/* Block (n=199, ln=79) */
+
+#line 79 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Break (n=197, ln=79) */
+
+#line 79 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Rx_Loop_Break__OUT_79);
+
+/* Block (n=199, ln=79) */
+
+#line 79 "./libraries/driver-usart/avr/usart.ceu"
+}
+} else {
+    
+/* Block (n=901, ln=78) */
+
+#line 78 "./libraries/driver-usart/avr/usart.ceu"
+{
+
+/* Block (n=901, ln=78) */
+
+#line 78 "./libraries/driver-usart/avr/usart.ceu"
+}
+}
+
+/* Await_Ext (n=203, ln=82) */
+
+#line 82 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[4].evt = ((tceu_evt){CEU_INPUT_USART_RX,{NULL}});
+
+/* Await_Ext (n=203, ln=82) */
+
+#line 82 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[4].lbl = CEU_LABEL_USART_Rx_Await_USART_RX__OUT_74;
+
+/* Await_Ext (n=203, ln=82) */
+
+#line 82 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Await_Ext (n=203, ln=82) */
+
+#line 82 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Await_USART_RX__OUT_74:;
+
+/* Block (n=206, ln=74) */
+
+#line 74 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Loop (n=207, ln=73) */
+
+#line 73 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Loop_Continue__CNT_77:;
+
+/* Loop (n=207, ln=73) */
+
+#line 73 "./libraries/driver-usart/avr/usart.ceu"
+        *_ceu_trlK = 3;
+}
+
+/* Loop (n=207, ln=73) */
+
+#line 73 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Loop_Break__OUT_79:;
+
+/* Par_Or (n=1370, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Rx_Par_Or__OUT_65);
+
+/* Par_Or (n=1370, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Par_Or__OUT_65:;
+
+/* Par_Or (n=1370, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[2].level  = _ceu_level;
+_ceu_mem->_trails[2].lbl    = CEU_LABEL_USART_Rx_Par_Or__CLR_66;
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 2+1, 4 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    return 1;
+}
+
+/* Par_Or (n=1370, ln=66) */
+
+#line 66 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Par_Or__CLR_66:;
+
+/* Block (n=209, ln=64) */
+
+#line 64 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Block (n=883, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Block (n=885, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Do (n=886, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Do__OUT_83:;
+
+/* Do (n=886, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+    _ceu_mem->has_term = 1;
+
+/* Par_Or (n=1364, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+CEU_GOTO(CEU_LABEL_USART_Rx_Par_Or__OUT_59);
+
+/* Par_Or (n=1364, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Par_Or__OUT_59:;
+
+/* Par_Or (n=1364, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+_ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[0].level  = _ceu_level;
+_ceu_mem->_trails[0].lbl    = CEU_LABEL_USART_Rx_Par_Or__CLR_60;
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 0+1, 4 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    return 1;
+}
+
+/* Par_Or (n=1364, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+case CEU_LABEL_USART_Rx_Par_Or__CLR_60:;
+
+/* Block (n=894, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Code (n=895, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+return 0;
+
+/* Code (n=895, ln=62) */
+
+#line 62 "./libraries/driver-usart/avr/usart.ceu"
+}
+
+/* Code (n=919, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+/* do not enter from outside */
+if (0)
+{
+
+/* Code (n=919, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+case CEU_LABEL_Code_INT0_Get:;
+
+/* Block (n=918, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+{
+
+/* Block (n=910, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+{
+
+/* Block (n=908, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+{
+
+/* Block (n=231, ln=6) */
+
+#line 6 "./libraries/driver-gpio/avr/int0.ceu"
+{
+
+/* Set_Exp (n=920, ln=6) */
+
+#line 6 "./libraries/driver-gpio/avr/int0.ceu"
+(((*((tceu_code_mem_INT0_Get*)_ceu_mem))._ret)) = (((bool)((((bool)(digitalRead(2)))? 1 : 0)))? 1 : 0);
+
+/* Escape (n=229, ln=6) */
+
+#line 6 "./libraries/driver-gpio/avr/int0.ceu"
+CEU_GOTO(CEU_LABEL_INT0_Get_Do__OUT_90);
+
+/* Block (n=231, ln=6) */
+
+#line 6 "./libraries/driver-gpio/avr/int0.ceu"
+}
+
+/* Block (n=908, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+}
+
+/* Block (n=910, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+}
+
+/* Do (n=911, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+ceu_assert(0, "reached end of `do`");
+
+/* Do (n=911, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+case CEU_LABEL_INT0_Get_Do__OUT_90:;
+
+/* Block (n=918, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+}
+
+/* Code (n=919, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+return 0;
+
+/* Code (n=919, ln=5) */
+
+#line 5 "./libraries/driver-gpio/avr/int0.ceu"
+}
+
+/* Nat_Stmt (n=235, ln=11) */
+
+#line 11 "./libraries/driver-gpio/avr/int0.ceu"
+
+    pinMode(2, INPUT_PULLUP);
+    EICRA = (EICRA & ~((1<<ISC00) | (1<<ISC01))) | (CHANGE << ISC00);
+    EIMSK |= (1 << INT0);
+
+/* Code (n=941, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+/* do not enter from outside */
+if (0)
+{
+
+/* Code (n=941, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_Code_DSensor_INT0:;
+
+/* Block (n=940, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Par_Or (n=1376, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[2].level  = _ceu_level;
+_ceu_mem->_trails[2].lbl    = CEU_LABEL_DSensor_INT0_Par_Or_sub_2_IN_98;
+
+/* Par_Or (n=1376, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+CEU_GOTO(CEU_LABEL_DSensor_INT0_Par_Or_sub_1_IN_97);
+
+/* Par_Or (n=1376, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Par_Or_sub_1_IN_97:;
+
+/* Finalize_Case (n=1210, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[1].evt.id = CEU_INPUT__FINALIZE;
+_ceu_mem->_trails[1].lbl    = CEU_LABEL_DSensor_INT0_Finalize_Case__IN_102;
+
+/* Finalize_Case (n=1210, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+if (0) {
+
+/* Finalize_Case (n=1210, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Finalize_Case__IN_102:;
+
+/* Block (n=935, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Code_Finalize (n=933, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+if (_ceu_mem->has_term) {
+    /* generate only if terminating from inside */
+    _ceu_mem->_trails[1].evt.id = CEU_INPUT__STACKED;
+    _ceu_mem->_trails[1].level  = _ceu_level;
+    _ceu_mem->_trails[1].lbl    = CEU_LABEL_DSensor_INT0_Code_DSensor_INT0__TERM_135;
+
+    tceu_evt   __ceu_evt   = { CEU_INPUT__CODE_TERMINATED, {_ceu_mem} };
+    tceu_range __ceu_range = { &CEU_APP.root._mem, 0, CEU_TRAILS_N-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+
+/* Code_Finalize (n=933, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_nxt->params_n = 0;
+
+/* Code_Finalize (n=933, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+
+#ifdef CEU_FEATURES_POOL
+if (_ceu_mem->pak != NULL) {
+    tceu_code_mem_dyn* __ceu_dyn =
+        (tceu_code_mem_dyn*)(((byte*)(_ceu_mem)) - sizeof(tceu_code_mem_dyn));
+    __ceu_dyn->is_alive = 0;
+}
+#endif
+
+ceu_stack_clear(_ceu_cur, _ceu_mem);
+
+if (_ceu_mem->has_term) {
+    _ceu_mem->has_term = 0;
+    return 1;
+} else {
+    return 0;
+}
+
+/* Code_Finalize (n=933, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+return 0;
+
+/* Block (n=935, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+
+/* Finalize_Case (n=1210, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+return 0;
+
+/* Finalize_Case (n=1210, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+
+/* Await_Forever (n=1373, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+return 0;
+
+/* Par_Or (n=1376, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+CEU_GOTO(CEU_LABEL_DSensor_INT0_Par_Or__OUT_99);
+
+/* Par_Or (n=1376, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Par_Or_sub_2_IN_98:;
+
+/* Block (n=931, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Block (n=929, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Block (n=340, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Par_Or (n=1382, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[4].level  = _ceu_level;
+_ceu_mem->_trails[4].lbl    = CEU_LABEL_DSensor_INT0_Par_Or_sub_2_IN_104;
+
+/* Par_Or (n=1382, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+CEU_GOTO(CEU_LABEL_DSensor_INT0_Par_Or_sub_1_IN_103);
+
+/* Par_Or (n=1382, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Par_Or_sub_1_IN_103:;
+
+/* Finalize_Case (n=1212, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[3].evt.id = CEU_INPUT__FINALIZE;
+_ceu_mem->_trails[3].lbl    = CEU_LABEL_DSensor_INT0_Finalize_Case__IN_110;
+
+/* Finalize_Case (n=1212, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+if (0) {
+
+/* Finalize_Case (n=1212, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Finalize_Case__IN_110:;
+
+/* Block (n=273, ln=8) */
+
+#line 8 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* If (n=271, ln=8) */
+
+#line 8 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+if (((((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).energyPort)).is_set)) {
+    
+/* Block (n=270, ln=9) */
+
+#line 9 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Stmt_Call (n=268, ln=9) */
+
+#line 9 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+digitalWrite((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).energyPort)), CEU_TRACE(0))->value),0);
+
+/* Block (n=270, ln=9) */
+
+#line 9 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+} else {
+    
+/* Block (n=948, ln=8) */
+
+#line 8 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Block (n=948, ln=8) */
+
+#line 8 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+}
+
+/* Block (n=273, ln=8) */
+
+#line 8 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+
+/* Finalize_Case (n=1212, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+return 0;
+
+/* Finalize_Case (n=1212, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+
+/* Await_Forever (n=1379, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+return 0;
+
+/* Par_Or (n=1382, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+CEU_GOTO(CEU_LABEL_DSensor_INT0_Par_Or__OUT_105);
+
+/* Par_Or (n=1382, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Par_Or_sub_2_IN_104:;
+
+/* If (n=300, ln=13) */
+
+#line 13 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+if (((((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).energyPort)).is_set)) {
+    
+/* Block (n=299, ln=15) */
+
+#line 15 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Nat_Stmt (n=281, ln=15) */
+
+#line 15 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+
+            pinMode((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).energyPort)), CEU_TRACE(0))->value), OUTPUT);
+            digitalWrite((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).energyPort)), CEU_TRACE(0))->value), HIGH);
+        
+/* If (n=297, ln=21) */
+
+#line 21 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+if (((((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).time)).is_set)) {
+    
+/* Block (n=290, ln=22) */
+
+#line 22 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Await_Wclock (n=288, ln=22) */
+
+#line 22 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+ceu_wclock(((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).time)), CEU_TRACE(0))->value))*1000.0, &((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).__wclk_288), NULL, CEU_TRACE(0));
+
+_CEU_HALT_288_:
+
+/* Await_Wclock (n=288, ln=22) */
+
+#line 22 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__WCLOCK;
+
+/* Await_Wclock (n=288, ln=22) */
+
+#line 22 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].lbl = CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_111;
+
+/* Await_Wclock (n=288, ln=22) */
+
+#line 22 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+return 0;
+
+/* Await_Wclock (n=288, ln=22) */
+
+#line 22 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_111:;
+
+/* Await_Wclock (n=288, ln=22) */
+
+#line 22 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+/* subtract time and check if I have to awake */
+{
+    s32* dt = (s32*)_ceu_cur->params;
+    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).__wclk_288), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_288_;
+    }
+}
+
+/* Block (n=290, ln=22) */
+
+#line 22 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+} else {
+    
+/* Block (n=296, ln=24) */
+
+#line 24 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Await_Wclock (n=294, ln=24) */
+
+#line 24 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+ceu_wclock((1)*1000.0, &((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).__wclk_294), NULL, CEU_TRACE(0));
+
+_CEU_HALT_294_:
+
+/* Await_Wclock (n=294, ln=24) */
+
+#line 24 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__WCLOCK;
+
+/* Await_Wclock (n=294, ln=24) */
+
+#line 24 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].lbl = CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_113;
+
+/* Await_Wclock (n=294, ln=24) */
+
+#line 24 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+return 0;
+
+/* Await_Wclock (n=294, ln=24) */
+
+#line 24 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_113:;
+
+/* Await_Wclock (n=294, ln=24) */
+
+#line 24 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+/* subtract time and check if I have to awake */
+{
+    s32* dt = (s32*)_ceu_cur->params;
+    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).__wclk_294), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_294_;
+    }
+}
+
+/* Block (n=296, ln=24) */
+
+#line 24 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+}
+
+/* Block (n=299, ln=15) */
+
+#line 15 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+} else {
+    
+/* Block (n=950, ln=13) */
+
+#line 13 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Block (n=950, ln=13) */
+
+#line 13 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+}
+
+/* Loop (n=338, ln=28) */
+
+#line 28 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+while (1) {
+        
+/* Block (n=337, ln=29) */
+
+#line 29 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Await_Ext (n=303, ln=29) */
+
+#line 29 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].evt = ((tceu_evt){CEU_INPUT_INT0,{NULL}});
+
+/* Await_Ext (n=303, ln=29) */
+
+#line 29 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].lbl = CEU_LABEL_DSensor_INT0_Await_INT0__OUT_117;
+
+/* Await_Ext (n=303, ln=29) */
+
+#line 29 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+return 0;
+
+/* Await_Ext (n=303, ln=29) */
+
+#line 29 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Await_INT0__OUT_117:;
+
+/* If (n=320, ln=32) */
+
+#line 32 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+if (((((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).debounce)).is_set)) {
+    
+/* Block (n=313, ln=33) */
+
+#line 33 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Await_Wclock (n=311, ln=33) */
+
+#line 33 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+ceu_wclock(((CEU_OPTION_tceu_opt_int(&(((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).debounce)), CEU_TRACE(0))->value))*1000.0, &((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).__wclk_311), NULL, CEU_TRACE(0));
+
+_CEU_HALT_311_:
+
+/* Await_Wclock (n=311, ln=33) */
+
+#line 33 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__WCLOCK;
+
+/* Await_Wclock (n=311, ln=33) */
+
+#line 33 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].lbl = CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_118;
+
+/* Await_Wclock (n=311, ln=33) */
+
+#line 33 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+return 0;
+
+/* Await_Wclock (n=311, ln=33) */
+
+#line 33 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_118:;
+
+/* Await_Wclock (n=311, ln=33) */
+
+#line 33 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+/* subtract time and check if I have to awake */
+{
+    s32* dt = (s32*)_ceu_cur->params;
+    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).__wclk_311), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_311_;
+    }
+}
+
+/* Block (n=313, ln=33) */
+
+#line 33 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+} else {
+    
+/* Block (n=319, ln=35) */
+
+#line 35 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+
+/* Await_Wclock (n=317, ln=35) */
+
+#line 35 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+ceu_wclock((500)*1000.0, &((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).__wclk_317), NULL, CEU_TRACE(0));
+
+_CEU_HALT_317_:
+
+/* Await_Wclock (n=317, ln=35) */
+
+#line 35 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__WCLOCK;
+
+/* Await_Wclock (n=317, ln=35) */
+
+#line 35 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].lbl = CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_120;
+
+/* Await_Wclock (n=317, ln=35) */
+
+#line 35 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+return 0;
+
+/* Await_Wclock (n=317, ln=35) */
+
+#line 35 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Await_Wclock__OUT_120:;
+
+/* Await_Wclock (n=317, ln=35) */
+
+#line 35 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+/* subtract time and check if I have to awake */
+{
+    s32* dt = (s32*)_ceu_cur->params;
+    if (!ceu_wclock(*dt, NULL, &((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).__wclk_317), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_317_;
+    }
+}
+
+/* Block (n=319, ln=35) */
+
+#line 35 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+}
+
+/* Set_Exp (n=327, ln=38) */
+
+#line 38 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+(((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).v_328)) = CEU_CODE_INT0_Get(
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_INT0_Get __ceu_325;; __ceu_325;})
+
+#else
+(tceu_code_mem_INT0_Get) {  }
+
+#endif
+,((tceu_code_mem*)_ceu_mem))
+;
+
+/* Emit_Evt (n=335, ln=43) */
+
+#line 43 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[4].level  = _ceu_level;
+_ceu_mem->_trails[4].lbl    = CEU_LABEL_DSensor_INT0_Emit_Int__OUT_122;
+{
+    tceu_evt   __ceu_evt   = ((tceu_evt){CEU_EVENT_CHANGE_257,{_ceu_mem}});
+    tceu_range __ceu_range = { &CEU_APP.root._mem, 0, CEU_TRAILS_N-1 };
+    _ceu_nxt->evt     = __ceu_evt;
+    _ceu_nxt->range   = __ceu_range;
+
+/* Emit_Evt (n=335, ln=43) */
+
+#line 43 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+{
+    tceu_event___lpar__bool__rpar__ __ceu_ps = { (((*((tceu_code_mem_DSensor_INT0*)_ceu_mem)).v_328)) };
+    ceu_params_cpy(_ceu_nxt, &__ceu_ps, sizeof(__ceu_ps));
+}
+
+/* Emit_Evt (n=335, ln=43) */
+
+#line 43 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+    return 1;
+}
+
+/* Emit_Evt (n=335, ln=43) */
+
+#line 43 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Emit_Int__OUT_122:;
+
+/* Block (n=337, ln=29) */
+
+#line 29 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+
+/* Loop (n=338, ln=28) */
+
+#line 28 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Loop_Continue__CNT_125:;
+
+/* Loop (n=338, ln=28) */
+
+#line 28 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+        *_ceu_trlK = 3;
+}
+
+/* Loop (n=338, ln=28) */
+
+#line 28 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Loop_Break__OUT_127:;
+
+/* Nat_Stmt (n=1079, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+ceu_assert(0, "reached end of `code`");
+/* Par_Or (n=1382, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+CEU_GOTO(CEU_LABEL_DSensor_INT0_Par_Or__OUT_105);
+
+/* Par_Or (n=1382, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Par_Or__OUT_105:;
+
+/* Par_Or (n=1382, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[2].level  = _ceu_level;
+_ceu_mem->_trails[2].lbl    = CEU_LABEL_DSensor_INT0_Par_Or__CLR_106;
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 2+1, 4 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    return 1;
+}
+
+/* Par_Or (n=1382, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Par_Or__CLR_106:;
+
+/* Block (n=340, ln=7) */
+
+#line 7 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+
+/* Block (n=929, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+
+/* Block (n=931, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+
+/* Do (n=932, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Do__OUT_131:;
+
+/* Do (n=932, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+    _ceu_mem->has_term = 1;
+
+/* Par_Or (n=1376, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+CEU_GOTO(CEU_LABEL_DSensor_INT0_Par_Or__OUT_99);
+
+/* Par_Or (n=1376, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Par_Or__OUT_99:;
+
+/* Par_Or (n=1376, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+_ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[0].level  = _ceu_level;
+_ceu_mem->_trails[0].lbl    = CEU_LABEL_DSensor_INT0_Par_Or__CLR_100;
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 0+1, 4 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    return 1;
+}
+
+/* Par_Or (n=1376, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+case CEU_LABEL_DSensor_INT0_Par_Or__CLR_100:;
+
+/* Block (n=940, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+
+/* Code (n=941, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+return 0;
+
+/* Code (n=941, ln=6) */
+
+#line 6 "./libraries/driver-dsensor/avr/dsensor-int0.ceu"
+}
+
+/* Code (n=971, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+/* do not enter from outside */
+if (0)
+{
+
+/* Code (n=971, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+case CEU_LABEL_Code_String_Equal_STR:;
+
+/* Block (n=970, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+{
+
+/* Block (n=962, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+{
+
+/* Block (n=960, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+{
+
+/* Block (n=388, ln=9) */
+
+#line 9 "/home/anny/dev/ceu/include/string.ceu"
+{
+
+/* Nat_Stmt (n=374, ln=10) */
+
+#line 10 "/home/anny/dev/ceu/include/string.ceu"
+
+        (((*((tceu_code_mem_String_Equal_STR*)_ceu_mem)).result))= strcmp(((char*)((((byte*) ceu_vector_buf_get((((*((tceu_code_mem_String_Equal_STR*)_ceu_mem)).str1)),0))
+))), ((char*)((&((((*((tceu_code_mem_String_Equal_STR*)_ceu_mem)).str2))[0])))));
+    
+/* If (n=386, ln=14) */
+
+#line 14 "/home/anny/dev/ceu/include/string.ceu"
+if (((((*((tceu_code_mem_String_Equal_STR*)_ceu_mem)).result))==0)) {
+    
+/* Block (n=381, ln=15) */
+
+#line 15 "/home/anny/dev/ceu/include/string.ceu"
+{
+
+/* Set_Exp (n=978, ln=15) */
+
+#line 15 "/home/anny/dev/ceu/include/string.ceu"
+(((*((tceu_code_mem_String_Equal_STR*)_ceu_mem))._ret)) = 1;
+
+/* Escape (n=379, ln=15) */
+
+#line 15 "/home/anny/dev/ceu/include/string.ceu"
+CEU_GOTO(CEU_LABEL_String_Equal_STR_Do__OUT_141);
+
+/* Block (n=381, ln=15) */
+
+#line 15 "/home/anny/dev/ceu/include/string.ceu"
+}
+} else {
+    
+/* Block (n=385, ln=17) */
+
+#line 17 "/home/anny/dev/ceu/include/string.ceu"
+{
+
+/* Set_Exp (n=979, ln=17) */
+
+#line 17 "/home/anny/dev/ceu/include/string.ceu"
+(((*((tceu_code_mem_String_Equal_STR*)_ceu_mem))._ret)) = 0;
+
+/* Escape (n=383, ln=17) */
+
+#line 17 "/home/anny/dev/ceu/include/string.ceu"
+CEU_GOTO(CEU_LABEL_String_Equal_STR_Do__OUT_141);
+
+/* Block (n=385, ln=17) */
+
+#line 17 "/home/anny/dev/ceu/include/string.ceu"
+}
+}
+
+/* Block (n=388, ln=9) */
+
+#line 9 "/home/anny/dev/ceu/include/string.ceu"
+}
+
+/* Block (n=960, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+}
+
+/* Block (n=962, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+}
+
+/* Do (n=963, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+ceu_assert(0, "reached end of `do`");
+
+/* Do (n=963, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+case CEU_LABEL_String_Equal_STR_Do__OUT_141:;
+
+/* Block (n=970, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+}
+
+/* Code (n=971, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+return 0;
+
+/* Code (n=971, ln=8) */
+
+#line 8 "/home/anny/dev/ceu/include/string.ceu"
+}
+
+/* Par_Or (n=1388, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[2].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[2].level  = _ceu_level;
+_ceu_mem->_trails[2].lbl    = CEU_LABEL_Par_Or_sub_2_IN_147;
+
+/* Par_Or (n=1388, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+CEU_GOTO(CEU_LABEL_Par_Or_sub_1_IN_146);
+
+/* Par_Or (n=1388, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or_sub_1_IN_146:;
+
+/* Abs_Spawn (n=398, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[1].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Spawn (n=398, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[1].evt.mem = (tceu_code_mem*) &(CEU_APP.root.__mem_398);
+
+/* Abs_Spawn (n=398, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[1].lbl = CEU_LABEL_Await_Spawn__OUT_150;
+
+/* Abs_Spawn (n=398, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+{
+    *((tceu_code_mem_USART_Init*)(&(CEU_APP.root. __mem_398))) = 
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_USART_Init __ceu_397;__ceu_397.bps = 9600;; __ceu_397;})
+
+#else
+(tceu_code_mem_USART_Init) { .bps = 9600 }
+
+#endif
+;
+#ifdef CEU_FEATURES_POOL
+    (&(CEU_APP.root. __mem_398))->_mem.pak    = NULL;
+#endif
+    (&(CEU_APP.root. __mem_398))->_mem.up_mem = _ceu_mem;
+    (&(CEU_APP.root. __mem_398))->_mem.depth  = 0;
+    (&(CEU_APP.root. __mem_398))->_mem.has_term = 0;
+    (&(CEU_APP.root. __mem_398))->_mem.trails_n = 5;
+    memset(&(&(CEU_APP.root. __mem_398))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&(CEU_APP.root. __mem_398))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&(CEU_APP.root. __mem_398))->_mem._trails[0].level  = _ceu_level+1;
+    (&(CEU_APP.root. __mem_398))->_mem._trails[0].lbl    = CEU_CODE_USART_Init_to_lbl((&(CEU_APP.root. __mem_398)));
+}
+
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
+    tceu_range __ceu_range = { (tceu_code_mem*)(&(CEU_APP.root. __mem_398)), 0, 5-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    //return 1; (later, after deciding for spawn/await)
+}
+
+/* Abs_Spawn (n=398, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+return 1;
+
+/* Abs_Spawn (n=398, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Await_Spawn__OUT_150:;
+
+/* Await_Forever (n=1385, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+return 0;
+
+/* Par_Or (n=1388, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+CEU_GOTO(CEU_LABEL_Par_Or__OUT_148);
+
+/* Par_Or (n=1388, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or_sub_2_IN_147:;
+
+/* Loop (n=518, ln=11) */
+
+#line 11 "libraries/driver-gpio/examples/out-01.ceu"
+while (1) {
+        
+/* Block (n=517, ln=12) */
+
+#line 12 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Par_Or (n=481, ln=12) */
+
+#line 12 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[5].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[5].level  = _ceu_level;
+_ceu_mem->_trails[5].lbl    = CEU_LABEL_Par_Or_sub_2_IN_152;
+
+/* Par_Or (n=481, ln=12) */
+
+#line 12 "libraries/driver-gpio/examples/out-01.ceu"
+CEU_GOTO(CEU_LABEL_Par_Or_sub_1_IN_151);
+
+/* Par_Or (n=481, ln=12) */
+
+#line 12 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or_sub_1_IN_151:;
+
+/* Block (n=435, ln=13) */
+
+#line 13 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Loop (n=433, ln=13) */
+
+#line 13 "libraries/driver-gpio/examples/out-01.ceu"
+while (1) {
+        
+/* Block (n=432, ln=14) */
+
+#line 14 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Vec_Init (n=1145, ln=14) */
+
+#line 14 "libraries/driver-gpio/examples/out-01.ceu"
+ceu_vector_init(&((CEU_APP.root.str_406)),2, 0, 0, sizeof(byte),
+                (byte*)&((CEU_APP.root.str_406_buf)));
+
+/* Set_Vec (n=405, ln=14) */
+
+#line 14 "libraries/driver-gpio/examples/out-01.ceu"
+{
+    usize __ceu_nxt;
+
+/* Set_Vec (n=405, ln=14) */
+
+#line 14 "libraries/driver-gpio/examples/out-01.ceu"
+    ceu_vector_setlen(&((CEU_APP.root.str_406)), 0, 0);
+    __ceu_nxt = 0;
+
+/* Set_Vec (n=405, ln=14) */
+
+#line 14 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Abs_Await (n=414, ln=15) */
+
+#line 15 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[4].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Await (n=414, ln=15) */
+
+#line 15 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[4].evt.mem = (tceu_code_mem*) &(CEU_APP.root.__mem_414);
+
+/* Abs_Await (n=414, ln=15) */
+
+#line 15 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[4].lbl = CEU_LABEL_Await_Await__OUT_155;
+
+/* Abs_Await (n=414, ln=15) */
+
+#line 15 "libraries/driver-gpio/examples/out-01.ceu"
+{
+    *((tceu_code_mem_USART_Rx*)(&(CEU_APP.root. __mem_414))) = 
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_USART_Rx __ceu_412;__ceu_412.buf = (&((CEU_APP.root.str_406)));__ceu_412.n = { .is_set=0 };; __ceu_412;})
+
+#else
+(tceu_code_mem_USART_Rx) { .buf = (&((CEU_APP.root.str_406))),.n = { .is_set=0 } }
+
+#endif
+;
+#ifdef CEU_FEATURES_POOL
+    (&(CEU_APP.root. __mem_414))->_mem.pak    = NULL;
+#endif
+    (&(CEU_APP.root. __mem_414))->_mem.up_mem = _ceu_mem;
+    (&(CEU_APP.root. __mem_414))->_mem.depth  = 0;
+    (&(CEU_APP.root. __mem_414))->_mem.has_term = 0;
+    (&(CEU_APP.root. __mem_414))->_mem.trails_n = 5;
+    memset(&(&(CEU_APP.root. __mem_414))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&(CEU_APP.root. __mem_414))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&(CEU_APP.root. __mem_414))->_mem._trails[0].level  = _ceu_level+1;
+    (&(CEU_APP.root. __mem_414))->_mem._trails[0].lbl    = CEU_CODE_USART_Rx_to_lbl((&(CEU_APP.root. __mem_414)));
+}
+
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
+    tceu_range __ceu_range = { (tceu_code_mem*)(&(CEU_APP.root. __mem_414)), 0, 5-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    //return 1; (later, after deciding for spawn/await)
+}
+
+/* Abs_Await (n=414, ln=15) */
+
+#line 15 "libraries/driver-gpio/examples/out-01.ceu"
+return 1;
+
+/* Abs_Await (n=414, ln=15) */
+
+#line 15 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Await_Await__OUT_155:;
+
+/* If (n=430, ln=16) */
+
+#line 16 "libraries/driver-gpio/examples/out-01.ceu"
+if (CEU_CODE_String_Equal_STR(
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_String_Equal_STR __ceu_420;__ceu_420.str1 = (&((CEU_APP.root.str_406)));__ceu_420.str2 = "1";; __ceu_420;})
+
+#else
+(tceu_code_mem_String_Equal_STR) { .str1 = (&((CEU_APP.root.str_406))),.str2 = "1" }
+
+#endif
+,((tceu_code_mem*)_ceu_mem))
+) {
+    
+/* Block (n=429, ln=17) */
+
+#line 17 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Emit_Ext_emit (n=426, ln=17) */
+
+#line 17 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Emit_Ext_emit (n=426, ln=17) */
+
+#line 17 "libraries/driver-gpio/examples/out-01.ceu"
+tceu_output_OUT_13 __ceu_ps;
+
+/* Emit_Ext_emit (n=426, ln=17) */
+
+#line 17 "libraries/driver-gpio/examples/out-01.ceu"
+__ceu_ps._1 = 1;
+
+/* Emit_Ext_emit (n=426, ln=17) */
+
+#line 17 "libraries/driver-gpio/examples/out-01.ceu"
+
+#ifdef ceu_callback_output_OUT_13
+ceu_callback_output_OUT_13(&__ceu_ps, CEU_TRACE(-2));
+#else
+1;
+#endif
+
+/* Emit_Ext_emit (n=426, ln=17) */
+
+#line 17 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Break (n=427, ln=18) */
+
+#line 18 "libraries/driver-gpio/examples/out-01.ceu"
+CEU_GOTO(CEU_LABEL_Loop_Break__OUT_163);
+
+/* Block (n=429, ln=17) */
+
+#line 17 "libraries/driver-gpio/examples/out-01.ceu"
+}
+} else {
+    
+/* Block (n=986, ln=16) */
+
+#line 16 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Block (n=986, ln=16) */
+
+#line 16 "libraries/driver-gpio/examples/out-01.ceu"
+}
+}
+
+/* Block (n=432, ln=14) */
+
+#line 14 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Loop (n=433, ln=13) */
+
+#line 13 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Loop_Continue__CNT_161:;
+
+/* Loop (n=433, ln=13) */
+
+#line 13 "libraries/driver-gpio/examples/out-01.ceu"
+        *_ceu_trlK = 3;
+}
+
+/* Loop (n=433, ln=13) */
+
+#line 13 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Loop_Break__OUT_163:;
+
+/* Block (n=435, ln=13) */
+
+#line 13 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Par_Or (n=481, ln=12) */
+
+#line 12 "libraries/driver-gpio/examples/out-01.ceu"
+CEU_GOTO(CEU_LABEL_Par_Or__OUT_153);
+
+/* Par_Or (n=481, ln=12) */
+
+#line 12 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or_sub_2_IN_152:;
+
+/* Block (n=480, ln=22) */
+
+#line 22 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Loop (n=478, ln=22) */
+
+#line 22 "libraries/driver-gpio/examples/out-01.ceu"
+while (1) {
+        
+/* Block (n=477, ln=23) */
+
+#line 23 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Block (n=461, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Par_Or (n=1394, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[8].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[8].level  = _ceu_level;
+_ceu_mem->_trails[8].lbl    = CEU_LABEL_Par_Or_sub_2_IN_166;
+
+/* Par_Or (n=1394, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+CEU_GOTO(CEU_LABEL_Par_Or_sub_1_IN_165);
+
+/* Par_Or (n=1394, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or_sub_1_IN_165:;
+
+/* Abs_Spawn (n=444, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+((CEU_APP.root.mysensor_446)) = &(CEU_APP.root.__mem_444);
+_ceu_mem->_trails[6].evt.mem =  &(CEU_APP.root.__mem_444);
+
+/* Abs_Spawn (n=444, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[7].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Spawn (n=444, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[7].evt.mem = (tceu_code_mem*) &(CEU_APP.root.__mem_444);
+
+/* Abs_Spawn (n=444, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[7].lbl = CEU_LABEL_Await_Spawn__OUT_169;
+
+/* Abs_Spawn (n=444, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+{
+    *((tceu_code_mem_DSensor_INT0*)(&(CEU_APP.root. __mem_444))) = 
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_DSensor_INT0 __ceu_443;__ceu_443.energyPort = { .is_set=1, .value=7};__ceu_443.time = { .is_set=0 };__ceu_443.debounce = { .is_set=1, .value=0};; __ceu_443;})
+
+#else
+(tceu_code_mem_DSensor_INT0) { .energyPort = { .is_set=1, .value=7},.time = { .is_set=0 },.debounce = { .is_set=1, .value=0} }
+
+#endif
+;
+#ifdef CEU_FEATURES_POOL
+    (&(CEU_APP.root. __mem_444))->_mem.pak    = NULL;
+#endif
+    (&(CEU_APP.root. __mem_444))->_mem.up_mem = _ceu_mem;
+    (&(CEU_APP.root. __mem_444))->_mem.depth  = 0;
+    (&(CEU_APP.root. __mem_444))->_mem.has_term = 0;
+    (&(CEU_APP.root. __mem_444))->_mem.trails_n = 5;
+    memset(&(&(CEU_APP.root. __mem_444))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&(CEU_APP.root. __mem_444))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&(CEU_APP.root. __mem_444))->_mem._trails[0].level  = _ceu_level+1;
+    (&(CEU_APP.root. __mem_444))->_mem._trails[0].lbl    = CEU_CODE_DSensor_INT0_to_lbl((&(CEU_APP.root. __mem_444)));
+}
+
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
+    tceu_range __ceu_range = { (tceu_code_mem*)(&(CEU_APP.root. __mem_444)), 0, 5-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    //return 1; (later, after deciding for spawn/await)
+}
+
+/* Abs_Spawn (n=444, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+return 1;
+
+/* Abs_Spawn (n=444, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Await_Spawn__OUT_169:;
+
+/* Await_Forever (n=1391, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+return 0;
+
+/* Par_Or (n=1394, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+CEU_GOTO(CEU_LABEL_Par_Or__OUT_167);
+
+/* Par_Or (n=1394, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or_sub_2_IN_166:;
+
+/* Await_Until (n=457, ln=25) */
+
+#line 25 "libraries/driver-gpio/examples/out-01.ceu"
+do {
+
+/* Await_Int (n=453, ln=25) */
+
+#line 25 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[8].evt = ((tceu_evt){ CEU_EVENT_CHANGE_257, {&(*(CEU_APP.root.mysensor_446))} });
+
+/* Await_Int (n=453, ln=25) */
+
+#line 25 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[8].lbl = CEU_LABEL_Await_change__OUT_170;
+
+/* Await_Int (n=453, ln=25) */
+
+#line 25 "libraries/driver-gpio/examples/out-01.ceu"
+return 0;
+
+/* Await_Int (n=453, ln=25) */
+
+#line 25 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Await_change__OUT_170:;
+
+/* Set_Await_Int (n=458, ln=25) */
+
+#line 25 "libraries/driver-gpio/examples/out-01.ceu"
+((CEU_APP.root.v_459)) = ((tceu_event___lpar__bool__rpar__*)(_ceu_cur->params))->_1;
+
+/* Await_Until (n=457, ln=25) */
+
+#line 25 "libraries/driver-gpio/examples/out-01.ceu"
+} while (!(((CEU_APP.root.v_459))==1));
+
+/* Par_Or (n=1394, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+CEU_GOTO(CEU_LABEL_Par_Or__OUT_167);
+
+/* Par_Or (n=1394, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or__OUT_167:;
+
+/* Par_Or (n=1394, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[6].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[6].level  = _ceu_level;
+_ceu_mem->_trails[6].lbl    = CEU_LABEL_Par_Or__CLR_168;
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 6+1, 8 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    return 1;
+}
+
+/* Par_Or (n=1394, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or__CLR_168:;
+
+/* Block (n=461, ln=24) */
+
+#line 24 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Do (n=462, ln=23) */
+
+#line 23 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Do__OUT_172:;
+
+/* Emit_Ext_emit (n=467, ln=28) */
+
+#line 28 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Emit_Ext_emit (n=467, ln=28) */
+
+#line 28 "libraries/driver-gpio/examples/out-01.ceu"
+tceu_output_OUT_13 __ceu_ps;
+
+/* Emit_Ext_emit (n=467, ln=28) */
+
+#line 28 "libraries/driver-gpio/examples/out-01.ceu"
+__ceu_ps._1 = 1;
+
+/* Emit_Ext_emit (n=467, ln=28) */
+
+#line 28 "libraries/driver-gpio/examples/out-01.ceu"
+
+#ifdef ceu_callback_output_OUT_13
+ceu_callback_output_OUT_13(&__ceu_ps, CEU_TRACE(-2));
+#else
+1;
+#endif
+
+/* Emit_Ext_emit (n=467, ln=28) */
+
+#line 28 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Await_Wclock (n=470, ln=29) */
+
+#line 29 "libraries/driver-gpio/examples/out-01.ceu"
+ceu_wclock(3000000.0, &(CEU_APP.root.__wclk_470), NULL, CEU_TRACE(0));
+
+_CEU_HALT_470_:
+
+/* Await_Wclock (n=470, ln=29) */
+
+#line 29 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[6].evt.id = CEU_INPUT__WCLOCK;
+
+/* Await_Wclock (n=470, ln=29) */
+
+#line 29 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[6].lbl = CEU_LABEL_Await_Wclock__OUT_175;
+
+/* Await_Wclock (n=470, ln=29) */
+
+#line 29 "libraries/driver-gpio/examples/out-01.ceu"
+return 0;
+
+/* Await_Wclock (n=470, ln=29) */
+
+#line 29 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Await_Wclock__OUT_175:;
+
+/* Await_Wclock (n=470, ln=29) */
+
+#line 29 "libraries/driver-gpio/examples/out-01.ceu"
+/* subtract time and check if I have to awake */
+{
+    s32* dt = (s32*)_ceu_cur->params;
+    if (!ceu_wclock(*dt, NULL, &(CEU_APP.root.__wclk_470), CEU_TRACE(0)) ) {
+        goto _CEU_HALT_470_;
+    }
+}
+
+/* Emit_Ext_emit (n=475, ln=30) */
+
+#line 30 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Emit_Ext_emit (n=475, ln=30) */
+
+#line 30 "libraries/driver-gpio/examples/out-01.ceu"
+tceu_output_OUT_13 __ceu_ps;
+
+/* Emit_Ext_emit (n=475, ln=30) */
+
+#line 30 "libraries/driver-gpio/examples/out-01.ceu"
+__ceu_ps._1 = 0;
+
+/* Emit_Ext_emit (n=475, ln=30) */
+
+#line 30 "libraries/driver-gpio/examples/out-01.ceu"
+
+#ifdef ceu_callback_output_OUT_13
+ceu_callback_output_OUT_13(&__ceu_ps, CEU_TRACE(-2));
+#else
+1;
+#endif
+
+/* Emit_Ext_emit (n=475, ln=30) */
+
+#line 30 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Block (n=477, ln=23) */
+
+#line 23 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Loop (n=478, ln=22) */
+
+#line 22 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Loop_Continue__CNT_179:;
+
+/* Loop (n=478, ln=22) */
+
+#line 22 "libraries/driver-gpio/examples/out-01.ceu"
+        *_ceu_trlK = 4;
+}
+
+/* Loop (n=478, ln=22) */
+
+#line 22 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Loop_Break__OUT_181:;
+
+/* Block (n=480, ln=22) */
+
+#line 22 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Par_Or (n=481, ln=12) */
+
+#line 12 "libraries/driver-gpio/examples/out-01.ceu"
+CEU_GOTO(CEU_LABEL_Par_Or__OUT_153);
+
+/* Par_Or (n=481, ln=12) */
+
+#line 12 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or__OUT_153:;
+
+/* Par_Or (n=481, ln=12) */
+
+#line 12 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[3].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[3].level  = _ceu_level;
+_ceu_mem->_trails[3].lbl    = CEU_LABEL_Par_Or__CLR_154;
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 3+1, 8 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    return 1;
+}
+
+/* Par_Or (n=481, ln=12) */
+
+#line 12 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or__CLR_154:;
+
+/* Loop (n=515, ln=34) */
+
+#line 34 "libraries/driver-gpio/examples/out-01.ceu"
+while (1) {
+        
+/* Block (n=514, ln=35) */
+
+#line 35 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Vec_Init (n=1182, ln=35) */
+
+#line 35 "libraries/driver-gpio/examples/out-01.ceu"
+ceu_vector_init(&((CEU_APP.root.str_488)),2, 0, 0, sizeof(byte),
+                (byte*)&((CEU_APP.root.str_488_buf)));
+
+/* Set_Vec (n=487, ln=35) */
+
+#line 35 "libraries/driver-gpio/examples/out-01.ceu"
+{
+    usize __ceu_nxt;
+
+/* Set_Vec (n=487, ln=35) */
+
+#line 35 "libraries/driver-gpio/examples/out-01.ceu"
+    ceu_vector_setlen(&((CEU_APP.root.str_488)), 0, 0);
+    __ceu_nxt = 0;
+
+/* Set_Vec (n=487, ln=35) */
+
+#line 35 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Abs_Await (n=496, ln=36) */
+
+#line 36 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[3].evt.id = CEU_INPUT__PROPAGATE_CODE;
+
+/* Abs_Await (n=496, ln=36) */
+
+#line 36 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[3].evt.mem = (tceu_code_mem*) &(CEU_APP.root.__mem_496);
+
+/* Abs_Await (n=496, ln=36) */
+
+#line 36 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[3].lbl = CEU_LABEL_Await_Await__OUT_183;
+
+/* Abs_Await (n=496, ln=36) */
+
+#line 36 "libraries/driver-gpio/examples/out-01.ceu"
+{
+    *((tceu_code_mem_USART_Rx*)(&(CEU_APP.root. __mem_496))) = 
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_USART_Rx __ceu_494;__ceu_494.buf = (&((CEU_APP.root.str_488)));__ceu_494.n = { .is_set=0 };; __ceu_494;})
+
+#else
+(tceu_code_mem_USART_Rx) { .buf = (&((CEU_APP.root.str_488))),.n = { .is_set=0 } }
+
+#endif
+;
+#ifdef CEU_FEATURES_POOL
+    (&(CEU_APP.root. __mem_496))->_mem.pak    = NULL;
+#endif
+    (&(CEU_APP.root. __mem_496))->_mem.up_mem = _ceu_mem;
+    (&(CEU_APP.root. __mem_496))->_mem.depth  = 0;
+    (&(CEU_APP.root. __mem_496))->_mem.has_term = 0;
+    (&(CEU_APP.root. __mem_496))->_mem.trails_n = 5;
+    memset(&(&(CEU_APP.root. __mem_496))->_mem._trails, 0, 5*sizeof(tceu_trl));
+    (&(CEU_APP.root. __mem_496))->_mem._trails[0].evt.id = CEU_INPUT__STACKED;
+    (&(CEU_APP.root. __mem_496))->_mem._trails[0].level  = _ceu_level+1;
+    (&(CEU_APP.root. __mem_496))->_mem._trails[0].lbl    = CEU_CODE_USART_Rx_to_lbl((&(CEU_APP.root. __mem_496)));
+}
+
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__NONE, {NULL}};
+    tceu_range __ceu_range = { (tceu_code_mem*)(&(CEU_APP.root. __mem_496)), 0, 5-1 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    //return 1; (later, after deciding for spawn/await)
+}
+
+/* Abs_Await (n=496, ln=36) */
+
+#line 36 "libraries/driver-gpio/examples/out-01.ceu"
+return 1;
+
+/* Abs_Await (n=496, ln=36) */
+
+#line 36 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Await_Await__OUT_183:;
+
+/* If (n=512, ln=37) */
+
+#line 37 "libraries/driver-gpio/examples/out-01.ceu"
+if (CEU_CODE_String_Equal_STR(
+#if defined(__GNUC__) && defined(__cplusplus)
+({tceu_code_mem_String_Equal_STR __ceu_502;__ceu_502.str1 = (&((CEU_APP.root.str_488)));__ceu_502.str2 = "0";; __ceu_502;})
+
+#else
+(tceu_code_mem_String_Equal_STR) { .str1 = (&((CEU_APP.root.str_488))),.str2 = "0" }
+
+#endif
+,((tceu_code_mem*)_ceu_mem))
+) {
+    
+/* Block (n=511, ln=38) */
+
+#line 38 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Emit_Ext_emit (n=508, ln=38) */
+
+#line 38 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Emit_Ext_emit (n=508, ln=38) */
+
+#line 38 "libraries/driver-gpio/examples/out-01.ceu"
+tceu_output_OUT_13 __ceu_ps;
+
+/* Emit_Ext_emit (n=508, ln=38) */
+
+#line 38 "libraries/driver-gpio/examples/out-01.ceu"
+__ceu_ps._1 = 0;
+
+/* Emit_Ext_emit (n=508, ln=38) */
+
+#line 38 "libraries/driver-gpio/examples/out-01.ceu"
+
+#ifdef ceu_callback_output_OUT_13
+ceu_callback_output_OUT_13(&__ceu_ps, CEU_TRACE(-2));
+#else
+1;
+#endif
+
+/* Emit_Ext_emit (n=508, ln=38) */
+
+#line 38 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Break (n=509, ln=39) */
+
+#line 39 "libraries/driver-gpio/examples/out-01.ceu"
+CEU_GOTO(CEU_LABEL_Loop_Break__OUT_191);
+
+/* Block (n=511, ln=38) */
+
+#line 38 "libraries/driver-gpio/examples/out-01.ceu"
+}
+} else {
+    
+/* Block (n=1001, ln=37) */
+
+#line 37 "libraries/driver-gpio/examples/out-01.ceu"
+{
+
+/* Block (n=1001, ln=37) */
+
+#line 37 "libraries/driver-gpio/examples/out-01.ceu"
+}
+}
+
+/* Block (n=514, ln=35) */
+
+#line 35 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Loop (n=515, ln=34) */
+
+#line 34 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Loop_Continue__CNT_189:;
+
+/* Loop (n=515, ln=34) */
+
+#line 34 "libraries/driver-gpio/examples/out-01.ceu"
+        *_ceu_trlK = 2;
+}
+
+/* Loop (n=515, ln=34) */
+
+#line 34 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Loop_Break__OUT_191:;
+
+/* Block (n=517, ln=12) */
+
+#line 12 "libraries/driver-gpio/examples/out-01.ceu"
+}
+
+/* Loop (n=518, ln=11) */
+
+#line 11 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Loop_Continue__CNT_194:;
+
+/* Loop (n=518, ln=11) */
+
+#line 11 "libraries/driver-gpio/examples/out-01.ceu"
+        *_ceu_trlK = 1;
+}
+
+/* Loop (n=518, ln=11) */
+
+#line 11 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Loop_Break__OUT_196:;
+
+/* Par_Or (n=1388, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+CEU_GOTO(CEU_LABEL_Par_Or__OUT_148);
+
+/* Par_Or (n=1388, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or__OUT_148:;
+
+/* Par_Or (n=1388, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+_ceu_mem->_trails[0].evt.id = CEU_INPUT__STACKED;
+_ceu_mem->_trails[0].level  = _ceu_level;
+_ceu_mem->_trails[0].lbl    = CEU_LABEL_Par_Or__CLR_149;
+{
+    tceu_evt   __ceu_evt   = {CEU_INPUT__CLEAR,{NULL}};
+    tceu_range __ceu_range = { _ceu_mem, 0+1, 8 };
+    _ceu_nxt->evt      = __ceu_evt;
+    _ceu_nxt->range    = __ceu_range;
+    _ceu_nxt->params_n = 0;
+    return 1;
+}
+
+/* Par_Or (n=1388, ln=9) */
+
+#line 9 "libraries/driver-gpio/examples/out-01.ceu"
+case CEU_LABEL_Par_Or__CLR_149:;
+
+/* Block (n=557, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 }
 
-/* Do (n=45, ln=1) */
+/* Do (n=558, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 ceu_assert(0, "reached end of `do`");
 
-/* Do (n=45, ln=1) */
+/* Do (n=558, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
-case CEU_LABEL_Do__OUT_5:;
+case CEU_LABEL_Do__OUT_198:;
 
-/* Block (n=49, ln=1) */
+/* Block (n=562, ln=1) */
 
 #line 1 "libraries/driver-gpio/examples/out-01.ceu"
 }
